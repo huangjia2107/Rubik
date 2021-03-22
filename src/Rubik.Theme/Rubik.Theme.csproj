@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Cursors\Splitter_lr.cur" />
+    <Resource Include="Assets\Cursors\Splitter_ud.cur" />
+    <Resource Include="Assets\Images\Error.png" />
+    <Resource Include="Assets\Images\Information.png" />
+    <Resource Include="Assets\Images\Question.png" />
+    <Resource Include="Assets\Images\Warning.png" />
+  </ItemGroup>
+  
+</Project>

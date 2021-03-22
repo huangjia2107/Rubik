@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/bin/": true,
+			"**/obj/": true,
+			"**/publish/": true,
+			"**/.vs/":true,
+			"**/*.user":true
+		}
+	}
+}
