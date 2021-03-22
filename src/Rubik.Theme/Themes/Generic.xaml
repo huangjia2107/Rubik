@@ -3,9 +3,9 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="/CASApp.Theme;component/Styles/ImageChartStyle.xaml"/>
-        
-        <ResourceDictionary Source="/CASApp.Theme;component/Styles/LiveChartStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
+
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
         
     </ResourceDictionary.MergedDictionaries>
 
