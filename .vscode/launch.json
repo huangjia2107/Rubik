@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build_debug",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/Rubik.Demo.exe",
+            "program": "${workspaceFolder}/bin/Debug/Rubik.Demo.exe",
             "args":[],
             "cwd": "${workspaceFolder}\\src\\Rubik.Demo",
             "externalConsole": true,
