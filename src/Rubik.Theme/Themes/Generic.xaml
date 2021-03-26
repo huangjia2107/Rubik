@@ -3,10 +3,17 @@
 
     <ResourceDictionary.MergedDictionaries>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ButtonStyle.xaml"/>
+
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/Geometries.xaml"/>
+
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
-        
+
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/UserWindowStyle.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

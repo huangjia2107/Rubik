@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="Prism.DryIoc" version="8.0.0.1909" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Rubik.Service\Rubik.Service.csproj" />
     <ProjectReference Include="..\Rubik.Theme\Rubik.Theme.csproj" />
   </ItemGroup>
 
