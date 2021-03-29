@@ -9,6 +9,7 @@ using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Regions;
 
+using Rubik.Demo.Utils;
 using Rubik.Demo.Dialogs;
 using Rubik.Demo.Models;
 using Rubik.Demo.ViewModels;
@@ -97,10 +98,10 @@ namespace Rubik.Demo
         /// </summary>
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //Local Settings
+            //Config
             var localConfig = FileHelper.LoadFromJsonFile<GlobalConfig>(ResourcesMap.LocationDic[Location.GlobalConfigFile]);
 
-            //version
+            //Version
             var version = ResourceAssembly.GetName().Version;
             var appData = new AppData
             {
@@ -109,7 +110,11 @@ namespace Rubik.Demo
             };
 
             Logger.Instance.Main.Info($"[ Version ] v{version.Major}.{version.Minor}.{version.Build}.{version.Revision}");
+            
+            //Demos
+            appData.InternalData.DemoModels = new DemoResolver(ResourcesMap.LocationDic[Location.DemoPath]).LoadDemoModels();
 
+            //Settings
             containerRegistry.RegisterInstance(appData);
 
             //Dialog
