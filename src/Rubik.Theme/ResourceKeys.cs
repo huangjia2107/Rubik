@@ -470,6 +470,12 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), DoubleToCornerRadiusConverter); }
         }
 
+        public const string DoubleToGridLengthConverter = "DoubleToGridLengthConverter";
+        public static ComponentResourceKey DoubleToGridLengthConverterKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), DoubleToGridLengthConverter); }
+        }
+
         public const string MultiBoolOrToVisibilityMultiConverter = "MultiBoolOrToVisibilityMultiConverter";
         public static ComponentResourceKey MultiBoolOrToVisibilityMultiConverterKey
         {
