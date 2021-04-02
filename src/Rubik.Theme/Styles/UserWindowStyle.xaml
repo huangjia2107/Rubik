@@ -15,7 +15,7 @@
         <Setter Property="MinHeight" Value="100" />
         <Setter Property="BorderBrush" Value="#3498db"/>
         <Setter Property="Foreground" Value="#404040"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="#FBFBFB"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="Arial,SimSun"/>
         <Setter Property="CaptionForeground" Value="#404040"/>
@@ -163,7 +163,7 @@
         <Setter Property="MinHeight" Value="100" />
         <Setter Property="BorderBrush" Value="#3498db"/>
         <Setter Property="Foreground" Value="#616161"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="#FBFBFB"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="Arial,SimSun"/>
         <Setter Property="CaptionForeground" Value="#616161"/>

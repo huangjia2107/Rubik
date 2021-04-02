@@ -114,16 +114,10 @@ namespace Rubik.Theme
 
         #region RadioButton
 
-        public const string NormalRadioButtonStyle = "NormalRadioButtonStyle";
-        public static ComponentResourceKey NormalRadioButtonStyleKey
+        public const string SidebarRadioButtonStyle = "SidebarRadioButtonStyle";
+        public static ComponentResourceKey SidebarRadioButtonStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalRadioButtonStyle); }
-        }
-
-        public const string SelectionRadioButtonStyle = "SelectionRadioButtonStyle";
-        public static ComponentResourceKey SelectionRadioButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), SelectionRadioButtonStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), SidebarRadioButtonStyle); }
         }
 
         #endregion
@@ -368,6 +362,12 @@ namespace Rubik.Theme
         public static ComponentResourceKey ErrorGeometryKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), ErrorGeometry); }
+        }
+
+        public const string LogoDrawingGroup = "LogoDrawingGroup";
+        public static ComponentResourceKey LogoDrawingGroupKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), LogoDrawingGroup); }
         }
 
         #endregion

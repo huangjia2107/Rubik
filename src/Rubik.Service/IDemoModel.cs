@@ -17,7 +17,7 @@ namespace Rubik.Service
         /// <summary>
         /// Icon Path
         /// </summary>
-        string Icon { get; }
+        string IconData { get; }
 
         /// <summary>
         /// Icon Width

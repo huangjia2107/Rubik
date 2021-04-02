@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using Rubik.Demo.Dialogs;
 using Rubik.Demo.Models;
 using Rubik.Demo.ViewModels;
 using Rubik.Demo.Views;
+using Rubik.Demo.Regions;
 using Rubik.Service.IO;
 using Rubik.Service.Models;
 using Rubik.Service.Utils;
@@ -122,6 +124,26 @@ namespace Rubik.Demo
             containerRegistry.RegisterDialog<MessageDialog, MessageDialogViewModel>();
         }
 
+        /*
+        /// <summary>
+        /// ServiceCollection
+        /// </summary>
+        private void RegisterTypesByServiceCollection(IContainerRegistry containerRegistry)
+        {
+            var services = new ServiceCollection();
+            var action = (Action<HttpApiOptions>)(options => options.JsonDeserializeOptions.Converters.Add(new JsonNumberConverter()));
+
+            //Web Api
+            services.AddHttpApi<IServerApi>(action);
+
+            var sp = services.BuildServiceProvider();
+
+            var container = containerRegistry.GetContainer();
+            container.Register<IServiceScopeFactory, DryIocServiceScopeFactory>(Reuse.Singleton);
+            container.Populate(services);
+        }
+        */
+
         /// <summary>
         /// 初始化完成
         /// </summary>
@@ -130,6 +152,7 @@ namespace Rubik.Demo
             base.OnInitialized();
 
             var appData = Container.Resolve<AppData>();
+            var regionManager = Container.Resolve<IRegionManager>();
 
             //Procdump
             if (appData.Config.Procdump
@@ -148,6 +171,21 @@ namespace Rubik.Demo
                     p.Start();
                 }
             }
+
+            //Region
+            regionManager.RegisterViewWithRegion(RegionNames.Sidebar, typeof(SidebarControl));
+            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(HomeControl));
+            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(GithubControl));
+            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(InformationControl));
+
+            if (!regionManager.Regions.ContainsRegionWithName(RegionNames.Content))
+                return;
+
+            var region = regionManager.Regions[RegionNames.Content];
+            var homeView = region.Views.FirstOrDefault(v => v.GetType() == typeof(HomeControl));
+
+            if (homeView != null)
+                region.Activate(homeView);
         }
     }
 }
