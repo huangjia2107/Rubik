@@ -11,11 +11,11 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="MinWidth" Value="100" />
-        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="450" />
         <Setter Property="BorderBrush" Value="#3498db"/>
         <Setter Property="Foreground" Value="#404040"/>
-        <Setter Property="Background" Value="#FBFBFB"/>
+        <Setter Property="Background" Value="#F9FAFC"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="Arial,SimSun"/>
         <Setter Property="CaptionForeground" Value="#404040"/>
@@ -159,11 +159,11 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="MinWidth" Value="100" />
-        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="450" />
         <Setter Property="BorderBrush" Value="#3498db"/>
         <Setter Property="Foreground" Value="#616161"/>
-        <Setter Property="Background" Value="#FBFBFB"/>
+        <Setter Property="Background" Value="#F8F9FF"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="Arial,SimSun"/>
         <Setter Property="CaptionForeground" Value="#616161"/>

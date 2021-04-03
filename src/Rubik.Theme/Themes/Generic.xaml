@@ -13,6 +13,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ListBoxStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/RadioButtonStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/RangeSliderStyle.xaml"/>

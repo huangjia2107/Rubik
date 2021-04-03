@@ -4,5 +4,7 @@
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
     <utils:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
-    
+
+    <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
+
 </ResourceDictionary>

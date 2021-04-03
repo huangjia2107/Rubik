@@ -28,12 +28,12 @@
         <ContentControl Grid.Column="0"
                         prism:RegionManager.RegionName="{x:Static region:RegionNames.Sidebar}"/>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="15,0,15,15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="68"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding ContentTitle}" FontSize="20" VerticalAlignment="Center" Margin="15,0,0,0" FontWeight="Medium" Foreground="Black"/>
+            <TextBlock Text="{Binding ContentTitle}" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" Foreground="Black"/>
             <ContentControl Grid.Row="1" Background="Red"
                             prism:RegionManager.RegionName="{x:Static region:RegionNames.Content}"/>
         </Grid>
