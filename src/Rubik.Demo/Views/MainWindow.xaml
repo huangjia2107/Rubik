@@ -33,8 +33,17 @@
                 <RowDefinition Height="68"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding ContentTitle}" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" Foreground="Black"/>
-            <ContentControl Grid.Row="1" Background="Red"
+            <StackPanel Orientation="Horizontal">
+                <Button Foreground="#4980FF" FontSize="20" Cursor="Hand" Margin="0,0,5,0" Width="15"
+                        Command="{Binding BackCommand}"
+                        Visibility="{Binding BackVisibility}"
+                        Content="◀"
+                        Style="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}"/>
+
+                <TextBlock Text="{Binding ContentTitle}" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" Foreground="Black"/>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
                             prism:RegionManager.RegionName="{x:Static region:RegionNames.Content}"/>
         </Grid>
     </Grid>

@@ -17,4 +17,11 @@ namespace Rubik.Demo.Models
         YesNoCancel,
         YesNo
     }
+
+    public enum TabType
+    {
+        Home,
+        Github,
+        Information
+    }
 }

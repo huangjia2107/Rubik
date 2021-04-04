@@ -9,11 +9,6 @@ namespace Rubik.Demo.ViewModels
         public DemoType Type { get; set; }
         public List<DemoViewModel> DemoList { get; set; }
 
-        private bool _isChecked;
-        public bool IsChecked
-        {
-            get { return _isChecked; }
-            set { SetProperty(ref _isChecked, value); }
-        }
+        public int Count => DemoList.Count;
     }
 }

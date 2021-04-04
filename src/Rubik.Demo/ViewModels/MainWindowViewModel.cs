@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Windows;
 using System.ComponentModel;
 
+using Prism.Regions;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Events;
@@ -8,7 +11,8 @@ using Prism.Services.Dialogs;
 
 using Rubik.Demo.Models;
 using Rubik.Demo.Events;
-using Rubik.Demo.Views;
+using Rubik.Demo.Regions;
+using Rubik.Demo.Services;
 using Rubik.Service.Models;
 using Rubik.Service.IO;
 
@@ -22,18 +26,21 @@ namespace Rubik.Demo.ViewModels
         //数据
         private AppData _appData = null;
 
-        //Event
+        //Ioc
         private IDialogService _dialogService = null;
+        private IRegionManager _regionManager = null;
         private IEventAggregator _eventAggregator = null;
 
         //Command
+        public DelegateCommand BackCommand { get; private set; }
         public DelegateCommand<CancelEventArgs> ClosingCommand { get; private set; }
 
-        public MainWindowViewModel(AppData appData, IDialogService dialogService, IEventAggregator eventAggregator)
+        public MainWindowViewModel(AppData appData, IDialogService dialogService, IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             _appData = appData;
 
             _dialogService = dialogService;
+            _regionManager = regionManager;
             _eventAggregator = eventAggregator;
 
             InitEvents();
@@ -64,6 +71,13 @@ namespace Rubik.Demo.ViewModels
             set { SetProperty(ref _contentTitle, value); }
         }
 
+        private Visibility _backVisibility = Visibility.Collapsed;
+        public Visibility BackVisibility
+        {
+            get { return _backVisibility; }
+            set { SetProperty(ref _backVisibility, value); }
+        }
+
         #endregion
 
         #region Init
@@ -75,6 +89,7 @@ namespace Rubik.Demo.ViewModels
 
         private void InitCommands()
         {
+            BackCommand = new DelegateCommand(Back);
             ClosingCommand = new DelegateCommand<CancelEventArgs>(Closing);
         }
 
@@ -82,30 +97,47 @@ namespace Rubik.Demo.ViewModels
 
         #region Event
 
-        private void OnNavigationContent(Type type)
+        private void OnNavigationContent(NavigationContentPayload payload)
         {
-            if (type == typeof(HomeControl))
-            {
-                ContentTitle = "Home";
-                return;
-            }
-
-            if (type == typeof(GithubControl))
-            {
-                ContentTitle = "Github";
-                return;
-            }
-
-            if (type == typeof(InformationControl))
-            {
-                ContentTitle = "Information";
-                return;
-            }
+            ContentTitle = payload.ViewName;
+            BackVisibility = payload.IsChild ? Visibility.Visible : Visibility.Collapsed;
         }
 
         #endregion
 
         #region Command
+
+        private void Back()
+        {
+            if (!_regionManager.Regions.ContainsRegionWithName(RegionNames.Content))
+                return;
+
+            var region = _regionManager.Regions[RegionNames.Content];
+            Type parentViewType = null;
+
+            var childView = region.Views.FirstOrDefault(v =>
+            {
+                var childViewModel = (v as FrameworkElement).DataContext as IChildViewModel;
+                if (childViewModel != null && childViewModel.IsOpened)
+                {
+                    childViewModel.IsOpened = false;
+                    parentViewType = childViewModel.ParentViewType;
+                    return true;
+                }
+
+                return false;
+            });
+
+            if (childView == null || parentViewType == null)
+                return;
+
+            var parentView = region.Views.FirstOrDefault(v => v.GetType() == parentViewType);
+            if (parentView != null)
+            {
+                region.Activate(parentView);
+                OnNavigationContent(new NavigationContentPayload { ViewType = parentViewType, ViewName = Models.ResourcesMap.ViewTypeViewNameDic[parentViewType] });
+            }
+        }
 
         /// <summary>
         /// 关闭
@@ -124,7 +156,7 @@ namespace Rubik.Demo.ViewModels
             */
 
             if (_appData.Config != null)
-                FileHelper.SaveToJsonFile(ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
+                FileHelper.SaveToJsonFile(Service.Models.ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
         }
 
         #endregion

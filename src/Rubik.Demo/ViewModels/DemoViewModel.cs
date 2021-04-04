@@ -18,7 +18,7 @@ namespace Rubik.Demo.ViewModels
 
         public string Name => _model.Name;
 
-        public string Icon => _model.IconData;
+        public string IconData => _model.IconData;
 
         public double IconWidth => _model.IconWidth;
 

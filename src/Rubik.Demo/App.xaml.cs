@@ -101,7 +101,7 @@ namespace Rubik.Demo
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //Config
-            var localConfig = FileHelper.LoadFromJsonFile<GlobalConfig>(ResourcesMap.LocationDic[Location.GlobalConfigFile]);
+            var localConfig = FileHelper.LoadFromJsonFile<GlobalConfig>(Service.Models.ResourcesMap.LocationDic[Location.GlobalConfigFile]);
 
             //Version
             var version = ResourceAssembly.GetName().Version;
@@ -114,7 +114,7 @@ namespace Rubik.Demo
             Logger.Instance.Main.Info($"[ Version ] v{version.Major}.{version.Minor}.{version.Build}.{version.Revision}");
             
             //Demos
-            appData.InternalData.DemoModels = new DemoResolver(ResourcesMap.LocationDic[Location.DemoPath]).LoadDemoModels();
+            appData.InternalData.DemoModels = new DemoResolver(Service.Models.ResourcesMap.LocationDic[Location.DemoPath]).LoadDemoModels();
 
             //Settings
             containerRegistry.RegisterInstance(appData);
@@ -156,16 +156,16 @@ namespace Rubik.Demo
 
             //Procdump
             if (appData.Config.Procdump
-                && Directory.Exists(ResourcesMap.LocationDic[Location.ProcdumpPath])
-                && File.Exists(ResourcesMap.LocationDic[Location.ProcdumpBatFile]))
+                && Directory.Exists(Service.Models.ResourcesMap.LocationDic[Location.ProcdumpPath])
+                && File.Exists(Service.Models.ResourcesMap.LocationDic[Location.ProcdumpBatFile]))
             {
                 using (var p = new Process())
                 {
                     p.StartInfo = new ProcessStartInfo
                     {
-                        FileName = ResourcesMap.LocationDic[Location.ProcdumpBatFile],
+                        FileName = Service.Models.ResourcesMap.LocationDic[Location.ProcdumpBatFile],
                         CreateNoWindow = true,
-                        WorkingDirectory = ResourcesMap.LocationDic[Location.ProcdumpPath]
+                        WorkingDirectory = Service.Models.ResourcesMap.LocationDic[Location.ProcdumpPath]
                     };
 
                     p.Start();
@@ -175,6 +175,7 @@ namespace Rubik.Demo
             //Region
             regionManager.RegisterViewWithRegion(RegionNames.Sidebar, typeof(SidebarControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(HomeControl));
+            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(DemoControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(GithubControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(InformationControl));
 
