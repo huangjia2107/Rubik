@@ -12,11 +12,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme", "src\Rubik.Th
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo", "src\Rubik.Demo\Rubik.Demo.csproj", "{0E1D9115-6109-4B69-AFB6-CBD875BA6CAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.Service", "src\Rubik.Service\Rubik.Service.csproj", "{1AC7401A-F4B8-40B3-91E9-2679AF6FAE97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Service", "src\Rubik.Service\Rubik.Service.csproj", "{1AC7401A-F4B8-40B3-91E9-2679AF6FAE97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.LiveChartDemo", "src\Demos\Rubik.LiveChartDemo\Rubik.LiveChartDemo.csproj", "{3AA387DF-01A6-44B9-9223-8F0D6D8301EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.LiveChartDemo", "src\Demos\Rubik.LiveChartDemo\Rubik.LiveChartDemo.csproj", "{3AA387DF-01A6-44B9-9223-8F0D6D8301EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.Theme.Extension", "src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj", "{525F0592-E740-43F8-8270-888A401F3B23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{3AA387DF-01A6-44B9-9223-8F0D6D8301EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA387DF-01A6-44B9-9223-8F0D6D8301EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA387DF-01A6-44B9-9223-8F0D6D8301EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525F0592-E740-43F8-8270-888A401F3B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525F0592-E740-43F8-8270-888A401F3B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525F0592-E740-43F8-8270-888A401F3B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525F0592-E740-43F8-8270-888A401F3B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

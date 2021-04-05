@@ -1,6 +1,6 @@
 ﻿using Rubik.Theme.Utils;
 
-namespace Rubik.Theme.Extensions
+namespace Rubik.Theme.ExtensionMethods
 {
     public static class DoubleExtensions
     {

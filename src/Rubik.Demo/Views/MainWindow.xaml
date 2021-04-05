@@ -30,20 +30,22 @@
 
         <Grid Grid.Column="1" Margin="15,0,15,15" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="68"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Button Foreground="#4980FF" Cursor="Hand" Margin="2,0,10,0"
+                <Button Height="25" Width="25" Margin="2,0,0,0"
+                        Foreground="#4980FF" Cursor="Hand" VerticalAlignment="Center"
+                        HorizontalContentAlignment="Left"
                         Command="{Binding BackCommand}"
                         Visibility="{Binding BackVisibility}"
                         Style="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}">
-                    <Path Width="20" Height="15" Stretch="Fill"
+                    <Path Width="16" Height="12" Stretch="Fill"
                           Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
                           Data="M 820 512 c 0 17.67 -14.33 32 -32 32 H 313.25 L 484.9 715.65 c 12.5 12.5 12.5 32.76 0 45.26 c -6.25 6.25 -14.44 9.37 -22.63 9.37 s -16.38 -3.12 -22.63 -9.37 L 213.37 534.63 c -12.5 -12.5 -12.5 -32.76 0 -45.26 L 439.65 263.1 c 12.5 -12.5 32.76 -12.5 45.25 0 c 12.5 12.5 12.5 32.76 0 45.26 L 313.25 480 H 788 c 17.67 0 32 14.33 32 32 Z"/>
                 </Button>
 
-                <TextBlock Text="{Binding ContentTitle}" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" Foreground="Black"/>
+                <TextBlock Text="{Binding ContentTitle}"  Margin="2,0,0,0" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" Foreground="Black"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1"

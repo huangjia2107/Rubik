@@ -7,6 +7,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\Rubik.Service\Rubik.Service.csproj" />
+    <ProjectReference Include="..\..\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj" />
     <ProjectReference Include="..\..\Rubik.Theme\Rubik.Theme.csproj" />
   </ItemGroup>
 

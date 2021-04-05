@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Rubik.Theme.Extensions
+namespace Rubik.Theme.ExtensionMethods
 {
     public static class CollectionExtensions
     {

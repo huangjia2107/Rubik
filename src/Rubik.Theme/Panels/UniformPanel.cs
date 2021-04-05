@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using Rubik.Theme.Extensions;
+using Rubik.Theme.ExtensionMethods;
 
 namespace Rubik.Theme.Panels
 {

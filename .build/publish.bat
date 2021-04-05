@@ -26,5 +26,6 @@ dotnet publish -c Release -f netcoreapp3.1 --no-self-contained -o %publish_demo_
 
 :: 4.发布 Package
 dotnet pack -c Release -o %publish_pack_path%\ ..\src\Rubik.Theme\Rubik.Theme.csproj
+dotnet pack -c Release -o %publish_pack_path%\ ..\src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj
 
 @IF %ERRORLEVEL% NEQ 0 pause

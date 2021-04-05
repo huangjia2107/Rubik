@@ -1,22 +1,22 @@
 <Project>
-    <PropertyGroup>
-      <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-      <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
 
-    <PropertyGroup>
-      <Version>1.0.0</Version>
-      <FileVersion>1.0.0</FileVersion>
-      <Copyright>Copyright © 2021</Copyright>
-      <Authors>Rubik Contributors</Authors>
-      <Description>This is a wpf control library</Description>
-      <IncludeSymbols>True</IncludeSymbols>
-      <IncludeSource>True</IncludeSource>
-      <RepositoryType>git</RepositoryType>
-      <RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
-      <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
-      <PrismLicenseFile>LICENSE</PrismLicenseFile>
-      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-      <PackageTags>rubik;wpf;theme;control;xaml</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Copyright © 2021</Copyright>
+    <Authors>Rubik Contributors</Authors>
+    <Description>This is a wpf control library</Description>
+    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSource>True</IncludeSource>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
+    <PrismLicenseFile>LICENSE</PrismLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>rubik;wpf;theme;control;xaml</PackageTags>
+  </PropertyGroup>
 </Project>
