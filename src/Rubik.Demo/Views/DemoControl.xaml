@@ -13,9 +13,10 @@
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="3"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.5" />
+                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
@@ -61,7 +62,7 @@
                  ItemContainerStyle="{StaticResource DemoListBoxItemStyle}"
                  Style="{StaticResource {x:Static themes:ResourceKeys.NormalListBoxStyleKey}}"/>
 
-        <Border Grid.Column="2" CornerRadius="4" Padding="15" Background="White">
+        <Border Grid.Column="2" CornerRadius="4" Padding="15" Background="White" Margin="0,3,0,0">
             <Border.Effect>
                 <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
             </Border.Effect>

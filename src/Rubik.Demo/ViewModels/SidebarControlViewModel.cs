@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 
 using Prism.Commands;
 using Prism.Events;
@@ -12,6 +13,7 @@ using Rubik.Demo.Models;
 using Rubik.Demo.Regions;
 using Rubik.Demo.Services;
 using Rubik.Demo.Views;
+using Rubik.Theme.Utils;
 
 namespace Rubik.Demo.ViewModels
 {
@@ -22,6 +24,7 @@ namespace Rubik.Demo.ViewModels
         private IEventAggregator _eventAggregator = null;
 
         //Command
+        public DelegateCommand LogoCommand { get; protected set; }
         public DelegateCommand HomeCommand { get; protected set; }
         public DelegateCommand GithubCommand { get; protected set; }
         public DelegateCommand InformationCommand { get; protected set; }
@@ -34,6 +37,18 @@ namespace Rubik.Demo.ViewModels
             InitCommands();
         }
 
+        #region Property
+
+        private Brush _logoBrush = ColorUtil.GetBrushFromString("#283142");
+        public Brush LogoBrush
+        {
+            get { return _logoBrush; }
+            set { SetProperty(ref _logoBrush, value); }
+        }
+
+
+        #endregion
+
         #region Init
 
         /// <summary>
@@ -41,6 +56,7 @@ namespace Rubik.Demo.ViewModels
         /// </summary>
         private void InitCommands()
         {
+            LogoCommand = new DelegateCommand(Logo);
             HomeCommand = new DelegateCommand(Home);
             GithubCommand = new DelegateCommand(Github);
             InformationCommand = new DelegateCommand(Information);
@@ -49,6 +65,11 @@ namespace Rubik.Demo.ViewModels
         #endregion
 
         #region Command
+
+        private void Logo()
+        {
+            LogoBrush = ColorUtil.GetRandomBrush();
+        }
 
         private void Home()
         {

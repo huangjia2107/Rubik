@@ -17,7 +17,7 @@
             <Setter Property="Background" Value="White"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.5" />
+                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
@@ -63,7 +63,7 @@
             </b:Interaction.Triggers>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <panels:UniformPanel Space="20,20" Columns="5" VerticalAlignment="Top"/>
+                    <panels:UniformPanel Space="20,20" Columns="5" VerticalAlignment="Top" Padding="3"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             

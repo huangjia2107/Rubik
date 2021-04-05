@@ -4,6 +4,49 @@
              xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <DrawingGroup x:Key="LogoDrawingGroupKey">
+            <GeometryDrawing Geometry="M86.6,0 L173.2,50 173.2,50 173.2,150 86.6,200 86.6,200 0,150 0,50 z" Brush="{Binding LogoBrush}"/>
+            <DrawingGroup>
+                <DrawingGroup.Transform>
+                    <TransformGroup>
+                        <TranslateTransform X="2" Y="1"/>
+                    </TransformGroup>
+                </DrawingGroup.Transform>
+                <GeometryDrawing Geometry="M6,56 L40.3,76.5 40.3,117.5 6,97 z" Brush="OrangeRed"/>
+                <GeometryDrawing Geometry="M6,103 L40.3,123.5 40.3,164.5 6,144 z" Brush="#1E62A1"/>
+                <GeometryDrawing Geometry="M46.3,79 L80.6,99.5 80.6,140.5 46.3,120 z" Brush="#E5F1F9"/>
+                <GeometryDrawing Geometry="M46.3,126 L80.6,146.5 80.6,187.5 46.3,167 z" Brush="#FFDBA0"/>
+            </DrawingGroup>
+
+            <DrawingGroup>
+                <DrawingGroup.Transform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <TranslateTransform X="172" Y="1"/>
+                    </TransformGroup>
+                </DrawingGroup.Transform>
+                <GeometryDrawing Geometry="M6,56 L40.3,76.5 40.3,117.5 6,97 z" Brush="#FFDBA0"/>
+                <GeometryDrawing Geometry="M6,103 L40.3,123.5 40.3,164.5 6,144 z" Brush="#1E62A1"/>
+                <GeometryDrawing Geometry="M46.3,79 L80.6,99.5 80.6,140.5 46.3,120 z" Brush="#E5F1F9"/>
+                <GeometryDrawing Geometry="M46.3,126 L80.6,146.5 80.6,187.5 46.3,167 z" Brush="OrangeRed"/>
+            </DrawingGroup>
+
+            <DrawingGroup>
+                <DrawingGroup.Transform>
+                    <TransformGroup>
+                        <RotateTransform Angle="-60"/>
+                        <TranslateTransform X="-40.5" Y="28"/>
+                    </TransformGroup>
+                </DrawingGroup.Transform>
+                <GeometryDrawing Geometry="M6,56 L40.3,76.5 40.3,117.5 6,97 z" Brush="#FFDBA0"/>
+                <GeometryDrawing Geometry="M6,103 L40.3,123.5 40.3,164.5 6,144 z" Brush="#1E62A1"/>
+                <GeometryDrawing Geometry="M46.3,79 L80.6,99.5 80.6,140.5 46.3,120 z" Brush="#E5F1F9"/>
+                <GeometryDrawing Geometry="M46.3,126 L80.6,146.5 80.6,187.5 46.3,167 z" Brush="OrangeRed"/>
+            </DrawingGroup>
+        </DrawingGroup>
+
+    </UserControl.Resources>
     <Grid Background="#282C34">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -11,12 +54,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-            <Border Width="40" Height="43" Margin="0,15,0,0">
-                <Border.Background>
-                    <DrawingBrush Drawing="{StaticResource {x:Static themes:ResourceKeys.LogoDrawingGroupKey}}">
-                    </DrawingBrush>
-                </Border.Background>
-            </Border>
+            <Button Cursor="Hand" Width="40" Height="43" Margin="0,15,0,0"
+                    Command="{Binding LogoCommand}"
+                    Style="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}">
+                <Button.Background>
+                    <DrawingBrush Drawing="{StaticResource LogoDrawingGroupKey}"/>
+                </Button.Background>
+            </Button>
 
             <RadioButton Height="60" Margin="0,10,0,0" Cursor="Hand" IsChecked="true"
                          Command="{Binding HomeCommand}"
