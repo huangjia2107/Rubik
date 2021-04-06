@@ -4,6 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="/Rubik.Theme.Extension;component/Styles/CodeViewerStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme.Extension;component/Styles/LiveCodeStyle.xaml"/>
         
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
