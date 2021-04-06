@@ -163,7 +163,7 @@
         <Setter Property="MinHeight" Value="450" />
         <Setter Property="BorderBrush" Value="#3498db"/>
         <Setter Property="Foreground" Value="#616161"/>
-        <Setter Property="Background" Value="#F8F9FF"/>
+        <Setter Property="Background" Value="#EFF2F7"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="Arial,SimSun"/>
         <Setter Property="CaptionForeground" Value="#616161"/>

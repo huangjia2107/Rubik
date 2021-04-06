@@ -4,7 +4,7 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls">
 
     <Style TargetType="{x:Type controls:CodeViewer}">
-        <Setter Property="Background" Value="#E6E6E6"/>
+        <Setter Property="Background" Value="#F5F8FB"/>
         <Setter Property="FontFamily" Value="Courier New"/>
         <Setter Property="SyntaxHighlighting" Value="XML"/>
         <Setter Property="ShowLineNumbers" Value="false"/>
