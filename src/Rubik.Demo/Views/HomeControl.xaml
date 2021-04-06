@@ -15,11 +15,6 @@
             <Setter Property="Tag" Value="#007ACC"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
-                </Setter.Value>
-            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#007ACC"/>
@@ -31,24 +26,32 @@
         
         <DataTemplate x:Key="DemoTypeDataTemplate">
             <Grid Height="100">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="0.6*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Path Grid.Row="1" Width="25" Height="25" Stretch="Fill"
-                      Fill="{Binding Tag,RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
-                      Data="{Binding Type,Converter={StaticResource {x:Static themes:ResourceKeys.KeyToValueConverterKey}},ConverterParameter={x:Static sm:ResourcesMap.DemoTypeIconDataDic}}"/>
+                <Rectangle RadiusX="4" RadiusY="4" 
+                           Fill="{Binding Background,RelativeSource={RelativeSource AncestorType=ListBoxItem}}">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Path Grid.Row="1" Width="25" Height="25" Stretch="Fill"
+                          Fill="{Binding Tag,RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                          Data="{Binding Type,Converter={StaticResource {x:Static themes:ResourceKeys.KeyToValueConverterKey}},ConverterParameter={x:Static sm:ResourcesMap.DemoTypeIconDataDic}}"/>
 
-                <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="{Binding Type,Converter={StaticResource {x:Static themes:ResourceKeys.KeyToValueConverterKey}},ConverterParameter={x:Static sm:ResourcesMap.DemoTypeNameDic}}"/>
-                    <TextBlock Margin="3,0,0,0"
-                               Text="{Binding Count,StringFormat=({0})}"/>
-                </StackPanel>
-                
+                    <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Text="{Binding Type,Converter={StaticResource {x:Static themes:ResourceKeys.KeyToValueConverterKey}},ConverterParameter={x:Static sm:ResourcesMap.DemoTypeNameDic}}"/>
+                        <TextBlock Margin="3,0,0,0"
+                                   Text="{Binding Count,StringFormat=({0})}"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
+            
         </DataTemplate>
     </UserControl.Resources>
     <Grid>

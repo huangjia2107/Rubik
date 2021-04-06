@@ -12,13 +12,8 @@
             <Setter Property="Tag" Value="#007ACC"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="3"/>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
-                </Setter.Value>
-            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#007ACC"/>
@@ -35,18 +30,26 @@
 
         <DataTemplate x:Key="DemoDataTemplate">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Path Grid.Column="0" Stretch="Fill"
-                      Fill="{Binding Tag,RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
-                      Width="{Binding IconWidth}" 
-                      Height="{Binding IconWidth}" 
-                      Data="{Binding IconData}"/>
+                <Rectangle RadiusX="4" RadiusY="4" 
+                           Fill="{Binding Background,RelativeSource={RelativeSource AncestorType=ListBoxItem}}">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.Column="0" Stretch="Fill"
+                          Fill="{Binding Tag,RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                          Width="{Binding IconWidth}" 
+                          Height="{Binding IconHeight}" 
+                          Data="{Binding IconData}"/>
 
-                <TextBlock Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center"
-                           Text="{Binding Name}" />
+                    <TextBlock Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center"
+                               Text="{Binding Name}" />
+                </Grid>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
@@ -62,11 +65,16 @@
                  ItemContainerStyle="{StaticResource DemoListBoxItemStyle}"
                  Style="{StaticResource {x:Static themes:ResourceKeys.NormalListBoxStyleKey}}"/>
 
-        <Border Grid.Column="2" CornerRadius="4" Padding="15" Background="White" Margin="0,3,0,0">
-            <Border.Effect>
-                <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
-            </Border.Effect>
-            <ContentControl Content="{Binding SelectedItem.Page,ElementName=DemoListBox}"/>
+        <Border Grid.Column="2" Margin="0,3,0,0">
+            <Grid>
+                <Rectangle RadiusX="4" RadiusY="4" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <ContentControl Margin="15" 
+                                Content="{Binding SelectedItem.Page,ElementName=DemoListBox}"/>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

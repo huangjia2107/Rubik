@@ -4,10 +4,13 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls">
 
     <Style TargetType="{x:Type controls:CodeViewer}">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="#E6E6E6"/>
+        <Setter Property="FontFamily" Value="Courier New"/>
         <Setter Property="SyntaxHighlighting" Value="XML"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ShowLineNumbers" Value="false"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CodeViewer}">
@@ -15,16 +18,18 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <avalonedit:TextEditor x:Name="PART_TextEditor" Background="Transparent"
+                        <avalonedit:TextEditor x:Name="PART_TextEditor" Background="Transparent" IsReadOnly="true" 
+                                               Padding="{TemplateBinding Padding}"
                                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
                                                SyntaxHighlighting="{TemplateBinding SyntaxHighlighting}"
                                                LineNumbersForeground="#2B91AF"
-                                               IsReadOnly="true"
+                                               ShowLineNumbers="{Binding ShowLineNumbers}"
                                                WordWrap="{TemplateBinding WordWrap}"
-                                               ShowLineNumbers="{TemplateBinding ShowLineNumbers}"
                                                FontFamily="{TemplateBinding FontFamily}"
-                                               FontSize="{TemplateBinding FontSize}"/>
+                                               FontSize="{TemplateBinding FontSize}"
+                                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

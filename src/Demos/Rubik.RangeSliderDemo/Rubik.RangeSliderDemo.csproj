@@ -4,7 +4,7 @@
     <UseWPF>true</UseWPF>
     <OutputPath>..\..\..\bin\$(Configuration)\Demos</OutputPath>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\..\Rubik.Service\Rubik.Service.csproj" />
     <ProjectReference Include="..\..\Rubik.Theme\Rubik.Theme.csproj" />

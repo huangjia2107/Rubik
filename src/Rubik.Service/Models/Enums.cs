@@ -11,6 +11,7 @@ namespace Rubik.Service.Models
         Media,
         Motion,
         Text,
+        Slider,
         Misc
     }
 

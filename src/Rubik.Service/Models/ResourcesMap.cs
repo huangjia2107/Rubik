@@ -29,6 +29,7 @@ namespace Rubik.Service.Models
             [DemoType.Layout] = "Layout",
             [DemoType.Media] = "Media",
             [DemoType.Motion] = "Motion",
+            [DemoType.Slider] = "Slider",
             [DemoType.Text] = "Text",
             [DemoType.Misc] = "Misc",
         };
@@ -42,6 +43,7 @@ namespace Rubik.Service.Models
             [DemoType.Layout] = "M0,0 H10 V10 H0 z",
             [DemoType.Media] = "M0,0 H10 V10 H0 z",
             [DemoType.Motion] = "M0,0 H10 V10 H0 z",
+            [DemoType.Slider] = "M0,0 H10 V10 H0 z",
             [DemoType.Text] = "M0,0 H10 V10 H0 z",
             [DemoType.Misc] = "M0,0 H10 V10 H0 z",
         };

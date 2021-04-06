@@ -104,6 +104,21 @@ namespace Rubik.Theme.Extension.Controls
             }
         }
 
+        protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
+        {
+            base.OnPreviewMouseWheel(e);
+
+            if (_partTextEditor == null)
+                return;
+
+            if (e.Delta > 0)
+                _partTextEditor.ScrollToHorizontalOffset(Math.Max(0, _partTextEditor.HorizontalOffset - e.Delta));
+            else
+                _partTextEditor.ScrollToHorizontalOffset(_partTextEditor.HorizontalOffset - e.Delta);
+
+            e.Handled = true;
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
