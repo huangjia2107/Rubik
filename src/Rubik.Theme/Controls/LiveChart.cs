@@ -50,7 +50,7 @@ namespace Rubik.Theme.Controls
         }
 
         private static readonly DependencyPropertyKey RecordsPropertyKey =
-          DependencyProperty.RegisterReadOnly("Records", typeof(ObservableCollection<MarkRecord>), _typeofSelf, new PropertyMetadata(new ObservableCollection<MarkRecord>()));
+          DependencyProperty.RegisterReadOnly("Records", typeof(ObservableCollection<MarkRecord>), _typeofSelf, new PropertyMetadata(null));
         public static readonly DependencyProperty RecordsProperty = RecordsPropertyKey.DependencyProperty;
         public ObservableCollection<MarkRecord> Records
         {
@@ -129,7 +129,7 @@ namespace Rubik.Theme.Controls
                 _liveChartGraph.LineSelected += OnLineSelected;
         }
 
-     
+
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseLeftButtonDown(e);
@@ -139,7 +139,7 @@ namespace Rubik.Theme.Controls
 
             _liveChartGraph.FindKeyByPoint(e);
         }
-         
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
@@ -164,12 +164,15 @@ namespace Rubik.Theme.Controls
         public void Reset(bool justData = false)
         {
             _liveChartGraph.Reset(justData);
-            Records.Clear();
+            Records?.Clear();
             _xRange = null;
         }
 
         public void AppendPoints(IDictionary<string, PointData<string, long, int>> dic, string[] visibleKeys)
         {
+            if (Records == null)
+                SetValue(RecordsPropertyKey, new ObservableCollection<MarkRecord>());
+
             Records.Clear();
 
             var maxDataTimestamp = dic.Max(d => d.Value.Points.Last().X);

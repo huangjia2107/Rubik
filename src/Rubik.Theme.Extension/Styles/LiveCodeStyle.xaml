@@ -4,7 +4,8 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls">
 
     <Style TargetType="{x:Type controls:LiveCode}">
-        <Setter Property="Background" Value="#F5F8FB"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CodeBackground" Value="#F5F8FB"/>
         <Setter Property="FontFamily" Value="Courier New"/>
         <Setter Property="SyntaxHighlighting" Value="XML"/>
         <Setter Property="ShowLineNumbers" Value="false"/>
@@ -24,8 +25,8 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <ContentPresenter/>
-                            <avalonedit:TextEditor x:Name="PART_TextEditor" Grid.Row="1" 
-                                                   Background="Transparent" IsReadOnly="true" 
+                            <avalonedit:TextEditor x:Name="PART_TextEditor" Grid.Row="1" IsReadOnly="true"
+                                                   Background="{TemplateBinding CodeBackground}"
                                                    Padding="{TemplateBinding Padding}"
                                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 

@@ -16,7 +16,7 @@ namespace Rubik.Theme.Extension.Controls
     [TemplatePart(Name = TextEditorTemplateName, Type = typeof(TextEditor))]
     public class LiveCode : ContentControl
     {
-        private static readonly Type _typeofSelf = typeof(CodeViewer);
+        private static readonly Type _typeofSelf = typeof(LiveCode);
 
         private const string TextEditorTemplateName = "PART_TextEditor";
 
@@ -29,11 +29,18 @@ namespace Rubik.Theme.Extension.Controls
 
         #region Property
 
-        public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LiveCode), new PropertyMetadata(Orientation.Horizontal));
+        public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register("Orientation", typeof(Orientation), _typeofSelf, new PropertyMetadata(Orientation.Horizontal));
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
+        }
+
+        public static readonly DependencyProperty CodeBackgroundProperty = DependencyProperty.Register("CodeBackground", typeof(Brush), _typeofSelf, new PropertyMetadata(Brushes.Transparent));
+        public Brush CodeBackground
+        {
+            get { return (Brush)GetValue(CodeBackgroundProperty); }
+            set { SetValue(CodeBackgroundProperty, value); }
         }
 
         public static readonly DependencyProperty SyntaxHighlightingProperty = DependencyProperty.Register("SyntaxHighlighting", typeof(IHighlightingDefinition), _typeofSelf);
