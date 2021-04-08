@@ -26,6 +26,7 @@ namespace Rubik.Demo.ViewModels
         //Command
         public DelegateCommand LogoCommand { get; protected set; }
         public DelegateCommand HomeCommand { get; protected set; }
+        public DelegateCommand ExperimentCommand { get; protected set; }
         public DelegateCommand GithubCommand { get; protected set; }
         public DelegateCommand InformationCommand { get; protected set; }
 
@@ -58,6 +59,7 @@ namespace Rubik.Demo.ViewModels
         {
             LogoCommand = new DelegateCommand(Logo);
             HomeCommand = new DelegateCommand(Home);
+            ExperimentCommand = new DelegateCommand(Experiment);
             GithubCommand = new DelegateCommand(Github);
             InformationCommand = new DelegateCommand(Information);
         }
@@ -74,6 +76,11 @@ namespace Rubik.Demo.ViewModels
         private void Home()
         {
             OpenView(typeof(HomeControl));
+        }
+
+        private void Experiment()
+        {
+            OpenView(typeof(ExperimentControl));
         }
 
         private void Github()

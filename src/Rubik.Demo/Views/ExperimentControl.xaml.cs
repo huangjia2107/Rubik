@@ -1,8 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,21 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Rubik.RangeSliderDemo
+namespace Rubik.Demo.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// ExperimentControl.xaml 的交互逻辑
     /// </summary>
-    public partial class MainControl : UserControl
+    public partial class ExperimentControl : UserControl
     {
-        public MainControl()
+        public ExperimentControl()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //XamlCodeViewer.Text = this.Resources["TextCodeKey"] as string;
         }
     }
 }

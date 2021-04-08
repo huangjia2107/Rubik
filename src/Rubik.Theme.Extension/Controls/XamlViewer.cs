@@ -1,56 +1,60 @@
 ﻿using System;
-using System.IO;
-using System.Xml;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.ComponentModel;
+using System.Windows.Markup;
 
 using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 namespace Rubik.Theme.Extension.Controls
 {
     [TemplatePart(Name = TextEditorTemplateName, Type = typeof(TextEditor))]
-    public class CodeViewer : Control
+    public class XamlViewer : Control
     {
-        private static readonly Type _typeofSelf = typeof(CodeViewer);
+        private static readonly Type _typeofSelf = typeof(XamlViewer);
 
         private const string TextEditorTemplateName = "PART_TextEditor";
-
         private TextEditor _partTextEditor = null;
 
-        public string Text
-        {
-            get
-            {
-                if (_partTextEditor != null)
-                    return _partTextEditor.Text;
-
-                return string.Empty;
-            }
-            set
-            {
-                if (_partTextEditor != null)
-                    _partTextEditor.Text = value;
-            }
-        }
-
-        static CodeViewer()
+        static XamlViewer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
         #region Properties
 
-        public static readonly DependencyProperty SyntaxHighlightingProperty = DependencyProperty.Register("SyntaxHighlighting", typeof(IHighlightingDefinition), _typeofSelf);
-        [TypeConverter(typeof(HighlightingDefinitionTypeConverter))]
-        public IHighlightingDefinition SyntaxHighlighting
+        private static readonly DependencyPropertyKey ContentPropertyKey =
+            DependencyProperty.RegisterReadOnly("Content", typeof(object), _typeofSelf, new PropertyMetadata(null));
+        public static readonly DependencyProperty ContentProperty = ContentPropertyKey.DependencyProperty;
+        public object Content
         {
-            get { return (IHighlightingDefinition)GetValue(SyntaxHighlightingProperty); }
-            set { SetValue(SyntaxHighlightingProperty, value); }
+            get { return GetValue(ContentProperty); }
+        }
+
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), _typeofSelf, new PropertyMetadata(null));
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+
+        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), _typeofSelf, new PropertyMetadata(null, OnXamlPropertyChanged));
+        public string Xaml
+        {
+            get { return (string)GetValue(XamlProperty); }
+            set { SetValue(XamlProperty, value); }
+        }
+
+        private static void OnXamlPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as XamlViewer;
+            var xaml = (string)(e.NewValue ?? string.Empty);
+
+            if (ctrl._partTextEditor != null)
+                ctrl._partTextEditor.Text = xaml;
+
+            ctrl.ParseXaml(xaml);
         }
 
         public static readonly DependencyProperty WordWrapProperty = TextEditor.WordWrapProperty.AddOwner(_typeofSelf);
@@ -77,31 +81,6 @@ namespace Rubik.Theme.Extension.Controls
 
             if (Focusable && _partTextEditor != null)
                 _partTextEditor.Focus();
-        }
-
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
-        {
-            base.OnKeyDown(e);
-
-            switch (e.Key)
-            {
-                case Key.Left:
-                    {
-                        if (_partTextEditor.SelectionLength < 2 || Keyboard.Modifiers != ModifierKeys.None)
-                            return;
-
-                        _partTextEditor.TextArea.Caret.Offset = _partTextEditor.SelectionStart + 1;
-                        break;
-                    }
-                case Key.Right:
-                    {
-                        if (_partTextEditor.SelectionLength < 2 || Keyboard.Modifiers != ModifierKeys.None)
-                            return;
-
-                        _partTextEditor.TextArea.Caret.Offset = _partTextEditor.SelectionStart + _partTextEditor.SelectionLength - 1;
-                        break;
-                    }
-            }
         }
 
         protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
@@ -132,6 +111,8 @@ namespace Rubik.Theme.Extension.Controls
                 _partTextEditor.TextArea.SelectionBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFADD6FF"));
                 _partTextEditor.TextArea.SelectionBorder = null;
                 _partTextEditor.TextArea.SelectionForeground = null;
+
+                _partTextEditor.Text = Xaml;
             }
         }
 
@@ -139,20 +120,33 @@ namespace Rubik.Theme.Extension.Controls
 
         #region Func
 
-        public void LoadSyntaxHighlighting(string fileName)
-		{
-			if(!File.Exists(fileName) || _partTextEditor == null)
-				return;
-			
-			using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+        private void ParseXaml(string xaml)
+        {
+            try
             {
-                using (var reader = new XmlTextReader(fs))
-                {
-                    _partTextEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
-                }
+                SetValue(ContentPropertyKey, XamlReader.Parse(xaml));
             }
-		}
+            catch (Exception ex)
+            {
+                ShowLocalText("Error: " + ex.Message);
+            }
+        }
 
+        private void ShowLocalText(string text, double fontSize = 14d)
+        {
+            SetValue(ContentPropertyKey, new TextBlock
+            {
+                Text = text,
+                Margin = new Thickness(5),
+                FontSize = fontSize,
+                TextWrapping = TextWrapping.Wrap,
+                Foreground = Brushes.DarkSlateGray,
+                FontWeight = FontWeights.Medium,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            });
+        }
+        
         #endregion
     }
 }

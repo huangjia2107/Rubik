@@ -13,6 +13,7 @@ namespace Rubik.Demo.Models
         public static Dictionary<Type, string> ViewTypeViewNameDic = new Dictionary<Type, string>
         {
             [typeof(HomeControl)] = "Home",
+            [typeof(ExperimentControl)] = "Experiment",
             [typeof(GithubControl)] = "Github",
             [typeof(InformationControl)] = "Information",
         };

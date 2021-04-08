@@ -9,6 +9,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Geometries.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/GridSplitterStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
 

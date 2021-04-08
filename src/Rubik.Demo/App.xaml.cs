@@ -176,6 +176,7 @@ namespace Rubik.Demo
             regionManager.RegisterViewWithRegion(RegionNames.Sidebar, typeof(SidebarControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(HomeControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(DemoControl));
+            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(ExperimentControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(GithubControl));
             regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(InformationControl));
 
