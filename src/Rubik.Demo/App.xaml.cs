@@ -5,21 +5,22 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using System.Windows.Controls;
 
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Regions;
+using Prism.Modularity;
 
-using Rubik.Demo.Utils;
-using Rubik.Demo.Dialogs;
 using Rubik.Demo.Models;
-using Rubik.Demo.ViewModels;
 using Rubik.Demo.Views;
-using Rubik.Demo.Regions;
 using Rubik.Service.IO;
 using Rubik.Service.Models;
+using Rubik.Service.Regions;
 using Rubik.Service.Utils;
-using Rubik.Util.Log;
+using Rubik.Service.Dialogs;
+using Rubik.Service.Log;
+using Rubik.Service.ViewModels;
 
 namespace Rubik.Demo
 {
@@ -80,7 +81,7 @@ namespace Rubik.Demo
         }
 
         /// <summary>
-        /// 启动 Shell
+        /// Shell
         /// </summary>
         protected override Window CreateShell()
         {
@@ -93,6 +94,9 @@ namespace Rubik.Demo
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
         {
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+
+            regionAdapterMappings.RegisterMapping<Grid, GridRegionAdapter>();
+            regionAdapterMappings.RegisterMapping<StackPanel, StackPanelRegionAdapter>();
         }
 
         /// <summary>
@@ -113,9 +117,6 @@ namespace Rubik.Demo
 
             Logger.Instance.Main.Info($"[ Version ] v{version.Major}.{version.Minor}.{version.Build}.{version.Revision}");
             
-            //Demos
-            appData.InternalData.DemoModels = new DemoResolver(Service.Models.ResourcesMap.LocationDic[Location.DemoPath]).LoadDemoModels();
-
             //Settings
             containerRegistry.RegisterInstance(appData);
 
@@ -145,6 +146,14 @@ namespace Rubik.Demo
         */
 
         /// <summary>
+        /// Module Catalog
+        /// </summary>
+        protected override IModuleCatalog CreateModuleCatalog()
+        {
+            return new DirectoryModuleCatalog() { ModulePath = Service.Models.ResourcesMap.LocationDic[Location.ModulePath] };
+        }
+
+        /// <summary>
         /// 初始化完成
         /// </summary>
         protected override void OnInitialized()
@@ -172,22 +181,18 @@ namespace Rubik.Demo
                 }
             }
 
-            //Region
-            regionManager.RegisterViewWithRegion(RegionNames.Sidebar, typeof(SidebarControl));
-            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(HomeControl));
-            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(DemoControl));
-            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(ExperimentControl));
-            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(GithubControl));
-            regionManager.RegisterViewWithRegion(RegionNames.Content, typeof(InformationControl));
-
             if (!regionManager.Regions.ContainsRegionWithName(RegionNames.Content))
                 return;
 
             var region = regionManager.Regions[RegionNames.Content];
-            var homeView = region.Views.FirstOrDefault(v => v.GetType() == typeof(HomeControl));
+            
+            var defaultActivateView = region.Views.FirstOrDefault(v =>
+            {
+                return (Attribute.GetCustomAttribute(v.GetType(), typeof(ViewSortHintAttribute)) as ViewSortHintAttribute) != null;
+            });
 
-            if (homeView != null)
-                region.Activate(homeView);
+            if (defaultActivateView != null)
+                region.Activate(defaultActivateView);
         }
     }
 }

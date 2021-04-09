@@ -3,7 +3,7 @@
 using log4net;
 using log4net.Config;
 
-namespace Rubik.Util.Log
+namespace Rubik.Service.Log
 {
     /// <summary>
     /// 日志记录器

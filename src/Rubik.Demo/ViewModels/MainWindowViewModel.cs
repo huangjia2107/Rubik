@@ -10,11 +10,11 @@ using Prism.Events;
 using Prism.Services.Dialogs;
 
 using Rubik.Demo.Models;
-using Rubik.Demo.Events;
-using Rubik.Demo.Regions;
-using Rubik.Demo.Services;
 using Rubik.Service.Models;
 using Rubik.Service.IO;
+using Rubik.Service.Events;
+using Rubik.Service.Regions;
+using Rubik.Service.ViewModels;
 
 namespace Rubik.Demo.ViewModels
 {
@@ -114,6 +114,7 @@ namespace Rubik.Demo.ViewModels
 
             var region = _regionManager.Regions[RegionNames.Content];
             Type parentViewType = null;
+            string parentViewName = null;
 
             var childView = region.Views.FirstOrDefault(v =>
             {
@@ -121,7 +122,9 @@ namespace Rubik.Demo.ViewModels
                 if (childViewModel != null && childViewModel.IsOpened)
                 {
                     childViewModel.IsOpened = false;
+
                     parentViewType = childViewModel.ParentViewType;
+                    parentViewName = childViewModel.ParentViewName;
                     return true;
                 }
 
@@ -135,7 +138,7 @@ namespace Rubik.Demo.ViewModels
             if (parentView != null)
             {
                 region.Activate(parentView);
-                OnNavigationContent(new NavigationContentPayload { ViewType = parentViewType, ViewName = Models.ResourcesMap.ViewTypeViewNameDic[parentViewType] });
+                OnNavigationContent(new NavigationContentPayload { ViewType = parentViewType, ViewName = parentViewName });
             }
         }
 
@@ -156,7 +159,7 @@ namespace Rubik.Demo.ViewModels
             */
 
             if (_appData.Config != null)
-                FileHelper.SaveToJsonFile(Service.Models.ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
+                FileHelper.SaveToJsonFile(ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
         }
 
         #endregion

@@ -4,7 +4,8 @@
                      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                      xmlns:controls="clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme"
                      xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
-                     xmlns:region="clr-namespace:Rubik.Demo.Regions"
+                     xmlns:regions="clr-namespace:Rubik.Service.Regions;assembly=Rubik.Service"
+                     xmlns:views="clr-namespace:Rubik.Demo.Views"
                      xmlns:prism="http://prismlibrary.com/"
                      prism:ViewModelLocator.AutoWireViewModel="True"
                      Style="{StaticResource {x:Static themes:ResourceKeys.NoTitleBarWindowStyleKey}}"
@@ -25,8 +26,7 @@
             <ColumnDefinition Width="80"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ContentControl Grid.Column="0"
-                        prism:RegionManager.RegionName="{x:Static region:RegionNames.Sidebar}"/>
+        <views:SidebarControl/>
 
         <Grid Grid.Column="1" Margin="15,0,15,15" >
             <Grid.RowDefinitions>
@@ -49,7 +49,7 @@
             </StackPanel>
 
             <ContentControl Grid.Row="1"
-                            prism:RegionManager.RegionName="{x:Static region:RegionNames.Content}"/>
+                            prism:RegionManager.RegionName="{x:Static regions:RegionNames.Content}"/>
         </Grid>
     </Grid>
 </controls:UserWindow>

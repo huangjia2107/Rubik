@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Xml.Serialization;
 
-using Rubik.Util.Log;
+using Rubik.Service.Log;
 
 namespace Rubik.Service.IO
 {

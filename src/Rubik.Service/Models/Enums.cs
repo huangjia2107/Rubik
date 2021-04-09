@@ -18,8 +18,26 @@ namespace Rubik.Service.Models
     public enum Location
     {
         GlobalConfigFile,
+        ModulePath,
         DemoPath,
         ProcdumpPath,
         ProcdumpBatFile,
+    }
+
+    public enum MessageType
+    {
+        None,
+        Error,
+        Warning,
+        Information,
+        Question
+    }
+
+    public enum MessageButton
+    {
+        OK,
+        OKCancel,
+        YesNoCancel,
+        YesNo
     }
 }

@@ -1,9 +1,0 @@
-﻿<controls:UserWindow x:Class="Rubik.Demo.Dialogs.DialogWindow"
-                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:controls="clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme"
-                     xmlns:prism="http://prismlibrary.com/"
-                     SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" IsCloseCanceled="True"
-                     prism:Dialog.WindowStartupLocation="CenterScreen"
-                     Title="{Binding Title}" 
-                     CaptionFontSize="13" CaptionHeight="30" MaxWidth="600"/>

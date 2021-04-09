@@ -15,6 +15,7 @@ namespace Rubik.Service.Models
         public static Dictionary<Location, string> LocationDic = new Dictionary<Location, string>
         {
             [Location.GlobalConfigFile] = AppDomain.CurrentDomain.BaseDirectory + "Config\\GlobalConfig.json",
+            [Location.ModulePath] = AppDomain.CurrentDomain.BaseDirectory + "Modules",
             [Location.DemoPath] = AppDomain.CurrentDomain.BaseDirectory + "Demos",
             [Location.ProcdumpPath] = AppDomain.CurrentDomain.BaseDirectory + "Procdump\\",
             [Location.ProcdumpBatFile] = AppDomain.CurrentDomain.BaseDirectory + "Procdump\\monitor.bat",

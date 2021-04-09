@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Prism.Core" version="8.0.0.1909" />
+    <PackageReference Include="Prism.Wpf" version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rubik.Theme\Rubik.Theme.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <UseWPF>true</UseWPF>
     <OutputType>WinExe</OutputType>
     <OutputPath>..\..\bin\$(Configuration)</OutputPath>
     <ApplicationIcon>Assets\Logos\Logo1.ico</ApplicationIcon>

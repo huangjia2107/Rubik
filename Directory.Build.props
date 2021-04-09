@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <UseWPF>true</UseWPF>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

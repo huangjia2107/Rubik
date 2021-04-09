@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputPath>..\..\..\bin\$(Configuration)\Modules</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Rubik.Service\Rubik.Service.csproj" />
+    <ProjectReference Include="..\..\Rubik.Theme\Rubik.Theme.csproj" />
+  </ItemGroup>
+
+</Project>
