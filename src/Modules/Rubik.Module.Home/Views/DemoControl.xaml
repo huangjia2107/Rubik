@@ -72,8 +72,10 @@
                         <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                     </Rectangle.Effect>
                 </Rectangle>
-                <ContentControl Margin="15" 
-                                Content="{Binding SelectedItem.Page,ElementName=DemoListBox}"/>
+                <ScrollViewer Margin="15" 
+                              Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
+                    <ContentControl Content="{Binding SelectedItem.Page,ElementName=DemoListBox}"/>
+                </ScrollViewer>
             </Grid>
         </Border>
     </Grid>

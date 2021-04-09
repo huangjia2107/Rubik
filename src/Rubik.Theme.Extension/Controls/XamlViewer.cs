@@ -7,6 +7,8 @@ using System.Windows.Markup;
 
 using ICSharpCode.AvalonEdit;
 
+using Rubik.Theme.Utils;
+
 namespace Rubik.Theme.Extension.Controls
 {
     [TemplatePart(Name = TextEditorTemplateName, Type = typeof(TextEditor))]
@@ -90,12 +92,14 @@ namespace Rubik.Theme.Extension.Controls
             if (_partTextEditor == null)
                 return;
 
+            var textEditor = TreeUtil.FindVisualParent<TextEditor>(e.OriginalSource as DependencyObject);
+            if (textEditor == null)
+                return;
+
             if (e.Delta > 0)
                 _partTextEditor.ScrollToHorizontalOffset(Math.Max(0, _partTextEditor.HorizontalOffset - e.Delta));
             else
                 _partTextEditor.ScrollToHorizontalOffset(_partTextEditor.HorizontalOffset - e.Delta);
-
-            e.Handled = true;
         }
 
         public override void OnApplyTemplate()
@@ -146,7 +150,7 @@ namespace Rubik.Theme.Extension.Controls
                 VerticalAlignment = VerticalAlignment.Center,
             });
         }
-        
+
         #endregion
     }
 }

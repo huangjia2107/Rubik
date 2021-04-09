@@ -17,7 +17,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border CornerRadius="4" SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
+                    <Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -36,16 +36,16 @@
     </Style>
 
     <Style TargetType="{x:Type controls:RangeSlider}">
-        <Setter Property="Background" Value="#323E4E"/>
-        <Setter Property="Foreground" Value="#3E4756"/>
-        <Setter Property="ThumbWidth" Value="0"/>
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Foreground" Value="#CCCCCC"/>
+        <Setter Property="SelectionForeground" Value="#007ACC"/>
+        <Setter Property="ThumbWidth" Value="20"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:RangeSlider}">
-                    <Border CornerRadius="4" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="true">
                         <Grid x:Name="PART_Grid">

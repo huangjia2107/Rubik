@@ -202,7 +202,7 @@ namespace Rubik.Theme.Controls
         }
 
         public static readonly DependencyProperty SelectionForegroundProperty =
-            DependencyProperty.Register("SelectionForeground", typeof(Brush), typeof(RangeSlider), new PropertyMetadata(Brushes.Green));
+            DependencyProperty.Register("SelectionForeground", typeof(Brush), typeof(RangeSlider), new PropertyMetadata(Brushes.Transparent));
         public Brush SelectionForeground
         {
             get { return (Brush)GetValue(SelectionForegroundProperty); }
