@@ -3,7 +3,7 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="/Rubik.Theme.Extension;component/Styles/XamlViewerStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme.Extension;component/Styles/CodeViewerStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme.Extension;component/Styles/LiveXamlStyle.xaml"/>
         
     </ResourceDictionary.MergedDictionaries>

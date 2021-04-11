@@ -24,10 +24,5 @@ namespace Rubik.Demo.RangeSlider
         {
             InitializeComponent();
         }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //XamlCodeViewer.Text = this.Resources["TextCodeKey"] as string;
-        }
     }
 }

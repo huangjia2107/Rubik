@@ -1,30 +1,49 @@
 ﻿using System;
+using System.IO;
+using System.Xml;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Markup;
+using System.ComponentModel;
 
 using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 using Rubik.Theme.Utils;
 
 namespace Rubik.Theme.Extension.Controls
 {
     [TemplatePart(Name = TextEditorTemplateName, Type = typeof(TextEditor))]
-    public class XamlViewer : Control
+    public class CodeViewer : Control
     {
-        private static readonly Type _typeofSelf = typeof(XamlViewer);
+        private static readonly Type _typeofSelf = typeof(CodeViewer);
 
         private const string TextEditorTemplateName = "PART_TextEditor";
         private TextEditor _partTextEditor = null;
 
-        static XamlViewer()
+        static CodeViewer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
         #region Properties
+
+        public static readonly DependencyProperty SyntaxHighlightingProperty = DependencyProperty.Register("SyntaxHighlighting", typeof(IHighlightingDefinition), _typeofSelf, new PropertyMetadata(OnSyntaxHighlightingPropertyChanged));
+        [TypeConverter(typeof(HighlightingDefinitionTypeConverter))]
+        public IHighlightingDefinition SyntaxHighlighting
+        {
+            get { return (IHighlightingDefinition)GetValue(SyntaxHighlightingProperty); }
+            set { SetValue(SyntaxHighlightingProperty, value); }
+        }
+
+        private static void OnSyntaxHighlightingPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as CodeViewer;
+            ctrl.ParseXaml(ctrl.Code);
+        }
 
         private static readonly DependencyPropertyKey ContentPropertyKey =
             DependencyProperty.RegisterReadOnly("Content", typeof(object), _typeofSelf, new PropertyMetadata(null));
@@ -41,22 +60,44 @@ namespace Rubik.Theme.Extension.Controls
             set { SetValue(TitleProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), _typeofSelf, new PropertyMetadata(null, OnXamlPropertyChanged));
-        public string Xaml
+        public static readonly DependencyProperty CodeCollapsedProperty =
+            DependencyProperty.Register("CodeCollapsed", typeof(bool), _typeofSelf, new PropertyMetadata(true));
+        public bool CodeCollapsed
+        {
+            get { return (bool)GetValue(CodeCollapsedProperty); }
+            set { SetValue(CodeCollapsedProperty, value); }
+        }
+
+        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), _typeofSelf, new PropertyMetadata(null, OnCodePropertyChanged));
+        public string Code
         {
             get { return (string)GetValue(XamlProperty); }
             set { SetValue(XamlProperty, value); }
         }
 
-        private static void OnXamlPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnCodePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as XamlViewer;
-            var xaml = (string)(e.NewValue ?? string.Empty);
+            var ctrl = d as CodeViewer;
+            var code = (string)(e.NewValue ?? string.Empty);
 
             if (ctrl._partTextEditor != null)
-                ctrl._partTextEditor.Text = xaml;
+                ctrl._partTextEditor.Text = code;
 
-            ctrl.ParseXaml(xaml);
+            ctrl.ParseXaml(code);
+        }
+
+        public static readonly DependencyProperty JustShowCodeProperty =
+            DependencyProperty.Register("JustShowCode", typeof(bool), _typeofSelf, new PropertyMetadata(false, OnJustShowCodePropertyChanged));
+        public bool JustShowCode
+        {
+            get { return (bool)GetValue(JustShowCodeProperty); }
+            set { SetValue(JustShowCodeProperty, value); }
+        }
+
+        private static void OnJustShowCodePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as CodeViewer;
+            ctrl.ParseXaml(ctrl.Code);
         }
 
         public static readonly DependencyProperty WordWrapProperty = TextEditor.WordWrapProperty.AddOwner(_typeofSelf);
@@ -96,10 +137,24 @@ namespace Rubik.Theme.Extension.Controls
             if (textEditor == null)
                 return;
 
-            if (e.Delta > 0)
-                _partTextEditor.ScrollToHorizontalOffset(Math.Max(0, _partTextEditor.HorizontalOffset - e.Delta));
-            else
-                _partTextEditor.ScrollToHorizontalOffset(_partTextEditor.HorizontalOffset - e.Delta);
+            var scrollViewer = TreeUtil.FindVisualChild<ScrollViewer>(textEditor);
+            if (scrollViewer != null
+                && Keyboard.Modifiers == ModifierKeys.Control
+                && DoubleUtil.GreaterThan(scrollViewer.ScrollableWidth, 0))
+            {
+                if (e.Delta > 0)
+                    _partTextEditor.ScrollToHorizontalOffset(Math.Max(0, _partTextEditor.HorizontalOffset - e.Delta));
+                else
+                    _partTextEditor.ScrollToHorizontalOffset(_partTextEditor.HorizontalOffset - e.Delta);
+
+                return;
+            }
+
+            this.RaiseEvent(new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
+            {
+                RoutedEvent = MouseWheelEvent,
+                Source = this
+            });
         }
 
         public override void OnApplyTemplate()
@@ -116,7 +171,7 @@ namespace Rubik.Theme.Extension.Controls
                 _partTextEditor.TextArea.SelectionBorder = null;
                 _partTextEditor.TextArea.SelectionForeground = null;
 
-                _partTextEditor.Text = Xaml;
+                _partTextEditor.Text = Code;
             }
         }
 
@@ -124,8 +179,31 @@ namespace Rubik.Theme.Extension.Controls
 
         #region Func
 
+        public void LoadSyntaxHighlighting(string fileName)
+        {
+            if (!File.Exists(fileName) || _partTextEditor == null)
+                return;
+
+            using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = new XmlTextReader(fs))
+                {
+                    _partTextEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+                }
+            }
+        }
+
         private void ParseXaml(string xaml)
         {
+            if (SyntaxHighlighting == null)
+                return;
+
+            if (JustShowCode || !SyntaxHighlighting.Name.ToLower().Contains("xml"))
+            {
+                SetValue(ContentPropertyKey, null);
+                return;
+            }
+
             try
             {
                 SetValue(ContentPropertyKey, XamlReader.Parse(xaml));

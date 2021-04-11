@@ -194,11 +194,33 @@ namespace Rubik.Theme.Controls
             ctrl.UpdateThumbPosition();
             ctrl.OnRightValueChanged((double)e.OldValue, (double)e.NewValue);
         }
+
         protected virtual void OnRightValueChanged(double oldValue, double newValue)
         {
             var args = new RoutedPropertyChangedEventArgs<double>(oldValue, newValue);
             args.RoutedEvent = RangeSlider.RightValueChangedEvent;
             RaiseEvent(args);
+        }
+
+        public static readonly DependencyProperty TrackThicknessProperty =
+            DependencyProperty.Register("TrackThickness", typeof(double), typeof(RangeSlider), new PropertyMetadata(6d, null, CoerceTrackThickness));
+        public double TrackThickness
+        {
+            get { return (double)GetValue(TrackThicknessProperty); }
+            set { SetValue(TrackThicknessProperty, value); }
+        }
+
+        private static object CoerceTrackThickness(DependencyObject d, object value)
+        {
+            return Math.Max(0, (double)value);
+        }
+
+        public static readonly DependencyProperty TrackBackgroundProperty =
+            DependencyProperty.Register("TrackBackground", typeof(Brush), typeof(RangeSlider), new PropertyMetadata(Brushes.Gray));
+        public Brush TrackBackground
+        {
+            get { return (Brush)GetValue(TrackBackgroundProperty); }
+            set { SetValue(TrackBackgroundProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionForegroundProperty =

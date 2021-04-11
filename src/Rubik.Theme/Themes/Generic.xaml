@@ -19,6 +19,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/RadioButtonStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/RangeSliderStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/StatusToggleStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ScrollViewerStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/UserWindowStyle.xaml"/>
