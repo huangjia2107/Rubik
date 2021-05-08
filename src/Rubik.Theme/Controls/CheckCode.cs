@@ -27,30 +27,6 @@ namespace Rubik.Theme.Controls
             set { SetValue(ImageSourceProperty, value); }
         }
 
-
-        public int CodeWidth
-        {
-            get { return (int)GetValue(CodeWidthProperty); }
-            set { SetValue(CodeWidthProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CodeWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CodeWidthProperty =
-            DependencyProperty.Register("CodeWidth", typeof(int), typeof(CheckCode), new PropertyMetadata(200));
-
-
-
-        public int CodeHeight
-        {
-            get { return (int)GetValue(CodeHeightProperty); }
-            set { SetValue(CodeHeightProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CodeHeight.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CodeHeightProperty =
-            DependencyProperty.Register("CodeHeight", typeof(int), typeof(CheckCode), new PropertyMetadata(60));
-
-
         public CheckCode()
         {
             this.Loaded += CheckCode_Loaded;
@@ -58,7 +34,7 @@ namespace Rubik.Theme.Controls
 
         private void CheckCode_Loaded(object sender, RoutedEventArgs e)
         {
-            ImageSource = CreateCheckCodeImage(CreateCode(4), CodeWidth, CodeHeight);
+            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)this.ActualWidth, (int)this.ActualHeight);
         }
 
         public override void OnApplyTemplate()
@@ -73,7 +49,10 @@ namespace Rubik.Theme.Controls
        
         private void _image_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ImageSource = CreateCheckCodeImage(CreateCode(4), CodeWidth, CodeHeight);
+            if (!IsLoaded)
+                return;
+
+            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)this.ActualWidth, (int)this.ActualHeight);
         }
 
         private static string CreateCode(int strLength)

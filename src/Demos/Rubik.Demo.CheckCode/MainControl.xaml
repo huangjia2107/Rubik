@@ -4,7 +4,7 @@
              xmlns:controls="clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme">
     <Grid>
 
-        <controls:CheckCode CodeWidth="100" CodeHeight="30" Height="30" Width="100"/>
+        <controls:CheckCode Height="30" Width="100"/>
        
     </Grid>
 </UserControl>
