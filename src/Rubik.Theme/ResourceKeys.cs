@@ -120,6 +120,12 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), SidebarRadioButtonStyle); }
         }
 
+        public const string NormalRadioButtonStyle = "NormalRadioButtonStyle";
+        public static ComponentResourceKey NormalRadioButtonStyleKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalRadioButtonStyle); }
+        }
+
         #endregion
 
         #region ToggleStatus

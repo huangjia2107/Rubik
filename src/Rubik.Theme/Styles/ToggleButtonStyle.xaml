@@ -7,23 +7,9 @@
         <markup:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.SidebarRadioButtonStyleKey}" 
+    <Style x:Key="{x:Static themes:ResourceKeys.NormalToggleButtonStyleKey}" 
            BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}"
-           TargetType="{x:Type RadioButton}">
-        <Setter Property="Foreground" Value="White"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="#4980FF"/>
-            </Trigger>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Foreground" Value="#4980FF"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalRadioButtonStyleKey}" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}"
-           TargetType="{x:Type RadioButton}">
+           TargetType="{x:Type ToggleButton}"> 
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Style.Triggers>
@@ -31,7 +17,7 @@
                 <Setter Property="Background" Value="#FDFDFD"/>
                 <Setter Property="Foreground" Value="#007ACC"/>
             </Trigger>
-
+            
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground" Value="#FF808080"/>
             </Trigger>
@@ -39,13 +25,15 @@
             <Trigger Property="IsChecked" Value="False">
                 <Setter Property="BorderBrush" Value="Transparent"/>
             </Trigger>
-
+            
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEnabled" Value="True"/>
                     <Condition Property="IsChecked" Value="True"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="BorderBrush" Value="#007ACC"/>
+                <Setter Property="Background" Value="#FDFDFD"/>
+                <Setter Property="Foreground" Value="#007ACC"/>
             </MultiTrigger>
 
             <MultiTrigger>
@@ -56,6 +44,6 @@
                 <Setter Property="BorderBrush" Value="#FF808080"/>
             </MultiTrigger>
         </Style.Triggers>
-    </Style>
+    </Style> 
 
 </ResourceDictionary>

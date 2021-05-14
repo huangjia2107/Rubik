@@ -1,10 +1,34 @@
 ﻿using System;
+using System.IO;
+using SWF = System.Windows.Forms;
 
 namespace Rubik.Theme.Utils
 {
     public static class CommonUtil
     {
-        #region 时间戳
+        #region Dialog
+
+        public static string ShowSaveFileDialog(string fileName, string filter)
+        {
+            var sfd = new SWF.SaveFileDialog { Filter = filter, FileName = Path.GetFileNameWithoutExtension(fileName) };
+            if (sfd.ShowDialog() == SWF.DialogResult.OK)
+                return sfd.FileName;
+
+            return null;
+        }
+
+        public static string ShowOpenFileDialog(string filter)
+        {
+            var ofd = new SWF.OpenFileDialog { Filter = filter };
+            if (ofd.ShowDialog() == SWF.DialogResult.OK)
+                return ofd.FileName;
+
+            return null;
+        }
+
+        #endregion
+
+        #region Timestamp
 
         /// <summary>
         /// 时间戳转时间

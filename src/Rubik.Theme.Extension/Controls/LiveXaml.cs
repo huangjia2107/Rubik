@@ -1,19 +1,22 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Xml;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Threading;
-using System.Xml;
 
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+
+using Rubik.Theme.Utils;
 
 namespace Rubik.Theme.Extension.Controls
 {
@@ -30,6 +33,12 @@ namespace Rubik.Theme.Extension.Controls
 
         private DispatcherTimer _timer = null;
         private bool _disabledTimer = false;
+
+        private static RoutedCommand _openXamlCommand = null;
+        private static RoutedCommand _saveXamlCommand = null;
+        private static RoutedCommand _resetXamlCommand = null;
+        private static RoutedCommand _copyXamlCommand = null;
+        private static RoutedCommand _parseXamlCommand = null;
 
         public string Text
         {
@@ -52,6 +61,8 @@ namespace Rubik.Theme.Extension.Controls
 
         static LiveXaml()
         {
+            InitializeCommands();
+
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
@@ -63,6 +74,105 @@ namespace Rubik.Theme.Extension.Controls
             _timer.Tick += _timer_Tick;
 
         }
+
+        #region Command
+
+        private static void InitializeCommands()
+        {
+            _openXamlCommand = new RoutedCommand("OpenXaml", _typeofSelf);
+            _saveXamlCommand = new RoutedCommand("SaveXaml", _typeofSelf);
+            _resetXamlCommand = new RoutedCommand("ResetXaml", _typeofSelf);
+            _copyXamlCommand = new RoutedCommand("CopyXaml", _typeofSelf);
+            _parseXamlCommand = new RoutedCommand("ParseXaml", _typeofSelf);
+
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_openXamlCommand, OnOpenXamlCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_saveXamlCommand, OnSaveXamlCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_resetXamlCommand, OnResetXamlCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_copyXamlCommand, OnCopyXamlCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_parseXamlCommand, OnParseXamlCommand));
+        }
+
+        public static RoutedCommand OpenXamlCommand
+        {
+            get { return _openXamlCommand; }
+        }
+
+        public static RoutedCommand SaveXamlCommand
+        {
+            get { return _saveXamlCommand; }
+        }
+
+        public static RoutedCommand ResetXamlCommand
+        {
+            get { return _resetXamlCommand; }
+        }
+
+        public static RoutedCommand CopyXamlCommand
+        {
+            get { return _copyXamlCommand; }
+        }
+
+        public static RoutedCommand ParseXamlCommand
+        {
+            get { return _parseXamlCommand; }
+        }
+
+        private async static void OnOpenXamlCommand(object sender, RoutedEventArgs e)
+        {
+            var fileName = CommonUtil.ShowOpenFileDialog("XAML|*.xaml");
+            if (string.IsNullOrEmpty(fileName) || !File.Exists(fileName))
+                return;
+
+            var ctrl = sender as LiveXaml;
+
+            using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (var sr = new StreamReader(fs, Encoding.UTF8))
+                {
+                    ctrl.Text = await sr.ReadToEndAsync();
+                }
+            }
+        }
+
+        private async static void OnSaveXamlCommand(object sender, RoutedEventArgs e)
+        {
+            var fileName = CommonUtil.ShowSaveFileDialog("MyXaml.xaml", "XAML|*.xaml");
+            if (string.IsNullOrEmpty(fileName))
+                return;
+
+            var ctrl = sender as LiveXaml;
+
+            using (var fs = new FileStream(fileName,FileMode.Create,FileAccess.Write,FileShare.Read))
+            {
+                using (var sw = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    await sw.WriteAsync(ctrl.Text);
+                }
+            }
+        }
+
+        private static void OnResetXamlCommand(object sender, RoutedEventArgs e)
+        {
+            var ctrl = sender as LiveXaml;
+
+            if (ctrl.ResetXaml != null)
+                ctrl.Text = ctrl.ResetXaml();
+        }
+
+        private static void OnCopyXamlCommand(object sender, RoutedEventArgs e)
+        {
+            var ctrl = sender as LiveXaml;
+            Clipboard.SetText(ctrl.Text);
+        }
+
+        private static void OnParseXamlCommand(object sender, RoutedEventArgs e)
+        {
+            var ctrl = sender as LiveXaml;
+            ctrl.ParseXaml(ctrl.Text);
+        }
+
+        #endregion
+
         #region Property
 
         private static readonly DependencyPropertyKey ContentPropertyKey =
@@ -97,6 +207,13 @@ namespace Rubik.Theme.Extension.Controls
                 ctrl.InstallFolding();
             else
                 ctrl.UninstallFolding();
+        }
+
+        public static readonly DependencyProperty AutoParseProperty = DependencyProperty.Register("AutoParse", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+        public bool AutoParse
+        {
+            get { return (bool)GetValue(AutoParseProperty); }
+            set { SetValue(AutoParseProperty, value); }
         }
 
         public static readonly DependencyProperty LinePositionProperty = DependencyProperty.Register("LinePosition", typeof(int), _typeofSelf, new PropertyMetadata(OnLinePositionPropertyChanged));
@@ -166,6 +283,13 @@ namespace Rubik.Theme.Extension.Controls
                 ctrl._timer.Interval = TimeSpan.FromSeconds(Math.Max(1, delay));
         }
 
+        public static readonly DependencyProperty RestXamlProperty = DependencyProperty.Register("ResetXaml", typeof(Func<string>), _typeofSelf);
+        public Func<string> ResetXaml
+        {
+            get { return (Func<string>)GetValue(RestXamlProperty); }
+            set { SetValue(RestXamlProperty, value); }
+        }
+
         #endregion
 
         #region Override
@@ -231,13 +355,15 @@ namespace Rubik.Theme.Extension.Controls
         private void _timer_Tick(object sender, EventArgs e)
         {
             _timer.Stop();
-            ParseXaml(Text);
+
+            if (AutoParse)
+                ParseXaml(Text);
         }
 
         private void _partTextEditor_TextChanged(object sender, EventArgs e)
         {
             RefreshFoldings();
-            ParseXaml(Text);
+            //ParseXaml(Text);
 
             if (_disabledTimer)
             {
