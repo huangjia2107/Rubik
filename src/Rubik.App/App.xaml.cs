@@ -125,26 +125,6 @@ namespace Rubik.App
             containerRegistry.RegisterDialog<MessageDialog, MessageDialogViewModel>();
         }
 
-        /*
-        /// <summary>
-        /// ServiceCollection
-        /// </summary>
-        private void RegisterTypesByServiceCollection(IContainerRegistry containerRegistry)
-        {
-            var services = new ServiceCollection();
-            var action = (Action<HttpApiOptions>)(options => options.JsonDeserializeOptions.Converters.Add(new JsonNumberConverter()));
-
-            //Web Api
-            services.AddHttpApi<IServerApi>(action);
-
-            var sp = services.BuildServiceProvider();
-
-            var container = containerRegistry.GetContainer();
-            container.Register<IServiceScopeFactory, DryIocServiceScopeFactory>(Reuse.Singleton);
-            container.Populate(services);
-        }
-        */
-
         /// <summary>
         /// Module Catalog
         /// </summary>

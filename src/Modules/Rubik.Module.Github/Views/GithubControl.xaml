@@ -4,5 +4,11 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
+        <Rectangle RadiusX="4" RadiusY="4" Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+            </Rectangle.Effect>
+        </Rectangle>
+         
     </Grid>
 </UserControl>
