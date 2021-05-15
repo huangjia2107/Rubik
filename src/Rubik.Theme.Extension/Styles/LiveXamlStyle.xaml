@@ -23,18 +23,18 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <ContentControl Content="{TemplateBinding Content}"/>
-                            <GridSplitter Grid.Row="1" Height="26" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                            <GridSplitter Grid.Row="1" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                           Style="{StaticResource {x:Static themes:ResourceKeys.NormalGridSplitterStyleKey}}"
                                           utils:CursorUtil.Source="/Rubik.Theme;component/Assets/Cursors/Splitter_ud.cur"/>
                             <StackPanel Grid.Row="1" Margin="2" Orientation="Horizontal">
-                                <Button Width="35" ToolTip="Open"
+                                <Button Width="40" ToolTip="Open"
                                         Command="{x:Static controls:LiveXaml.OpenXamlCommand}"
                                         Style="{StaticResource {x:Static themes:ResourceKeys.ToolbarButtonStyleKey}}">
                                     <Path Width="16" Height="14" Stretch="Fill"
                                           Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
                                           Data="M19,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10L12,6H19A2,2 0 0,1 21,8H21L4,8V18L6.14,10H23.21L20.93,18.5C20.7,19.37 19.92,20 19,20Z"/>
                                 </Button>
-                                <Button Width="35" ToolTip="Save"
+                                <Button Width="40" ToolTip="Save"
                                         Command="{x:Static controls:LiveXaml.SaveXamlCommand}"
                                         Style="{StaticResource {x:Static themes:ResourceKeys.ToolbarButtonStyleKey}}">
                                     <Path Width="14" Height="14" Stretch="Fill"
@@ -42,14 +42,14 @@
                                           Data="M725.333333 170.666667H256c-51.584 0-85.333333 29.866667-85.333333 85.333333v512c0 55.466667 33.749333 85.333333 85.333333 85.333333h512c51.2 0 85.333333-29.866667 85.333333-85.333333V307.498667a21.333333 21.333333 0 0 0-6.229333-15.061334L725.333333 170.666667z m0 298.666666H298.666667V170.666667h426.666666v298.666666z M512 170.666667m21.333333 0l85.333334 0q21.333333 0 21.333333 21.333333l0 170.666667q0 21.333333-21.333333 21.333333l-85.333334 0q-21.333333 0-21.333333-21.333333l0-170.666667q0-21.333333 21.333333-21.333333Z"/>
                                 </Button>
                                 <Separator Style="{StaticResource {x:Static themes:ResourceKeys.VerSeparatorStyleKey}}" Margin="3,1"/>
-                                <Button Width="35" ToolTip="Reset"
+                                <Button Width="40" ToolTip="Reset"
                                         Command="{x:Static controls:LiveXaml.ResetXamlCommand}"
                                         Style="{StaticResource {x:Static themes:ResourceKeys.ToolbarButtonStyleKey}}">
                                     <Path Width="14" Height="16" Stretch="Fill"
                                           Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
                                           Data="M256 512H170.666667c0 185.002667 156.288 341.333333 341.333333 341.333333s341.333333-156.330667 341.333333-341.333333-156.288-341.333333-341.333333-341.333333V85.333333L342.4 213.333333 512 341.333333V256c138.752 0 256 117.248 256 256s-117.248 256-256 256-256-117.248-256-256z M640 512c0-71.210667-56.704-128-128-128s-128 56.789333-128 128 56.704 128 128 128 128-56.789333 128-128z"/>
                                 </Button>
-                                <Button Width="35" ToolTip="Copy"
+                                <Button Width="40" ToolTip="Copy"
                                         Command="{x:Static controls:LiveXaml.CopyXamlCommand}"
                                         Style="{StaticResource {x:Static themes:ResourceKeys.ToolbarButtonStyleKey}}">
                                     <Path Width="14" Height="14" Stretch="Fill"
@@ -57,14 +57,14 @@
                                           Data="M262.016 262.016m170.666667 0l335.317333 0q170.666667 0 170.666667 170.666667l0 335.317333q0 170.666667-170.666667 170.666667l-335.317333 0q-170.666667 0-170.666667-170.666667l0-335.317333q0-170.666667 170.666667-170.666667Z M298.666667 170.666667a128 128 0 0 0-128 128v318.037333a42.666667 42.666667 0 0 1-42.666667 42.666667 42.666667 42.666667 0 0 1-42.666667-42.666667V298.666667a213.333333 213.333333 0 0 1 213.333334-213.333334h317.994666a42.666667 42.666667 0 0 1 42.666667 42.666667 42.666667 42.666667 0 0 1-42.666667 42.666667z"/>
                                 </Button>
                                 <Separator Style="{StaticResource {x:Static themes:ResourceKeys.VerSeparatorStyleKey}}" Margin="3,1"/>
-                                <ToggleButton Width="35" ToolTip="Timed Parsing"
+                                <ToggleButton Width="40" ToolTip="Timed Parsing"
                                               IsChecked="{Binding AutoParse,RelativeSource={RelativeSource TemplatedParent}}"
                                               Style="{StaticResource {x:Static themes:ResourceKeys.NormalToggleButtonStyleKey}}">
                                     <Path Width="15" Height="14" Stretch="Fill"
                                           Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
                                           Data="M512.384 190.112c189.344 0 342.848 151.872 342.848 339.232s-153.504 339.2-342.848 339.2c-189.312 0-342.816-151.84-342.816-339.2 0-187.36 153.504-339.2 342.816-339.2z m0 135.68c-18.912 0-34.24 15.2-34.24 33.92v169.632c0 13.568 8.16 25.824 20.736 31.168l120 50.88a34.432 34.432 0 0 0 45.024-17.792 33.792 33.792 0 0 0-18.016-44.544l-99.2-42.08v-147.232c0-18.752-15.36-33.92-34.304-33.92zM221.472 141.056a51.808 51.808 0 0 1 72.64 3.776c18.976 20.896 17.28 53.088-3.84 71.872L213.824 284.8a51.808 51.808 0 0 1-72.64-3.808 50.496 50.496 0 0 1 3.84-71.84z m581.056 0l76.448 68.096c21.12 18.784 22.816 50.976 3.84 71.84a51.808 51.808 0 0 1-72.64 3.808l-76.448-68.096a50.496 50.496 0 0 1-3.84-71.872 51.808 51.808 0 0 1 72.64-3.776z"/>
                                 </ToggleButton>
-                                <Button Width="35" ToolTip="Parse"
+                                <Button Width="40" ToolTip="Parse"
                                         Command="{x:Static controls:LiveXaml.ParseXamlCommand}"
                                         Style="{StaticResource {x:Static themes:ResourceKeys.ToolbarButtonStyleKey}}">
                                     <Path Width="12" Height="14" Stretch="Fill"

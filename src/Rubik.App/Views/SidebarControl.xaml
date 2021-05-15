@@ -64,5 +64,7 @@
             </RepeatButton>
             <StackPanel prism:RegionManager.RegionName="{x:Static regions:RegionNames.Sidebar}"/>
         </StackPanel>
+
+        <TextBlock Grid.Row="1" Foreground="LightGray" Text="{Binding Version}" HorizontalAlignment="Center" Margin="0,0,0,20"/>
     </Grid>
 </UserControl>

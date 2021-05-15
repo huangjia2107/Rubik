@@ -20,14 +20,16 @@ namespace Rubik.App.ViewModels
     public class SidebarControlViewModel : BindableBase
     {
         //Ioc
+        private AppData _appData = null;
         private IRegionManager _regionManager = null;
         private IEventAggregator _eventAggregator = null;
 
         //Command
         public DelegateCommand LogoCommand { get; protected set; }
 
-        public SidebarControlViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public SidebarControlViewModel(AppData appData, IRegionManager regionManager, IEventAggregator eventAggregator)
         {
+            _appData = appData;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
 
@@ -43,6 +45,7 @@ namespace Rubik.App.ViewModels
             set { SetProperty(ref _logoBrush, value); }
         }
 
+        public string Version => _appData.Version;
 
         #endregion
 

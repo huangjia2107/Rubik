@@ -7,7 +7,7 @@ using WebApiClientCore.Exceptions;
 
 using Rubik.Service.Log;
 
-namespace Rubik.Module.Github.WebApi
+namespace Rubik.Service.Github.WebApi
 {
     /// <summary>
     /// WebApi 帮助类
@@ -26,11 +26,12 @@ namespace Rubik.Module.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                return "网络不稳定，请求超时，请重试。";
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：请求超时");
+                return "请求超时，请重试。";
             }
             catch (Exception ex)
             {
-                Logger.Instance.Main.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
                 return "请求异常，请重试。";
             }
         }
@@ -47,11 +48,12 @@ namespace Rubik.Module.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                return (default(T), "网络不稳定，请求超时，请重试。");
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：请求超时");
+                return (default(T), "请求超时，请重试。");
             }
             catch (Exception ex)
             {
-                Logger.Instance.Main.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
                 return (default(T), "请求异常，请重试。");
             }
         }
@@ -77,16 +79,17 @@ namespace Rubik.Module.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                return (default(T), "网络不稳定，请求超时，请重试。");
+                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：请求超时");
+                return (default(T), "请求超时，请重试。");
             }
             catch (ApiRetryException ex)
             {
-                Logger.Instance.Main.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
+                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
                 return (default(T), $"已重试 {retryMaxCount} 次。");
             }
             catch (Exception ex)
             {
-                Logger.Instance.Main.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
+                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
                 return (default(T), "请求异常，请重试。");
             }
         }

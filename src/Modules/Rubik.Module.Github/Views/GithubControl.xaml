@@ -1,14 +1,81 @@
 ﻿<UserControl x:Class="Rubik.Module.Github.Views.GithubControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Rectangle RadiusX="4" RadiusY="4" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
-            </Rectangle.Effect>
-        </Rectangle>
-         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Rectangle RadiusX="4" RadiusY="4" Fill="White">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <ScrollViewer Margin="15" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
+                          Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
+                <ItemsControl ItemsSource="{Binding ReleaseViewModels}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="15"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{Binding VersionBackground}" CornerRadius="4" Height="20">
+                                    <TextBlock Text="{Binding VersionFlag}" FontSize="13" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <Path Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Data="M0,0 V5" Stroke="#EEEDF2" Stretch="Fill" StrokeThickness="1" RenderOptions.EdgeMode="Aliased"/>
+
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Foreground="#3C326F" FontSize="14"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Time,StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Bottom" Margin="0,0,0,8" Foreground="#C6C4DC" FontSize="12"/>
+                                </Grid>
+
+                                <StackPanel Grid.Row="1" Grid.Column="2">
+                                    <TextBlock Foreground="#91A7BE" LineHeight="20" Margin="1,5,0,0"
+                                               Text="{Binding Notes}"
+                                               FontStyle="{Binding NotesFontStyle}"
+                                               Opacity="{Binding NotesOpacity}"/>
+                                    <Border CornerRadius="4" Background="#F5F9FA" Padding="10,10,10,0" Margin="1,10,0,0">
+                                        <ItemsControl ItemsSource="{Binding Assets}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="0,0,0,10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Foreground="#479595" FontSize="13"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding Size}" VerticalAlignment="Center" Foreground="#479595" FontSize="13"/>
+
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>                
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

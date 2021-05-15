@@ -2,7 +2,8 @@
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Prism.Wpf" version="8.0.0.1909" />
+    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+    <PackageReference Include="WebApiClientCore" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>

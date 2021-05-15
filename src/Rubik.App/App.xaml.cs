@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
+
+using DryIoc;
+using DryIoc.Microsoft.DependencyInjection;
 
 using Prism.DryIoc;
 using Prism.Ioc;
@@ -21,6 +25,7 @@ using Rubik.Service.Utils;
 using Rubik.Service.Dialogs;
 using Rubik.Service.Log;
 using Rubik.Service.ViewModels;
+using Rubik.Service.WebApi.Github;
 
 namespace Rubik.App
 {
@@ -123,6 +128,25 @@ namespace Rubik.App
             //Dialog
             containerRegistry.RegisterDialogWindow<DialogWindow>();
             containerRegistry.RegisterDialog<MessageDialog, MessageDialogViewModel>();
+
+            RegisterTypesByServiceCollection(containerRegistry);
+        }
+
+        /// <summary>
+        /// ServiceCollection
+        /// </summary>
+        private void RegisterTypesByServiceCollection(IContainerRegistry containerRegistry)
+        {
+            var services = new ServiceCollection();
+
+            //WebApi
+            services.AddHttpApi<IGithubApi>();
+
+            var sp = services.BuildServiceProvider();
+
+            var container = containerRegistry.GetContainer();
+            container.Register<IServiceScopeFactory, DryIocServiceScopeFactory>(Reuse.Singleton);
+            container.Populate(services);
         }
 
         /// <summary>
