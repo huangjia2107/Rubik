@@ -11,7 +11,7 @@
             <b:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="true"/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <Grid>
+    <Grid Margin="3">
         <Rectangle RadiusX="4" RadiusY="4" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
