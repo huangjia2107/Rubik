@@ -1,6 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 using Rubik.Service.WebApi.Github;
-using System;
 
 namespace Rubik.Module.Github.ViewModels
 {
@@ -14,7 +14,10 @@ namespace Rubik.Module.Github.ViewModels
         }
 
         public string Name => _model.name;
+        public string Description => _model.description;
         public string Url => _model.html_url;
+
+        public string DefaultBranch => _model.default_branch;
 
         public string GitUrl => _model.git_url;
         public string SshUrl => _model.ssh_url;

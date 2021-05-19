@@ -40,7 +40,7 @@ namespace Rubik.Module.Home.Utils
             }
             catch (Exception ex)
             {
-                Logger.Instance.Main.Error($"[ DemoResolver ] GetDemoModels, Error = {ex.Message}");
+                Logger.Instance.Module.Error($"[ Home ] DemoResolver.GetDemoModels, Error = {ex.Message}");
             }
 
             return null;

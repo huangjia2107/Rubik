@@ -14,31 +14,64 @@
     <Grid Margin="3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="18"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="18"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="18"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="18"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.ColumnSpan="2" RadiusX="4" RadiusY="4" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <TextBlock Text="{Binding RepositoryModel.Name}" FontSize="16" Foreground="#404040" Margin="18" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,18,18,18">
+                    <Button Height="26" Width="45" ToolTip="Open in Browser" Margin="0,0,10,0"
+                            Command="{Binding OpenInBrowserCommand}"
+                            Style="{StaticResource ReleaseDownloadButtonStyle}">
+                        <Path Height="16" Width="20" Stretch="Fill"
+                              Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                              Data="M12,10L8,14H11V20H13V14H16M19,4H5C3.89,4 3,4.9 3,6V18A2,2 0 0,0 5,20H9V18H5V8H19V18H15V20H19A2,2 0 0,0 21,18V6A2,2 0 0,0 19,4Z"/>
+                    </Button>
+                    <Button Height="26" Width="45" ToolTip="Refresh"
+                            Command="{Binding RefreshCommand}"
+                            Style="{StaticResource ReleaseDownloadButtonStyle}">
+                        <Path Height="16" Width="15" Stretch="Fill"
+                              Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                              Data="M571.733333 227.84V151.466667c0-25.173333-19.626667-35.413333-33.706666-25.173334L327.68 272.64a21.333333 21.333333 0 0 0 0 35.413333l210.346667 146.773334a21.76 21.76 0 0 0 33.706666-17.92V386.56a21.333333 21.333333 0 0 1 23.04-21.333333 271.786667 271.786667 0 0 1 239.36 210.346666 260.266667 260.266667 0 0 0 6.4-58.026666 271.36 271.36 0 0 0-248.746666-268.8 20.906667 20.906667 0 0 1-20.053334-20.906667zM443.733333 790.613333v85.333334a21.333333 21.333333 0 0 0 33.28 17.493333l211.2-147.2a21.333333 21.333333 0 0 0 0-34.56l-211.2-147.2a20.906667 20.906667 0 0 0-33.28 17.066667v51.2a20.906667 20.906667 0 0 1-22.613333 21.333333 271.786667 271.786667 0 0 1-239.786667-210.346667 260.266667 260.266667 0 0 0-6.4 58.026667A270.506667 270.506667 0 0 0 423.68 768a21.76 21.76 0 0 1 20.053333 22.613333z"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
             <!--Information-->
-            <Grid Height="220">
+            <Grid Grid.Row="2" Height="220">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="18"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="18"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="18"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--Git-->
@@ -56,7 +89,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="14,13">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="14,13">
                         <Path Stretch="Fill" Fill="#007ACC" 
                               Data="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6.12,15.5L9.86,19.24L11.28,17.83L8.95,15.5L11.28,13.17L9.86,11.76L6.12,15.5M17.28,15.5L13.54,11.76L12.12,13.17L14.45,15.5L12.12,17.83L13.54,19.24L17.28,15.5Z"/>
                     </Border>
@@ -67,13 +100,15 @@
                         <TextBlock Text="{Binding RepositoryModel.UpdateTime,StringFormat={}{0:yyyy-MM-dd&#x0020;HH:mm:ss}}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
-                        <Button Height="26" Width="45" ToolTip="Git"
+                        <Button Height="26" Width="45" ToolTip="Click to copy Git url"
+                                Command="{Binding GitCommand}"
                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
-                            <Path Height="17" Width="17" Stretch="Fill"
+                            <Path Height="16" Width="16" Stretch="Fill"
                                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
                                   Data="M2.6,10.59L8.38,4.8L10.07,6.5C9.83,7.35 10.22,8.28 11,8.73V14.27C10.4,14.61 10,15.26 10,16A2,2 0 0,0 12,18A2,2 0 0,0 14,16C14,15.26 13.6,14.61 13,14.27V9.41L15.07,11.5C15,11.65 15,11.82 15,12A2,2 0 0,0 17,14A2,2 0 0,0 19,12A2,2 0 0,0 17,10C16.82,10 16.65,10 16.5,10.07L13.93,7.5C14.19,6.57 13.71,5.55 12.78,5.16C12.35,5 11.9,4.96 11.5,5.07L9.8,3.38L10.59,2.6C11.37,1.81 12.63,1.81 13.41,2.6L21.4,10.59C22.19,11.37 22.19,12.63 21.4,13.41L13.41,21.4C12.63,22.19 11.37,22.19 10.59,21.4L2.6,13.41C1.81,12.63 1.81,11.37 2.6,10.59Z"/>
                         </Button>
-                        <Button Height="26" Width="45" ToolTip="Svn" Margin="10,0,0,0"
+                        <Button Height="26" Width="45" ToolTip="Click to copy svn url" Margin="10,0,0,0"
+                                Command="{Binding SvnCommand}"
                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
                             <Path Height="13" Width="18" Stretch="Fill"
                                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
@@ -96,7 +131,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="13">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="13">
                         <Path Stretch="Fill" Fill="#007ACC" 
                               Data="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5M5.5,10.25L7,14H4L5.5,10.25M18.5,10.25L20,14H17L18.5,10.25Z" Margin="0,-1,0,1"/>
                     </Border>
@@ -108,10 +143,11 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
                         <Button Height="26" Width="45" ToolTip="View"
+                                Command="{Binding LicenseCommand}"
                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
-                            <Path Height="13" Width="18" Stretch="Fill"
+                            <Path Height="14" Width="19" Stretch="Fill"
                                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                                  Data="M959.288674 828.030723c0 0-76.276221-61.033052-213.678614-61.033052-137.363508 0-213.677591 61.033052-213.677591 61.033052L531.93247 273.696546c0 0 64.400752-77.727269 215.798904-77.727269 151.362336 0 211.556277 77.727269 211.556277 77.727269L959.287651 828.030723z M492.102323 828.030723c0 0-76.350922-61.033052-213.677591-61.033052-137.364531 0-213.71443 61.033052-213.71443 61.033052L64.710302 273.696546c0 0 64.438615-77.727269 215.836767-77.727269 151.361313 0 211.555254 77.727269 211.555254 77.727269L492.102323 828.030723z"/>
+                                  Data="M17.5 14.33C18.29 14.33 19.13 14.41 20 14.57V16.07C19.38 15.91 18.54 15.83 17.5 15.83C15.6 15.83 14.11 16.16 13 16.82V15.13C14.17 14.6 15.67 14.33 17.5 14.33M13 12.46C14.29 11.93 15.79 11.67 17.5 11.67C18.29 11.67 19.13 11.74 20 11.9V13.4C19.38 13.24 18.54 13.16 17.5 13.16C15.6 13.16 14.11 13.5 13 14.15M17.5 10.5C15.6 10.5 14.11 10.82 13 11.5V9.84C14.23 9.28 15.73 9 17.5 9C18.29 9 19.13 9.08 20 9.23V10.78C19.26 10.59 18.41 10.5 17.5 10.5M21 18.5V7C19.96 6.67 18.79 6.5 17.5 6.5C15.45 6.5 13.62 7 12 8V19.5C13.62 18.5 15.45 18 17.5 18C18.69 18 19.86 18.16 21 18.5M17.5 4.5C19.85 4.5 21.69 5 23 6V20.56C23 20.68 22.95 20.8 22.84 20.91C22.73 21 22.61 21.08 22.5 21.08C22.39 21.08 22.31 21.06 22.25 21.03C20.97 20.34 19.38 20 17.5 20C15.45 20 13.62 20.5 12 21.5C10.66 20.5 8.83 20 6.5 20C4.84 20 3.25 20.36 1.75 21.07C1.72 21.08 1.68 21.08 1.63 21.1C1.59 21.11 1.55 21.12 1.5 21.12C1.39 21.12 1.27 21.08 1.16 21C1.05 20.89 1 20.78 1 20.65V6C2.34 5 4.18 4.5 6.5 4.5C8.83 4.5 10.66 5 12 6C13.34 5 15.17 4.5 17.5 4.5Z"/>
                         </Button>
 
                     </StackPanel>
@@ -131,7 +167,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="12">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="12">
                         <Path Stretch="Fill" Fill="#007ACC" 
                               Data="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"/>
                     </Border>
@@ -143,6 +179,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
                         <Button Height="26" Width="45" ToolTip="Feedback"
+                                Command="{Binding FeedbackCommand}"
                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
                             <Path Height="15" Width="17" Stretch="Fill"
                                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
@@ -165,7 +202,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="13">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="13">
                         <Path Stretch="Fill" Fill="#007ACC" 
                               Data="M847 733.1l-77.5-154.8c-0.8-1.7-1.3-3.5-1.3-5.4l-0.2-171.4c-0.1-96.7-65.6-178.1-154.5-202.4v-0.1c0-55.6-45.1-100.7-100.7-100.7-55.5 0-100.5 44.9-100.7 100.4C322.2 222.6 255.9 304.6 256 402l0.2 171.4c0 1.9-0.4 3.7-1.3 5.4l-77.4 154.6c-22.6 45.2 10.3 98.5 60.9 98.4l547.9-0.4c50.5 0.1 83.4-53.1 60.7-98.3zM421.5 860.8c-10.1 0-15.6 11.7-9.3 19.6 23.4 29.2 59.4 47.9 99.7 47.9 40.4 0 76.4-18.7 99.9-48 6.3-7.9 0.8-19.6-9.3-19.5h-181z"/>
                     </Border>
@@ -175,13 +212,13 @@
                               Data="M506.604 14.21C227.739 14.21 1.7 240.23 1.7 519.096s226.056 504.886 504.904 504.886c278.864 0 504.921-226.021 504.921-504.886S785.451 14.21 506.604 14.21z m0 924.27c-231.611 0-419.384-187.773-419.384-419.384 0-231.593 187.755-419.384 419.384-419.384S925.97 287.485 925.97 519.096 738.232 938.48 506.604 938.48z M506.604 136.05v383.046h383.062c0 211.55-171.513 383.045-383.062 383.045S123.558 730.645 123.558 519.096s171.496-383.045 383.046-383.045z"/>
                         <TextBlock Text="{Binding RepositoryModel.SubscribersCount}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
-                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,20,10">
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,18,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Path Width="18" Height="16" Stretch="Fill" Fill="#404040" Margin="0,0,10,0"
-                              Data="M765.184 873.941c0 33.28-28.501 60.288-63.83 60.288H63.83C28.501 934.23 0 907.221 0 873.941c0-120.576 123.264-233.258 249.216-277.674-72.79-42.496-121.728-118.059-121.728-204.8v-60.331c0-133.248 114.347-241.365 255.147-241.365S637.78 197.888 637.78 331.136v60.288c0 86.827-48.981 162.304-121.728 204.843 125.91 44.458 249.131 157.098 249.131 277.674z M848.256 870.57h126.933c27.008 0 48.811-20.65 48.811-46.08 0-92.245-94.293-178.346-190.55-212.309 55.638-32.512 93.1-90.282 93.1-156.672v-46.165c0-101.888-87.425-184.576-195.115-184.576-13.398 0-26.454 1.28-39.126 3.712 15.488 31.147 24.15 65.92 24.15 102.613v60.288c0 86.827-24.448 152.747-88.534 204.843 118.742 29.141 218.496 154.795 220.331 274.347z"/>
+                              Data="M765.184 873.941c0 33.28-28.501 60.288-63.83 60.288H63.83C28.501 934.23 0 907.221 0 873.941c0-120.576 123.264-233.258 249.216-277.674-72.79-42.496-121.728-118.059-121.728-204.8v-60.331c0-133.248 114.347-241.365 255.147-241.365S637.78 197.888 637.78 331.136v60.288c0 86.827-48.981 162.304-121.728 204.843 125.91 44.458 249.131 157.098 249.131 277.674z M848.256 870.57h126.933c27.008 0 48.811-18.65 48.811-46.08 0-92.245-94.293-178.346-190.55-212.309 55.638-32.512 93.1-90.282 93.1-156.672v-46.165c0-101.888-87.425-184.576-195.115-184.576-13.398 0-26.454 1.28-39.126 3.712 15.488 31.147 24.15 65.92 24.15 102.613v60.288c0 86.827-24.448 152.747-88.534 204.843 118.742 29.141 218.496 154.795 220.331 274.347z"/>
                         <ItemsControl Grid.Column="1" Height="40"
                                       ItemsSource="{Binding Subscribers}">
                             <ItemsControl.ItemsPanel>
@@ -191,7 +228,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Rectangle Height="20" Width="20" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
+                                    <Rectangle Height="18" Width="18" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
                                                ToolTip="{Binding Login}">
                                         <Rectangle.Fill>
                                             <ImageBrush ImageSource="{Binding AvatarUrl}"/>
@@ -217,7 +254,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="11,12">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="11,12">
                         <Path Stretch="Fill" Fill="#007ACC"
                               Data="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
                     </Border>
@@ -227,7 +264,7 @@
                               Data="M506.604 14.21C227.739 14.21 1.7 240.23 1.7 519.096s226.056 504.886 504.904 504.886c278.864 0 504.921-226.021 504.921-504.886S785.451 14.21 506.604 14.21z m0 924.27c-231.611 0-419.384-187.773-419.384-419.384 0-231.593 187.755-419.384 419.384-419.384S925.97 287.485 925.97 519.096 738.232 938.48 506.604 938.48z M506.604 136.05v383.046h383.062c0 211.55-171.513 383.045-383.062 383.045S123.558 730.645 123.558 519.096s171.496-383.045 383.046-383.045z"/>
                         <TextBlock Text="{Binding RepositoryModel.StargazersCount}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
-                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,20,10">
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,18,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition/>
@@ -243,7 +280,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Rectangle Height="20" Width="20" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
+                                    <Rectangle Height="18" Width="18" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
                                                ToolTip="{Binding Login}">
                                         <Rectangle.Fill>
                                             <ImageBrush ImageSource="{Binding AvatarUrl}"/>
@@ -269,7 +306,7 @@
                             <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="20,0" Padding="13,14,14,13">
+                    <Border Grid.RowSpan="2" BorderThickness="0" Background="#F5F9FA" Width="46" Height="46" CornerRadius="23" Margin="18,0" Padding="13,14,14,13">
                         <Path Stretch="Fill" Fill="#007ACC"
                               Data="M237.184 377.813333c7.082667 50.474667 33.664 136.832 131.712 174.037334C469.333333 590.037333 469.333333 620.117333 469.333333 640v6.954667c-61.44 18.517333-106.666667 74.965333-106.666666 142.378666 0 82.346667 66.986667 149.333333 149.333333 149.333334s149.333333-66.986667 149.333333-149.333334c0-67.413333-45.226667-123.861333-106.666666-142.378666V640c0-19.882667 0-49.962667 100.437333-88.106667 98.048-37.205333 124.629333-123.562667 131.712-174.037333C849.578667 360.149333 896 303.018667 896 234.666667 896 152.32 829.013333 85.333333 746.666667 85.333333S597.333333 152.32 597.333333 234.666667c0 66.218667 43.605333 121.813333 103.424 141.354666-6.229333 31.36-24.106667 76.416-75.861333 96.085334-50.858667 19.285333-87.594667 40.661333-112.896 65.536-25.301333-24.874667-61.994667-46.250667-112.896-65.536-51.754667-19.669333-69.674667-64.725333-75.861333-96.085334C383.061333 356.48 426.666667 300.885333 426.666667 234.666667 426.666667 152.32 359.68 85.333333 277.333333 85.333333S128 152.32 128 234.666667c0 68.352 46.421333 125.482667 109.184 143.146666zM746.666667 170.666667c35.285333 0 64 28.714667 64 64S781.952 298.666667 746.666667 298.666667 682.666667 269.952 682.666667 234.666667 711.381333 170.666667 746.666667 170.666667z m-170.666667 618.666666c0 35.285333-28.714667 64-64 64s-64-28.714667-64-64 28.714667-64 64-64 64 28.714667 64 64zM277.333333 170.666667C312.618667 170.666667 341.333333 199.381333 341.333333 234.666667S312.618667 298.666667 277.333333 298.666667 213.333333 269.952 213.333333 234.666667 242.048 170.666667 277.333333 170.666667z"/>
                     </Border>
@@ -279,7 +316,7 @@
                               Data="M506.604 14.21C227.739 14.21 1.7 240.23 1.7 519.096s226.056 504.886 504.904 504.886c278.864 0 504.921-226.021 504.921-504.886S785.451 14.21 506.604 14.21z m0 924.27c-231.611 0-419.384-187.773-419.384-419.384 0-231.593 187.755-419.384 419.384-419.384S925.97 287.485 925.97 519.096 738.232 938.48 506.604 938.48z M506.604 136.05v383.046h383.062c0 211.55-171.513 383.045-383.062 383.045S123.558 730.645 123.558 519.096s171.496-383.045 383.046-383.045z"/>
                         <TextBlock Text="{Binding RepositoryModel.Forks_count}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
-                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,20,10">
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,18,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition/>
@@ -295,7 +332,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Rectangle Height="20" Width="20" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
+                                    <Rectangle Height="18" Width="18" RadiusX="10" RadiusY="10" VerticalAlignment="Center"
                                                ToolTip="{Binding Login}">
                                         <Rectangle.Fill>
                                             <ImageBrush ImageSource="{Binding AvatarUrl}"/>
@@ -309,7 +346,7 @@
             </Grid>
 
             <!--Contributors-->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -321,9 +358,9 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <TextBlock Text="CONTRIBUTORS" FontSize="15" Foreground="DarkGray" Margin="20"/>
+                <TextBlock Text="CONTRIBUTORS" FontSize="15" Foreground="DarkGray" Margin="18"/>
 
-                <ItemsControl Grid.Row="1" Margin="20,0,20,20" ItemsSource="{Binding Contributors}">
+                <ItemsControl Grid.Row="1" Margin="18,0,18,18" ItemsSource="{Binding Contributors}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" ItemHeight="50"/>
@@ -343,7 +380,7 @@
             </Grid>
 
             <!--Third-Party Notices-->
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -354,9 +391,9 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <TextBlock Text="THIRD-PARTY NOTICES" FontSize="15" Foreground="DarkGray" Margin="20"/>
+                <TextBlock Text="THIRD-PARTY NOTICES" FontSize="15" Foreground="DarkGray" Margin="18"/>
                 
-                <StackPanel Grid.Row="1" Margin="20,0,20,20" Grid.IsSharedSizeScope="True"
+                <StackPanel Grid.Row="1" Margin="18,0,18,18" Grid.IsSharedSizeScope="True"
                             TextBlock.Foreground="Gray">
                     <Grid Height="30">
                         <Grid.ColumnDefinitions>
@@ -450,9 +487,9 @@
                 </Rectangle.Effect>
             </Rectangle>
 
-            <TextBlock Text="RELEASES" FontSize="15" Foreground="DarkGray" Margin="20"/>
+            <TextBlock Text="RELEASES" FontSize="15" Foreground="DarkGray" Margin="18"/>
             
-            <ScrollViewer Grid.Row="1" Margin="20,0,20,20" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
+            <ScrollViewer Grid.Row="1" Margin="18,0,18,18" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
                           Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
                 <ItemsControl ItemsSource="{Binding ReleaseViewModels}">
                     <ItemsControl.ItemTemplate>
@@ -464,11 +501,11 @@
                                     <RowDefinition Height="15"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="18"/>
                                     <ColumnDefinition Width="10"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Border Background="{Binding VersionBackground}" CornerRadius="4" Height="20">
+                                <Border Background="{Binding VersionBackground}" CornerRadius="4" Height="18">
                                     <TextBlock Text="{Binding VersionFlag}" FontSize="13" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                                 <Path Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Data="M0,0 V5" Stroke="#EEEDF2" Stretch="Fill" StrokeThickness="1" RenderOptions.EdgeMode="Aliased"/>
@@ -484,7 +521,7 @@
                                 </Grid>
 
                                 <StackPanel Grid.Row="1" Grid.Column="2">
-                                    <TextBlock Foreground="#91A7BE" LineHeight="20" Margin="1,5,0,0"
+                                    <TextBlock Foreground="#91A7BE" LineHeight="18" Margin="1,5,0,0"
                                                Text="{Binding Notes}"
                                                FontStyle="{Binding NotesFontStyle}"
                                                Opacity="{Binding NotesOpacity}"/>
@@ -508,6 +545,7 @@
                                                         <TextBlock Grid.Column="3" Text="{Binding Size}" VerticalAlignment="Center" Foreground="#007ACC" FontSize="13" HorizontalAlignment="Right"/>
 
                                                         <Button Grid.Column="5" Height="24" Width="40" ToolTip="Download"
+                                                                Command="{Binding DownloadCommand}"
                                                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
                                                             <Path Height="13" Width="12" Stretch="Fill"
                                                                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"

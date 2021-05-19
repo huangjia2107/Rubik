@@ -7,7 +7,10 @@ namespace Rubik.Service.WebApi.Github
     public class GithubRepositoryModel
     {
         public string name { get; set; }
+        public string description { get; set; }
         public string html_url { get; set; }
+
+        public string default_branch { get; set; }
 
         public string git_url { get; set; }
         public string ssh_url { get; set; }

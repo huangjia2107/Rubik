@@ -6,4 +6,4 @@
                      SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" IsCloseCanceled="True"
                      prism:Dialog.WindowStartupLocation="CenterScreen"
                      Title="{Binding Title}" 
-                     CaptionFontSize="13" CaptionHeight="30" MaxWidth="600"/>
+                     CaptionFontSize="13" CaptionHeight="30" MinWidth="380" MinHeight="150" MaxWidth="600"/>

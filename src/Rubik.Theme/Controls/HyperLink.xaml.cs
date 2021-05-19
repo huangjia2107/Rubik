@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics; 
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
@@ -43,14 +43,14 @@ namespace Rubik.Theme.Controls
         {
             var ctrl = d as Hyperlink;
             ctrl.LinkText.Text = (string)(e.NewValue);
-        } 
+        }
 
         private void LocalHyperlink_Click(object sender, RoutedEventArgs e)
         {
             if (LocalHyperlink.NavigateUri == null || string.IsNullOrWhiteSpace(LocalHyperlink.NavigateUri.ToString()))
                 return;
 
-            Process.Start(new ProcessStartInfo(LocalHyperlink.NavigateUri.AbsoluteUri));
+            Process.Start(new ProcessStartInfo(LocalHyperlink.NavigateUri.AbsoluteUri) { UseShellExecute = true });
         }
     }
 }

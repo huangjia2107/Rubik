@@ -1,4 +1,5 @@
-﻿
+﻿using Rubik.Service.Models;
+
 namespace Rubik.App.Models
 {
     public class AppData

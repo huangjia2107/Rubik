@@ -121,8 +121,9 @@ namespace Rubik.App
             };
 
             Logger.Instance.Main.Info($"[ Version ] v{version.Major}.{version.Minor}.{version.Build}.{version.Revision}");
-            
+
             //Settings
+            containerRegistry.RegisterInstance(appData.Config);
             containerRegistry.RegisterInstance(appData);
 
             //Dialog

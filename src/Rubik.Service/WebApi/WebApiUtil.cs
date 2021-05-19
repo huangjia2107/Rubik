@@ -26,13 +26,13 @@ namespace Rubik.Service.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：请求超时");
-                return "请求超时，请重试。";
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] Request timed out");
+                return "Request timed out, please try again!";
             }
             catch (Exception ex)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
-                return "请求异常，请重试。";
+                Logger.Instance.WebApi.Error($"[ WebApiUtil.Catch ] {ex.Message}");
+                return $"Request failed, please try again!\n(Error: {ex.Message})";
             }
         }
 
@@ -48,13 +48,13 @@ namespace Rubik.Service.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：请求超时");
-                return (default(T), "请求超时，请重试。");
+                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] Request timed out");
+                return (default(T), "Request timed out, please try again!");
             }
             catch (Exception ex)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.Catch ] 异常信息：" + ex.Message);
-                return (default(T), "请求异常，请重试。");
+                Logger.Instance.WebApi.Error($"[ WebApiUtil.Catch ] {ex.Message}");
+                return (default(T), $"Request failed, please try again!\n(Error: {ex.Message})");
             }
         }
 
@@ -79,18 +79,18 @@ namespace Rubik.Service.Github.WebApi
             }
             catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException taskCanceledException)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：请求超时");
-                return (default(T), "请求超时，请重试。");
+                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] Request timed out");
+                return (default(T), "Request timed out, please try again!");
             }
             catch (ApiRetryException ex)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
-                return (default(T), $"已重试 {retryMaxCount} 次。");
+                Logger.Instance.WebApi.Error($"[ WebApiUtil.CatchWithRetry ] {ex.Message}");
+                return (default(T), $"Retried too many times, retryTimes = {retryMaxCount}!");
             }
             catch (Exception ex)
             {
-                Logger.Instance.WebApi.Error("[ WebApiUtil.CatchWithRetry ] 异常信息：" + ex.Message);
-                return (default(T), "请求异常，请重试。");
+                Logger.Instance.WebApi.Error($"[ WebApiUtil.CatchWithRetry ] {ex.Message}");
+                return (default(T), $"Request failed, please try again!\n(Error: {ex.Message})");
             }
         }
     }
