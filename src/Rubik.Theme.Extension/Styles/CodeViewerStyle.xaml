@@ -18,14 +18,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CodeViewer}">
-                    <Border Background="Transparent" 
+                    <Border Background="Transparent"
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="0" x:Name="ContentRow"/>
+                                <RowDefinition Height="auto" x:Name="CodeRow"/>
                             </Grid.RowDefinitions>
                             <Grid Background="#CCCCCC">
                                 <Grid.ColumnDefinitions>
@@ -37,7 +38,8 @@
                                            Foreground="{TemplateBinding Foreground}" 
                                            Text="{TemplateBinding Title}"/>
                                 <tc:StatusToggle Grid.Column="1" Padding="15,0" Height="34"
-                                                 BorderThickness="1,0,0,0" BorderBrush="#999999"
+                                                 BorderThickness="1,0,0,0" 
+                                                 BorderBrush="#999999"
                                                  IsChecked="{Binding CodeCollapsed,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}">
                                     <tc:StatusToggle.UnCheckedContent>
                                         <StackPanel Orientation="Horizontal">
@@ -58,20 +60,16 @@
                                 </tc:StatusToggle>
                             </Grid>
 
-                            <Grid Grid.Row="1">
+                            <ContentControl Grid.Row="1"
+                                            Content="{TemplateBinding Content}"
+                                            Margin="10,20"/>
+
+                            <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="0" x:Name="ContentRow"/>
-                                    <RowDefinition Height="auto" x:Name="CodeRow"/>
+                                    <RowDefinition Height="100" x:Name="CodeDetailRow"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <ContentControl Grid.Row="0"
-                                                Content="{TemplateBinding Content}"
-                                                Margin="10,20"/>
-                                <avalonedit:TextEditor Grid.Row="1" Grid.ColumnSpan="2" 
-                                                       x:Name="PART_TextEditor" IsReadOnly="true" VerticalAlignment="Top"
+                                <avalonedit:TextEditor x:Name="PART_TextEditor" IsReadOnly="true"
                                                        Background="{TemplateBinding Background}"
                                                        Padding="{TemplateBinding Padding}"
                                                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
@@ -83,6 +81,36 @@
                                                        FontFamily="Courier New"
                                                        FontSize="{TemplateBinding FontSize}"
                                                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
+                                <Rectangle x:Name="CodeTransparentLayer">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="Transparent" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+
+                                <tc:StatusToggle x:Name="CodeExpandStatusToggle" Grid.Row="1" Height="34" BorderThickness="0,1,0,0" 
+                                                 BorderBrush="{TemplateBinding BorderBrush}">
+                                    <tc:StatusToggle.UnCheckedContent>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Expand" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <Path Width="11" Height="8" Stretch="Fill"
+                                                  Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:StatusToggle}}"
+                                                  Data="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+                                        </StackPanel>
+                                    </tc:StatusToggle.UnCheckedContent>
+                                    <tc:StatusToggle.CheckedContent>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Collapse" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <Path Width="11" Height="8" Stretch="Fill"
+                                                  Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:StatusToggle}}"
+                                                  Data="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/>
+                                        </StackPanel>
+                                    </tc:StatusToggle.CheckedContent>
+                                </tc:StatusToggle>
                             </Grid>
                         </Grid>
                     </Border>
@@ -95,6 +123,11 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="CodeRow" Property="Height" Value="0"/>
                         </MultiTrigger>
+
+                        <Trigger SourceName="CodeExpandStatusToggle" Property="IsChecked" Value="true">
+                            <Setter Property="Height" TargetName="CodeDetailRow" Value="auto"/>
+                            <Setter Property="Visibility" TargetName="CodeTransparentLayer" Value="Collapsed"/>
+                        </Trigger>
 
                         <Trigger Property="SyntaxHighlighting" Value="XML">
                             <Setter TargetName="ContentRow" Property="Height" Value="auto"/>
