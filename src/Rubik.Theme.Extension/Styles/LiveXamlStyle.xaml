@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls"
+                    xmlns:exUtils="clr-namespace:Rubik.Theme.Extension.Utils"
                     xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
                     xmlns:utils="clr-namespace:Rubik.Theme.Utils;assembly=Rubik.Theme">
+
+    <exUtils:LineNumbersWithoutLineConverter x:Key="lineNumbersWithoutLineConverter"/>
 
     <Style TargetType="{x:Type controls:LiveXaml}">
         <Setter Property="Background" Value="#F5F8FB"/>
@@ -79,10 +82,50 @@
                                                    IsReadOnly="{TemplateBinding IsReadOnly}"
                                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
-                                                   LineNumbersForeground="#2B91AF"
+                                                   LineNumbersForeground="#A7AABE"
                                                    ShowLineNumbers="{TemplateBinding ShowLineNumbers}"
                                                    WordWrap="{TemplateBinding WordWrap}"
-                                                   FontSize="{TemplateBinding FontSize}"/>
+                                                   FontSize="{TemplateBinding FontSize}">
+                                <avalonedit:TextEditor.Resources>
+                                    <Style TargetType="{x:Type avalonedit:TextArea}" x:Shared="False">
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                        <Setter Property="SelectionBrush">
+                                            <Setter.Value>
+                                                <SolidColorBrush Opacity="0.7"
+					                                             Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/> 
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="SelectionBorder">
+                                            <Setter.Value>
+                                                <Pen Brush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+				                                     Thickness="1"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="SelectionForeground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type avalonedit:TextArea}">
+                                                    <DockPanel Focusable="False">
+                                                        <Border DockPanel.Dock="Left" Padding="2,0,10,0" Margin="0,0,5,0" Background="#EFEFF2">
+                                                            <ItemsControl Focusable="False"
+						                                                  ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=LeftMargins,Converter={StaticResource lineNumbersWithoutLineConverter}}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <StackPanel Orientation="Horizontal" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                            </ItemsControl>
+                                                        </Border>
+                                                        <ContentPresenter Panel.ZIndex="-1"
+							                                              Focusable="False"
+							                                              Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextView}"/>
+                                                    </DockPanel>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </avalonedit:TextEditor.Resources>
+                            </avalonedit:TextEditor>
                         </Grid>
                     </Border>
                 </ControlTemplate>
