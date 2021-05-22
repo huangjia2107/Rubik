@@ -97,7 +97,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,10,0,0">
                         <Path Width="17" Height="17" Stretch="Fill" Fill="#404040" Margin="0,0,10,0"
                               Data="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z"/>
-                        <TextBlock Text="{Binding RepositoryModel.UpdateTime,StringFormat={}{0:yyyy-MM-dd&#x0020;HH:mm:ss}}" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="{Binding RepositoryModel.PublishTime,StringFormat={}{0:yyyy-MM-dd&#x0020;HH:mm:ss}}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
                         <Button Height="26" Width="45" ToolTip="Click to copy Git url"
@@ -488,80 +488,114 @@
             </Rectangle>
 
             <TextBlock Text="RELEASES" FontSize="15" Foreground="DarkGray" Margin="18"/>
-            
-            <ScrollViewer Grid.Row="1" Margin="18,0,18,18" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
-                          Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
-                <ItemsControl ItemsSource="{Binding ReleaseViewModels}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,0,0,10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"/>
-                                    <RowDefinition/>
-                                    <RowDefinition Height="15"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="18"/>
-                                    <ColumnDefinition Width="10"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Border Background="{Binding VersionBackground}" CornerRadius="4" Height="18">
-                                    <TextBlock Text="{Binding VersionFlag}" FontSize="13" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <Path Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Data="M0,0 V5" Stroke="#EEEDF2" Stretch="Fill" StrokeThickness="1" RenderOptions.EdgeMode="Aliased"/>
 
-                                <Grid Grid.Column="2">
+            <Grid Grid.Row="1" Margin="18,0,18,18">
+                <ScrollViewer x:Name="ReleaseScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
+                              Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
+                    <ItemsControl ItemsSource="{Binding ReleaseViewModels}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="15"/>
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="18"/>
+                                        <ColumnDefinition Width="10"/>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Foreground="#3C326F" FontSize="14"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding Time,StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Bottom" Margin="0,0,0,8" Foreground="#C6C4DC" FontSize="12"/>
-                                </Grid>
-
-                                <StackPanel Grid.Row="1" Grid.Column="2">
-                                    <TextBlock Foreground="#91A7BE" LineHeight="18" Margin="1,5,0,0"
-                                               Text="{Binding Notes}"
-                                               FontStyle="{Binding NotesFontStyle}"
-                                               Opacity="{Binding NotesOpacity}"/>
-                                    <Border CornerRadius="4" Background="#F5F9FA" Padding="10,10,10,0" Margin="1,10,0,0">
-                                        <ItemsControl ItemsSource="{Binding Assets}"
-                                                      Grid.IsSharedSizeScope="True">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid Margin="0,0,0,10">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition Width="auto" SharedSizeGroup="SizeColumn"/>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Path Height="14" Width="14" Stretch="Fill" Fill="#007ACC" Margin="0,0,5,0"
-                                                              Data="M883.314 795.944 839.63 795.944l0 43.684c0 48.253-39.115 87.372-87.368 87.372L271.738 927c-48.253 0-87.368-39.119-87.368-87.372l0-43.684-43.684 0c-24.122 0-43.684-19.557-43.684-43.684L97.002 490.156c0-24.127 19.562-43.684 43.684-43.684l43.684 0L184.37 184.368c0-48.253 39.115-87.368 87.368-87.368L621.21 97l43.684 0L839.63 271.736l0 43.684 0 131.052 43.684 0c24.127 0 43.684 19.557 43.684 43.684L926.998 752.26C926.998 776.386 907.44 795.944 883.314 795.944zM228.054 839.628c0 24.127 19.562 43.688 43.684 43.688l480.524 0c24.127 0 43.684-19.562 43.684-43.688l0-43.684L228.054 795.944 228.054 839.628zM548.638 752.26 548.638 492.087l-65.369 0L483.269 752.26 548.638 752.26zM197.183 492.087l0 48.638 124.333 0 0 1.551L184.37 720.598l0 31.649 208.408 0 0-48.638-120.83 0 0-1.525L406.084 526.06l0-33.973L197.183 492.087zM795.946 315.42l-87.368 0c-48.253 0-87.368-39.115-87.368-87.368l0-87.368L271.738 140.684c-24.122 0-43.684 19.562-43.684 43.684l0 262.104 567.892 0L795.946 315.42zM808.876 510.997c-19.252-13.9-47.851-20.842-88.019-20.842-39.735 0-67.929 2.307-87.997 5.408L632.86 752.26l64.499 0L697.359 659.23c5.985 0.782 13.656 1.153 22.226 1.153 38.451 0 71.34-8.488 93.554-27.385 17.085-14.687 26.494-36.31 26.481-61.778C839.621 545.739 827.232 524.12 808.876 510.997zM719.158 615.232c-9.405 0-16.264-0.389-21.798-1.555l0-76.805c4.679-1.166 13.656-2.328 26.927-2.328 32.47 0 50.839 14.289 50.839 38.228C775.126 599.392 753.747 615.232 719.158 615.232z"/>
-                                                        <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" Foreground="#007ACC" FontSize="13" HorizontalAlignment="Left"/>
-                                                        <TextBlock Grid.Column="3" Text="{Binding Size}" VerticalAlignment="Center" Foreground="#007ACC" FontSize="13" HorizontalAlignment="Right"/>
-
-                                                        <Button Grid.Column="5" Height="24" Width="40" ToolTip="Download"
-                                                                Command="{Binding DownloadCommand}"
-                                                                Style="{StaticResource ReleaseDownloadButtonStyle}">
-                                                            <Path Height="13" Width="12" Stretch="Fill"
-                                                                  Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                                                                  Data="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
-                                                        </Button>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
+                                    <Border Background="{Binding VersionBackground}" CornerRadius="4" Height="18">
+                                        <TextBlock Text="{Binding VersionFlag}" FontSize="13" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>                
-                </ItemsControl>
-            </ScrollViewer>
+                                    <Path Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Data="M0,0 V5" Stroke="#EEEDF2" Stretch="Fill" StrokeThickness="1" RenderOptions.EdgeMode="Aliased"/>
+
+                                    <Grid Grid.Column="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Foreground="#3C326F" FontSize="14"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Time,StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Bottom" Margin="0,0,0,8" Foreground="#C6C4DC" FontSize="12"/>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="2">
+                                        <TextBlock Foreground="#91A7BE" LineHeight="18" Margin="1,5,0,0"
+                                                   Text="{Binding Notes}"
+                                                   FontStyle="{Binding NotesFontStyle}"
+                                                   Opacity="{Binding NotesOpacity}"/>
+                                        <Border CornerRadius="4" Background="#F5F9FA" Padding="10,10,10,0" Margin="1,10,0,0">
+                                            <ItemsControl ItemsSource="{Binding Assets}"
+                                                          Grid.IsSharedSizeScope="True">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0,0,0,10">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto"/>
+                                                                <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition Width="auto" SharedSizeGroup="SizeColumn"/>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition Width="auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Height="14" Width="14" Stretch="Fill" Fill="#007ACC" Margin="0,0,5,0"
+                                                                  Data="M883.314 795.944 839.63 795.944l0 43.684c0 48.253-39.115 87.372-87.368 87.372L271.738 927c-48.253 0-87.368-39.119-87.368-87.372l0-43.684-43.684 0c-24.122 0-43.684-19.557-43.684-43.684L97.002 490.156c0-24.127 19.562-43.684 43.684-43.684l43.684 0L184.37 184.368c0-48.253 39.115-87.368 87.368-87.368L621.21 97l43.684 0L839.63 271.736l0 43.684 0 131.052 43.684 0c24.127 0 43.684 19.557 43.684 43.684L926.998 752.26C926.998 776.386 907.44 795.944 883.314 795.944zM228.054 839.628c0 24.127 19.562 43.688 43.684 43.688l480.524 0c24.127 0 43.684-19.562 43.684-43.688l0-43.684L228.054 795.944 228.054 839.628zM548.638 752.26 548.638 492.087l-65.369 0L483.269 752.26 548.638 752.26zM197.183 492.087l0 48.638 124.333 0 0 1.551L184.37 720.598l0 31.649 208.408 0 0-48.638-120.83 0 0-1.525L406.084 526.06l0-33.973L197.183 492.087zM795.946 315.42l-87.368 0c-48.253 0-87.368-39.115-87.368-87.368l0-87.368L271.738 140.684c-24.122 0-43.684 19.562-43.684 43.684l0 262.104 567.892 0L795.946 315.42zM808.876 510.997c-19.252-13.9-47.851-20.842-88.019-20.842-39.735 0-67.929 2.307-87.997 5.408L632.86 752.26l64.499 0L697.359 659.23c5.985 0.782 13.656 1.153 22.226 1.153 38.451 0 71.34-8.488 93.554-27.385 17.085-14.687 26.494-36.31 26.481-61.778C839.621 545.739 827.232 524.12 808.876 510.997zM719.158 615.232c-9.405 0-16.264-0.389-21.798-1.555l0-76.805c4.679-1.166 13.656-2.328 26.927-2.328 32.47 0 50.839 14.289 50.839 38.228C775.126 599.392 753.747 615.232 719.158 615.232z"/>
+                                                            <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" Foreground="#007ACC" FontSize="13" HorizontalAlignment="Left"/>
+                                                            <TextBlock Grid.Column="3" Text="{Binding Size}" VerticalAlignment="Center" Foreground="#007ACC" FontSize="13" HorizontalAlignment="Right"/>
+
+                                                            <Button Grid.Column="5" Height="24" Width="40" ToolTip="Download"
+                                                                    Command="{Binding DownloadCommand}"
+                                                                    Style="{StaticResource ReleaseDownloadButtonStyle}">
+                                                                <Path Height="13" Width="12" Stretch="Fill"
+                                                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                                                                      Data="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+                                                            </Button>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Border>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>                
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <Rectangle Height="10" VerticalAlignment="Top">
+                    <Rectangle.Visibility>
+                        <MultiBinding Converter="{StaticResource {x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}}">
+                            <Binding Path="VerticalOffset" ElementName="ReleaseScrollViewer"/>
+                            <Binding Path="ScrollableHeight" ElementName="ReleaseScrollViewer"/>
+                        </MultiBinding>
+                    </Rectangle.Visibility>
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="Transparent" Offset="1"/>
+                            <GradientStop Color="#33F5F5F5" Offset="0.6"/>
+                            <GradientStop Color="#F2F2F2" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Rectangle Height="10" VerticalAlignment="Bottom">
+                    <Rectangle.Visibility>
+                        <MultiBinding Converter="{StaticResource {x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}}" ConverterParameter="1">
+                            <Binding Path="VerticalOffset" ElementName="ReleaseScrollViewer"/>
+                            <Binding Path="ScrollableHeight" ElementName="ReleaseScrollViewer"/>
+                        </MultiBinding>
+                    </Rectangle.Visibility>
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                            <GradientStop Color="Transparent" Offset="1"/>
+                            <GradientStop Color="#33F5F5F5" Offset="0.6"/>
+                            <GradientStop Color="#F2F2F2" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

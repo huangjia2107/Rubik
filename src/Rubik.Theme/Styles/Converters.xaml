@@ -7,4 +7,6 @@
 
     <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
 
+    <utils:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
+
 </ResourceDictionary>

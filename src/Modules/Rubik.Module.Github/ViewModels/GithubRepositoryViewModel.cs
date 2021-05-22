@@ -37,6 +37,7 @@ namespace Rubik.Module.Github.ViewModels
         public int IssuesCount => _model.open_issues_count;
 
         public DateTime UpdateTime => DateTime.Parse(_model.updated_at).ToLocalTime();
+        public DateTime PublishTime => DateTime.Parse(_model.pushed_at).ToLocalTime();
 
         GithubLicenseViewModel _license = null;
         public GithubLicenseViewModel License => _license ??= new GithubLicenseViewModel(_model.license);

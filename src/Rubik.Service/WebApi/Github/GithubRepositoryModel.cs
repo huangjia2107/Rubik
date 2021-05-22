@@ -30,6 +30,7 @@ namespace Rubik.Service.WebApi.Github
         public int open_issues_count { get; set; }
 
         public string updated_at { get; set; }
+        public string pushed_at { get; set; }
 
         public GithubLicenseModel license { get; set; }
     }
