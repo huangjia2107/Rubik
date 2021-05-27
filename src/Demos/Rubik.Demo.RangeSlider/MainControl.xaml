@@ -4,12 +4,13 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:rteControls="clr-namespace:Rubik.Theme.Extension.Controls;assembly=Rubik.Theme.Extension">
     <StackPanel>
-        <rteControls:CodeViewer Title="Default Style">
+        <rteControls:CodeViewer Title="Default Style" Description="Represents a control that lets the user select a range from a range of values by moving two thumbs along a track.">
             <rteControls:CodeViewer.Code>
                 <sys:String xml:space="preserve">
 <![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:controls="clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme">
+      xmlns:controls="clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme"
+      xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme">
     <Grid.ColumnDefinitions>
         <ColumnDefinition/>
         <ColumnDefinition Width="15"/>
@@ -18,9 +19,11 @@
     <controls:RangeSlider x:Name="rangeSlider" AutoToolTipPlacement="TopLeft"/>
     <StackPanel Grid.Column="2" Width="100">
         <CheckBox Content="IgnoreEdge" 
-                  IsChecked="{Binding IgnoreEdge,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"/>
+                  IsChecked="{Binding IgnoreEdge,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"
+                  Style="{StaticResource {x:Static themes:ResourceKeys.NormalCheckBoxStyleKey}}"/>
         <CheckBox Content="IsLinked"
-                  IsChecked="{Binding IsLinked,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"/>
+                  IsChecked="{Binding IsLinked,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"
+                  Style="{StaticResource {x:Static themes:ResourceKeys.NormalCheckBoxStyleKey}}"/>
     </StackPanel>
 </Grid>]]>
                 </sys:String>

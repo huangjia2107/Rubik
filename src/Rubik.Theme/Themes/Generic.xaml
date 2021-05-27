@@ -7,8 +7,8 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ButtonStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckBoxStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckCodeStyle.xaml"/>
-
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Geometries.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/GridSplitterStyle.xaml"/>

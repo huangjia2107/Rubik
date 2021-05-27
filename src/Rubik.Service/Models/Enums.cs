@@ -12,6 +12,7 @@ namespace Rubik.Service.Models
         Motion,
         Text,
         Slider,
+        Style,
         Misc
     }
 

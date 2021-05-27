@@ -3,10 +3,10 @@
                     xmlns:themes="clr-namespace:Rubik.Theme"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls">
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NoBgToggleStatusStyleKey}"  
+    <Style x:Key="{x:Static themes:ResourceKeys.NoBgStatusToggleStyleKey}"  
            TargetType="{x:Type controls:StatusToggle}">
         <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Foreground" Value="#9A9FA3"/>
+        <Setter Property="Foreground" Value="#404040"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -53,7 +53,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgToggleStatusStyleKey}}"  
+    <Style BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgStatusToggleStyleKey}}"  
            TargetType="{x:Type controls:StatusToggle}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="#CCCCCC"/>

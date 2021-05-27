@@ -60,19 +60,18 @@ namespace Rubik.Theme.Extension.Controls
             set { SetValue(TitleProperty, value); }
         }
 
-        public static readonly DependencyProperty CodeCollapsedProperty =
-            DependencyProperty.Register("CodeCollapsed", typeof(bool), _typeofSelf, new PropertyMetadata(true));
-        public bool CodeCollapsed
+        public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), _typeofSelf, new PropertyMetadata(null));
+        public string Description
         {
-            get { return (bool)GetValue(CodeCollapsedProperty); }
-            set { SetValue(CodeCollapsedProperty, value); }
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), _typeofSelf, new PropertyMetadata(null, OnCodePropertyChanged));
+        public static readonly DependencyProperty CodeProperty = DependencyProperty.Register("Code", typeof(string), _typeofSelf, new PropertyMetadata(null, OnCodePropertyChanged));
         public string Code
         {
-            get { return (string)GetValue(XamlProperty); }
-            set { SetValue(XamlProperty, value); }
+            get { return (string)GetValue(CodeProperty); }
+            set { SetValue(CodeProperty, value); }
         }
 
         private static void OnCodePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -105,13 +104,6 @@ namespace Rubik.Theme.Extension.Controls
         {
             get { return (bool)GetValue(WordWrapProperty); }
             set { SetValue(WordWrapProperty, value); }
-        }
-
-        public static readonly DependencyProperty ShowLineNumbersProperty = TextEditor.ShowLineNumbersProperty.AddOwner(_typeofSelf);
-        public bool ShowLineNumbers
-        {
-            get { return (bool)GetValue(ShowLineNumbersProperty); }
-            set { SetValue(ShowLineNumbersProperty, value); }
         }
 
         #endregion

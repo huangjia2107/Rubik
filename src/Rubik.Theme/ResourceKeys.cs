@@ -130,10 +130,10 @@ namespace Rubik.Theme
 
         #region ToggleStatus
 
-        public const string NoBgToggleStatusStyle = "NoBgToggleStatusStyle";
-        public static ComponentResourceKey NoBgToggleStatusStyleKey
+        public const string NoBgStatusToggleStyle = "NoBgStatusToggleStyle";
+        public static ComponentResourceKey NoBgStatusToggleStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NoBgToggleStatusStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), NoBgStatusToggleStyle); }
         }
 
         #endregion
