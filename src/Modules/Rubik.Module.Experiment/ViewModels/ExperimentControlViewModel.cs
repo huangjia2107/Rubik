@@ -37,7 +37,9 @@ namespace Rubik.Module.Experiment.ViewModels
             var experimentControl = e.OriginalSource as ExperimentControl;
 
             _liveXaml = experimentControl.LiveXamlName;
-            _liveXaml.Text = ConstStrings.LiveXamlTemplate;
+
+            if (string.IsNullOrEmpty(_liveXaml.Text))
+                _liveXaml.Text = ConstStrings.LiveXamlTemplate;
         }
 
         #endregion

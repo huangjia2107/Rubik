@@ -100,7 +100,7 @@
                         <TextBlock Text="{Binding RepositoryModel.PublishTime,StringFormat={}{0:yyyy-MM-dd&#x0020;HH:mm:ss}}" VerticalAlignment="Center" FontSize="14"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
-                        <Button Height="26" Width="45" ToolTip="Click to copy Git url"
+                        <Button Height="26" Width="45" ToolTip="Click to copy git url"
                                 Command="{Binding GitCommand}"
                                 Style="{StaticResource ReleaseDownloadButtonStyle}">
                             <Path Height="16" Width="16" Stretch="Fill"
@@ -490,7 +490,7 @@
             <TextBlock Text="RELEASES" FontSize="15" Foreground="DarkGray" Margin="18"/>
 
             <Grid Grid.Row="1" Margin="18,0,18,18">
-                <ScrollViewer x:Name="ReleaseScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
+                <ScrollViewer x:Name="ReleaseScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
                               Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
                     <ItemsControl ItemsSource="{Binding ReleaseViewModels}">
                         <ItemsControl.ItemTemplate>
@@ -564,6 +564,7 @@
                     </ItemsControl>
                 </ScrollViewer>
 
+                <!--
                 <Rectangle Height="10" VerticalAlignment="Top">
                     <Rectangle.Visibility>
                         <MultiBinding Converter="{StaticResource {x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}}">
@@ -595,6 +596,7 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
+                -->
             </Grid>
         </Grid>
     </Grid>

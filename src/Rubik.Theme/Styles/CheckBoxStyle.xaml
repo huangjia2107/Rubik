@@ -21,7 +21,7 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="CheckedBorder" BorderThickness="2" CornerRadius="3"
+                        <Border x:Name="CheckedBorder" BorderThickness="1" CornerRadius="2"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Width="{Binding ActualHeight,RelativeSource={RelativeSource Self}}">

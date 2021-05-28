@@ -29,7 +29,7 @@
                 </sys:String>
             </rteControls:CodeViewer.Code>
         </rteControls:CodeViewer>
-        <rteControls:CodeViewer Title="Custom Style1" Margin="0,20,0,0">
+        <rteControls:CodeViewer Title="Custom Style1" Margin="0,30,0,0">
             <rteControls:CodeViewer.Code>
                 <sys:String xml:space="preserve">
 <![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
