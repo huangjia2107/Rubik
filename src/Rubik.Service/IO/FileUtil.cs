@@ -11,7 +11,7 @@ using Rubik.Service.Log;
 
 namespace Rubik.Service.IO
 {
-    public static class FileHelper
+    public static class FileUtil
     {
         /// <summary>
         /// 序列化实体到文件

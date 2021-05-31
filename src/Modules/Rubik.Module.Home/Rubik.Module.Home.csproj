@@ -14,4 +14,13 @@
     <ProjectReference Include="..\..\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Demos\Layout\FlowPanel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Demos\Layout\UniformPanel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

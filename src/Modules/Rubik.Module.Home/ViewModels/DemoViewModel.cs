@@ -1,5 +1,6 @@
 ﻿using Prism.Mvvm;
 
+using Rubik.Module.Home.Models;
 using Rubik.Service;
 using Rubik.Service.Models;
 
@@ -25,5 +26,7 @@ namespace Rubik.Module.Home.ViewModels
         public double IconHeight => _model.IconHeight;
 
         public object Page => _model.Page;
+
+        public DemoExample[] Examples => (_model as ConfigDemoModel)?.Examples;
     }
 }

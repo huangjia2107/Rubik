@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConfigDemoModel>
+  <IconData>M288,736 L288,960 64,960 64,736 288,736 z M624,736 L624,960 400,960 400,736 624,736 z M288,400 L288,624 64,624 64,400 288,400 z M624,400 L624,624 400,624 400,400 624,400 z M960,400 L960,624 736,624 736,400 960,400 z M288,64 L288,288 64,288 64,64 288,64 z M624,64 L624,288 400,288 400,64 624,64 z M960,64 L960,288 736,288 736,64 960,64 z</IconData>
+  <IconWidth>16</IconWidth>
+  <IconHeight>16</IconHeight>
+  <Examples>
+    <Example Title="Auto Row &amp; Column" Description="Automatically generate rows and columns based on the number of elements" SyntaxHighlighting="XML" JustShowCode="false">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:panels="clr-namespace:Rubik.Theme.Panels;assembly=Rubik.Theme">
+    <panels:UniformPanel Height="150" Space="20,10" Padding="20,0">
+        <Button Content="1"/>
+        <Button Content="2"/>
+        <Button Content="3"/>
+        <Button Content="4"/>
+        <Button Content="5"/>
+    </panels:UniformPanel>
+</Grid>]]></Code>
+    </Example>
+    <Example Title="Fixed Rows" Description="Arrange child elements according to the number of rows" SyntaxHighlighting="XML" JustShowCode="false">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:panels="clr-namespace:Rubik.Theme.Panels;assembly=Rubik.Theme">
+    <panels:UniformPanel Height="150" Space="20,10" Padding="20,0" Rows="1">
+        <Button Content="1"/>
+        <Button Content="2"/>
+        <Button Content="3"/>
+        <Button Content="4"/>
+        <Button Content="5"/>
+    </panels:UniformPanel>
+</Grid>]]></Code>
+    </Example>
+    <Example Title="Fixed Columns with FirstColumn" Description="Arrange child elements according to the number of columns" SyntaxHighlighting="XML" JustShowCode="false">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:panels="clr-namespace:Rubik.Theme.Panels;assembly=Rubik.Theme">
+    <panels:UniformPanel Height="150" Space="20,10" Padding="20,0" Columns="3" FirstColumn="1">
+        <Button Content="1"/>
+        <Button Content="2"/>
+        <Button Content="3"/>
+        <Button Content="4"/>
+        <Button Content="5"/>
+    </panels:UniformPanel>
+</Grid>]]></Code>
+    </Example>
+  </Examples>
+</ConfigDemoModel>

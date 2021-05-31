@@ -159,7 +159,7 @@ namespace Rubik.App.ViewModels
             */
 
             if (_appData.Config != null)
-                FileHelper.SaveToJsonFile(ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
+                FileUtil.SaveToJsonFile(ResourcesMap.LocationDic[Location.GlobalConfigFile], _appData.Config);
         }
 
         #endregion

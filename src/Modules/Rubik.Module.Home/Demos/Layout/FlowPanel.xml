@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConfigDemoModel>
+  <IconData>M64 112h416v256H64v-256zM64 432h416v256H64v-256zM64 752h412.8v160H64v-160zM547.2 112H960v160H547.2v-160zM544 336h416v320H544v-320zM544 720h416v192H544v-192z</IconData>
+  <IconWidth>16</IconWidth>
+  <IconHeight>16</IconHeight>
+  <Examples>
+    <Example Title="Fixed Columns" Description="Arrange child elements according to the number of columns" SyntaxHighlighting="XML" JustShowCode="false">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:panels="clr-namespace:Rubik.Theme.Panels;assembly=Rubik.Theme">
+    <panels:FlowPanel Space="20,10" Padding="20,10" Columns="4">
+        <Button Content="1" Height="80"/>
+        <Button Content="2" Height="60"/>
+        <Button Content="3" Height="90"/>
+        <Button Content="4" Height="150"/>
+        <Button Content="5" Height="120"/>
+        <Button Content="6" Height="100"/>
+        <Button Content="7" Height="120"/>
+        <Button Content="8" Height="100"/>
+        <Button Content="9" Height="100"/>
+        <Button Content="10" Height="120"/>
+    </panels:FlowPanel>
+</Grid>]]></Code>
+    </Example>
+  </Examples>
+</ConfigDemoModel>

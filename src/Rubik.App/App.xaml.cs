@@ -110,7 +110,7 @@ namespace Rubik.App
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //Config
-            var localConfig = FileHelper.LoadFromJsonFile<GlobalConfig>(Service.Models.ResourcesMap.LocationDic[Location.GlobalConfigFile]);
+            var localConfig = FileUtil.LoadFromJsonFile<GlobalConfig>(Service.Models.ResourcesMap.LocationDic[Location.GlobalConfigFile]);
 
             //Version
             var version = ResourceAssembly.GetName().Version;

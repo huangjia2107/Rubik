@@ -32,10 +32,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Home", "src\Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.CheckCode", "src\Demos\Rubik.Demo.CheckCode\Rubik.Demo.CheckCode.csproj", "{31025E09-3B9C-4F32-8023-6AB9B069DD4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.UniformPanel", "src\Demos\Rubik.Demo.UniformPanel\Rubik.Demo.UniformPanel.csproj", "{6E645284-806A-4635-9A50-AD45BF104E24}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.Demo.FlowPanel", "src\Demos\Rubik.Demo.FlowPanel\Rubik.Demo.FlowPanel.csproj", "{0B68B257-0F82-4C05-A9F8-07CB02957F04}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,14 +78,6 @@ Global
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E645284-806A-4635-9A50-AD45BF104E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E645284-806A-4635-9A50-AD45BF104E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E645284-806A-4635-9A50-AD45BF104E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E645284-806A-4635-9A50-AD45BF104E24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B68B257-0F82-4C05-A9F8-07CB02957F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B68B257-0F82-4C05-A9F8-07CB02957F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B68B257-0F82-4C05-A9F8-07CB02957F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B68B257-0F82-4C05-A9F8-07CB02957F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,8 +89,6 @@ Global
 		{7609CAE4-98FB-4E0F-AD17-AE68EEC46A75} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{0B3ADB76-B6A6-4543-9966-A834694BD253} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
-		{6E645284-806A-4635-9A50-AD45BF104E24} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
-		{0B68B257-0F82-4C05-A9F8-07CB02957F04} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A312243A-4B26-4F48-B018-E0AD3A362A28}

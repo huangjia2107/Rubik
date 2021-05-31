@@ -7,31 +7,31 @@ namespace Rubik.Service
         /// <summary>
         /// Type
         /// </summary>
-        DemoType Type { get; }
+        DemoType Type { get; set; }
 
         /// <summary>
         /// Name
         /// </summary>
-        string Name { get; }
+        string Name { get; set; }
 
         /// <summary>
         /// Icon Path
         /// </summary>
-        string IconData { get; }
+        string IconData { get; set; }
 
         /// <summary>
         /// Icon Width
         /// </summary>
-        double IconWidth { get; }
+        double IconWidth { get; set; }
 
         /// <summary>
         /// Icon Height
         /// </summary>
-        double IconHeight { get; }
+        double IconHeight { get; set; }
 
         /// <summary>
         /// Demo Page
         /// </summary>
-        object Page { get; }
+        object Page { get; set; }
     }
 }

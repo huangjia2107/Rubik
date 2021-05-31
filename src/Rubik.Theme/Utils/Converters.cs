@@ -36,6 +36,20 @@ namespace Rubik.Theme.Utils
         }
     }
 
+    public class NullToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var nullVisibility = (Visibility)(parameter ?? Visibility.Collapsed);
+            return value == null ? nullVisibility : (nullVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class ScrollOffsetToVisibilityMultiConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

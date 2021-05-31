@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 
 using ICSharpCode.AvalonEdit.Editing;
+using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace Rubik.Theme.Extension.Utils
 {
@@ -20,6 +21,21 @@ namespace Rubik.Theme.Extension.Utils
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class HighlightingDefinitionConverter : IValueConverter
+    {
+        private static readonly HighlightingDefinitionTypeConverter Converter = new HighlightingDefinitionTypeConverter();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return Converter.ConvertFrom(value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return Converter.ConvertToString(value);
         }
     }
 }
