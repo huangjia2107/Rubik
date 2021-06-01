@@ -9,10 +9,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build_debug",
-            "program": "${workspaceFolder}/bin/Debug/Rubik.Demo.exe",
+            "program": "${workspaceFolder}/bin/Debug/Rubik.App.exe",
             "args":[],
-            "cwd": "${workspaceFolder}\\src\\Rubik.Demo",
-            "externalConsole": true,
+            "cwd": "${workspaceFolder}\\src\\Rubik.App",
+            "console":"externalTerminal",
             "stopAtEntry": false,
             "internalConsoleOptions":"openOnSessionStart"
         },
