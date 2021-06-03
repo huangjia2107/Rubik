@@ -99,6 +99,14 @@ namespace Rubik.Theme.Extension.Controls
             ctrl.ParseXaml(ctrl.Code);
         }
 
+        public static readonly DependencyProperty AllowCollapseCodeProperty =
+            DependencyProperty.Register("AllowCollapseCode", typeof(bool), _typeofSelf, new PropertyMetadata(true));
+        public bool AllowCollapseCode
+        {
+            get { return (bool)GetValue(AllowCollapseCodeProperty); }
+            set { SetValue(AllowCollapseCodeProperty, value); }
+        }
+
         public static readonly DependencyProperty WordWrapProperty = TextEditor.WordWrapProperty.AddOwner(_typeofSelf);
         public bool WordWrap
         {

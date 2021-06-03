@@ -40,6 +40,9 @@ namespace Rubik.Module.Home.Models
         [XmlAttribute]
         public bool JustShowCode { get; set; }
 
+        [XmlAttribute]
+        public bool AllowCollapseCode { get; set; }
+
         public string Code { get; set; }
     }
 }

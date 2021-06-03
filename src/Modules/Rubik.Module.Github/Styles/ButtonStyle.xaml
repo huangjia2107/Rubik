@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme">
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <Style x:Key="ReleaseDownloadButtonStyle" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgRoundButtonBaseStyleKey}}"
+           BasedOn="{StaticResource {x:Static rubik:ResourceKeys.NoBgRoundButtonBaseStyleKey}}"
            TargetType="{x:Type ButtonBase}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="#CCE4F5"/>

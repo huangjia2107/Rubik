@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConfigDemoModel>
+  <IconData>M851.626667 83.456H168.96c-47.104 0-85.333333 38.229333-85.333333 85.333333v512c0 47.104 38.229333 85.333333 85.333333 85.333334h170.666667l170.666666 170.666666 170.666667-170.666666h170.666667c47.104 0 85.333333-38.229333 85.333333-85.333334v-512c0-47.104-38.229333-85.333333-85.333333-85.333333zM311.125333 459.093333c-31.744 0-57.344-25.770667-57.344-57.344s25.770667-57.344 57.344-57.344 57.344 25.770667 57.344 57.344-25.770667 57.344-57.344 57.344z m209.066667 0c-31.744 0-57.344-25.770667-57.344-57.344s25.770667-57.344 57.344-57.344c31.744 0 57.344 25.770667 57.344 57.344s-25.6 57.344-57.344 57.344z m209.237333 0c-31.744 0-57.344-25.770667-57.344-57.344 0-31.744 25.770667-57.344 57.344-57.344 31.744 0 57.344 25.770667 57.344 57.344 0 31.744-25.770667 57.344-57.344 57.344z</IconData>
+  <IconWidth>16</IconWidth>
+  <IconHeight>16</IconHeight>
+  <Examples>
+    <Example Title="Left Anchor" Description="AnchorOffset is based on the coordinates of the origin at the upper left corner" SyntaxHighlighting="XML" JustShowCode="false" AllowCollapseCode="true">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:AnchorBorder Height="50" Width="150" AnchorDock="LeftCenter" DockLength="20" DockOffset="0" AnchorOffset="-15,25" Background="#FF404040" CornerRadius="5">
+        <TextBlock Text="This is a tip" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+    </rubik:AnchorBorder>
+</Grid>]]></Code>
+    </Example>
+    <Example Title="Right Anchor" Description="AnchorOffset is based on the coordinates of the origin at the upper right corner" SyntaxHighlighting="XML" JustShowCode="false" AllowCollapseCode="true">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:AnchorBorder Height="50" Width="150" AnchorDock="RightCenter" DockLength="20" DockOffset="0" AnchorOffset="15,25" Background="#FF404040" CornerRadius="5">
+        <TextBlock Text="This is a tip" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+    </rubik:AnchorBorder>
+</Grid>]]></Code>
+    </Example>
+    <Example Title="Top Anchor" Description="AnchorOffset is based on the coordinates of the origin at the upper left corner" SyntaxHighlighting="XML" JustShowCode="false" AllowCollapseCode="true">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:AnchorBorder Height="50" Width="150" AnchorDock="TopCenter" DockLength="20" DockOffset="0" AnchorOffset="75,-15" Background="#FF404040" CornerRadius="5">
+        <TextBlock Text="This is a tip" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+    </rubik:AnchorBorder>
+</Grid>]]></Code>
+    </Example>
+    <Example Title="Bottom Anchor" Description="AnchorOffset is based on the coordinates of the origin at the bottom left corner" SyntaxHighlighting="XML" JustShowCode="false" AllowCollapseCode="true">
+      <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:AnchorBorder Height="50" Width="150" AnchorDock="BottomCenter" DockLength="20" DockOffset="0" AnchorOffset="75,15" Background="#FF404040" CornerRadius="5">
+        <TextBlock Text="This is a tip" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+    </rubik:AnchorBorder>
+</Grid>]]></Code>
+    </Example>
+  </Examples>
+</ConfigDemoModel>

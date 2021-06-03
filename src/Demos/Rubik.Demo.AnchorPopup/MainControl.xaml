@@ -1,0 +1,68 @@
+<UserControl x:Class="Rubik.Demo.AnchorPopup.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <StackPanel>
+        <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10" Foreground="#404040"
+                   Text="Default Style"/>
+        <Border CornerRadius="4" BorderThickness="1" BorderBrush="LightGray">
+            <StackPanel>
+                <Button x:Name="DefaultStyleButton" Height="40" Padding="10,0" Margin="20" HorizontalAlignment="Center" Content="Click to show popup with anchor"
+                        Click="ShowDefaultPopup_Click"/>
+                <Path Stretch="Fill" StrokeThickness="1" Stroke="LightGray" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                <rubik:CodeViewer AllowCollapseCode="false" BorderThickness="0" SyntaxHighlighting="C#">
+                    <rubik:CodeViewer.Code>
+                        <sys:String xml:space="preserve">
+<![CDATA[private void ShowPopup_Click(object sender, RoutedEventArgs e)
+{
+    Rubik.Theme.Primitives.AnchorPopup.Show(targetElement, "This is a message");
+}]]>
+                </sys:String>
+                    </rubik:CodeViewer.Code>
+                </rubik:CodeViewer>
+            </StackPanel>
+        </Border>
+
+        <TextBlock FontSize="15" FontWeight="Bold" Margin="0,30,0,10" Foreground="#404040"
+                   Text="Custom Style"/>
+        <Border CornerRadius="4" BorderThickness="1" BorderBrush="LightGray">
+            <StackPanel>
+                <Button x:Name="CustomStyleButton" Height="40" Padding="10,0" Margin="20" HorizontalAlignment="Center" Content="Click to show popup with anchor"
+                        Click="ShowCustomPopup_Click"/>
+                <Path Stretch="Fill" StrokeThickness="1" Stroke="LightGray" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                <rubik:CodeViewer AllowCollapseCode="false" BorderThickness="0" SyntaxHighlighting="C#">
+                    <rubik:CodeViewer.Code>
+                        <sys:String xml:space="preserve">
+<![CDATA[private void ShowPopup_Click(object sender, RoutedEventArgs e)
+{
+    Rubik.Theme.Primitives.AnchorPopup.Show(targetElement, "This is a message", background: "#404040", foreground: "#FFFFFF");
+}]]>
+                </sys:String>
+                    </rubik:CodeViewer.Code>
+                </rubik:CodeViewer>
+            </StackPanel>
+        </Border>
+
+        <TextBlock FontSize="15" FontWeight="Bold" Margin="0,30,0,10" Foreground="#404040"
+                   Text="Show More"/>
+        <Border CornerRadius="4" BorderThickness="1" BorderBrush="LightGray">
+            <StackPanel>
+                <Button x:Name="MoreStyleButton" Height="40" Padding="10,0" Margin="20" HorizontalAlignment="Center" Content="Click to show popup with anchor"
+                        Click="ShowMorePopup_Click"/>
+                <Path Stretch="Fill" StrokeThickness="1" Stroke="LightGray" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                <rubik:CodeViewer AllowCollapseCode="false" BorderThickness="0" SyntaxHighlighting="C#">
+                    <rubik:CodeViewer.Code>
+                        <sys:String xml:space="preserve">
+<![CDATA[private void ShowPopup_Click(object sender, RoutedEventArgs e)
+{
+    Rubik.Theme.Primitives.AnchorPopup.Show(MoreStyleButton, new MessageControl(), background: "#404040", foreground: "#FFFFFF");
+}]]>
+                </sys:String>
+                    </rubik:CodeViewer.Code>
+                </rubik:CodeViewer>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>

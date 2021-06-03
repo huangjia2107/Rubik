@@ -4,8 +4,7 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
-             xmlns:rteControls="clr-namespace:Rubik.Theme.Extension.Controls;assembly=Rubik.Theme.Extension">
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="true"/>
@@ -17,12 +16,12 @@
                 <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
             </Rectangle.Effect>
         </Rectangle>
-        <rteControls:LiveXaml x:Name="LiveXamlName" Margin="15" BorderThickness="1" BorderBrush="LightGray"
-                              ResetXaml="{Binding ResetXamlFunc}">
-            <rteControls:LiveXaml.Resources>
+        <rubik:LiveXaml x:Name="LiveXamlName" Margin="15" BorderThickness="1" BorderBrush="LightGray"
+                        ResetXaml="{Binding ResetXamlFunc}">
+            <rubik:LiveXaml.Resources>
                 <Style TargetType="ScrollViewer"
-                       BasedOn="{StaticResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}"/>
-            </rteControls:LiveXaml.Resources>
-        </rteControls:LiveXaml>
+                       BasedOn="{StaticResource {x:Static rubik:ResourceKeys.NormalScrollViewerStyleKey}}"/>
+            </rubik:LiveXaml.Resources>
+        </rubik:LiveXaml>
     </Grid>
 </UserControl>

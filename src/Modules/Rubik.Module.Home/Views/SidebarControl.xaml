@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="Rubik.Module.Home.Views.SidebarControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/"
              xmlns:groups="clr-namespace:Rubik.Service.Groups;assembly=Rubik.Service"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
@@ -9,7 +9,7 @@
         <RadioButton Height="60" Cursor="Hand" IsChecked="true"
                      GroupName="{x:Static groups:GroupNames.SidebarGroupName}"
                      Command="{Binding HomeCommand}"
-                     Style="{StaticResource {x:Static themes:ResourceKeys.SidebarRadioButtonStyleKey}}">
+                     Style="{StaticResource {x:Static rubik:ResourceKeys.SidebarRadioButtonStyleKey}}">
             <Path Width="23" Height="20" Stretch="Fill"
                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=RadioButton}}"
                   Data="M929.2 427c-2.5-2.9-5-5.7-7.8-8.4L608.7 105.8c-54.5-54.5-143-54.5-197.5 0L98.4 418.6c-2.7 2.7-5.3 5.5-7.8 8.4-63.2 74.3-5.4 189.1 92.1 189.1h16.4v218.3c0 68.7 55.7 124.3 124.3 124.3h62.2V794.2c0-68.7 55.7-124.3 124.3-124.3 68.7 0 124.3 55.7 124.3 124.3v164.5h62.2c68.7 0 124.3-55.7 124.3-124.3V616.1h16.4c97.5 0 155.3-114.8 92.1-189.1z"/>

@@ -100,14 +100,26 @@
                             <Setter TargetName="ContentRow" Property="Height" Value="auto"/>
                         </MultiTrigger>
 
+                        <Trigger Property="AllowCollapseCode" Value="false">
+                            <Setter TargetName="CodeExpandStatusToggle" Property="IsChecked" Value="true"/>
+                            <Setter TargetName="CodeExpandStatusToggle" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
                         <Trigger SourceName="CodeExpandStatusToggle" Property="IsChecked" Value="true">
                             <Setter Property="Height" TargetName="CodeDetailGrid" Value="auto"/>
                             <Setter Property="Visibility" TargetName="CodeTransparentLayer" Value="Collapsed"/>
-                            <Setter Property="BorderThickness" TargetName="CodeExpandStatusToggle" Value="0,1,0,0"/>
                             <Setter Property="Padding" TargetName="PART_TextEditor" Value="10"/>
-                            <Setter Property="Margin" TargetName="PART_TextEditor" Value="0,0,0,34"/>
                         </Trigger>
 
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="CodeExpandStatusToggle" Property="IsChecked" Value="true"/>
+                                <Condition Property="AllowCollapseCode" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderThickness" TargetName="CodeExpandStatusToggle" Value="0,1,0,0"/>
+                            <Setter Property="Margin" TargetName="PART_TextEditor" Value="0,0,0,34"/>
+                        </MultiTrigger>
+                        
                         <Trigger Property="Title" Value="{x:Null}">
                             <Setter TargetName="TitleTextBlock" Property="Visibility" Value="Collapsed"/>
                         </Trigger>

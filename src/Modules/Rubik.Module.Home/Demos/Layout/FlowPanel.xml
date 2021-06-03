@@ -4,11 +4,11 @@
   <IconWidth>16</IconWidth>
   <IconHeight>16</IconHeight>
   <Examples>
-    <Example Title="Fixed Columns" Description="Arrange child elements according to the number of columns" SyntaxHighlighting="XML" JustShowCode="false">
+    <Example Title="Fixed Columns" Description="Arrange child elements according to the number of columns" SyntaxHighlighting="XML" JustShowCode="false" AllowCollapseCode="true">
       <Code xml:space="preserve"><![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:panels="clr-namespace:Rubik.Theme.Panels;assembly=Rubik.Theme">
-    <panels:FlowPanel Space="20,10" Padding="20,10" Columns="4">
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:FlowPanel Space="20,10" Padding="20,10" Columns="4">
         <Button Content="1" Height="80"/>
         <Button Content="2" Height="60"/>
         <Button Content="3" Height="90"/>
@@ -19,7 +19,7 @@
         <Button Content="8" Height="100"/>
         <Button Content="9" Height="100"/>
         <Button Content="10" Height="120"/>
-    </panels:FlowPanel>
+    </rubik:FlowPanel>
 </Grid>]]></Code>
     </Example>
   </Examples>

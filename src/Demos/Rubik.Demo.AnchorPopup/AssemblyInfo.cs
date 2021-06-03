@@ -1,8 +1,4 @@
 using System.Windows;
-using System.Windows.Markup;
-
-[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Theme.Extension.Controls")]
-[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Theme.Extension.Utils")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

@@ -15,6 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Demos\Layout\AlignWrapPanel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Demos\Layout\AnchorBorder.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Demos\Layout\FlowPanel.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

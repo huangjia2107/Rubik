@@ -8,7 +8,7 @@ namespace Rubik.Module.Experiment.Models
     {
         public const string LiveXamlTemplate = @"<Grid xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
       xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
-      xmlns:controls=""clr-namespace:Rubik.Theme.Controls;assembly=Rubik.Theme""
+      xmlns:rubik=""https://github.com/huangjia2107/Rubik/""
       Background=""White"">
     
 </Grid>";
