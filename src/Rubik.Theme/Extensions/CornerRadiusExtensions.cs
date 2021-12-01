@@ -3,7 +3,7 @@ using System.Windows;
 
 using Rubik.Theme.Utils;
 
-namespace Rubik.Theme.ExtensionMethods
+namespace Rubik.Theme.Extensions
 {
     public static class CornerRadiusExtensions
     {
@@ -16,7 +16,7 @@ namespace Rubik.Theme.ExtensionMethods
                 || DoubleUtil.LessThan(cornerRadius.TopLeft, 0)
                 || DoubleUtil.LessThan(cornerRadius.TopRight, 0))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -24,7 +24,7 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (double.IsNaN(cornerRadius.BottomLeft) || double.IsNaN(cornerRadius.BottomRight) || double.IsNaN(cornerRadius.TopLeft) || double.IsNaN(cornerRadius.TopRight))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -32,7 +32,7 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (double.IsPositiveInfinity(cornerRadius.BottomLeft) || double.IsPositiveInfinity(cornerRadius.BottomRight) || double.IsPositiveInfinity(cornerRadius.TopLeft) || double.IsPositiveInfinity(cornerRadius.TopRight))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -40,11 +40,11 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (double.IsNegativeInfinity(cornerRadius.BottomLeft) || double.IsNegativeInfinity(cornerRadius.BottomRight) || double.IsNegativeInfinity(cornerRadius.TopLeft) || double.IsNegativeInfinity(cornerRadius.TopRight))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
-            return (true);
+            return true;
         }
 
         public static CornerRadius Coerce(this CornerRadius cornerRadius, double availableWidth, double availableHeight)

@@ -67,26 +67,26 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
 
-                                    <tc:StatusToggle x:Name="CodeExpandStatusToggle" Height="34" BorderThickness="0" Cursor="Hand" VerticalAlignment="Bottom"
+                                    <tc:ToggleStatus x:Name="CodeExpandStatusToggle" Height="34" BorderThickness="0" Cursor="Hand" VerticalAlignment="Bottom"
                                                      BorderBrush="{TemplateBinding BorderBrush}"
-                                                     Style="{StaticResource {x:Static themes:ResourceKeys.NoBgStatusToggleStyleKey}}">
-                                        <tc:StatusToggle.UnCheckedContent>
+                                                     Style="{StaticResource {x:Static themes:ResourceKeys.RubikToggleStatusStyleKey}}">
+                                        <tc:ToggleStatus.UnCheckedContent>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Show More" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                                 <Path Width="11" Height="8" Stretch="Fill"
-                                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:StatusToggle}}"
+                                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:ToggleStatus}}"
                                                       Data="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
                                             </StackPanel>
-                                        </tc:StatusToggle.UnCheckedContent>
-                                        <tc:StatusToggle.CheckedContent>
+                                        </tc:ToggleStatus.UnCheckedContent>
+                                        <tc:ToggleStatus.CheckedContent>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Collapse" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                                 <Path Width="11" Height="8" Stretch="Fill"
-                                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:StatusToggle}}"
+                                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=tc:ToggleStatus}}"
                                                       Data="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/>
                                             </StackPanel>
-                                        </tc:StatusToggle.CheckedContent>
-                                    </tc:StatusToggle>
+                                        </tc:ToggleStatus.CheckedContent>
+                                    </tc:ToggleStatus>
                                 </Grid>
                             </Grid>
                         </Border>

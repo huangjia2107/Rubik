@@ -3,12 +3,22 @@
                     xmlns:utils="clr-namespace:Rubik.Theme.Utils"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
+    <utils:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
+    <utils:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
+
+    <utils:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
     <utils:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
 
-    <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
+    <utils:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
 
     <utils:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
+    
+    <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
 
     <utils:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
+
+    <utils:TimeSpanToStringConverter x:Key="{x:Static themes:ResourceKeys.TimeSpanToStringConverterKey}"/>
+
+    <utils:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityConverterKey}"/>
 
 </ResourceDictionary>

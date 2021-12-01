@@ -6,40 +6,28 @@ namespace Rubik.Theme
     {
         #region ButtonBase
         /// <summary>
-        /// Style="{DynamicResource/StaticResource {x:Static themes:ResourceKeys.NoBgButtonStyleKey}}"
+        /// Style="{DynamicResource/StaticResource {x:Static themes:ResourceKeys.RubikButtonStyleKey}}"
         /// </summary>
-        public const string NoBgButtonBaseStyle = "NoBgButtonBaseStyle";
-        public static ComponentResourceKey NoBgButtonBaseStyleKey
+        public const string RubikButtonBaseStyle = "RubikButtonBaseStyle";
+        public static ComponentResourceKey RubikButtonBaseStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NoBgButtonBaseStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikButtonBaseStyle); }
         }
 
-        public const string NoBgRoundButtonBaseStyle = "NoBgRoundButtonBaseStyle";
-        public static ComponentResourceKey NoBgRoundButtonBaseStyleKey
+        public const string RubikRoundButtonBaseStyle = "RubikRoundButtonBaseStyle";
+        public static ComponentResourceKey RubikRoundButtonBaseStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NoBgRoundButtonBaseStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikRoundButtonBaseStyle); }
         }
 
         #endregion
 
         #region Button
 
-        public const string NormalButtonStyle = "NormalButtonStyle";
-        public static ComponentResourceKey NormalButtonStyleKey
+        public const string OpacityButtonStyle = "OpacityButtonStyle";
+        public static ComponentResourceKey OpacityButtonStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalButtonStyle); }
-        }
-
-        public const string RoundButtonStyle = "RoundButtonStyle";
-        public static ComponentResourceKey RoundButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), RoundButtonStyle); }
-        }
-
-        public const string StatusbarButtonStyle = "StatusbarButtonStyle";
-        public static ComponentResourceKey StatusbarButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), StatusbarButtonStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), OpacityButtonStyle); }
         }
 
         public const string TitlebarButtonStyle = "TitlebarButtonStyle";
@@ -48,232 +36,82 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), TitlebarButtonStyle); }
         }
 
-        public const string ToolbarButtonStyle = "ToolbarButtonStyle";
-        public static ComponentResourceKey ToolbarButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ToolbarButtonStyle); }
-        }
-
         public const string TitlebarCloseBtnStyle = "TitlebarCloseBtnStyle";
         public static ComponentResourceKey TitlebarCloseBtnStyleKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), TitlebarCloseBtnStyle); }
         }
 
-        public const string SelectionCloseBtnStyle = "SelectionCloseBtnStyle";
-        public static ComponentResourceKey SelectionCloseBtnStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), SelectionCloseBtnStyle); }
-        }
-
-        public const string OpacityButtonStyle = "OpacityButtonStyle";
-        public static ComponentResourceKey OpacityButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), OpacityButtonStyle); }
-        }
-
-        public const string CircleBtnStyle = "CircleBtnStyle";
-        public static ComponentResourceKey CircleBtnStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), CircleBtnStyle); }
-        }
-
         #endregion
 
         #region RepeatButton
 
-        public const string NormalRepeatButtonStyle = "NormalRepeatButtonStyle";
-        public static ComponentResourceKey NormalRepeatButtonStyleKey
+        public const string RubikRepeatButtonStyle = "RubikRepeatButtonStyle";
+        public static ComponentResourceKey RubikRepeatButtonStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalRepeatButtonStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikRepeatButtonStyle); }
         }
 
-        public const string ScrollRepeatButtonStyle = "ScrollRepeatButtonStyle";
-        public static ComponentResourceKey ScrollRepeatButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ScrollRepeatButtonStyle); }
-        }
-
-        #endregion
-
-        #region ToggleButton
-
-        public const string NormalToggleButtonStyle = "NormalToggleButtonStyle";
-        public static ComponentResourceKey NormalToggleButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalToggleButtonStyle); }
-        }
-
-        public const string SelectionToggleButtonStyle = "SelectionToggleButtonStyle";
-        public static ComponentResourceKey SelectionToggleButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), SelectionToggleButtonStyle); }
-        }
-        
         #endregion
 
         #region RadioButton
 
-        public const string SidebarRadioButtonStyle = "SidebarRadioButtonStyle";
-        public static ComponentResourceKey SidebarRadioButtonStyleKey
+        public const string RubikRadioButtonStyle = "RubikRadioButtonStyle";
+        public static ComponentResourceKey RubikRadioButtonStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), SidebarRadioButtonStyle); }
-        }
-
-        public const string NormalRadioButtonStyle = "NormalRadioButtonStyle";
-        public static ComponentResourceKey NormalRadioButtonStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalRadioButtonStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikRadioButtonStyle); }
         }
 
         #endregion
 
         #region ToggleStatus
 
-        public const string NoBgStatusToggleStyle = "NoBgStatusToggleStyle";
-        public static ComponentResourceKey NoBgStatusToggleStyleKey
+        public const string RubikToggleStatusStyle = "RubikToggleStatusStyle";
+        public static ComponentResourceKey RubikToggleStatusStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NoBgStatusToggleStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikToggleStatusStyle); }
         }
 
         #endregion
 
         #region CheckBox
 
-        public const string NormalCheckBoxStyle = "NormalCheckBoxStyle";
-        public static ComponentResourceKey NormalCheckBoxStyleKey
+        public const string RubikCheckBoxStyle = "RubikCheckBoxStyle";
+        public static ComponentResourceKey RubikCheckBoxStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalCheckBoxStyle); }
-        }
-
-        #endregion
-
-        #region MenuItem
-
-        public const string ContextMenuStyle = "ContextMenuStyle";
-        public static ComponentResourceKey ContextMenuStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ContextMenuStyle); }
-        }
-
-        public const string MenuItemStyle = "MenuItemStyle";
-        public static ComponentResourceKey MenuItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemStyle); }
-        }
-
-        public const string HorSeparatorStyle = "HorSeparatorStyle";
-        public static ComponentResourceKey HorSeparatorStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), HorSeparatorStyle); }
-        }
-
-        public const string VerSeparatorStyle = "VerSeparatorStyle";
-        public static ComponentResourceKey VerSeparatorStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), VerSeparatorStyle); }
-        }
-
-        public const string MenuItemSubmenuContent = "MenuItemSubmenuContent";
-        public static ComponentResourceKey MenuItemSubmenuContentKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemSubmenuContent); }
-        }
-
-        public const string MenuItemTopLevelHeaderTemplate = "MenuItemTopLevelHeaderTemplate";
-        public static ComponentResourceKey MenuItemTopLevelHeaderTemplateKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemTopLevelHeaderTemplate); }
-        }
-
-        public const string MenuItemTopLevelItemTemplate = "MenuItemTopLevelItemTemplate";
-        public static ComponentResourceKey MenuItemTopLevelItemTemplateKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemTopLevelItemTemplate); }
-        }
-
-        public const string MenuItemSubmenuHeaderTemplate = "MenuItemSubmenuHeaderTemplate";
-        public static ComponentResourceKey MenuItemSubmenuHeaderTemplateKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemSubmenuHeaderTemplate); }
-        }
-
-        public const string MenuItemSubmenuItemTemplate = "MenuItemSubmenuItemTemplate";
-        public static ComponentResourceKey MenuItemSubmenuItemTemplateKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MenuItemSubmenuItemTemplate); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikCheckBoxStyle); }
         }
 
         #endregion
 
         #region ListBox
 
-        public const string NormalListBoxStyle = "NormalListBoxStyle";
-        public static ComponentResourceKey NormalListBoxStyleKey
+        public const string RubikListBoxStyle = "RubikListBoxStyle";
+        public static ComponentResourceKey RubikListBoxStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalListBoxStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikListBoxStyle); }
         }
 
-        public const string NormalListBoxItemStyle = "NormalListBoxItemStyle";
-        public static ComponentResourceKey NormalListBoxItemStyleKey
+        public const string RubikListBoxItemStyle = "RubikListBoxItemStyle";
+        public static ComponentResourceKey RubikListBoxItemStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalListBoxItemStyle); }
-        }
-
-        public const string ServerListBoxItemStyle = "ServerListBoxItemStyle";
-        public static ComponentResourceKey ServerListBoxItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ServerListBoxItemStyle); }
-        }
-
-        public const string TabListBoxItemStyle = "TabListBoxItemStyle";
-        public static ComponentResourceKey TabListBoxItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), TabListBoxItemStyle); }
-        }
-
-        public const string SelectionListBoxItemStyle = "SelectionListBoxItemStyle";
-        public static ComponentResourceKey SelectionListBoxItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), SelectionListBoxItemStyle); }
-        }
-
-        public const string VerticalSelectionListBoxItemStyle = "VerticalSelectionListBoxItemStyle";
-        public static ComponentResourceKey VerticalSelectionListBoxItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), VerticalSelectionListBoxItemStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikListBoxItemStyle); }
         }
 
         #endregion
 
         #region ComboBox
 
-        public const string NormalComboBoxStyle = "NormalComboBoxStyle";
-        public static ComponentResourceKey NormalComboBoxStyleKey
+        public const string RubikComboBoxStyle = "RubikComboBoxStyle";
+        public static ComponentResourceKey RubikComboBoxStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalComboBoxStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikComboBoxStyle); }
         }
 
-        public const string NormalComboBoxItemStyle = "NormalComboBoxItemStyle";
-        public static ComponentResourceKey NormalComboBoxItemStyleKey
+        public const string RubikComboBoxItemStyle = "RubikComboBoxItemStyle";
+        public static ComponentResourceKey RubikComboBoxItemStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalComboBoxItemStyle); }
-        }
-
-        #endregion
-
-        #region TabControl
-
-        public const string NormalTabControlStyle = "NormalTabControlStyle";
-        public static ComponentResourceKey NormalTabControlStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalTabControlStyle); }
-        }
-
-        public const string NormalTabItemStyle = "NormalTabItemStyle";
-        public static ComponentResourceKey NormalTabItemStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalTabItemStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikComboBoxItemStyle); }
         }
 
         #endregion
@@ -290,56 +128,36 @@ namespace Rubik.Theme
 
         #region ScrollViewer
 
-        public const string NormalScrollBarStyle = "NormalScrollBarStyle";
-        public static ComponentResourceKey NormalScrollBarStyleKey
+        public const string RubikScrollBarStyle = "RubikScrollBarStyle";
+        public static ComponentResourceKey RubikScrollBarStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalScrollBarStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikScrollBarStyle); }
         }
 
-        public const string NormalScrollViewerStyle = "NormalScrollViewerStyle";
-        public static ComponentResourceKey NormalScrollViewerStyleKey
+        public const string RubikScrollViewerStyle = "RubikScrollViewerStyle";
+        public static ComponentResourceKey RubikScrollViewerStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalScrollViewerStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikScrollViewerStyle); }
         }
 
         #endregion
 
         #region Slider
 
-        public const string NormalSliderStyle = "NormalSliderStyle";
-        public static ComponentResourceKey NormalSliderStyleKey
+        public const string RubikSliderStyle = "RubikSliderStyle";
+        public static ComponentResourceKey RubikSliderStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalSliderStyle); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikSliderStyle); }
         }
 
         #endregion
 
         #region GridSplitter
 
-        public const string NormalGridSplitterStyle = "NormalGridSplitterStyle";
-        public static ComponentResourceKey NormalGridSplitterStyleKey
+        public const string RubikGridSplitterStyle = "RubikGridSplitterStyle";
+        public static ComponentResourceKey RubikGridSplitterStyleKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalGridSplitterStyle); }
-        }
-
-        #endregion
-
-        #region TextBox
-
-        public const string NormalTextBoxStyle = "NormalTextBoxStyle";
-        public static ComponentResourceKey NormalTextBoxStyleKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), NormalTextBoxStyle); }
-        }
-
-        #endregion
-
-        #region Geometry
-
-        public const string AlphaVisualBrush = "AlphaVisualBrush";
-        public static ComponentResourceKey AlphaVisualBrushKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), AlphaVisualBrush); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikGridSplitterStyle); }
         }
 
         #endregion
@@ -378,6 +196,22 @@ namespace Rubik.Theme
 
         #endregion
 
+        #region Separator
+
+        public const string HorSeparatorStyle = "HorSeparatorStyle";
+        public static ComponentResourceKey HorSeparatorStyleKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), HorSeparatorStyle); }
+        }
+
+        public const string VerSeparatorStyle = "VerSeparatorStyle";
+        public static ComponentResourceKey VerSeparatorStyleKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), VerSeparatorStyle); }
+        }
+
+        #endregion
+
         #region Converter
 
         public const string BoolConverter = "BoolConverter";
@@ -392,28 +226,10 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), BoolToVisibilityConverter); }
         }
 
-        public const string StringToVisibilityConverter = "StringToVisibilityConverter";
-        public static ComponentResourceKey StringToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), StringToVisibilityConverter); }
-        }
-
-        public const string StringToBoolConverter = "StringToBoolConverter";
-        public static ComponentResourceKey StringToBoolConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), StringToBoolConverter); }
-        }
-
         public const string NullToVisibilityConverter = "NullToVisibilityConverter";
         public static ComponentResourceKey NullToVisibilityConverterKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), NullToVisibilityConverter); }
-        }
-
-        public const string EqualIntToVisibilityConverter = "EqualIntToVisibilityConverter";
-        public static ComponentResourceKey EqualIntToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), EqualIntToVisibilityConverter); }
         }
 
         public const string EnumToVisibilityConverter = "EnumToVisibilityConverter";
@@ -422,40 +238,10 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), EnumToVisibilityConverter); }
         }
 
-        public const string CollapsedEnumToVisibilityConverter = "CollapsedEnumToVisibilityConverter";
-        public static ComponentResourceKey CollapsedEnumToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), CollapsedEnumToVisibilityConverter); }
-        }
-
-        public const string GreaterThanIntToVisibilityConverter = "GreaterThanIntToVisibilityConverter";
-        public static ComponentResourceKey GreaterThanIntToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), GreaterThanIntToVisibilityConverter); }
-        }
-
         public const string KeyToValueConverter = "KeyToValueConverter";
         public static ComponentResourceKey KeyToValueConverterKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), KeyToValueConverter); }
-        }
-
-        public const string ArrayLengthToVisibilityConverter = "ArrayLengthToVisibilityConverter";
-        public static ComponentResourceKey ArrayLengthToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ArrayLengthToVisibilityConverter); }
-        }
-
-        public const string ArrayLengthGreaterThanIntToVisibilityConverter = "ArrayLengthGreaterThanIntToVisibilityConverter";
-        public static ComponentResourceKey ArrayLengthGreaterThanIntToVisibilityConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ArrayLengthGreaterThanIntToVisibilityConverter); }
-        }
-
-        public const string StringArrayAddIndexConverter = "StringArrayAddIndexConverter";
-        public static ComponentResourceKey StringArrayAddIndexConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), StringArrayAddIndexConverter); }
         }
 
         public const string VisibilityConverter = "VisibilityConverter";
@@ -470,35 +256,16 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), TimeSpanToStringConverter); }
         }
 
-        public const string DoubleToCornerRadiusConverter = "DoubleToCornerRadiusConverter";
-        public static ComponentResourceKey DoubleToCornerRadiusConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), DoubleToCornerRadiusConverter); }
-        }
-
         public const string DoubleToGridLengthConverter = "DoubleToGridLengthConverter";
         public static ComponentResourceKey DoubleToGridLengthConverterKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), DoubleToGridLengthConverter); }
         }
 
-        public const string MultiBoolOrToVisibilityMultiConverter = "MultiBoolOrToVisibilityMultiConverter";
-        public static ComponentResourceKey MultiBoolOrToVisibilityMultiConverterKey
+        public const string DoubleToCornerRadiusConverter = "DoubleToCornerRadiusConverter";
+        public static ComponentResourceKey DoubleToCornerRadiusConverterKey
         {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MultiBoolOrToVisibilityMultiConverter); }
-        }
-        
-
-        public const string MultiVisibilityOrToVisibilityMultiConverter = "MultiVisibilityOrToVisibilityMultiConverter";
-        public static ComponentResourceKey MultiVisibilityOrToVisibilityMultiConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), MultiVisibilityOrToVisibilityMultiConverter); }
-        }
-
-        public const string DaysInMonthMultiConverter = "DaysInMonthMultiConverter";
-        public static ComponentResourceKey DaysInMonthMultiConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), DaysInMonthMultiConverter); }
+            get { return new ComponentResourceKey(typeof(ResourceKeys), DoubleToCornerRadiusConverter); }
         }
 
         public const string ScrollOffsetToVisibilityMultiConverter = "ScrollOffsetToVisibilityMultiConverter";
@@ -507,18 +274,6 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), ScrollOffsetToVisibilityMultiConverter); }
         }
         
-        public const string LastItemCollapsedMultiConverter = "LastItemCollapsedMultiConverter";
-        public static ComponentResourceKey LastItemCollapsedMultiConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), LastItemCollapsedMultiConverter); }
-        }
-
-        public const string ItemIndexMultiConverter = "ItemIndexMultiConverter";
-        public static ComponentResourceKey ItemIndexMultiConverterKey
-        {
-            get { return new ComponentResourceKey(typeof(ResourceKeys), ItemIndexMultiConverter); }
-        }
-
         #endregion
     }
 }

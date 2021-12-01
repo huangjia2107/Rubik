@@ -57,7 +57,7 @@
         <StackPanel>
             <RepeatButton Cursor="Hand" Width="40" Height="43" Margin="0,20,0,12" Interval="500"
                     Command="{Binding LogoCommand}"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NoBgButtonBaseStyleKey}}">
+                    Style="{StaticResource {x:Static rubik:ResourceKeys.RubikButtonBaseStyleKey}}">
                 <RepeatButton.Background>
                     <DrawingBrush Drawing="{StaticResource LogoDrawingGroupKey}"/>
                 </RepeatButton.Background>

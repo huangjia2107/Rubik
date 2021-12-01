@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 using Rubik.Theme.Datas;
 using Rubik.Theme.Utils;
-using Rubik.Theme.ExtensionMethods;
+using Rubik.Theme.Extensions;
 
 namespace Rubik.Theme.Panels
 {

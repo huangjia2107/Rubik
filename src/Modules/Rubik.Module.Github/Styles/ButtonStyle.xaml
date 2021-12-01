@@ -3,7 +3,7 @@
                     xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <Style x:Key="ReleaseDownloadButtonStyle" 
-           BasedOn="{StaticResource {x:Static rubik:ResourceKeys.NoBgRoundButtonBaseStyleKey}}"
+           BasedOn="{StaticResource {x:Static rubik:ResourceKeys.RubikRoundButtonBaseStyleKey}}"
            TargetType="{x:Type ButtonBase}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="#CCE4F5"/>

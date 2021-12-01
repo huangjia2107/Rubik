@@ -20,7 +20,7 @@
                         ResetXaml="{Binding ResetXamlFunc}">
             <rubik:LiveXaml.Resources>
                 <Style TargetType="ScrollViewer"
-                       BasedOn="{StaticResource {x:Static rubik:ResourceKeys.NormalScrollViewerStyleKey}}"/>
+                       BasedOn="{StaticResource {x:Static rubik:ResourceKeys.RubikScrollViewerStyleKey}}"/>
             </rubik:LiveXaml.Resources>
         </rubik:LiveXaml>
     </Grid>

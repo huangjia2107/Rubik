@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Rubik.Theme.AttachedProperties
 {
@@ -12,6 +13,16 @@ namespace Rubik.Theme.AttachedProperties
         public static void SetIsAttached(DependencyObject dpo, CornerRadius value)
         {
             dpo.SetValue(CornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached("Orientation", typeof(Orientation), typeof(ElementProperty), new PropertyMetadata(Orientation.Horizontal));
+        public static Orientation GetOrientation(DependencyObject obj)
+        {
+            return (Orientation)obj.GetValue(OrientationProperty);
+        }
+        public static void SetOrientation(DependencyObject obj, Orientation value)
+        {
+            obj.SetValue(OrientationProperty, value);
         }
     }
 }

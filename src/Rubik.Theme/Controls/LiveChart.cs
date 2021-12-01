@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Rubik.Theme.Datas;
-using Rubik.Theme.ExtensionMethods;
+using Rubik.Theme.Extensions;
 using Rubik.Theme.Utils;
 
 namespace Rubik.Theme.Controls

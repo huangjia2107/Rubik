@@ -73,7 +73,7 @@
                                                   Foreground="{TemplateBinding Foreground}"
                                                   IsTabStop="False"
                                                   Command="{x:Static controls:NumericBox.IncreaseCommand}"
-                                                  Style="{DynamicResource {x:Static themes:ResourceKeys.NormalRepeatButtonStyleKey}}">
+                                                  Style="{DynamicResource {x:Static themes:ResourceKeys.RubikRepeatButtonStyleKey}}">
                                         <Path Width="11" Height="7" Stretch="Fill"
                                               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
                                               Data="M16,0L32,19.7 16,9.6 0,19.7z"/>
@@ -85,7 +85,7 @@
                                                   Foreground="{TemplateBinding Foreground}"
                                                   IsTabStop="False"
                                                   Command="{x:Static controls:NumericBox.DecreaseCommand}"
-                                                  Style="{DynamicResource {x:Static themes:ResourceKeys.NormalRepeatButtonStyleKey}}">
+                                                  Style="{DynamicResource {x:Static themes:ResourceKeys.RubikRepeatButtonStyleKey}}">
                                         <Path Width="11" Height="7" Stretch="Fill"
                                               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
                                               Data="M0,0 L20.25,19.5 40.5,0 20.25,38 z"/>

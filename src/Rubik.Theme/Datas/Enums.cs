@@ -21,4 +21,19 @@ namespace Rubik.Theme.Datas
         BottomCenter,
         BottomRight
     }
+
+    public enum RulerUnit
+    {
+        Pixel,
+        Millimeter,
+        Centimeter,
+        Inch,
+        Foot
+    }
+
+    public enum MarkDock
+    {
+        Up,
+        Down
+    }
 }

@@ -26,6 +26,15 @@ namespace Rubik.Theme.Utils
             return null;
         }
 
+        public static string ShowFolderBrowserDialog()
+        {
+            var ofd = new SWF.FolderBrowserDialog();
+            if (ofd.ShowDialog() == SWF.DialogResult.OK)
+                return ofd.SelectedPath;
+
+            return null;
+        }
+
         #endregion
 
         #region Timestamp

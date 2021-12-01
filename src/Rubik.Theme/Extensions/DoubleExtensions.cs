@@ -1,6 +1,6 @@
 ﻿using Rubik.Theme.Utils;
 
-namespace Rubik.Theme.ExtensionMethods
+namespace Rubik.Theme.Extensions
 {
     public static class DoubleExtensions
     {
@@ -10,7 +10,7 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (doubleValue < 0d)
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -18,7 +18,7 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (DoubleUtil.IsNaN(doubleValue))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -26,7 +26,7 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (double.IsPositiveInfinity(doubleValue))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
@@ -34,11 +34,11 @@ namespace Rubik.Theme.ExtensionMethods
             {
                 if (double.IsNegativeInfinity(doubleValue))
                 {
-                    return (false);
+                    return false;
                 }
             }
 
-            return (true);
+            return true;
         }
     }
 }

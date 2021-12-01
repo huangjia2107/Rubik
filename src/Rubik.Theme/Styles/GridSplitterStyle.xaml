@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:utils="clr-namespace:Rubik.Theme.Utils">
+                    xmlns:ap="clr-namespace:Rubik.Theme.AttachedProperties">
 
     <Style x:Key="GridSplitterPreviewStyle" >
         <Setter Property="Control.Template">
@@ -27,7 +27,7 @@
         </Border>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalGridSplitterStyleKey}" 
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikGridSplitterStyleKey}" 
            TargetType="{x:Type GridSplitter}">
         <Setter Property="Background" Value="#EFEFF2"/>
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
@@ -50,7 +50,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="utils:GridSplitterUtil.Orientation" Value="Vertical">
+            <Trigger Property="ap:ElementProperty.Orientation" Value="Vertical">
                 <Setter Property="Template" Value="{StaticResource VerticalGridSplitterTemplate}"/>
             </Trigger>
         </Style.Triggers>

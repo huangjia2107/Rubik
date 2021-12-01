@@ -7,7 +7,7 @@
     <UserControl.Resources>
 
         <Style x:Key="DemoListBoxItemStyle" 
-               BasedOn="{StaticResource {x:Static rubik:ResourceKeys.NormalListBoxItemStyleKey}}"
+               BasedOn="{StaticResource {x:Static rubik:ResourceKeys.RubikListBoxItemStyleKey}}"
                TargetType="{x:Type ListBoxItem}">
             <Setter Property="Tag" Value="#007ACC"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -75,7 +75,7 @@
                  ItemsSource="{Binding DemoList}"
                  ItemTemplate="{StaticResource DemoDataTemplate}"
                  ItemContainerStyle="{StaticResource DemoListBoxItemStyle}"
-                 Style="{StaticResource {x:Static rubik:ResourceKeys.NormalListBoxStyleKey}}"/>
+                 Style="{StaticResource {x:Static rubik:ResourceKeys.RubikListBoxStyleKey}}"/>
 
         <Border Grid.Column="2" Margin="0,3,0,0">
             <Grid>
@@ -85,7 +85,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <ScrollViewer Margin="15" 
-                              Style="{StaticResource {x:Static rubik:ResourceKeys.NormalScrollViewerStyleKey}}">
+                              Style="{StaticResource {x:Static rubik:ResourceKeys.RubikScrollViewerStyleKey}}">
                     <Grid>
                         <ContentControl Content="{Binding SelectedItem.Page,ElementName=DemoListBox}"
                                         Visibility="{Binding Content,RelativeSource={RelativeSource Self},FallbackValue={x:Static Visibility.Collapsed},Converter={StaticResource {x:Static rubik:ResourceKeys.NullToVisibilityConverterKey}}}"/>

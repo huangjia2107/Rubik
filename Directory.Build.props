@@ -19,6 +19,6 @@
     <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
     <PrismLicenseFile>LICENSE</PrismLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageTags>rubik;wpf;theme;control;xaml</PackageTags>
+    <PackageTags>rubik;wpf;theme;control;xaml;style</PackageTags>
   </PropertyGroup>
 </Project>

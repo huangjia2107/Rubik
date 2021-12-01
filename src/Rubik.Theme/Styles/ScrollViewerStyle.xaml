@@ -169,7 +169,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalScrollBarStyleKey}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikScrollBarStyleKey}" TargetType="{x:Type ScrollBar}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="{StaticResource ScrollBar_Background}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -188,7 +188,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}" 
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikScrollViewerStyleKey}" 
            TargetType="{x:Type ScrollViewer}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -216,14 +216,14 @@
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"
                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                   Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollBarStyleKey}}"/>
+                                   Style="{StaticResource {x:Static themes:ResourceKeys.RubikScrollBarStyleKey}}"/>
                         <ScrollBar x:Name="PART_HorizontalScrollBar" 
                                    Orientation="Horizontal" Grid.Row="1" Grid.Column="0"
                                    Value="{TemplateBinding HorizontalOffset}"
                                    Maximum="{TemplateBinding ScrollableWidth}"
                                    ViewportSize="{TemplateBinding ViewportWidth}"
                                    Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                   Style="{StaticResource {x:Static themes:ResourceKeys.NormalScrollBarStyleKey}}"/>
+                                   Style="{StaticResource {x:Static themes:ResourceKeys.RubikScrollBarStyleKey}}"/>
                         <Rectangle Grid.Row="1" Grid.Column="1" Fill="{StaticResource ScrollBar_Background}"/>
                     </Grid>
                     <ControlTemplate.Triggers>

@@ -43,7 +43,7 @@ namespace Rubik.Theme.Controls
         private long _maxTimestamp = 0;
 
         private WriteableBitmap _writeableBitmap = null;
-        private (double X, double Y)? _dpi = null;
+        private System.Windows.Point? _dpi = null;
 
         public ImageChart()
         {

@@ -7,46 +7,26 @@
         <markup:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <!--NormalButton-->
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalButtonStyleKey}" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgRoundButtonBaseStyleKey}}"
-           TargetType="{x:Type ButtonBase}">
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="#E6E6E6"/>
-        <Setter Property="Foreground" Value="#404040"/>
+    <Style x:Key="{x:Static themes:ResourceKeys.OpacityButtonStyleKey}"
+           BasedOn="{StaticResource {x:Static themes:ResourceKeys.RubikButtonBaseStyleKey}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Opacity" Value="0.85"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver"  Value="True">
-                <Setter Property="Background" Value="#C5C5C5"/>
+                <Setter Property="Opacity" Value="1"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#AEAEAE"/>
+                <Setter Property="Opacity" Value="0.8"/>
             </Trigger>
             <Trigger Property="IsMouseCaptured" Value="true">
-                <Setter Property="Background" Value="#AEAEAE"/>
+                <Setter Property="Opacity" Value="0.8"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <!--Toolbar Button-->
-    <Style x:Key="{x:Static themes:ResourceKeys.ToolbarButtonStyleKey}" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}" 
-           TargetType="{x:Type Button}">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver"  Value="True">
-                <Setter Property="Background" Value="#FDFDFD"/>
-                <Setter Property="Foreground" Value="#007ACC"/>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#FDFDFD"/>
-                <Setter Property="Foreground" Value="#141414"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    
-    <!--Titlebar Button-->
     <Style x:Key="{x:Static themes:ResourceKeys.TitlebarButtonStyleKey}" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}" 
-           TargetType="{x:Type Button}"> 
+           BasedOn="{StaticResource {x:Static themes:ResourceKeys.RubikButtonBaseStyleKey}}" 
+           TargetType="{x:Type Button}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver"  Value="True">
                 <Setter Property="Background" Value="#E5E5E5"/>
@@ -58,7 +38,7 @@
     </Style>
 
     <Style x:Key="{x:Static themes:ResourceKeys.TitlebarCloseBtnStyleKey}" 
-           BasedOn="{StaticResource {x:Static themes:ResourceKeys.NoBgButtonBaseStyleKey}}"  
+           BasedOn="{StaticResource {x:Static themes:ResourceKeys.RubikButtonBaseStyleKey}}"  
            TargetType="{x:Type Button}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver"  Value="True">
@@ -71,5 +51,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

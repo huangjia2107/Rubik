@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalListBoxStyleKey}" TargetType="{x:Type ListBox}">
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikListBoxStyleKey}" TargetType="{x:Type ListBox}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -17,7 +17,7 @@
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="true">
                         <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}"
-                                      Style="{DynamicResource {x:Static themes:ResourceKeys.NormalScrollViewerStyleKey}}">
+                                      Style="{DynamicResource {x:Static themes:ResourceKeys.RubikScrollViewerStyleKey}}">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>
                     </Border>
@@ -31,7 +31,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.NormalListBoxItemStyleKey}" 
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikListBoxItemStyleKey}" 
            TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="13"/>

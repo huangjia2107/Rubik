@@ -1,11 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
+using Rubik.Theme.Datas;
+
 namespace Rubik.Theme.Utils
 {
     public static class DpiUtil
     {
-        public static (double X, double Y) GetDpi(Visual visual)
+        private const double DIP = 96.0;
+        private const double DIU = 1 / 96.0;
+
+        public static Point GetDpi(Visual visual)
         {
             var source = PresentationSource.FromVisual(visual);
 
@@ -18,7 +23,45 @@ namespace Rubik.Theme.Utils
                 dpiY = 96.0 * source.CompositionTarget.TransformToDevice.M22;
             }
 
-            return (dpiX, dpiY);
+            return new Point(dpiX, dpiY);
+        }
+
+        public static double GetDevicePixelUnit(Visual visual)
+        {
+            if (visual == null)
+                return 0;
+
+            return DIU * GetDpi(visual).X;
+        }
+
+        public static double PtToPixel(double pt)
+        {
+            return pt * 1 / 72.0 * DIP;
+        }
+
+        public static double GetPixelPerUnit(RulerUnit unit)
+        {
+            double result = 1;
+            switch (unit)
+            {
+                case RulerUnit.Pixel:
+                    result = 1;
+                    break;
+                case RulerUnit.Inch:
+                    result = 96;
+                    break;
+                case RulerUnit.Foot:
+                    result = 1152;
+                    break;
+                case RulerUnit.Millimeter:
+                    result = 3.7795;
+                    break;
+                case RulerUnit.Centimeter:
+                    result = 37.795;
+                    break;
+            }
+
+            return result;
         }
     }
 }

@@ -22,23 +22,23 @@
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Width="70" Height="30" Content="忽略"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NormalButtonStyleKey}}"
+                    Style="{DynamicResource NormalButtonStyleKey}"
                     Visibility="{Binding IgnoreVisibility}"
                     Command="{Binding IgnoreCommand}"/>
             <Button Width="70" Height="30" Content="是" Margin="15,0,0,0" IsDefault="True"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NormalButtonStyleKey}}"
+                    Style="{DynamicResource NormalButtonStyleKey}"
                     Visibility="{Binding YesVisibility}"
                     Command="{Binding YesCommand}"/>
             <Button Width="70" Height="30" Content="否" Margin="15,0,0,0"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NormalButtonStyleKey}}"
+                    Style="{DynamicResource NormalButtonStyleKey}"
                     Visibility="{Binding NoVisibility}"
                     Command="{Binding NoCommand}"/>
             <Button Width="70" Height="30" Content="确认" Margin="15,0,0,0" IsDefault="True"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NormalButtonStyleKey}}"
+                    Style="{DynamicResource NormalButtonStyleKey}"
                     Visibility="{Binding OKVisibility}"
                     Command="{Binding OKCommand}"/>
             <Button Width="70" Height="30" Content="取消" Margin="15,0,0,0"
-                    Style="{StaticResource {x:Static rubik:ResourceKeys.NormalButtonStyleKey}}"
+                    Style="{DynamicResource NormalButtonStyleKey}"
                     Visibility="{Binding CancelVisibility}"
                     Command="{Binding CancelCommand}"/>
         </StackPanel>

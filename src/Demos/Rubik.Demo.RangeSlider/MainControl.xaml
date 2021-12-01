@@ -19,10 +19,10 @@
     <StackPanel Grid.Column="2" Width="100">
         <CheckBox Content="IgnoreEdge" 
                   IsChecked="{Binding IgnoreEdge,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"
-                  Style="{StaticResource {x:Static rubik:ResourceKeys.NormalCheckBoxStyleKey}}"/>
+                  Style="{StaticResource {x:Static rubik:ResourceKeys.RubikCheckBoxStyleKey}}"/>
         <CheckBox Content="IsLinked"
                   IsChecked="{Binding IsLinked,ElementName=rangeSlider,Mode=TwoWay}" Margin="0,15,0,0"
-                  Style="{StaticResource {x:Static rubik:ResourceKeys.NormalCheckBoxStyleKey}}"/>
+                  Style="{StaticResource {x:Static rubik:ResourceKeys.RubikCheckBoxStyleKey}}"/>
     </StackPanel>
 </Grid>]]>
                 </sys:String>
