@@ -12,5 +12,5 @@
     <Resource Include="Assets\Images\Question.png" />
     <Resource Include="Assets\Images\Warning.png" />
   </ItemGroup>
-  
+
 </Project>

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
-    <FileVersion>1.0.0</FileVersion>
+    <Title>Rubik.Theme</Title>
+    <Version>0.1.0-preview</Version>
     <Copyright>Copyright © 2021</Copyright>
     <Authors>Rubik Contributors</Authors>
     <Description>This is a wpf control library</Description>
@@ -17,8 +17,21 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
     <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
-    <PrismLicenseFile>LICENSE</PrismLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>PackageIcon.png</PackageIcon>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>rubik;wpf;theme;control;xaml;style</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup Condition="$(AssemblyName.Contains('Theme'))">
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\PackageIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
 </Project>
