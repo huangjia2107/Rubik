@@ -1,4 +1,5 @@
 <Project>
+  
   <PropertyGroup>
     <UseWPF>true</UseWPF>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
@@ -7,31 +8,38 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Rubik.Theme</Title>
-    <Version>0.1.0-preview</Version>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
     <Copyright>Copyright © 2021</Copyright>
     <Authors>Rubik Contributors</Authors>
-    <Description>This is a wpf control library</Description>
     <IncludeSymbols>True</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
     <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>PackageIcon.png</PackageIcon>
+    <PackageIcon>rubik-logo.png</PackageIcon>
+    <RubikPackageIcon>$(MSBuildThisFileDirectory)images/rubik-logo.png</RubikPackageIcon>
+    <RubikLicenseFile>$(MSBuildThisFileDirectory)LICENSE</RubikLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageTags>rubik;wpf;theme;control;xaml;style</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Condition="$(AssemblyName.Contains('Theme'))">
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\PackageIcon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+  <PropertyGroup>
+    <IsThemeProject>$(MSBuildProjectName.Contains('Theme'))</IsThemeProject>
+    <IsToolkitProject>$(MSBuildProjectName.Contains('Toolkit'))</IsToolkitProject>
+    
+    <Version Condition=" '$(IsThemeProject)' == 'True' ">0.1.1-preview</Version>
+    <Description Condition=" '$(IsThemeProject)' == 'True' ">This is a wpf control library</Description>
+    <PackageTags Condition=" '$(IsThemeProject)' == 'True' ">rubik;wpf;theme;control;xaml;style</PackageTags>
+
+    <Version Condition=" '$(IsToolkitProject)' == 'True' ">0.1.1-preview</Version>
+    <Description Condition=" '$(IsToolkitProject)' == 'True' ">This is a wpf toolkit</Description>
+    <PackageTags Condition=" '$(IsToolkitProject)' == 'True' ">rubik;wpf;toolkit;util</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsThemeProject)' == 'True' Or '$(IsToolkitProject)' == 'True' ">
+    <None Include="$(RubikPackageIcon)" Visible="False" Pack="True" PackagePath=""/>
+    <None Include="$(RubikLicenseFile)" Visible="False" Pack="True" PackagePath=""/>
   </ItemGroup>
 
 </Project>

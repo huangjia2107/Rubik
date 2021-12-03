@@ -5,7 +5,7 @@
     <OutputPath>..\..\bin\$(Configuration)</OutputPath>
     <ApplicationIcon>Assets\Logos\Logo1.ico</ApplicationIcon>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <Resource Include="Assets\Logos\Logo.ico" />
     <Resource Include="Assets\Logos\Logo1.ico" />

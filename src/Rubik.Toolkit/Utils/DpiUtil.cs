@@ -1,14 +1,25 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-using Rubik.Theme.Datas;
+using Rubik.Toolkit.Datas;
 
-namespace Rubik.Theme.Utils
+namespace Rubik.Toolkit.Utils
 {
     public static class DpiUtil
     {
         private const double DIP = 96.0;
         private const double DIU = 1 / 96.0;
+
+        public static Point GetDpiFactor(Visual visual)
+        {
+            if (visual == null)
+                return new Point();
+
+            var source = PresentationSource.FromVisual(visual);
+            var matrix = source.CompositionTarget.TransformToDevice;
+
+            return new Point(matrix.M11, matrix.M22);
+        }
 
         public static Point GetDpi(Visual visual)
         {

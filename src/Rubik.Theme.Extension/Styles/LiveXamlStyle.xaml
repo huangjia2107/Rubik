@@ -4,7 +4,7 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls"
                     xmlns:exUtils="clr-namespace:Rubik.Theme.Extension.Utils"
                     xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
-                    xmlns:utils="clr-namespace:Rubik.Theme.Utils;assembly=Rubik.Theme">
+                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit">
 
     <exUtils:LineNumbersWithoutLineConverter x:Key="lineNumbersWithoutLineConverter"/>
 
@@ -29,7 +29,7 @@
                             <ContentControl Content="{TemplateBinding Content}"/>
                             <GridSplitter Grid.Row="1" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                           Style="{StaticResource {x:Static themes:ResourceKeys.RubikGridSplitterStyleKey}}"
-                                          utils:CursorUtil.Source="/Rubik.Theme;component/Assets/Cursors/Splitter_ud.cur"/>
+                                          utils:CursorUtil.Source="/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur"/>
                             <StackPanel Grid.Row="1" Margin="2" Orientation="Horizontal">
                                 <Button Width="40" ToolTip="Open"
                                         Command="{x:Static controls:LiveXaml.OpenXamlCommand}"

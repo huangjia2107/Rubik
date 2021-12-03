@@ -6,9 +6,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using Rubik.Toolkit.Datas;
+using Rubik.Toolkit.Utils;
 using Rubik.Theme.Adorners;
-using Rubik.Theme.Datas;
-using Rubik.Theme.Utils;
 
 namespace Rubik.Theme.Controls
 {

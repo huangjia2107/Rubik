@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:utils="clr-namespace:Rubik.Theme.Utils"
+                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
     <utils:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>

@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using SWM = System.Windows.Media;
 
 using Rubik.Theme.Datas;
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Controls
 {
@@ -61,7 +61,7 @@ namespace Rubik.Theme.Controls
         static void OnStartTimePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as ImageChart;
-            ctrl._minTimestamp = CommonUtil.DateTimeToTimestamp((DateTime)e.NewValue);
+            ctrl._minTimestamp = DateTimeUtil.DateTimeToTimestamp((DateTime)e.NewValue);
         }
 
         public static readonly DependencyProperty EndTimeProperty =
@@ -75,7 +75,7 @@ namespace Rubik.Theme.Controls
         static void OnEndTimePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as ImageChart;
-            ctrl._maxTimestamp = CommonUtil.DateTimeToTimestamp((DateTime)e.NewValue);
+            ctrl._maxTimestamp = DateTimeUtil.DateTimeToTimestamp((DateTime)e.NewValue);
         }
 
         public static readonly DependencyProperty YMaxProperty =
@@ -330,7 +330,7 @@ namespace Rubik.Theme.Controls
 
             for (var i = StartTime + TimeSpan.FromMilliseconds(formatAndInterval.interval); i < EndTime; i += TimeSpan.FromMilliseconds(formatAndInterval.interval))
             {
-                var timestamp = CommonUtil.DateTimeToTimestamp(i);
+                var timestamp = DateTimeUtil.DateTimeToTimestamp(i);
 
                 var x = (timestamp - _minTimestamp) * disPerX;
                 var y = _imageGrid.ActualHeight - 25;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Panels
 {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Rubik.Theme.Extensions
+namespace Rubik.Toolkit.Extensions
 {
     public static class ThicknessExtensions
     {

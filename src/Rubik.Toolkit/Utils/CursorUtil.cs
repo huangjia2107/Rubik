@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Rubik.Theme.Utils
+namespace Rubik.Toolkit.Utils
 {
     public class CursorUtil
     {

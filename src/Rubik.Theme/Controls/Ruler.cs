@@ -4,8 +4,9 @@ using System.Windows;
 using System.Windows.Media; 
 using System.Windows.Controls;
 
+using Rubik.Toolkit.Datas;
+using Rubik.Toolkit.Utils;
 using Rubik.Theme.Datas;
-using Rubik.Theme.Utils;
 using Rubik.Theme.Primitives;
 
 namespace Rubik.Theme.Controls

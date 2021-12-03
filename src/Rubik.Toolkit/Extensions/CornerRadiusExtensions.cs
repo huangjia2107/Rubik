@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
-namespace Rubik.Theme.Extensions
+namespace Rubik.Toolkit.Extensions
 {
     public static class CornerRadiusExtensions
     {

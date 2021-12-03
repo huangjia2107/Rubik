@@ -9,11 +9,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 
 using Rubik.App.Models;
-using Rubik.App.Views;
-using Rubik.Service.Events;
-using Rubik.Service.Regions;
-using Rubik.Service.ViewModels;
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.App.ViewModels
 {

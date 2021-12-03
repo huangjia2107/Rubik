@@ -33,6 +33,7 @@ move /y %publish_app_path%\Rubik.Demo.* %publish_app_demos_path%\
 move /y %publish_app_path%\Rubik.Module.* %publish_app_modules_path%\
 
 :: 5.发布 Package
+dotnet pack -c Release -o %publish_pack_path%\ ..\src\Rubik.Toolkit\Rubik.Toolkit.csproj
 dotnet pack -c Release -o %publish_pack_path%\ ..\src\Rubik.Theme\Rubik.Theme.csproj
 dotnet pack -c Release -o %publish_pack_path%\ ..\src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj
 

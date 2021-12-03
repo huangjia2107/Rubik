@@ -4,8 +4,8 @@ using System.Windows;
 using System.Windows.Media;
 
 using Rubik.Theme.Datas;
-using Rubik.Theme.Utils;
-using Rubik.Theme.Extensions;
+using Rubik.Toolkit.Utils;
+using Rubik.Toolkit.Extensions;
 
 namespace Rubik.Theme.Panels
 {

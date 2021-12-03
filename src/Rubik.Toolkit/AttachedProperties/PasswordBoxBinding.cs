@@ -2,11 +2,11 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Rubik.Theme.AttachedProperties
+namespace Rubik.Toolkit.AttachedProperties
 {
-    public class PasswordBoxAttachedProperty
+    public class PasswordBoxBinding
     {
-        public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(bool), typeof(PasswordBoxAttachedProperty), new PropertyMetadata(OnAttachPropertyChanged));
+        public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(bool), typeof(PasswordBoxBinding), new PropertyMetadata(OnAttachPropertyChanged));
         public static bool GetAttach(DependencyObject obj)
         {
             return (bool)obj.GetValue(AttachProperty);
@@ -40,7 +40,7 @@ namespace Rubik.Theme.AttachedProperties
             }
         }
 
-        public static readonly DependencyProperty PasswordProperty = DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxAttachedProperty), new PropertyMetadata(OnPasswordPropertyChanged));
+        public static readonly DependencyProperty PasswordProperty = DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxBinding), new PropertyMetadata(OnPasswordPropertyChanged));
         public static string GetPassword(DependencyObject obj)
         {
             return (string)obj.GetValue(PasswordProperty);

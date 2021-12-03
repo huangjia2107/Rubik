@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace Rubik.Theme.Utils
+namespace Rubik.Toolkit.Utils
 {
     public static class ColorUtil
     {

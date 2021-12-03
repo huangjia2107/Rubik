@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Controls
 {

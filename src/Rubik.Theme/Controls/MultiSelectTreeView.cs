@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Windows.Data;
 using System.Xml;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Controls
 {

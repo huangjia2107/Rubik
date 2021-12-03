@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Rubik.Theme.Utils
+namespace Rubik.Toolkit.Utils
 {
     public static class Win32
     {

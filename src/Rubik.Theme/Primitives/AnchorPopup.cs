@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 using Rubik.Theme.Datas;
 using Rubik.Theme.Panels;
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Primitives
 {

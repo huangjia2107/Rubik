@@ -9,7 +9,7 @@ using Prism.Events;
 using Prism.Commands;
 using Prism.Mvvm;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 using Rubik.Module.Home.Models;
 using Rubik.Module.Home.Views;
 using Rubik.Module.Home.Events;

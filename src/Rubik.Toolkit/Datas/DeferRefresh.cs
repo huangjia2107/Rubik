@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rubik.Theme.Primitives
+namespace Rubik.Toolkit.Datas
 {
     public class DeferRefresh : IDisposable
     {

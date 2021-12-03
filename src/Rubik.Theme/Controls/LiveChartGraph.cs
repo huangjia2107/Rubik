@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 
 using Rubik.Theme.Datas;
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Controls
 {
@@ -236,8 +236,8 @@ namespace Rubik.Theme.Controls
 
         public void AppendPoints(IDictionary<string, PointData<string, long, int>> dic, int yMin, int yMax, long minDataTimestamp, long maxDataTimestamp, (DateTime StartTime, DateTime EndTime) xRange, bool xAxisChanged, params string[] visibleKeys)
         {
-            var minAxisTimestamp = CommonUtil.DateTimeToTimestamp(xRange.StartTime);
-            var maxAxisTimestamp = CommonUtil.DateTimeToTimestamp(xRange.EndTime);
+            var minAxisTimestamp = DateTimeUtil.DateTimeToTimestamp(xRange.StartTime);
+            var maxAxisTimestamp = DateTimeUtil.DateTimeToTimestamp(xRange.EndTime);
 
             var disPerX = this.ActualWidth / (maxAxisTimestamp - minAxisTimestamp);
             var disPerY = (this.ActualHeight) / (yMax - yMin);

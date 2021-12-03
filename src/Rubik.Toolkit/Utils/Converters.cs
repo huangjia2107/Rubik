@@ -4,9 +4,10 @@ using System.Windows;
 using System.Windows.Data;
 using System.Collections;
 using System.Linq;
-using Rubik.Theme.Datas;
 
-namespace Rubik.Theme.Utils
+using Rubik.Toolkit.Datas;
+
+namespace Rubik.Toolkit.Utils
 {
     public class BoolConverter : IValueConverter
     {

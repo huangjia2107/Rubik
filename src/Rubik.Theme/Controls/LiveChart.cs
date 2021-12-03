@@ -9,8 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Rubik.Theme.Datas;
-using Rubik.Theme.Extensions;
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Extensions;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Controls
 {
@@ -203,8 +203,8 @@ namespace Rubik.Theme.Controls
 
         private bool CheckXAxis(long minTimestamp, long maxTimestamp)
         {
-            var minTime = CommonUtil.TimestampToDateTime(minTimestamp);
-            var maxTime = CommonUtil.TimestampToDateTime(maxTimestamp);
+            var minTime = DateTimeUtil.TimestampToDateTime(minTimestamp);
+            var maxTime = DateTimeUtil.TimestampToDateTime(maxTimestamp);
 
             if (IsRealtime)
             {

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+  
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.1.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\Rubik.Theme\Rubik.Theme.csproj" />
   </ItemGroup>

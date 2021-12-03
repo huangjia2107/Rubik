@@ -22,15 +22,6 @@ namespace Rubik.Theme.Datas
         BottomRight
     }
 
-    public enum RulerUnit
-    {
-        Pixel,
-        Millimeter,
-        Centimeter,
-        Inch,
-        Foot
-    }
-
     public enum MarkDock
     {
         Up,

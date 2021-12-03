@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Rubik.Theme.Utils
+namespace Rubik.Toolkit.Utils
 {
     /// <summary>
     /// Double 帮助类

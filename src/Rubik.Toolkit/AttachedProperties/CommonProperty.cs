@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Rubik.Theme.AttachedProperties
+namespace Rubik.Toolkit.AttachedProperties
 {
-    public class ElementProperty
+    public partial class ElementProperty
     {
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementProperty), new FrameworkPropertyMetadata(new CornerRadius(0d)));
         public static CornerRadius GetIsAttached(DependencyObject dpo)

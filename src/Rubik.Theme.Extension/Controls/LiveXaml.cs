@@ -16,7 +16,7 @@ using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
-using Rubik.Theme.Utils;
+using Rubik.Toolkit.Utils;
 
 namespace Rubik.Theme.Extension.Controls
 {
@@ -119,7 +119,7 @@ namespace Rubik.Theme.Extension.Controls
 
         private async static void OnOpenXamlCommand(object sender, RoutedEventArgs e)
         {
-            var fileName = CommonUtil.ShowOpenFileDialog("XAML|*.xaml");
+            var fileName = DialogUtil.ShowOpenFileDialog("XAML|*.xaml");
             if (string.IsNullOrEmpty(fileName) || !File.Exists(fileName))
                 return;
 
@@ -136,13 +136,13 @@ namespace Rubik.Theme.Extension.Controls
 
         private async static void OnSaveXamlCommand(object sender, RoutedEventArgs e)
         {
-            var fileName = CommonUtil.ShowSaveFileDialog("MyXaml.xaml", "XAML|*.xaml");
+            var fileName = DialogUtil.ShowSaveFileDialog("MyXaml.xaml", "XAML|*.xaml");
             if (string.IsNullOrEmpty(fileName))
                 return;
 
             var ctrl = sender as LiveXaml;
 
-            using (var fs = new FileStream(fileName,FileMode.Create,FileAccess.Write,FileShare.Read))
+            using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 using (var sw = new StreamWriter(fs, Encoding.UTF8))
                 {

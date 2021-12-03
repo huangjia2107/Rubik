@@ -1,9 +1,11 @@
 using System.Windows;
 using System.Windows.Markup;
 
-[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Theme.Extension")]
-[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Theme.Extension.Controls")]
-[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Theme.Extension.Utils")]
+[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Toolkit")]
+[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Toolkit.AttachedProperties")]
+[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Toolkit.Datas")]
+[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Toolkit.Extensions")]
+[assembly: XmlnsDefinition("https://github.com/huangjia2107/Rubik/", "Rubik.Toolkit.Utils")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
