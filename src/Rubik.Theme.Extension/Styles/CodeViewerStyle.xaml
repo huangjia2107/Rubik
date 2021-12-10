@@ -53,7 +53,7 @@
                                                            LineNumbersForeground="#A7AABE"
                                                            ShowLineNumbers="false"
                                                            WordWrap="{TemplateBinding WordWrap}"
-                                                           FontFamily="Courier New"
+                                                           FontFamily="Consolas"
                                                            FontSize="{TemplateBinding FontSize}"
                                                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
                                     <Rectangle x:Name="CodeTransparentLayer">

@@ -40,6 +40,9 @@ namespace Rubik.Theme.Extension.Controls
         private static RoutedCommand _copyXamlCommand = null;
         private static RoutedCommand _parseXamlCommand = null;
 
+        private static RoutedCommand _horSplitCommand = null;
+        private static RoutedCommand _verSplitCommand = null;
+
         public string Text
         {
             get
@@ -85,11 +88,16 @@ namespace Rubik.Theme.Extension.Controls
             _copyXamlCommand = new RoutedCommand("CopyXaml", _typeofSelf);
             _parseXamlCommand = new RoutedCommand("ParseXaml", _typeofSelf);
 
+            _horSplitCommand = new RoutedCommand("HorSplit", _typeofSelf);
+            _verSplitCommand = new RoutedCommand("VerSplit", _typeofSelf);
+
             CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_openXamlCommand, OnOpenXamlCommand));
             CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_saveXamlCommand, OnSaveXamlCommand));
             CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_resetXamlCommand, OnResetXamlCommand));
             CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_copyXamlCommand, OnCopyXamlCommand));
             CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_parseXamlCommand, OnParseXamlCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_horSplitCommand, OnHorSplitCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_verSplitCommand, OnVerSplitCommand));
         }
 
         public static RoutedCommand OpenXamlCommand
@@ -115,6 +123,16 @@ namespace Rubik.Theme.Extension.Controls
         public static RoutedCommand ParseXamlCommand
         {
             get { return _parseXamlCommand; }
+        }
+
+        public static RoutedCommand HorSplitCommand
+        {
+            get { return _horSplitCommand; }
+        }
+
+        public static RoutedCommand VerSplitCommand
+        {
+            get { return _verSplitCommand; }
         }
 
         private async static void OnOpenXamlCommand(object sender, RoutedEventArgs e)
@@ -171,16 +189,83 @@ namespace Rubik.Theme.Extension.Controls
             ctrl.ParseXaml(ctrl.Text);
         }
 
+        private static void OnHorSplitCommand(object sender, RoutedEventArgs e)
+        {
+            var ctrl = sender as LiveXaml;
+            ctrl.HorSplit();
+        }
+
+        private static void OnVerSplitCommand(object sender, RoutedEventArgs e)
+        {
+            var ctrl = sender as LiveXaml;
+            ctrl.VerSplit();
+        }
+
         #endregion
 
         #region Property
 
-        private static readonly DependencyPropertyKey ContentPropertyKey =
-            DependencyProperty.RegisterReadOnly("Content", typeof(object), _typeofSelf, new PropertyMetadata(null));
+        private static readonly DependencyPropertyKey ContainerAnglePropertyKey = DependencyProperty.RegisterReadOnly("ContainerAngle", typeof(double), _typeofSelf, new PropertyMetadata(0d));
+        public static readonly DependencyProperty ContainerAngleProperty = ContainerAnglePropertyKey.DependencyProperty;
+        public double ContainerAngle
+        {
+            get { return (double)GetValue(ContainerAngleProperty); }
+        }
+
+        private static readonly DependencyPropertyKey ControlPanelAnglePropertyKey = DependencyProperty.RegisterReadOnly("ControlPanelAngle", typeof(double), _typeofSelf, new PropertyMetadata(0d));
+        public static readonly DependencyProperty ControlPanelAngleProperty = ControlPanelAnglePropertyKey.DependencyProperty;
+        public double ControlPanelAngle
+        {
+            get { return (double)GetValue(ControlPanelAngleProperty); }
+        }
+
+        private static readonly DependencyPropertyKey SplitterCursorSourcePropertyKey = DependencyProperty.RegisterReadOnly("SplitterCursorSource", typeof(string), _typeofSelf, new PropertyMetadata(@"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur"));
+        public static readonly DependencyProperty SplitterCursorSourceProperty = SplitterCursorSourcePropertyKey.DependencyProperty;
+        public string SplitterCursorSource
+        {
+            get { return (string)GetValue(SplitterCursorSourceProperty); }
+        }
+
+        private static readonly DependencyPropertyKey PanelAnglePropertyKey = DependencyProperty.RegisterReadOnly("PanelAngle", typeof(double), _typeofSelf, new PropertyMetadata(0d));
+        public static readonly DependencyProperty PanelAngleProperty = PanelAnglePropertyKey.DependencyProperty;
+        public double PanelAngle
+        {
+            get { return (double)GetValue(PanelAngleProperty); }
+        }
+
+        private static readonly DependencyPropertyKey HorSplitAnglePropertyKey = DependencyProperty.RegisterReadOnly("HorSplitAngle", typeof(double), _typeofSelf, new PropertyMetadata(0d));
+        public static readonly DependencyProperty HorSplitAngleProperty = HorSplitAnglePropertyKey.DependencyProperty;
+        public double HorSplitAngle
+        {
+            get { return (double)GetValue(HorSplitAngleProperty); }
+        }
+
+        private static readonly DependencyPropertyKey VerSplitAnglePropertyKey = DependencyProperty.RegisterReadOnly("VerSplitAngle", typeof(double), _typeofSelf, new PropertyMetadata(0d));
+        public static readonly DependencyProperty VerSplitAngleProperty = VerSplitAnglePropertyKey.DependencyProperty;
+        public double VerSplitAngle
+        {
+            get { return (double)GetValue(VerSplitAngleProperty); }
+        }
+
+        private static readonly DependencyPropertyKey ContentPropertyKey = DependencyProperty.RegisterReadOnly("Content", typeof(object), _typeofSelf, new PropertyMetadata(null));
         public static readonly DependencyProperty ContentProperty = ContentPropertyKey.DependencyProperty;
         public object Content
         {
             get { return GetValue(ContentProperty); }
+        }
+
+        public static readonly DependencyProperty LineNumbersForegroundProperty = DependencyProperty.Register("LineNumbersForeground", typeof(Brush), _typeofSelf, new PropertyMetadata(Brushes.Black));
+        public Brush LineNumbersForeground
+        {
+            get { return (Brush)GetValue(LineNumbersForegroundProperty); }
+            set { SetValue(LineNumbersForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty LineNumbersBackgroundProperty = DependencyProperty.Register("LineNumbersBackground", typeof(Brush), _typeofSelf, new PropertyMetadata(Brushes.Transparent));
+        public Brush LineNumbersBackground
+        {
+            get { return (Brush)GetValue(LineNumbersBackgroundProperty); }
+            set { SetValue(LineNumbersBackgroundProperty, value); }
         }
 
         public static readonly DependencyProperty SyntaxHighlightingProperty = DependencyProperty.Register("SyntaxHighlighting", typeof(IHighlightingDefinition), _typeofSelf);
@@ -456,8 +541,6 @@ namespace Rubik.Theme.Extension.Controls
                     break;
             }
         }
-
-
 
         #endregion
 
@@ -891,6 +974,27 @@ namespace Rubik.Theme.Extension.Controls
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
             });
+        }
+
+        private void HorSplit()
+        {
+            SetValue(ContainerAnglePropertyKey, 0d);
+            SetValue(ControlPanelAnglePropertyKey, 0d);
+            SetValue(PanelAnglePropertyKey, 0d);
+            SetValue(HorSplitAnglePropertyKey, 0d);
+            SetValue(VerSplitAnglePropertyKey, 0d);
+            SetValue(SplitterCursorSourcePropertyKey, @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur");
+            
+        }
+
+        private void VerSplit()
+        {
+            SetValue(ContainerAnglePropertyKey, -90d);
+            SetValue(ControlPanelAnglePropertyKey, 180d);
+            SetValue(PanelAnglePropertyKey, 90d);
+            SetValue(HorSplitAnglePropertyKey, 90d);
+            SetValue(VerSplitAnglePropertyKey, 90d);
+            SetValue(SplitterCursorSourcePropertyKey, @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_lr.cur");
         }
 
         #endregion

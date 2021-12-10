@@ -8,7 +8,6 @@
                 <ResourceDictionary Source="pack://application:,,,/Rubik.Theme;component/Themes/Generic.xaml" />
                 <ResourceDictionary Source="/Rubik.App;component/Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="/Rubik.App;component/Styles/RadioButtonStyle.xaml"/>
-                <ResourceDictionary Source="/Rubik.App;component/Styles/ToggleButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -26,20 +26,4 @@
         </Style.Triggers>
     </Style>
 
-    <!--Toolbar Button-->
-    <Style x:Key="ToolbarButtonStyleKey" 
-           BasedOn="{StaticResource {x:Static rubik:ResourceKeys.RubikButtonBaseStyleKey}}" 
-           TargetType="{x:Type Button}">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver"  Value="True">
-                <Setter Property="Background" Value="#FDFDFD"/>
-                <Setter Property="Foreground" Value="#007ACC"/>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#FDFDFD"/>
-                <Setter Property="Foreground" Value="#141414"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    
 </ResourceDictionary>
