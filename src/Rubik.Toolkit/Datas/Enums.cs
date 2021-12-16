@@ -9,4 +9,10 @@ namespace Rubik.Toolkit.Datas
         Inch,
         Foot
     }
+
+    public enum PageOrientation
+    {
+        Landscape,
+        Portrait
+    }
 }
