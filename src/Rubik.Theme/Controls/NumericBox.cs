@@ -310,7 +310,7 @@ namespace Rubik.Theme.Controls
             {
                 Debug.Print("[ NumericBox ] ValueChanged, OldValue = {0}, NewValue = {1}, IsManual = {2}, IsBusy = {3}",
                      oldValue, newValue, _isManual, _isBusy);
-                RaiseEvent(new NumericBoxValueChangedEventArgs<double>(oldValue, newValue, _isManual, _isBusy, ValueChangedEvent));
+                RaiseEvent(new TextBoxValueChangedEventArgs<double>(oldValue, newValue, _isManual, _isBusy, ValueChangedEvent));
             }
 
             _isManual = false;

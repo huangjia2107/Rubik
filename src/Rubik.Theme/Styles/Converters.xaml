@@ -6,6 +6,8 @@
     <utils:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
     <utils:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
 
+    <utils:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
+
     <utils:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
     <utils:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
 

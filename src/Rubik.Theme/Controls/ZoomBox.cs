@@ -90,7 +90,7 @@ namespace Rubik.Theme.Controls
         } 
 
         public static readonly DependencyProperty IsShowRulerProperty =
-            DependencyProperty.Register("IsShowRuler", typeof(bool), _typeofSelf, new PropertyMetadata(true));
+            DependencyProperty.Register("IsShowRuler", typeof(bool), _typeofSelf, new PropertyMetadata(true, OnIsShowRulerPropertyChanged));
         public bool IsShowRuler
         {
             get { return (bool)GetValue(IsShowRulerProperty); }

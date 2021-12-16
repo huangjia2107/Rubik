@@ -22,6 +22,13 @@ namespace Rubik.Theme.Datas
         BottomRight
     }
 
+    public enum TextCase
+    {
+        Normal,
+        Upper,
+        Lower
+    }
+
     public enum MarkDock
     {
         Up,

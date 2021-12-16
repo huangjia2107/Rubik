@@ -100,6 +100,16 @@ namespace Rubik.Theme
 
         #endregion
 
+        #region TextBox
+
+        public const string RubikTextBoxStyle = "RubikTextBoxStyle";
+        public static ComponentResourceKey RubikTextBoxStyleKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), RubikTextBoxStyle); }
+        }
+
+        #endregion
+
         #region ComboBox
 
         public const string RubikComboBoxStyle = "RubikComboBoxStyle";
@@ -150,6 +160,12 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), RubikSliderStyle); }
         }
 
+        public const string ColorPickerSliderStyle = "ColorPickerSliderStyle";
+        public static ComponentResourceKey ColorPickerSliderStyleKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), ColorPickerSliderStyle); }
+        }
+
         #endregion
 
         #region GridSplitter
@@ -188,6 +204,12 @@ namespace Rubik.Theme
             get { return new ComponentResourceKey(typeof(ResourceKeys), ErrorGeometry); }
         }
 
+        public const string AlphaVisualBrush = "AlphaVisualBrush";
+        public static ComponentResourceKey AlphaVisualBrushKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), AlphaVisualBrush); }
+        }
+
         public const string LogoDrawingGroup = "LogoDrawingGroup";
         public static ComponentResourceKey LogoDrawingGroupKey
         {
@@ -224,6 +246,12 @@ namespace Rubik.Theme
         public static ComponentResourceKey BoolToVisibilityConverterKey
         {
             get { return new ComponentResourceKey(typeof(ResourceKeys), BoolToVisibilityConverter); }
+        }
+
+        public const string ColorToBrushConverter = "ColorToBrushConverter";
+        public static ComponentResourceKey ColorToBrushConverterKey
+        {
+            get { return new ComponentResourceKey(typeof(ResourceKeys), ColorToBrushConverter); }
         }
 
         public const string NullToVisibilityConverter = "NullToVisibilityConverter";
