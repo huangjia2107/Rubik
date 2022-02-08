@@ -14,8 +14,6 @@ namespace Rubik.Theme
         /// </summary>
         public static ComponentResourceKey RubikButtonBaseStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikButtonBaseStyle");
 
-        public static ComponentResourceKey RubikRoundButtonBaseStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikRoundButtonBaseStyle");
-
         #endregion
 
         #region Button
@@ -129,26 +127,26 @@ namespace Rubik.Theme
         #region Converter
 
         public static ComponentResourceKey BoolConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "BoolConverter");
-
         public static ComponentResourceKey BoolToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "BoolToVisibilityConverter");
 
         public static ComponentResourceKey ColorToBrushConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ColorToBrushConverter");
 
-        public static ComponentResourceKey NullToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "NullToVisibilityConverter");
+        public static ComponentResourceKey DoubleToGridLengthConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToGridLengthConverter");
+        public static ComponentResourceKey DoubleToCornerRadiusConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToCornerRadiusConverter");
 
         public static ComponentResourceKey EnumToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "EnumToVisibilityConverter");
 
         public static ComponentResourceKey KeyToValueConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "KeyToValueConverter");
 
-        public static ComponentResourceKey VisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "VisibilityConverter");
+        public static ComponentResourceKey NullToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "NullToVisibilityConverter");
+
+        public static ComponentResourceKey StringToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "StringToVisibilityConverter");
+        public static ComponentResourceKey StringToBoolConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "StringToBoolConverter");
+        public static ComponentResourceKey ScrollOffsetToVisibilityMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ScrollOffsetToVisibilityMultiConverter");
 
         public static ComponentResourceKey TimeSpanToStringConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "TimeSpanToStringConverter");
 
-        public static ComponentResourceKey DoubleToGridLengthConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToGridLengthConverter");
-
-        public static ComponentResourceKey DoubleToCornerRadiusConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToCornerRadiusConverter");
-
-        public static ComponentResourceKey ScrollOffsetToVisibilityMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ScrollOffsetToVisibilityMultiConverter");
+        public static ComponentResourceKey VisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "VisibilityConverter");
 
         #endregion
     }

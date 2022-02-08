@@ -17,6 +17,7 @@
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/LoadIndicatorStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ListBoxStyle.xaml"/>
 
@@ -26,6 +27,7 @@
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/NumericBoxStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/PasswordBoxStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/PaginationStyle.xaml"/>
         
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/RestrictTextBoxStyle.xaml"/>

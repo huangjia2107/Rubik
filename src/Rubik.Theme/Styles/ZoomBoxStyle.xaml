@@ -1,10 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
-                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
-    <utils:ZoomBoxRulerShiftMultiConverter x:Key="zoomBoxRulerShiftMultiConverter"/> 
+    <rubik:ZoomBoxRulerShiftMultiConverter x:Key="zoomBoxRulerShiftMultiConverter"/> 
 
     <Style TargetType="{x:Type controls:ZoomBox}">
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>

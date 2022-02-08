@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:ap="clr-namespace:Rubik.Toolkit.AttachedProperties;assembly=Rubik.Toolkit">
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <Style x:Key="GridSplitterPreviewStyle" >
         <Setter Property="Control.Template">
@@ -50,7 +50,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="ap:ElementProperty.Orientation" Value="Vertical">
+            <Trigger Property="rubik:ElementProperty.Orientation" Value="Vertical">
                 <Setter Property="Template" Value="{StaticResource VerticalGridSplitterTemplate}"/>
             </Trigger>
         </Style.Triggers>

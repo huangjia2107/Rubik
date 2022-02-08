@@ -6,13 +6,13 @@ namespace Rubik.Toolkit.AttachedProperties
     public partial class ElementProperty
     {
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementProperty), new FrameworkPropertyMetadata(new CornerRadius(0d)));
-        public static CornerRadius GetIsAttached(DependencyObject dpo)
+        public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
-            return (CornerRadius)dpo.GetValue(CornerRadiusProperty);
+            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
         }
-        public static void SetIsAttached(DependencyObject dpo, CornerRadius value)
+        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
         {
-            dpo.SetValue(CornerRadiusProperty, value);
+            obj.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached("Orientation", typeof(Orientation), typeof(ElementProperty), new PropertyMetadata(Orientation.Horizontal));

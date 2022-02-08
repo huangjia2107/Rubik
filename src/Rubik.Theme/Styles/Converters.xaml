@@ -1,26 +1,28 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
-    <utils:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
-    <utils:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
+    <rubik:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
+    <rubik:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
+      
+    <rubik:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
+      
+    <rubik:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
+    <rubik:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
+      
+    <rubik:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
+      
+    <rubik:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
+      
+    <rubik:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
 
-    <utils:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
-
-    <utils:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
-    <utils:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
-
-    <utils:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
-
-    <utils:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
+    <rubik:StringToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.StringToVisibilityConverterKey}"/>
+    <rubik:StringToBoolConverter x:Key="{x:Static themes:ResourceKeys.StringToBoolConverterKey}"/>
+    <rubik:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
     
-    <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
-
-    <utils:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
-
-    <utils:TimeSpanToStringConverter x:Key="{x:Static themes:ResourceKeys.TimeSpanToStringConverterKey}"/>
-
-    <utils:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityConverterKey}"/>
+    <rubik:TimeSpanToStringConverter x:Key="{x:Static themes:ResourceKeys.TimeSpanToStringConverterKey}"/>
+   
+    <rubik:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityConverterKey}"/>
 
 </ResourceDictionary>

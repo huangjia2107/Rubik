@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:themes="clr-namespace:Rubik.Theme">
+                    xmlns:themes="clr-namespace:Rubik.Theme"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <Style x:Key="{x:Static themes:ResourceKeys.RubikButtonBaseStyleKey}" 
            TargetType="{x:Type ButtonBase}">
@@ -15,7 +16,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border CornerRadius="0" 
+                    <Border CornerRadius="{Binding (rubik:ElementProperty.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                             Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}">
@@ -24,44 +25,7 @@
                                               RecognizesAccessKey="True" 
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            </ContentPresenter>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" Value="0.3"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{x:Static themes:ResourceKeys.RubikRoundButtonBaseStyleKey}" 
-           TargetType="{x:Type ButtonBase}">
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="#9A9FA3"/>
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="UseLayoutRounding" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border CornerRadius="4" 
-                            Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Background="Transparent">
-                            <ContentPresenter Margin="{TemplateBinding Padding}"
-                                              RecognizesAccessKey="True" 
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            </ContentPresenter>
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

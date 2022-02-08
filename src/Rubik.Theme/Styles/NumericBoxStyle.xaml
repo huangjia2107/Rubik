@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
                     xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:markup="clr-namespace:Rubik.Theme.Markup">
+                    xmlns:markup="clr-namespace:Rubik.Theme.Markup"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <ResourceDictionary.MergedDictionaries>
         <markup:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
@@ -28,6 +29,7 @@
                 <ControlTemplate TargetType="{x:Type controls:NumericBox}">
                     <Grid Background="#00000000">
                         <Border x:Name="Base"
+                                CornerRadius="{Binding (rubik:ElementProperty.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
