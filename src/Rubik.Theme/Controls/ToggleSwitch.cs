@@ -36,20 +36,19 @@ namespace Rubik.Theme.Controls
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
-        #region Override
-
-        protected override void OnChecked(RoutedEventArgs e)
+        public static readonly RoutedEvent StatusChangedEvent = EventManager.RegisterRoutedEvent("StatusChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+        public event RoutedEventHandler StatusChanged
         {
-            base.OnChecked(e);
-
-            UpdateThumb();
+            add { AddHandler(StatusChangedEvent, value); }
+            remove { RemoveHandler(StatusChangedEvent, value); }
         }
 
-        protected override void OnUnchecked(RoutedEventArgs e)
-        {
-            base.OnUnchecked(e);
+        #region Override
 
-            UpdateThumb();
+        protected override void OnClick()
+        {
+            base.OnClick();
+            OnToggle();
         }
 
         protected override void OnToggle()
@@ -162,16 +161,19 @@ namespace Rubik.Theme.Controls
             if (!_isDragging)
             {
                 OnToggle();
+                RaiseEvent(new RoutedEventArgs(StatusChangedEvent, this));
             }
             else if (_thumbTranslate != null && _switchTrack != null)
             {
                 if (!IsChecked.GetValueOrDefault() && _thumbTranslate.X + 6.5 >= _switchTrack.ActualWidth / 2)
                 {
                     OnToggle();
+                    RaiseEvent(new RoutedEventArgs(StatusChangedEvent, this));
                 }
                 else if (IsChecked.GetValueOrDefault() && _thumbTranslate.X + 6.5 <= _switchTrack.ActualWidth / 2)
                 {
                     OnToggle();
+                    RaiseEvent(new RoutedEventArgs(StatusChangedEvent, this));
                 }
                 else UpdateThumb();
             }
