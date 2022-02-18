@@ -64,6 +64,12 @@ namespace Rubik.Theme
 
         #endregion
 
+        #region PasswordBox
+
+        public static ComponentResourceKey RubikPasswordBoxStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikPasswordBoxStyle");
+
+        #endregion
+
         #region ComboBox
 
         public static ComponentResourceKey RubikComboBoxStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikComboBoxStyle");

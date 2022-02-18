@@ -27,7 +27,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NumericBox}">
-                    <Grid Background="#00000000">
+                    <Grid Background="Transparent">
                         <Border x:Name="Base"
                                 CornerRadius="{Binding (rubik:ElementProperty.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                 Background="{TemplateBinding Background}"
@@ -97,6 +97,16 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true" SourceName="PART_TextBox"/>
+                                <Condition Property="IsSelectionActive" Value="false" SourceName="PART_TextBox"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="SelectionBrush" TargetName="PART_TextBox" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true" SourceName="PART_TextBox">
+                            <Setter Property="BorderBrush" TargetName="Base" Value="#007ACC"/>
+                        </Trigger>
                         <Trigger Property="IsReadOnly" Value="True">
                             <Setter Property="Focusable" Value="False"/>
                             <Setter TargetName="PART_NumericDown" Property="IsEnabled" Value="False" />
@@ -106,6 +116,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.56"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

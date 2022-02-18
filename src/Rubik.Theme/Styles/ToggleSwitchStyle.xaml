@@ -9,8 +9,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <SolidColorBrush x:Key="ToggleSwitch_CheckedFgColor">#3B85D1</SolidColorBrush>
-    <SolidColorBrush x:Key="ToggleSwitch_UnCheckedFgColor">DarkGray</SolidColorBrush>
-    <SolidColorBrush x:Key="ToggleSwitch_DragBgColor">White</SolidColorBrush>
+    <SolidColorBrush x:Key="ToggleSwitch_UnCheckedFgColor">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="ToggleSwitch_DragBgColor">#404040</SolidColorBrush>
 
     <Style TargetType="{x:Type controls:ToggleSwitch}">
         <Setter Property="IsTabStop" Value="False" />
@@ -18,20 +18,20 @@
         <Setter Property="Height" Value="35"/>
         <Setter Property="Background" Value="{StaticResource ToggleSwitch_UnCheckedFgColor}"/>
         <Setter Property="Foreground" Value="{StaticResource ToggleSwitch_DragBgColor}"/>
-        <Setter Property="BorderBrush" Value="#3E4756"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="#404040"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ToggleSwitch}">
-                    <Grid>
-                        <Grid x:Name="PART_SwitchTrack">
-                            <Border ClipToBounds="true" 
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding ActualHeight,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}},ConverterParameter=0.5}">
-                            </Border>
-                            <Ellipse x:Name="PART_ThumbIndicator" HorizontalAlignment="Left" Margin="3"
+                    <Border ClipToBounds="true"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding ActualHeight,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}},ConverterParameter=0.5}">
+                        <Grid>
+                            <Ellipse x:Name="PART_ThumbIndicator" HorizontalAlignment="Left" Margin="3" IsHitTestVisible="False"
                                      Fill="{TemplateBinding Foreground}"
                                      Width="{Binding ActualHeight,RelativeSource={RelativeSource Self}}">
                                 <Ellipse.RenderTransform>
@@ -39,21 +39,14 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                         </Grid>
-                        <Thumb x:Name="PART_DraggingThumb">
-                            <Thumb.Template>
-                                <ControlTemplate>
-                                    <Rectangle Fill="Transparent"/>
-                                </ControlTemplate>
-                            </Thumb.Template>
-                        </Thumb>
-                    </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Background" Value="{StaticResource ToggleSwitch_CheckedFgColor}"/>
-                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource ToggleSwitch_CheckedFgColor}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Fill" TargetName="PART_ThumbIndicator" Value="{DynamicResource EnabledColor}"/>
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -61,5 +54,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>
