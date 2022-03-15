@@ -111,7 +111,7 @@
            TargetType="{x:Type ComboBox}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="MinHeight" Value="20"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="13"/>
         <Setter Property="Foreground" Value="#141414"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#141414"/>
