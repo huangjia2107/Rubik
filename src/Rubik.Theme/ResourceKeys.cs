@@ -137,6 +137,7 @@ namespace Rubik.Theme
 
         public static ComponentResourceKey ColorToBrushConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ColorToBrushConverter");
 
+        public static ComponentResourceKey DaysInMonthMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DaysInMonthMultiConverter");
         public static ComponentResourceKey DoubleToGridLengthConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToGridLengthConverter");
         public static ComponentResourceKey DoubleToCornerRadiusConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DoubleToCornerRadiusConverter");
 

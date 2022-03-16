@@ -229,6 +229,14 @@ namespace Rubik.Theme.Controls
                 numericBox.Value = roundValue;
         }
 
+        public static readonly DependencyProperty MaxLengthProperty = TextBox.MaxLengthProperty.AddOwner(_typeofSelf);
+        [Category("Common")]
+        public int MaxLength
+        {
+            get { return (int)GetValue(MaxLengthProperty); }
+            set { SetValue(MaxLengthProperty, value); }
+        }
+
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), _typeofSelf,
             new PropertyMetadata(double.MinValue, OnMinimumChanged));
         [Category("Common")]

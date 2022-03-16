@@ -43,6 +43,7 @@
                                          Padding="{TemplateBinding Padding}"
                                          InputMethod.IsInputMethodEnabled="False"
                                          MinHeight="{TemplateBinding MinHeight}"
+                                         MaxLength="{TemplateBinding MaxLength}"
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Stretch"
                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

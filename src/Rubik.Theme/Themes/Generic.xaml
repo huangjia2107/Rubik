@@ -12,6 +12,8 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ComboBoxStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ColorPickerStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/DateTimePickerStyle.xaml"/>
+
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Geometries.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/GridSplitterStyle.xaml"/>
 

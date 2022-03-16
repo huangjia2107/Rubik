@@ -50,6 +50,25 @@ namespace Rubik.Toolkit.Utils
         }
     }
 
+    public class DaysInMonthMultiConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Contains(null) || values.Contains(DependencyProperty.UnsetValue))
+                return 31;
+
+            var year = (int)values[0];
+            var month = (int)values[1];
+
+            return DateTime.DaysInMonth(year, month);
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class DoubleToGridLengthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
