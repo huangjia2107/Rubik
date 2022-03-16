@@ -61,6 +61,7 @@
                                 <ColumnDefinition Width="24"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <controls:NumericBox Grid.Column="0" Minimum="1000" Maximum="9999" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
@@ -95,7 +96,7 @@
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
                                                  Value="{Binding Second,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
 
-                            <ToggleButton x:Name="CalendarButton" Grid.Column="11" Width="20"
+                            <ToggleButton x:Name="CalendarButton" Grid.Column="12" Width="20"
                                           Style="{StaticResource DateTimePickerToggleStyle}">
                                 <Path Stretch="Fill" Width="16" Height="15"
                                       Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ToggleButton}}"
