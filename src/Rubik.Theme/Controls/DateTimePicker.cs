@@ -11,31 +11,15 @@ namespace Rubik.Theme.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DateTimePicker), new FrameworkPropertyMetadata(typeof(DateTimePicker)));
         }
 
-        public DateTimePicker()
+        public static readonly DependencyProperty DateProperty =
+            DependencyProperty.Register("Date", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now, OnDatePropertyChanged));
+        public DateTime Date
         {
-            //Init();
-            Time = DateTime.Now;
+            get { return (DateTime)GetValue(DateProperty); }
+            set { SetValue(DateProperty, value); }
         }
 
-        private void Init()
-        {
-            Year = Time.Year;
-            Month = Time.Month;
-            Day = Time.Day;
-            Hour = Time.Hour;
-            Minute = Time.Minute;
-            Second = Time.Second;
-        }
-
-        public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now, OnTimePropertyChanged));
-        public DateTime Time
-        {
-            get { return (DateTime)GetValue(TimeProperty); }
-            set { SetValue(TimeProperty, value); }
-        }
-
-        static void OnTimePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        static void OnDatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as DateTimePicker;
             ctrl.Init();
@@ -54,8 +38,8 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var year = (int)e.NewValue;
 
-            if (ctrl.Time.Year != year)
-                ctrl.Time = new DateTime(year, ctrl.Time.Month, Math.Min(DateTime.DaysInMonth(year, ctrl.Time.Month), ctrl.Time.Day), ctrl.Time.Hour, ctrl.Time.Minute, ctrl.Time.Second);
+            if (ctrl.Date.Year != year)
+                ctrl.Date = new DateTime(year, ctrl.Date.Month, Math.Min(DateTime.DaysInMonth(year, ctrl.Date.Month), ctrl.Date.Day), ctrl.Date.Hour, ctrl.Date.Minute, ctrl.Date.Second);
         }
 
         public static readonly DependencyProperty MonthProperty =
@@ -71,8 +55,8 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var month = (int)e.NewValue;
 
-            if (ctrl.Time.Month != month)
-                ctrl.Time = new DateTime(ctrl.Time.Year, month, Math.Min(DateTime.DaysInMonth(ctrl.Time.Year, month), ctrl.Time.Day) , ctrl.Time.Hour, ctrl.Time.Minute, ctrl.Time.Second);
+            if (ctrl.Date.Month != month)
+                ctrl.Date = new DateTime(ctrl.Date.Year, month, Math.Min(DateTime.DaysInMonth(ctrl.Date.Year, month), ctrl.Date.Day) , ctrl.Date.Hour, ctrl.Date.Minute, ctrl.Date.Second);
         }
 
         public static readonly DependencyProperty DayProperty =
@@ -88,8 +72,8 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var day = (int)e.NewValue;
 
-            if (ctrl.Time.Day != day)
-                ctrl.Time = new DateTime(ctrl.Time.Year, ctrl.Time.Month, day, ctrl.Time.Hour, ctrl.Time.Minute, ctrl.Time.Second);
+            if (ctrl.Date.Day != day)
+                ctrl.Date = new DateTime(ctrl.Date.Year, ctrl.Date.Month, day, ctrl.Date.Hour, ctrl.Date.Minute, ctrl.Date.Second);
         }
 
         public static readonly DependencyProperty HourProperty =
@@ -105,8 +89,8 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var hour = (int)e.NewValue;
 
-            if (ctrl.Time.Hour != hour)
-                ctrl.Time = new DateTime(ctrl.Time.Year, ctrl.Time.Month, ctrl.Time.Day, hour, ctrl.Time.Minute, ctrl.Time.Second);
+            if (ctrl.Date.Hour != hour)
+                ctrl.Date = new DateTime(ctrl.Date.Year, ctrl.Date.Month, ctrl.Date.Day, hour, ctrl.Date.Minute, ctrl.Date.Second);
         }
 
         public static readonly DependencyProperty MinuteProperty =
@@ -122,8 +106,8 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var minute = (int)e.NewValue;
 
-            if (ctrl.Time.Minute != minute)
-                ctrl.Time = new DateTime(ctrl.Time.Year, ctrl.Time.Month, ctrl.Time.Day, ctrl.Time.Hour, minute, ctrl.Time.Second);
+            if (ctrl.Date.Minute != minute)
+                ctrl.Date = new DateTime(ctrl.Date.Year, ctrl.Date.Month, ctrl.Date.Day, ctrl.Date.Hour, minute, ctrl.Date.Second);
         }
 
         public static readonly DependencyProperty SecondProperty =
@@ -139,8 +123,26 @@ namespace Rubik.Theme.Controls
             var ctrl = d as DateTimePicker;
             var second = (int)e.NewValue;
 
-            if (ctrl.Time.Second != second)
-                ctrl.Time = new DateTime(ctrl.Time.Year, ctrl.Time.Month, ctrl.Time.Day, ctrl.Time.Hour, ctrl.Time.Minute, second);
+            if (ctrl.Date.Second != second)
+                ctrl.Date = new DateTime(ctrl.Date.Year, ctrl.Date.Month, ctrl.Date.Day, ctrl.Date.Hour, ctrl.Date.Minute, second);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            Date = DateTime.Now;
+
+            Hour = Date.Hour;
+            Minute = Date.Minute;
+            Second = Date.Second;
+        }
+
+        private void Init()
+        {
+            Year = Date.Year;
+            Month = Date.Month;
+            Day = Date.Day;
         }
     }
 }

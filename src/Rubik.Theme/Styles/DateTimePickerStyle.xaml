@@ -2,8 +2,36 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
                     xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/"
+                    xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
+    <Style x:Key="DateTimePickerToggleStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Foreground" Value="#404040"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Foreground" Value="#007ACC"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="{x:Type controls:DateTimePicker}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#404040"/>
@@ -33,6 +61,7 @@
                                 <ColumnDefinition Width="24"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <controls:NumericBox Grid.Column="0" Minimum="1000" Maximum="9999" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="4" MinWidth="0"
@@ -65,6 +94,22 @@
                             <controls:NumericBox Grid.Column="10" Minimum="0" Maximum="59" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
                                                  Value="{Binding Second,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+
+                            <ToggleButton x:Name="CalendarButton" Grid.Column="11" Width="20"
+                                          Style="{StaticResource DateTimePickerToggleStyle}">
+                                <Path Stretch="Fill" Width="16" Height="15"
+                                      Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ToggleButton}}"
+                                      Data="M416.087 607.831l95.987 0 0-96-95.987 0L416.087 607.831zM544.078 735.828l96 0 0-95.994-96 0L544.078 735.828zM416.087 735.828l95.987 0 0-95.994-95.987 0L416.087 735.828zM288.084 607.831l96 0 0-96-96 0L288.084 607.831zM288.084 735.828l96 0 0-95.994-96 0L288.084 735.828zM544.078 607.831l96 0 0-96-96 0L544.078 607.831zM672.081 479.831l96 0 0-95.997-96 0L672.081 479.831zM832.078 191.833 224.077 191.833c-17.674 0-31.994 14.326-31.994 32.003l0 575.998c0 17.674 14.32 32 31.994 32l608.001 0c17.674 0 32.003-14.326 32.003-32L864.081 223.837C864.082 206.16 849.752 191.833 832.078 191.833zM832.082 767.832c0 17.674-14.326 32-32 32L256.08 799.832c-17.674 0-32-14.326-32-32L224.08 351.831c0-17.674 14.326-32 32-32l544.001 0c17.674 0 32 14.326 32 32L832.081 767.832zM672.081 607.831l96 0 0-96-96 0L672.081 607.831zM544.078 479.831l96 0 0-95.997-96 0L544.078 479.831z"/>
+                            </ToggleButton>
+
+                            <Popup Placement="Bottom" StaysOpen="false" AllowsTransparency="True"
+                                   IsOpen="{Binding IsChecked,Mode=TwoWay,ElementName=CalendarButton}"
+                                   PlacementTarget="{Binding ElementName=CalendarButton}"
+                                   PopupAnimation="Fade">
+                                <mwt:SystemDropShadowChrome Color="#71000000" Margin="0,0,6,5">
+                                    <Calendar SelectedDate="{Binding Date,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </mwt:SystemDropShadowChrome>
+                            </Popup>
                         </Grid>
                     </Border>
                 </ControlTemplate>
