@@ -43,7 +43,8 @@
                 <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" Value="0.56"/>
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="BorderBrush" Value="LightGray"/>
             </Trigger>
         </Style.Triggers>
     </Style>

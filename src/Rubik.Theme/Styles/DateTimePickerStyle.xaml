@@ -7,7 +7,6 @@
 
     <Style x:Key="DateTimePickerToggleStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="Foreground" Value="#404040"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -97,6 +96,7 @@
                                                  Value="{Binding Second,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
 
                             <ToggleButton x:Name="CalendarButton" Grid.Column="12" Width="20"
+                                          Foreground="{TemplateBinding Foreground}"
                                           Style="{StaticResource DateTimePickerToggleStyle}">
                                 <Path Stretch="Fill" Width="16" Height="15"
                                       Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ToggleButton}}"
@@ -116,5 +116,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="BorderBrush" Value="LightGray"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
