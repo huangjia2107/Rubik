@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="Rubik.Demo.DragTree.Views.FileTreeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="true"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+    <UserControl.Resources>
+
+        <Style BasedOn="{StaticResource {x:Static rubik:ResourceKeys.RubikTreeViewItemStyleKey}}"  TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Visibility" Value="{Binding Visibility}"/>
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/>
+            <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDragOver}" Value="true">
+                    <Setter Property="Background" Value="#d6ebff"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DrawingGroup x:Key="CollapsedFolderDrawingGroupKey">
+            <DrawingGroup.ClipGeometry>
+                <RectangleGeometry Rect="0,0,172,172" />
+            </DrawingGroup.ClipGeometry>
+            <GeometryDrawing>
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="86,24.037" EndPoint="86,53.66758" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                        <GradientStop Color="#FFEBA600" Offset="0" />
+                        <GradientStop Color="#FFC28200" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M87.4835,37.31683L78.39617000000001,28.2295C76.38234000000001,26.215670000000003,73.64825000000002,25.08333,70.79592000000001,25.08333L17.91667000000001,25.08333C13.957090000000012,25.08333,10.75000000000001,28.29041,10.75000000000001,32.25L10.75000000000001,139.75C10.75000000000001,143.70958,13.95708000000001,146.91667,17.91667000000001,146.91667L154.08334000000002,146.91667C158.04292,146.91667,161.25001000000003,143.70959000000002,161.25001000000003,139.75L161.25001000000003,46.583330000000004C161.25001000000003,42.62375,158.04293000000004,39.41666000000001,154.08334000000002,39.41666000000001L92.55034000000002,39.41666000000001C90.65117000000002,39.41666000000001,88.82726000000002,38.66058000000001,87.48351000000002,37.31683000000001z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing>
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="86,38.8935" EndPoint="86,146.85575" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                        <GradientStop Color="#FFFFD869" Offset="0" />
+                        <GradientStop Color="#FFFEC52B" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M77.34983,51.65017L89.06016,39.939840000000004C89.39341,39.606590000000004,89.84849,39.41667,90.32508,39.41667L154.08333,39.41667C158.04290999999998,39.41667,161.25,42.62375,161.25,46.58334000000001L161.25,139.75001C161.25,143.70959,158.04292,146.91668,154.08333,146.91668L17.91665999999998,146.91668C13.95707999999998,146.91668,10.749989999999979,143.70960000000002,10.749989999999979,139.75001L10.749989999999979,55.54168C10.749989999999979,54.55268,11.552659999999978,53.750009999999996,12.541659999999979,53.750009999999996L72.28298999999998,53.750009999999996C74.18215999999998,53.750009999999996,76.00606999999998,52.99393,77.34981999999998,51.65018z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+
+        <DrawingGroup x:Key="ExpandedFolderDrawingGroupKey">
+            <DrawingGroup.ClipGeometry>
+                <RectangleGeometry Rect="0,0,172,172" />
+            </DrawingGroup.ClipGeometry>
+            <GeometryDrawing>
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="86,24.92208" EndPoint="86,83.01508" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                        <GradientStop Color="#FFEBA600" Offset="0" />
+                        <GradientStop Color="#FFC28200" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M87.4835,37.31683L78.39617000000001,28.2295C76.38234000000001,26.215670000000003,73.64825000000002,25.08333,70.79592000000001,25.08333L17.91667000000001,25.08333C13.957090000000012,25.08333,10.75000000000001,28.29041,10.75000000000001,32.25L10.75000000000001,139.75C10.75000000000001,143.70958,13.95708000000001,146.91667,17.91667000000001,146.91667L154.08334000000002,146.91667C158.04292,146.91667,161.25001000000003,143.70959000000002,161.25001000000003,139.75L161.25001000000003,46.583330000000004C161.25001000000003,42.62375,158.04293000000004,39.41666000000001,154.08334000000002,39.41666000000001L92.55034000000002,39.41666000000001C90.65117000000002,39.41666000000001,88.82726000000002,38.66058000000001,87.48351000000002,37.31683000000001z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing>
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="85.7635,68.90033" EndPoint="85.7635,121.19192" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                        <GradientStop Color="#FFFFD869" Offset="0" />
+                        <GradientStop Color="#FFFEC52B" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M86,82.41667L99.81017,68.6065C100.14342,68.27324999999999,100.5985,68.08333,101.07509,68.08333L160.56916999999999,68.08333C164.78316999999998,68.08333,168.087,71.7025,167.70717,75.89858000000001L161.84483999999998,140.39858C161.50800999999998,144.08941000000002,158.41200999999998,146.91666,154.70683999999997,146.91666L17.164169999999984,146.91666C13.512749999999984,146.91666,10.445419999999984,144.17183,10.040499999999984,140.54191L3.8054999999999835,84.40541C3.6872499999999833,83.34474,4.518579999999983,82.41666000000001,5.5864199999999835,82.41666000000001z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+
+        <DrawingGroup x:Key="FileDrawingGroupKey">
+            <DrawingGroup.ClipGeometry>
+                <RectangleGeometry Rect="0,0,172,172" />
+            </DrawingGroup.ClipGeometry>
+            <GeometryDrawing Brush="#FF50E6FF">
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M139.75,57.33333L139.75,146.91666C139.75,150.87624,136.54292,154.08333000000002,132.58333,154.08333000000002L39.41665999999999,154.08333000000002C35.45707999999999,154.08333000000002,32.24999,150.87625000000003,32.24999,146.91666L32.24999,25.083330000000004C32.24999,21.123750000000005,35.457069999999995,17.916660000000004,39.41665999999999,17.916660000000004L100.33332999999999,17.916660000000004 111.08332999999999,46.583330000000004z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing>
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="102.22892,55.43775" EndPoint="120.4,37.26667" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                        <GradientStop Color="#FF3079D6" Offset="0" />
+                        <GradientStop Color="#FF297CD2" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M100.33333,17.91667L100.33333,50.166669999999996C100.33333,54.12625,103.54041000000001,57.33333999999999,107.5,57.33333999999999L139.75,57.33333999999999z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF057093">
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M116.45833,86L55.54166,86C54.55266,86,53.74999,85.19733,53.74999,84.20833L53.74999,80.625C53.74999,79.636,54.552659999999996,78.83333,55.54166,78.83333L116.45833,78.83333C117.44733000000001,78.83333,118.25,79.63600000000001,118.25,80.625L118.25,84.20833C118.25,85.19733000000001,117.44733,86,116.45833,86z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF057093">
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M109.29167,100.33333L55.541669999999996,100.33333C54.55267,100.33333,53.74999999999999,99.53066,53.74999999999999,98.54166000000001L53.74999999999999,94.95833C53.74999999999999,93.96933,54.55266999999999,93.16666000000001,55.541669999999996,93.16666000000001L109.29167,93.16666000000001C110.28067,93.16666000000001,111.08333999999999,93.96933000000001,111.08333999999999,94.95833L111.08333999999999,98.54166000000001C111.08333999999999,99.53066000000001,110.28066999999999,100.33333,109.29167,100.33333z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF057093">
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M116.45833,114.66667L55.54166,114.66667C54.55266,114.66667,53.74999,113.86399999999999,53.74999,112.875L53.74999,109.29167C53.74999,108.30266999999999,54.552659999999996,107.5,55.54166,107.5L116.45833,107.5C117.44733000000001,107.5,118.25,108.30267,118.25,109.29167L118.25,112.875C118.25,113.864,117.44733,114.66667,116.45833,114.66667z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF057093">
+                <GeometryDrawing.Geometry>
+                    <PathGeometry FillRule="Nonzero" Figures="M109.29167,129L55.541669999999996,129C54.55267,129,53.74999999999999,128.19733,53.74999999999999,127.20833L53.74999999999999,123.625C53.74999999999999,122.636,54.55266999999999,121.83333,55.541669999999996,121.83333L109.29167,121.83333C110.28067,121.83333,111.08333999999999,122.63600000000001,111.08333999999999,123.625L111.08333999999999,127.20833C111.08333999999999,128.19733,110.28066999999999,129,109.29167,129z" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+
+        <HierarchicalDataTemplate x:Key="FileTreeDataTemplateKey" ItemsSource="{Binding Nodes}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center" 
+                            Visibility="{Binding IsNode,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolToVisibilityConverterKey}}}">
+                    <Rectangle Width="15" Height="13"
+                               Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolToVisibilityConverterKey}},ConverterParameter={x:Static Visibility.Collapsed}}">
+                        <Rectangle.Fill>
+                            <DrawingBrush Drawing="{StaticResource CollapsedFolderDrawingGroupKey}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle Width="15" Height="13"
+                           Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolToVisibilityConverterKey}}}">
+                        <Rectangle.Fill>
+                            <DrawingBrush Drawing="{StaticResource ExpandedFolderDrawingGroupKey}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </StackPanel>
+                
+                <Rectangle Width="15" Height="13"
+                           Visibility="{Binding IsNode,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolToVisibilityConverterKey}},ConverterParameter={x:Static Visibility.Collapsed}}">
+                    <Rectangle.Fill>
+                        <DrawingBrush Drawing="{StaticResource FileDrawingGroupKey}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Name}"/>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <TreeView x:Name="FileTreeView" Grid.Row="3" AllowDrop="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  Background="{Binding FileTreeBackground}"
+                  ItemsSource="{Binding TreeCollection}"
+                  ItemTemplate="{StaticResource FileTreeDataTemplateKey}"
+                  Style="{StaticResource {x:Static rubik:ResourceKeys.RubikTreeViewStyleKey}}"/>
+    </Grid>
+</UserControl>

@@ -5,6 +5,7 @@
 
     <rubik:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
     <rubik:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
+    <rubik:BoolToTextDecorationsConverter x:Key="{x:Static themes:ResourceKeys.BoolToTextDecorationsConverterKey}"/>
       
     <rubik:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
 
@@ -13,11 +14,17 @@
     <rubik:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
       
     <rubik:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
-      
-    <rubik:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
-      
+
+    <rubik:FirstItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.FirstItemOfItemsControlMultiConverterKey}"/>
+    
     <rubik:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
 
+    <rubik:LastItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.LastItemOfItemsControlMultiConverterKey}"/>
+    
+    <rubik:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
+    
+    <rubik:OnlyOneItemOfItemsControlConverter x:Key="{x:Static themes:ResourceKeys.OnlyOneItemOfItemsControlConverterKey}"/>
+    
     <rubik:StringToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.StringToVisibilityConverterKey}"/>
     <rubik:StringToBoolConverter x:Key="{x:Static themes:ResourceKeys.StringToBoolConverterKey}"/>
     <rubik:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>

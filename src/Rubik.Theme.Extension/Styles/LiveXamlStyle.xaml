@@ -4,7 +4,8 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Extension.Controls"
                     xmlns:exUtils="clr-namespace:Rubik.Theme.Extension.Utils"
                     xmlns:themes="clr-namespace:Rubik.Theme;assembly=Rubik.Theme"
-                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit">
+                    xmlns:utils="clr-namespace:Rubik.Toolkit.Utils;assembly=Rubik.Toolkit"
+                    xmlns:ap="clr-namespace:Rubik.Toolkit.AttachedProperties;assembly=Rubik.Toolkit">
 
     <exUtils:LineNumbersWithoutLineConverter x:Key="lineNumbersWithoutLineConverter"/>
 
@@ -131,7 +132,7 @@
                             </ContentControl>
                             <GridSplitter Grid.Row="1" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                           Style="{StaticResource {x:Static themes:ResourceKeys.RubikGridSplitterStyleKey}}"
-                                          utils:CursorUtil.Source="{Binding SplitterCursorSource,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                          ap:ElementProperty.CursorSource="{Binding SplitterCursorSource,RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Grid Grid.Row="1" Margin="2">
                                 <Grid.LayoutTransform>
                                     <RotateTransform Angle="{Binding ControlPanelAngle,RelativeSource={RelativeSource TemplatedParent}}"/>

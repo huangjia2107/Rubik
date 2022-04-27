@@ -13,6 +13,7 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 using Rubik.Toolkit.Utils;
+using Rubik.Toolkit.UI;
 
 namespace Rubik.Theme.Extension.Controls
 {

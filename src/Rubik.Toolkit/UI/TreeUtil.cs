@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace Rubik.Toolkit.Utils
+namespace Rubik.Toolkit.UI
 {
     public static class TreeUtil
     {

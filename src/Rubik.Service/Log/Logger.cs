@@ -25,6 +25,28 @@ namespace Rubik.Service.Log
             XmlConfigurator.Configure(new Uri(AppDomain.CurrentDomain.BaseDirectory + "log4net.config"));
         }
 
+        /*
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+
+        static Logger()
+        {
+            Instance = new LoggerConfiguration()
+                .ReadFrom.Configuration(new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("Serilog.json").Build())
+                .CreateLogger();
+
+            /*   
+            .MinimumLevel.Information()
+                .WriteTo.File(
+                    path: @"logs\client-.txt", 
+                    outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {SourceContext}: {Message}{NewLine}{Exception}",
+                    rollingInterval: RollingInterval.Day, rollOnFileSizeLimit: true, fileSizeLimitBytes: 100000)
+        }
+        */
+
         /// <summary>
         /// 宿主程序 Log 记录器
         /// </summary>

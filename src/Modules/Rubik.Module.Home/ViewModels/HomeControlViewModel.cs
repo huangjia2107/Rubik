@@ -9,12 +9,12 @@ using Prism.Events;
 using Prism.Commands;
 using Prism.Mvvm;
 
-using Rubik.Toolkit.Utils;
 using Rubik.Module.Home.Models;
 using Rubik.Module.Home.Views;
 using Rubik.Module.Home.Events;
 using Rubik.Service.Events;
 using Rubik.Service.Regions;
+using Rubik.Toolkit.UI;
 
 namespace Rubik.Module.Home.ViewModels
 {

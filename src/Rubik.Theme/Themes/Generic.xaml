@@ -6,6 +6,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ButtonStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/Constants.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckBoxStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckCodeStyle.xaml"/>
@@ -23,6 +24,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ListBoxStyle.xaml"/>
 
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/MenuStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/MenuButtonStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/MediaPlayerStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/MultiSelectTreeViewStyle.xaml"/>
@@ -45,6 +47,7 @@
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/TextBoxStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ToggleSwitchStyle.xaml"/>
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/ToggleStatusStyle.xaml"/>
+        <ResourceDictionary Source="/Rubik.Theme;component/Styles/TreeViewStyle.xaml"/>
 
         <ResourceDictionary Source="/Rubik.Theme;component/Styles/UserWindowStyle.xaml"/>
 

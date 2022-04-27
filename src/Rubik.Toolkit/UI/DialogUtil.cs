@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using SWF = System.Windows.Forms;
 
-namespace Rubik.Toolkit.Utils
+namespace Rubik.Toolkit.UI
 {
     public static class DialogUtil
     {

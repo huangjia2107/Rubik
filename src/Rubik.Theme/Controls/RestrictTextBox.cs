@@ -37,6 +37,13 @@ namespace Rubik.Theme.Controls
             remove { RemoveHandler(TextChangedEvent, value); }
         }
 
+        public static readonly RoutedEvent CompletedEvent = EventManager.RegisterRoutedEvent("Completed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+        public event RoutedEventHandler Completed
+        {
+            add { AddHandler(CompletedEvent, value); }
+            remove { RemoveHandler(CompletedEvent, value); }
+        }
+
         #endregion
 
         #region Properties
@@ -104,6 +111,13 @@ namespace Rubik.Theme.Controls
             set { SetValue(TextCaseProperty, value); }
         }
 
+        public static readonly DependencyProperty AllowTextEmptyOrNullProperty = DependencyProperty.Register("AllowTextEmptyOrNull", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+        public bool AllowTextEmptyOrNull
+        {
+            get { return (bool)GetValue(AllowTextEmptyOrNullProperty); }
+            set { SetValue(AllowTextEmptyOrNullProperty, value); }
+        }
+
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), _typeofSelf,
             new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged, CoerceText));
         public string Text
@@ -115,7 +129,7 @@ namespace Rubik.Theme.Controls
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = (RestrictTextBox)d;
-            var text = (string)e.NewValue; 
+            var text = (string)e.NewValue;
 
             ctrl.OnTextChanged((string)e.OldValue, text);
         }
@@ -125,7 +139,7 @@ namespace Rubik.Theme.Controls
             var ctrl = (RestrictTextBox)d;
             var text = (string)value;
 
-            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(ctrl.Pattern) || !Regex.IsMatch(text, ctrl.Pattern))
+            if (!ctrl.AllowTextEmptyOrNull && (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(ctrl.Pattern) || !Regex.IsMatch(text, ctrl.Pattern)))
                 return ctrl._lastValidValue;
 
             return value;
@@ -141,7 +155,7 @@ namespace Rubik.Theme.Controls
 
             if (!string.Equals(oldStr, newStr))
             {
-                Debug.Print("[ NumericBox ] ValueChanged, OldStr = {0}, NewStr = {1}, IsManual = {2}", oldStr, newStr, _isManual);
+                Debug.Print("[ RestrictTextBox ] ValueChanged, OldStr = {0}, NewStr = {1}, IsManual = {2}", oldStr, newStr, _isManual);
                 RaiseEvent(new TextBoxValueChangedEventArgs<string>(oldStr, newStr, _isManual, false, TextChangedEvent));
             }
 
@@ -287,10 +301,13 @@ namespace Rubik.Theme.Controls
                 _isManual = true;
 
                 Text = text;
+
+                RaiseEvent(new RoutedEventArgs(CompletedEvent));
                 return;
             }
 
             _valueTextBox.Text = _lastValidValue;
+            RaiseEvent(new RoutedEventArgs(CompletedEvent));
         }
     }
 }

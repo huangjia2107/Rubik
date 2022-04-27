@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Rubik.Toolkit.AttachedProperties
 {
@@ -23,6 +25,29 @@ namespace Rubik.Toolkit.AttachedProperties
         public static void SetOrientation(DependencyObject obj, Orientation value)
         {
             obj.SetValue(OrientationProperty, value);
+        }
+
+        public static readonly DependencyProperty CursorSourceProperty = DependencyProperty.RegisterAttached("CursorSource", typeof(string), typeof(ElementProperty), new PropertyMetadata(OnCursorSourcePropertyChanged));
+        public static string GetCursorSource(DependencyObject obj)
+        {
+            return (string)obj.GetValue(CursorSourceProperty);
+        }
+        public static void SetCursorSource(DependencyObject obj, string value)
+        {
+            obj.SetValue(CursorSourceProperty, value);
+        }
+        static void OnCursorSourcePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = target as FrameworkElement;
+            var uri = (string)e.NewValue;
+
+            if (ctrl == null || string.IsNullOrWhiteSpace(uri))
+                return;
+
+            var streamInfo = Application.GetResourceStream(new Uri(uri, UriKind.Relative));
+
+            if (streamInfo != null)
+                ctrl.Cursor = new Cursor(streamInfo.Stream);
         }
     }
 }

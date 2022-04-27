@@ -7,6 +7,13 @@ namespace Rubik.Theme
     {
         public static Uri RubikThemeSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Themes/Generic.xaml");
 
+        #region 
+
+        public static ComponentResourceKey TrueValueKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "TrueValue");
+        public static ComponentResourceKey FalseValueKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "FalseValue");
+
+        #endregion
+
         #region ButtonBase
 
         /// <summary>
@@ -55,6 +62,14 @@ namespace Rubik.Theme
         public static ComponentResourceKey RubikListBoxStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikListBoxStyle");
 
         public static ComponentResourceKey RubikListBoxItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikListBoxItemStyle");
+
+        #endregion
+
+        #region TreeView
+
+        public static ComponentResourceKey RubikTreeViewStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTreeViewStyle");
+
+        public static ComponentResourceKey RubikTreeViewItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTreeViewItemStyle");
 
         #endregion
 
@@ -130,11 +145,24 @@ namespace Rubik.Theme
 
         #endregion
 
+        #region Menu
+
+        public static ComponentResourceKey ContextMenuStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ContextMenuStyle");
+        public static ComponentResourceKey MenuItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemStyle");
+        public static ComponentResourceKey MenuItemSubmenuContentKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuContent");
+        public static ComponentResourceKey MenuItemTopLevelHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemTopLevelHeaderTemplate");
+        public static ComponentResourceKey MenuItemTopLevelItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemTopLevelItemTemplate");
+        public static ComponentResourceKey MenuItemSubmenuHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuHeaderTemplate");
+        public static ComponentResourceKey MenuItemSubmenuItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuItemTemplate");
+
+        #endregion
+
         #region Converter
 
         public static ComponentResourceKey BoolConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "BoolConverter");
         public static ComponentResourceKey BoolToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "BoolToVisibilityConverter");
-
+        public static ComponentResourceKey BoolToTextDecorationsConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "BoolToTextDecorationsConverter");
+        
         public static ComponentResourceKey ColorToBrushConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ColorToBrushConverter");
 
         public static ComponentResourceKey DaysInMonthMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "DaysInMonthMultiConverter");
@@ -143,9 +171,15 @@ namespace Rubik.Theme
 
         public static ComponentResourceKey EnumToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "EnumToVisibilityConverter");
 
+        public static ComponentResourceKey FirstItemOfItemsControlMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "FirstItemOfItemsControlMultiConverter");
+        
         public static ComponentResourceKey KeyToValueConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "KeyToValueConverter");
 
+        public static ComponentResourceKey LastItemOfItemsControlMultiConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "LastItemOfItemsControlMultiConverterKey");
+
         public static ComponentResourceKey NullToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "NullToVisibilityConverter");
+
+        public static ComponentResourceKey OnlyOneItemOfItemsControlConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "OnlyOneItemOfItemsControlConverter");
 
         public static ComponentResourceKey StringToVisibilityConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "StringToVisibilityConverter");
         public static ComponentResourceKey StringToBoolConverterKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "StringToBoolConverter");

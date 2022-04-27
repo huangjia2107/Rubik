@@ -1,0 +1,18 @@
+﻿{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information"
+    },
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "logs/client-.log",
+          "outputTemplate": "[{Timestamp:HH:mm:ss.FFF} {Level:u3}] - {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 31
+        }
+      }
+    ]
+  }
+}

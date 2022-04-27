@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{D531F9E4-F24E-4BC9-B902-D4B0BD57487D}"
 	ProjectSection(SolutionItems) = preProject
@@ -35,6 +35,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.AnchorPopup", "src\Demos\Rubik.Demo.AnchorPopup\Rubik.Demo.AnchorPopup.csproj", "{E33487D7-648E-4EBF-8A79-6604FA44A08E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Toolkit", "src\Rubik.Toolkit\Rubik.Toolkit.csproj", "{D11A56AA-8A6E-4A5E-9665-C686BB65D135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.Demo.DragTree", "src\Demos\Rubik.Demo.DragTree\Rubik.Demo.DragTree.csproj", "{DBEBD89A-A81D-4595-A087-5909ADD61836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,10 @@ Global
 		{D11A56AA-8A6E-4A5E-9665-C686BB65D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D11A56AA-8A6E-4A5E-9665-C686BB65D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D11A56AA-8A6E-4A5E-9665-C686BB65D135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEBD89A-A81D-4595-A087-5909ADD61836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEBD89A-A81D-4595-A087-5909ADD61836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEBD89A-A81D-4595-A087-5909ADD61836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEBD89A-A81D-4595-A087-5909ADD61836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{0B3ADB76-B6A6-4543-9966-A834694BD253} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 		{E33487D7-648E-4EBF-8A79-6604FA44A08E} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
+		{DBEBD89A-A81D-4595-A087-5909ADD61836} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A312243A-4B26-4F48-B018-E0AD3A362A28}

@@ -15,4 +15,12 @@ namespace Rubik.Toolkit.Datas
         Landscape,
         Portrait
     }
+
+    public enum OverlapArea
+    {
+        Out = 0,
+        Inner = 1,
+        Up = 2,
+        Down = 4,
+    }
 }

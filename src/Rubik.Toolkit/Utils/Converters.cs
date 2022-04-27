@@ -7,6 +7,7 @@ using System.Collections;
 using System.Linq;
 
 using Rubik.Toolkit.Datas;
+using System.Windows.Controls;
 
 namespace Rubik.Toolkit.Utils
 {
@@ -34,6 +35,22 @@ namespace Rubik.Toolkit.Utils
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class BoolToTextDecorationsConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var isTrue = (bool)value;
+            var trueValue = (TextDecorationCollection)(parameter ?? TextDecorations.Underline);
+
+            return isTrue ? trueValue : null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return false;
         }
     }
 
@@ -117,6 +134,44 @@ namespace Rubik.Toolkit.Utils
         }
     }
 
+    public class FirstItemOfItemsControlMultiConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Contains(null) || values.Contains(DependencyProperty.UnsetValue))
+                return false;
+
+            var item = (UIElement)values[0];
+
+            if (item.Visibility != Visibility.Visible)
+                return false;
+
+            var ic = ItemsControl.ItemsControlFromItemContainer(item);
+            if (ic == null)
+                return false;
+
+            if (ic.Items.Count == 1)
+                return false;
+
+            var curIndex = ic.ItemContainerGenerator.IndexFromContainer(item);
+
+            int i = curIndex - 1;
+            for (; i >= 0; i--)
+            {
+                var curItem = (UIElement)ic.ItemContainerGenerator.ContainerFromItem(ic.Items[i]);
+                if (curItem != null && curItem.Visibility == Visibility.Visible)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class KeyToValueConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -127,6 +182,44 @@ namespace Rubik.Toolkit.Utils
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class LastItemOfItemsControlMultiConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Contains(null) || values.Contains(DependencyProperty.UnsetValue))
+                return false;
+
+            var item = (UIElement)values[0];
+
+            if (item.Visibility != Visibility.Visible)
+                return false;
+
+            var ic = ItemsControl.ItemsControlFromItemContainer(item);
+            if (ic == null)
+                return false;
+
+            if (ic.Items.Count == 1)
+                return false;
+
+            var curIndex = ic.ItemContainerGenerator.IndexFromContainer(item);
+
+            int i = curIndex + 1;
+            for (; i < ic.Items.Count; i++)
+            {
+                var curItem = (UIElement)ic.ItemContainerGenerator.ContainerFromItem(ic.Items[i]);
+                if (curItem != null && curItem.Visibility == Visibility.Visible)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
@@ -143,6 +236,22 @@ namespace Rubik.Toolkit.Utils
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class OnlyOneItemOfItemsControlConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var item = (DependencyObject)value;
+            var ic = ItemsControl.ItemsControlFromItemContainer(item);
+
+            return ic.Items.Count == 1;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return false;
         }
     }
 

@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 using Rubik.Toolkit.Datas;
 using Rubik.Toolkit.Utils;
-using Rubik.Theme.Adorners;
+using Rubik.Toolkit.Adorners;
 
 namespace Rubik.Theme.Controls
 {
@@ -46,7 +46,7 @@ namespace Rubik.Theme.Controls
         }
 
         private AdornerLayer _adornerLayer = null;
-        private RulerIndicatorAdorner _rulerIndicatorAdorner = null;
+        private MouseIndicatorAdorner _mouseIndicatorAdorner = null;
 
         static ZoomBox()
         {
@@ -203,7 +203,7 @@ namespace Rubik.Theme.Controls
             _partContentBorder.MouseLeave += OnMouseLeave;
 
             _adornerLayer = AdornerLayer.GetAdornerLayer(this);
-            _rulerIndicatorAdorner = new RulerIndicatorAdorner(this, 20);
+            _mouseIndicatorAdorner = new MouseIndicatorAdorner(this, 20);
 
             InitContent();
             UpdateScaleTransform();
@@ -262,21 +262,21 @@ namespace Rubik.Theme.Controls
 
         private void AddAdorner()
         {
-            if (!IsShowRuler || _adornerLayer == null || _rulerIndicatorAdorner == null)
+            if (!IsShowRuler || _adornerLayer == null || _mouseIndicatorAdorner == null)
                 return;
 
             var adorners = _adornerLayer.GetAdorners(this);
 
             if (adorners == null || adorners.Length == 0)
-                _adornerLayer.Add(_rulerIndicatorAdorner);
+                _adornerLayer.Add(_mouseIndicatorAdorner);
 
             _adornerLayer.Update();
         }
 
         private void RemoveAdorner()
         {
-            if (_adornerLayer != null && _rulerIndicatorAdorner != null)
-                _adornerLayer.Remove(_rulerIndicatorAdorner);
+            if (_adornerLayer != null && _mouseIndicatorAdorner != null)
+                _adornerLayer.Remove(_mouseIndicatorAdorner);
 
             _adornerLayer.Update();
         }

@@ -4,14 +4,14 @@ using System.Windows.Media;
 
 using Rubik.Toolkit.Utils;
 
-namespace Rubik.Theme.Adorners
+namespace Rubik.Toolkit.Adorners
 {
-    public class RulerIndicatorAdorner : Adorner
+    public class MouseIndicatorAdorner : Adorner
     {
         private double _length = 0;
         private Pen _pen = null;
 
-        public RulerIndicatorAdorner(UIElement adornedElement, double length)
+        public MouseIndicatorAdorner(UIElement adornedElement, double length)
             : base(adornedElement)
         {
             _length = length;
