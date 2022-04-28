@@ -125,7 +125,7 @@
                     </Rectangle>
                 </StackPanel>
 
-                <Rectangle Width="15" Height="13"
+                <Rectangle Width="12" Height="13"
                            Visibility="{Binding IsNode,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolToVisibilityConverterKey}},ConverterParameter={x:Static Visibility.Collapsed}}">
                     <Rectangle.Fill>
                         <DrawingBrush Drawing="{StaticResource FileDrawingGroupKey}"/>
