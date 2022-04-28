@@ -220,7 +220,7 @@ namespace Rubik.Theme.Extension.Controls
             get { return (double)GetValue(ControlPanelAngleProperty); }
         }
 
-        private static readonly DependencyPropertyKey SplitterCursorSourcePropertyKey = DependencyProperty.RegisterReadOnly("SplitterCursorSource", typeof(string), _typeofSelf, new PropertyMetadata(@"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur"));
+        private static readonly DependencyPropertyKey SplitterCursorSourcePropertyKey = DependencyProperty.RegisterReadOnly("SplitterCursorSource", typeof(string), _typeofSelf, new PropertyMetadata(ResourceKeys.UpDownSplitterCur));
         public static readonly DependencyProperty SplitterCursorSourceProperty = SplitterCursorSourcePropertyKey.DependencyProperty;
         public string SplitterCursorSource
         {
@@ -984,7 +984,7 @@ namespace Rubik.Theme.Extension.Controls
             SetValue(PanelAnglePropertyKey, 0d);
             SetValue(HorSplitAnglePropertyKey, 0d);
             SetValue(VerSplitAnglePropertyKey, 0d);
-            SetValue(SplitterCursorSourcePropertyKey, @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur");
+            SetValue(SplitterCursorSourcePropertyKey, ResourceKeys.UpDownSplitterCur);
             
         }
 
@@ -995,7 +995,7 @@ namespace Rubik.Theme.Extension.Controls
             SetValue(PanelAnglePropertyKey, 90d);
             SetValue(HorSplitAnglePropertyKey, 90d);
             SetValue(VerSplitAnglePropertyKey, 90d);
-            SetValue(SplitterCursorSourcePropertyKey, @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_lr.cur");
+            SetValue(SplitterCursorSourcePropertyKey, ResourceKeys.LeftRightSplitterCur);
         }
 
         #endregion

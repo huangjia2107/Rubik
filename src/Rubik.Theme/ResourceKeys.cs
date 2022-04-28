@@ -6,6 +6,8 @@ namespace Rubik.Theme
     public static class ResourceKeys
     {
         public static Uri RubikThemeSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Themes/Generic.xaml");
+        public static string LeftRightSplitterCur { get; } = @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_lr.cur";
+        public static string UpDownSplitterCur { get; } = @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur";
 
         #region 
 
