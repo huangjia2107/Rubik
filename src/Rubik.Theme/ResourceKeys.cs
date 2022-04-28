@@ -69,6 +69,7 @@ namespace Rubik.Theme
 
         public static ComponentResourceKey RubikTreeViewStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTreeViewStyle");
 
+        public static ComponentResourceKey RubikTreeViewExpandCollapseToggleStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTreeViewExpandCollapseToggleStyleKey");
         public static ComponentResourceKey RubikTreeViewItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTreeViewItemStyle");
 
         #endregion

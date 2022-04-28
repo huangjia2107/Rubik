@@ -14,14 +14,14 @@ using Rubik.Demo.DragTree.Views;
 
 namespace Rubik.Demo.DragTree.ViewModels
 {
-    public class FileTreeControlViewModel : BindableBase
+    public class NodeTreeControlViewModel : BindableBase
     {
         public DelegateCommand<RoutedEventArgs> LoadedCommand { get; private set; }
 
         private TreeView _treeView = null;
         private TreeDragUtil<TreeView, TreeViewItem> _treeDragUtil = null;
 
-        public FileTreeControlViewModel()
+        public NodeTreeControlViewModel()
         {
             LoadedCommand = new DelegateCommand<RoutedEventArgs>(Loaded);
 
@@ -145,18 +145,13 @@ namespace Rubik.Demo.DragTree.ViewModels
 
         private void Loaded(RoutedEventArgs e)
         {
-            _treeView = (e.OriginalSource as FileTreeControl).TreeViewName;
+            _treeView = (e.OriginalSource as NodeTreeControl).TreeViewName;
 
-            _treeDragUtil = new TreeDragUtil<TreeView, TreeViewItem>(_treeView, true);
-            _treeDragUtil.IsGroup = IsNode;
+            _treeDragUtil = new TreeDragUtil<TreeView, TreeViewItem>(_treeView, false);
+            _treeDragUtil.OverlapAreaCheckHeight = 25;
             _treeDragUtil.DraggingTip = DraggingTip;
-            _treeDragUtil.OnOverlapItem = OnOverlapItem;
+            _treeDragUtil.OnOverlapItem = OnOverlapFolder;
             _treeDragUtil.OnCompleted = OnCompleted;
-        }
-
-        private bool IsNode(TreeViewItem item)
-        {
-            return (item.DataContext as TreeViewModel).IsNode;
         }
 
         private string DraggingTip(TreeViewItem item)
@@ -164,7 +159,7 @@ namespace Rubik.Demo.DragTree.ViewModels
             return (item.DataContext as TreeViewModel)?.Name;
         }
 
-        private void OnOverlapItem(OverlapArea overlapArea, TreeViewItem overlapItem, TreeViewItem draggingItem)
+        private void OnOverlapFolder(OverlapArea overlapArea, TreeViewItem overlapItem, TreeViewItem draggingItem)
         {
             if (overlapArea == OverlapArea.Out)
             {
@@ -173,36 +168,37 @@ namespace Rubik.Demo.DragTree.ViewModels
                 return;
             }
 
-            var overlapFolderModel = overlapItem?.DataContext as TreeViewModel;
+            var overlapModel = overlapItem?.DataContext as TreeViewModel;
             var draggingModel = draggingItem.DataContext as TreeViewModel;
 
             /*
-             * 1. 拖动项是目标目录的直接子节点时，包括目标目录是根目录的情况，不做移动
-             *    注：目标目录是根目录时，overlapItem 是 null
-             * 2. 拖动项是目标目录时，不做移动
-             * 3. 拖动项是目标目录的直接或间接父节点时，不做移动
+             * 1. 拖动项是目标目录时，不做移动
+             * 2. 拖动项是目标目录的直接或间接父节点时，不做移动
              */
-            if (draggingModel.Parent == overlapFolderModel
-                || draggingModel == overlapFolderModel
-                || overlapFolderModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapFolderModel))
+            if (overlapModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapModel, true))
             {
                 TreeBackground = Brushes.Transparent;
                 TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 
-            if (overlapFolderModel == null)
+            //根目录
+            if (overlapModel == null)
             {
                 TreeBackground = ColorUtil.GetBrushFromString("#d6ebff");
                 TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
-                return;
             }
             else
             {
-                overlapFolderModel.IsExpanded = true;
-
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = m == overlapFolderModel);
+                overlapModel.IsExpanded = true;
+
+                TreeViewModelBase.Update(TreeCollection, m =>
+                {
+                    m.IsDragOverUp = (overlapArea & OverlapArea.Up) == OverlapArea.Up;
+                    m.IsDragOverDown = (overlapArea & OverlapArea.Down) == OverlapArea.Down;
+                    m.IsDragOver = m == overlapModel;
+                });
             }
         }
 
@@ -215,20 +211,104 @@ namespace Rubik.Demo.DragTree.ViewModels
                 return;
 
             var draggingModel = draggingItem.DataContext as TreeViewModel;
-            var overlapFolderModel = overlapItem?.DataContext as TreeViewModel;
+            var overlapModel = overlapItem?.DataContext as TreeViewModel;
 
             /*
-             * 1. 拖动项是目标目录的直接子节点时，包括目标目录是根目录的情况，不做移动
-             *    注：目标目录是根目录时，overlapItem 是 null
-             * 2. 拖动项是目标目录时，不做移动
-             * 3. 拖动项是目标目录的直接或间接父节点时，不做移动
+             * 1. 拖动项是目标目录时，不做移动
+             * 2. 拖动项是目标目录的直接或间接父节点时，不做移动
              */
-            if (draggingModel.Parent == overlapFolderModel
-                || draggingModel == overlapFolderModel
-                || overlapFolderModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapFolderModel))
+            if (overlapModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapModel, true))
+            {
+                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                return;
+            }
+
+            Move(draggingModel, overlapModel, false, (overlapArea & OverlapArea.Up) == OverlapArea.Up);
+        }
+
+        /// <summary>
+        /// 将源移动到目标节点的位置
+        /// </summary>
+        /// <param name="sourceModel">源节点</param>
+        /// <param name="targetModel">目标节点，当移动到根目录时，该项为 null</param>
+        /// <param name="keepSource">是否保留源节点</param>
+        /// <param name="isTargetUp">是否添加到目标节点上方</param>
+        private void Move(TreeViewModel sourceModel, TreeViewModel targetModel, bool keepSource = true, bool isTargetUp = true)
+        {
+            if (sourceModel == null || !keepSource && sourceModel == targetModel)
                 return;
 
-            //TODO Move
+            var targetNodes = (ObservableCollection<TreeViewModel>)((targetModel?.Parent?.Nodes) ?? TreeCollection);
+            var targetIndex = targetModel == null ? -1 : TreeViewModelBase.IndexOf(targetNodes, m => m == targetModel);
+
+            //非根目录，源与目标处于同一父节点
+            if (targetIndex >= 0 && targetModel.Parent == sourceModel.Parent)
+            {
+                var draggingIndex = TreeViewModelBase.IndexOf(targetNodes, m => m == sourceModel);
+                var diff = targetIndex - draggingIndex;
+
+                //源与目标是同一节点
+                if (diff == 0)
+                {
+                    var newModel = sourceModel.Clone();
+                    newModel.Parent = targetModel.Parent;
+
+                    targetNodes.Insert(isTargetUp ? targetIndex : (targetIndex + 1), newModel);
+                    return;
+                }
+
+                //相邻
+                if (diff < 0)
+                {
+                    if (!keepSource)
+                        targetNodes.Remove(sourceModel);
+
+                    targetNodes.Insert(isTargetUp ? targetIndex : (targetIndex + 1), sourceModel);
+                }
+                else
+                {
+                    if (!keepSource)
+                        targetNodes.Remove(sourceModel);
+
+                    targetNodes.Insert(isTargetUp ? (targetIndex - 1) : targetIndex, sourceModel);
+                }
+
+                return;
+            }
+
+            if (!keepSource)
+            {
+                var sourceNodes = (ObservableCollection<TreeViewModel>)((sourceModel.Parent?.Nodes) ?? TreeCollection);
+                sourceNodes.Remove(sourceModel);
+
+                //添加到根目录
+                if (targetIndex < 0)
+                {
+                    sourceModel.Parent = null;
+                    targetNodes.Add(sourceModel);
+                }
+                else
+                {
+                    sourceModel.Parent = targetModel.Parent;
+                    targetNodes.Insert(isTargetUp ? targetIndex : (targetIndex + 1), sourceModel);
+                }
+            }
+            else
+            {
+                var newModel = sourceModel.Clone();
+
+                //添加到根目录
+                if (targetIndex < 0)
+                {
+                    newModel.Parent = null;
+                    targetNodes.Add(newModel);
+                }
+                else
+                {
+                    newModel.Parent = targetModel.Parent;
+                    targetNodes.Insert(isTargetUp ? targetIndex : (targetIndex + 1), newModel);
+                }
+            }
         }
     }
 }

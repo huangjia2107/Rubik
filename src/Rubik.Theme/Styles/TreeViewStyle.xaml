@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
-    <Style x:Key="ExpandCollapseToggleStyle" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikTreeViewExpandCollapseToggleStyleKey}" TargetType="{x:Type ToggleButton}">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Foreground" Value="#404040"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -89,7 +89,7 @@
 
                         <ToggleButton x:Name="Expander" ClickMode="Press" Height="25" VerticalAlignment="Top"
                                       IsChecked="{Binding IsExpanded,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" 
-                                      Style="{StaticResource ExpandCollapseToggleStyle}"/>
+                                      Style="{StaticResource {x:Static themes:ResourceKeys.RubikTreeViewExpandCollapseToggleStyleKey}}"/>
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>

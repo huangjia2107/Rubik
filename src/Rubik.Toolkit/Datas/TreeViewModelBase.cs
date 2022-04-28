@@ -17,6 +17,7 @@ namespace Rubik.Toolkit.Datas
             set { SetProperty(ref _visibility, value); }
         }
 
+        public virtual TreeViewModelBase Parent { get; set; }
         public virtual IEnumerable<TreeViewModelBase> Nodes { get; set; }
 
         public bool Any<T>(Predicate<T> predicate, bool checkSelf = false) where T : TreeViewModelBase
@@ -98,24 +99,6 @@ namespace Rubik.Toolkit.Datas
             }
 
             return -1;
-        }
-
-        public static bool Update<T>(IEnumerable<T> collection, Predicate<T> predicate) where T : TreeViewModelBase
-        {
-            if (collection == null || predicate == null)
-                return false;
-
-            foreach (var n in collection)
-            {
-                if (predicate(n))
-                    return true;
-
-                var result = Update((IEnumerable<T>)n.Nodes, predicate);
-                if (result)
-                    return true;
-            }
-
-            return false;
         }
 
         public static void Update<T>(IEnumerable<T> collection, Action<T> update) where T : TreeViewModelBase

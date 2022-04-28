@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Collections.ObjectModel;
 
 using Rubik.Toolkit.Datas;
@@ -28,6 +28,20 @@ namespace Rubik.Demo.DragTree.ViewModels
             set { SetProperty(ref _isDragOver, value); }
         }
 
+        private bool _isDragOverUp;
+        public bool IsDragOverUp
+        {
+            get { return _isDragOverUp; }
+            set { SetProperty(ref _isDragOverUp, value); }
+        }
+
+        private bool _isDragOverDown;
+        public bool IsDragOverDown
+        {
+            get { return _isDragOverDown; }
+            set { SetProperty(ref _isDragOverDown, value); }
+        }
+
         private string _name;
         public string Name
         {
@@ -42,7 +56,19 @@ namespace Rubik.Demo.DragTree.ViewModels
             set { SetProperty(ref _isNode, value); }
         }
 
-        public TreeViewModelBase Parent { get; set; }
-        public override IEnumerable<TreeViewModelBase> Nodes { get; set; } 
+        public TreeViewModel Clone()
+        {
+            var model = new TreeViewModel
+            {
+                Name = Name,
+                IsNode = IsNode
+
+            };
+
+            if (Nodes != null && Nodes.Any())
+                model.Nodes = new ObservableCollection<TreeViewModel>(Nodes.Select(n => ((TreeViewModel)n).Clone()));
+
+            return model;
+        }
     }
 }
