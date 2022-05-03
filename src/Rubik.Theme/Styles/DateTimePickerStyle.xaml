@@ -63,37 +63,31 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <controls:NumericBox Grid.Column="0" Minimum="1000" Maximum="9999" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="4" MinWidth="0"
-                                                 Value="{Binding Year,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                            <rubik:NumericBox x:Name="PART_YearBox" Grid.Column="0" Minimum="1000" Value="1000" Maximum="9999" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
+                                              FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="4" MinWidth="0"/>
                             <TextBlock Grid.Column="1" Text="-" VerticalAlignment="Center" Margin="0,0,0,3"/>
-                            <controls:NumericBox Grid.Column="2" Minimum="1" Maximum="12" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Center"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
-                                                 Value="{Binding Month,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                            <rubik:NumericBox x:Name="PART_MonthBox" Grid.Column="2" Minimum="1" Maximum="12" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Center"
+                                              FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
                             <TextBlock Grid.Column="3" Text="-" VerticalAlignment="Center" Margin="0,0,0,3"/>
-                            <controls:NumericBox Grid.Column="4" Minimum="1" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
-                                                 Value="{Binding Day,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
-                                <controls:NumericBox.Maximum>
+                            <rubik:NumericBox x:Name="PART_DayBox" Grid.Column="4" Minimum="1" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
+                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0">
+                                <rubik:NumericBox.Maximum>
                                     <MultiBinding FallbackValue="31"
-                                                  Converter="{StaticResource {x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}}">
+                                                  Converter="{StaticResource daysInMonthMultiConverterKey}">
                                         <Binding Path="Year" RelativeSource="{RelativeSource TemplatedParent}"/>
                                         <Binding Path="Month" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     </MultiBinding>
-                                </controls:NumericBox.Maximum>
-                            </controls:NumericBox>
+                                </rubik:NumericBox.Maximum>
+                            </rubik:NumericBox>
                             <TextBlock Grid.Column="5" Text=" " VerticalAlignment="Center"/>
-                            <controls:NumericBox Grid.Column="6" Minimum="0" Maximum="23" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
-                                                 Value="{Binding Hour,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                            <rubik:NumericBox x:Name="PART_HourBox" Grid.Column="6" Minimum="0" Maximum="23" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
+                                              FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
                             <TextBlock Grid.Column="7" Text=":" VerticalAlignment="Center" Margin="0,0,0,2"/>
-                            <controls:NumericBox Grid.Column="8" Minimum="0" Maximum="59" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
-                                                 Value="{Binding Minute,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                            <rubik:NumericBox x:Name="PART_MinuteBox" Grid.Column="8" Minimum="0" Maximum="59" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
+                                              FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
                             <TextBlock Grid.Column="9" Text=":" VerticalAlignment="Center" Margin="0,0,0,2"/>
-                            <controls:NumericBox Grid.Column="10" Minimum="0" Maximum="59" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"
-                                                 Value="{Binding Second,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+                            <rubik:NumericBox x:Name="PART_SecondBox" Grid.Column="10" Minimum="0" Maximum="59" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
+                                              FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
 
                             <ToggleButton x:Name="CalendarButton" Grid.Column="12" Width="20"
                                           Foreground="{TemplateBinding Foreground}"
@@ -108,7 +102,7 @@
                                    PlacementTarget="{Binding ElementName=CalendarButton}"
                                    PopupAnimation="Fade">
                                 <mwt:SystemDropShadowChrome Color="#71000000" Margin="0,0,6,5">
-                                    <Calendar SelectedDate="{Binding Date,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <Calendar x:Name="PART_Calendar"/>
                                 </mwt:SystemDropShadowChrome>
                             </Popup>
                         </Grid>

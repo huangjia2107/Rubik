@@ -2,10 +2,35 @@
 using System.Windows;
 using System.Windows.Controls;
 
+using Rubik.Theme.Datas;
+
 namespace Rubik.Theme.Controls
 {
-    public class DateTimePicker : Control    
+    [TemplatePart(Name = YearBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = MonthBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = DayBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = HourBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = MinuteBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = SecondBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = CalendarTemplateName, Type = typeof(Calendar))]
+    public class DateTimePicker : Control
     {
+        private const string YearBoxTemplateName = "PART_YearBox";
+        private const string MonthBoxTemplateName = "PART_MonthBox";
+        private const string DayBoxTemplateName = "PART_DayBox";
+        private const string HourBoxTemplateName = "PART_HourBox";
+        private const string MinuteBoxTemplateName = "PART_MinuteBox";
+        private const string SecondBoxTemplateName = "PART_SecondBox";
+        private const string CalendarTemplateName = "PART_Calendar";
+
+        private NumericBox _yearBox;
+        private NumericBox _monthBox;
+        private NumericBox _dayBox;
+        private NumericBox _hourBox;
+        private NumericBox _minuteBox;
+        private NumericBox _secondBox;
+        private Calendar _calendar;
+
         static DateTimePicker()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DateTimePicker), new FrameworkPropertyMetadata(typeof(DateTimePicker)));
@@ -25,143 +50,171 @@ namespace Rubik.Theme.Controls
             ctrl.UpdateDateTime();
         }
 
-        public static readonly DependencyProperty DateProperty =
-            DependencyProperty.Register("Date", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now, OnDatePropertyChanged));
-        public DateTime Date
-        {
-            get { return (DateTime)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
-        }
-
-        static void OnDatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            ctrl.UpdateDate();
-        }
-
-        public static readonly DependencyProperty YearProperty =
-            DependencyProperty.Register("Year", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Year, OnYearPropertyChanged));
-        public int Year
-        {
-            get { return (int)GetValue(YearProperty); }
-            set { SetValue(YearProperty, value); }
-        }
-
-        static void OnYearPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var year = (int)e.NewValue;
-
-            if (ctrl.Value.Year != year)
-                ctrl.Value = new DateTime(year, ctrl.Value.Month, Math.Min(DateTime.DaysInMonth(year, ctrl.Value.Month), ctrl.Value.Day), ctrl.Value.Hour, ctrl.Value.Minute, ctrl.Value.Second);
-        }
-
-        public static readonly DependencyProperty MonthProperty =
-            DependencyProperty.Register("Month", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Month, OnMonthPropertyChanged));
-        public int Month
-        {
-            get { return (int)GetValue(MonthProperty); }
-            set { SetValue(MonthProperty, value); }
-        }
-
-        static void OnMonthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var month = (int)e.NewValue;
-
-            if (ctrl.Value.Month != month)
-                ctrl.Value = new DateTime(ctrl.Value.Year, month, Math.Min(DateTime.DaysInMonth(ctrl.Value.Year, month), ctrl.Value.Day), ctrl.Value.Hour, ctrl.Value.Minute, ctrl.Value.Second);
-        }
-
-        public static readonly DependencyProperty DayProperty =
-            DependencyProperty.Register("Day", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Day, OnDayPropertyChanged));
-        public int Day
-        {
-            get { return (int)GetValue(DayProperty); }
-            set { SetValue(DayProperty, value); }
-        }
-
-        static void OnDayPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var day = (int)e.NewValue;
-
-            if (ctrl.Value.Day != day)
-                ctrl.Value = new DateTime(ctrl.Value.Year, ctrl.Value.Month, day, ctrl.Value.Hour, ctrl.Value.Minute, ctrl.Value.Second);
-        }
-
-        public static readonly DependencyProperty HourProperty =
-            DependencyProperty.Register("Hour", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Hour, OnHourPropertyChanged));
-        public int Hour
-        {
-            get { return (int)GetValue(HourProperty); }
-            set { SetValue(HourProperty, value); }
-        }
-
-        static void OnHourPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var hour = (int)e.NewValue;
-
-            if (ctrl.Value.Hour != hour)
-                ctrl.Value = new DateTime(ctrl.Value.Year, ctrl.Value.Month, ctrl.Value.Day, hour, ctrl.Value.Minute, ctrl.Value.Second);
-        }
-
-        public static readonly DependencyProperty MinuteProperty =
-            DependencyProperty.Register("Minute", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Minute, OnMinutePropertyChanged));
-        public int Minute
-        {
-            get { return (int)GetValue(MinuteProperty); }
-            set { SetValue(MinuteProperty, value); }
-        }
-
-        static void OnMinutePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var minute = (int)e.NewValue;
-
-            if (ctrl.Value.Minute != minute)
-                ctrl.Value = new DateTime(ctrl.Value.Year, ctrl.Value.Month, ctrl.Value.Day, ctrl.Value.Hour, minute, ctrl.Value.Second);
-        }
-
-        public static readonly DependencyProperty SecondProperty =
-            DependencyProperty.Register("Second", typeof(int), typeof(DateTimePicker), new PropertyMetadata(DateTime.Now.Second, OnSecondPropertyChanged));
-        public int Second
-        {
-            get { return (int)GetValue(SecondProperty); }
-            set { SetValue(SecondProperty, value); }
-        }
-
-        static void OnSecondPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = d as DateTimePicker;
-            var second = (int)e.NewValue;
-
-            if (ctrl.Value.Second != second)
-                ctrl.Value = new DateTime(ctrl.Value.Year, ctrl.Value.Month, ctrl.Value.Day, ctrl.Value.Hour, ctrl.Value.Minute, second);
-        }
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            Value = DateTime.Now;
+            if (_yearBox != null)
+                _yearBox.ValueChanged -= _yearBox_ValueChanged;
+
+            if (_monthBox != null)
+                _monthBox.ValueChanged -= _monthBox_ValueChanged;
+
+            if (_dayBox != null)
+                _dayBox.ValueChanged -= _dayBox_ValueChanged;
+
+            if (_hourBox != null)
+                _hourBox.ValueChanged -= _hourBox_ValueChanged;
+
+            if (_minuteBox != null)
+                _minuteBox.ValueChanged -= _minuteBox_ValueChanged;
+
+            if (_secondBox != null)
+                _secondBox.ValueChanged -= _secondBox_ValueChanged;
+
+            if (_calendar != null)
+                _calendar.SelectedDatesChanged -= _calendar_SelectedDatesChanged;
+
+            _yearBox = GetTemplateChild(YearBoxTemplateName) as NumericBox;
+            _monthBox = GetTemplateChild(MonthBoxTemplateName) as NumericBox;
+            _dayBox = GetTemplateChild(DayBoxTemplateName) as NumericBox;
+            _hourBox = GetTemplateChild(HourBoxTemplateName) as NumericBox;
+            _minuteBox = GetTemplateChild(MinuteBoxTemplateName) as NumericBox;
+            _secondBox = GetTemplateChild(SecondBoxTemplateName) as NumericBox;
+            _calendar = GetTemplateChild(CalendarTemplateName) as Calendar;
+
+            if (_yearBox != null)
+                _yearBox.ValueChanged += _yearBox_ValueChanged;
+
+            if (_monthBox != null)
+                _monthBox.ValueChanged += _monthBox_ValueChanged;
+
+            if (_dayBox != null)
+                _dayBox.ValueChanged += _dayBox_ValueChanged;
+
+            if (_hourBox != null)
+                _hourBox.ValueChanged += _hourBox_ValueChanged;
+
+            if (_minuteBox != null)
+                _minuteBox.ValueChanged += _minuteBox_ValueChanged;
+
+            if (_secondBox != null)
+                _secondBox.ValueChanged += _secondBox_ValueChanged;
+
+            if (_calendar != null)
+                _calendar.SelectedDatesChanged += _calendar_SelectedDatesChanged;
+
+            UpdateDateTime();
+        }
+
+        private void _calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_calendar.SelectedDate.HasValue)
+            {
+                if (_yearBox != null)
+                    _yearBox.Value = _calendar.SelectedDate.Value.Year;
+
+                if (_monthBox != null)
+                    _monthBox.Value = _calendar.SelectedDate.Value.Month;
+
+                if (_dayBox != null)
+                    _dayBox.Value = _calendar.SelectedDate.Value.Day;
+
+                Value = new DateTime(_calendar.SelectedDate.Value.Year, _calendar.SelectedDate.Value.Month, _calendar.SelectedDate.Value.Day, Value.Hour, Value.Minute, Value.Second);
+            }
+        }
+
+        private void _yearBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var year = (int)args.NewValue;
+
+            if (Value.Year != year)
+                Value = new DateTime(year, Value.Month, Math.Min(DateTime.DaysInMonth(year, Value.Month), Value.Day), Value.Hour, Value.Minute, Value.Second);
+        }
+
+        private void _monthBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var month = (int)args.NewValue;
+
+            if (Value.Month != month)
+                Value = new DateTime(Value.Year, month, Math.Min(DateTime.DaysInMonth(Value.Year, month), Value.Day), Value.Hour, Value.Minute, Value.Second);
+        }
+
+        private void _dayBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var day = (int)args.NewValue;
+
+            if (Value.Day != day)
+                Value = new DateTime(Value.Year, Value.Month, day, Value.Hour, Value.Minute, Value.Second);
+        }
+
+        private void _hourBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var hour = (int)args.NewValue;
+
+            if (Value.Hour != hour)
+                Value = new DateTime(Value.Year, Value.Month, Value.Day, hour, Value.Minute, Value.Second);
+        }
+
+        private void _minuteBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var minute = (int)args.NewValue;
+
+            if (Value.Minute != minute)
+                Value = new DateTime(Value.Year, Value.Month, Value.Day, Value.Hour, minute, Value.Second);
+        }
+
+        private void _secondBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var args = e as TextBoxValueChangedEventArgs<double>;
+
+            if (!args.IsManual)
+                return;
+
+            var second = (int)args.NewValue;
+
+            if (Value.Second != second)
+                Value = new DateTime(Value.Year, Value.Month, Value.Day, Value.Hour, Value.Minute, second);
         }
 
         private void UpdateDateTime()
         {
-            Date = Value;
+            if (_calendar != null)
+                _calendar.SelectedDate = Value;
 
-            Hour = Value.Hour;
-            Minute = Value.Minute;
-            Second = Value.Second;
-        }
+            if (_hourBox != null)
+                _hourBox.Value = Value.Hour;
 
-        private void UpdateDate()
-        {
-            Year = Date.Year;
-            Month = Date.Month;
-            Day = Date.Day;
+            if (_minuteBox != null)
+                _minuteBox.Value = Value.Minute;
+
+            if (_secondBox != null)
+                _secondBox.Value = Value.Second;
         }
     }
 }
