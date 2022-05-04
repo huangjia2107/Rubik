@@ -7,5 +7,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Rubik.Theme\Rubik.Theme.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="Xshds\ExpressionEditor.xshd" />
+  </ItemGroup>
 
 </Project>

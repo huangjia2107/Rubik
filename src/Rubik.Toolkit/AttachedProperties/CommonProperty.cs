@@ -45,9 +45,13 @@ namespace Rubik.Toolkit.AttachedProperties
                 return;
 
             var streamInfo = Application.GetResourceStream(new Uri(uri, UriKind.Relative));
+            if (streamInfo == null)
+                return;
 
-            if (streamInfo != null)
-                ctrl.Cursor = new Cursor(streamInfo.Stream);
+            using (var stream = streamInfo.Stream)
+            {
+                ctrl.Cursor = new Cursor(stream);
+            }
         }
     }
 }

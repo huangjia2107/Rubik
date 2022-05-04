@@ -428,7 +428,7 @@ namespace Rubik.Theme.Extension.Controls
 
                 _partTextEditor.Options = new TextEditorOptions { ConvertTabsToSpaces = true };
                 _partTextEditor.TextArea.SelectionCornerRadius = 0;
-                _partTextEditor.TextArea.SelectionBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFADD6FF"));
+                _partTextEditor.TextArea.SelectionBrush = ColorUtil.GetBrushFromString("#FFADD6FF");
                 _partTextEditor.TextArea.SelectionBorder = null;
                 _partTextEditor.TextArea.SelectionForeground = null;
             }
