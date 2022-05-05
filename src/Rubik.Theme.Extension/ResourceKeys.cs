@@ -2,11 +2,11 @@
 
 namespace Rubik.Theme.Extension
 {
-    public static class ResourceKeys
+    public static class ExResourceKeys
     {
         #region Xaml
 
-        public static Uri RubikExtensionThemeSource { get; } = new Uri("pack://application:,,,/Rubik.Theme.Extension;component/Themes/Generic.xaml");
+        public static Uri RubikThemeExtensionSource { get; } = new Uri("pack://application:,,,/Rubik.Theme.Extension;component/Themes/Generic.xaml");
 
         public static Uri CodeCompletionStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme.Extension;component/Styles/CodeCompletionStyle.xaml");
         public static Uri ExpressionEditorStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme.Extension;component/Styles/ExpressionEditorStyle.xaml");

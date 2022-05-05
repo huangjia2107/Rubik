@@ -1,13 +1,16 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/"
                     xmlns:themes="clr-namespace:Rubik.Theme.Extension">
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="{x:Static themes:ResourceKeys.CodeCompletionStyleSource}"/>
-        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ExpressionEditorStyleSource}"/>
-        <ResourceDictionary Source="{x:Static themes:ResourceKeys.CodeViewerStyleSource}"/>
-        <ResourceDictionary Source="{x:Static themes:ResourceKeys.LiveXamlStyleSource}"/>
+        <ResourceDictionary Source="{x:Static rubik:ResourceKeys.RubikThemeSource}"/>
+        
+        <ResourceDictionary Source="{x:Static themes:ExResourceKeys.CodeCompletionStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ExResourceKeys.ExpressionEditorStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ExResourceKeys.CodeViewerStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ExResourceKeys.LiveXamlStyleSource}"/>
         
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

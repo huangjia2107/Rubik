@@ -7,23 +7,17 @@ using ICSharpCode.AvalonEdit.Editing;
 
 namespace Rubik.Theme.Extension.Datas
 {
-    public class CompletionData : ICompletionData
+    public abstract class CompletionData : ICompletionData
     {
-        public string Text { get; private set; }
+        public abstract string Text { get; set; }
+        public abstract object Content { get; set; }
+        public abstract object Description { get; set; }
 
-        public CompletionData(string text)
-        {
-            Text = text;
-        }
+        public virtual ImageSource Image { get; set; }
 
-        public object Content => Text;
+        public virtual double Priority { get; set; } = 1;
 
-        public object Description { get; }
-        public ImageSource Image { get; }
-
-        public double Priority => 1;
-
-        public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
+        public virtual void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
         {
             textArea.Document.Replace(completionSegment, this.Text);
         }

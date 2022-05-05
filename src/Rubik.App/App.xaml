@@ -2,11 +2,12 @@
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:rubik="https://github.com/huangjia2107/Rubik/"
-                        xmlns:prism="http://prismlibrary.com/">    
+                        xmlns:prism="http://prismlibrary.com/"
+                        xmlns:ss="clr-namespace:Rubik.Theme.Extension;assembly=Rubik.Theme.Extension">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="{x:Static rubik:ResourceKeys.RubikThemeSource}" />
+                <ResourceDictionary Source="{x:Static rubik:ExResourceKeys.RubikThemeExtensionSource}" />
                 <ResourceDictionary Source="/Rubik.App;component/Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="/Rubik.App;component/Styles/RadioButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>

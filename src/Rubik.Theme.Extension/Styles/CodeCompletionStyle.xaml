@@ -11,7 +11,7 @@
         </Setter> 
     </Style>
     
-    <Style TargetType="{x:Type cc:CompletionListBox}">
+    <Style TargetType="{x:Type cc:CompletionList}">
         <Setter Property="Background" Value="#F5F5F5" />
         <Setter Property="BorderBrush" Value="LightGray" />
         <Setter Property="FontSize" Value="12" />

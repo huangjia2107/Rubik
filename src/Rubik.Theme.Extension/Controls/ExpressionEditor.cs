@@ -84,10 +84,10 @@ namespace Rubik.Theme.Extension.Controls
             set { SetValue(WordWrapProperty, value); }
         }
 
-        public static readonly DependencyProperty CompletionDataFuncProperty = DependencyProperty.Register("CompletionDataFunc", typeof(Func<string, IEnumerable<string>>), _typeofSelf);
-        public Func<string, IEnumerable<string>> CompletionDataFunc
+        public static readonly DependencyProperty CompletionDataFuncProperty = DependencyProperty.Register("CompletionDataFunc", typeof(Func<string, IEnumerable<CompletionData>>), _typeofSelf);
+        public Func<string, IEnumerable<CompletionData>> CompletionDataFunc
         {
-            get { return (Func<string, IEnumerable<string>>)GetValue(CompletionDataFuncProperty); }
+            get { return (Func<string, IEnumerable<CompletionData>>)GetValue(CompletionDataFuncProperty); }
             set { SetValue(CompletionDataFuncProperty, value); }
         }
 
@@ -196,12 +196,8 @@ namespace Rubik.Theme.Extension.Controls
             if (IsReadOnly || _completionWindow == null || e.Text.Length == 0)
                 return;
 
-            if (!char.IsLetter(e.Text[0]))
-            {
-                // Whenever a non-letter is typed while the completion window is open,
-                // insert the currently selected element.
+            if (!char.IsLetter(e.Text[0]) && !char.IsNumber(e.Text[0]) && e.Text[0] != '_')
                 _completionWindow.CompletionList.RequestInsertion(e);
-            }
         }
 
         private void TextArea_TextEntered(object sender, TextCompositionEventArgs e)
@@ -218,7 +214,7 @@ namespace Rubik.Theme.Extension.Controls
                 case "*":
                 case "/":
                 case "%":
-                case "^":
+                //case "^":
                     {
                         InsertText(" ", false);
                         return;
@@ -283,7 +279,6 @@ namespace Rubik.Theme.Extension.Controls
                 return;
 
             _partTextEditor.Document.Remove(_partTextEditor.TextArea.Caret.Offset - selectedItem.Length - 1, 1);
-            InsertText(" ", false);
         }
 
         #endregion
@@ -372,7 +367,7 @@ namespace Rubik.Theme.Extension.Controls
             _completionWindow.CompletionList.InsertionRequested += CompletionList_InsertionRequested;
 
             foreach (var d in showDatas)
-                _completionWindow.CompletionList.CompletionData.Add(new CompletionData(d));
+                _completionWindow.CompletionList.CompletionData.Add(d);
 
             _completionWindow.CompletionList.SelectItem(input);
 
