@@ -78,7 +78,7 @@
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0">
                                 <controls:NumericBox.Maximum>
                                     <MultiBinding FallbackValue="31"
-                                                  Converter="{StaticResource DaysInMonthMultiConverterKey}">
+                                                  Converter="{StaticResource {x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}}">
                                         <Binding Path="Year" RelativeSource="{RelativeSource TemplatedParent}"/>
                                         <Binding Path="Month" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     </MultiBinding>
