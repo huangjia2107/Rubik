@@ -151,11 +151,15 @@ namespace Rubik.Theme.Extension.Controls
                 return;
             }
 
-            this.RaiseEvent(new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
+            if (_partTextEditor.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled
+                || scrollViewer != null && DoubleUtil.IsZero(scrollViewer.ScrollableHeight))
             {
-                RoutedEvent = MouseWheelEvent,
-                Source = this
-            });
+                this.RaiseEvent(new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
+                {
+                    RoutedEvent = MouseWheelEvent,
+                    Source = this
+                });
+            }
         }
 
         public override void OnApplyTemplate()

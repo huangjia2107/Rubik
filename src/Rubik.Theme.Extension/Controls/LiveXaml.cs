@@ -388,6 +388,41 @@ namespace Rubik.Theme.Extension.Controls
                 _partTextEditor.Focus();
         }
 
+        protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
+        {
+            base.OnPreviewMouseWheel(e);
+
+            if (_partTextEditor == null)
+                return;
+
+            var textEditor = TreeUtil.FindVisualParent<TextEditor>(e.OriginalSource as DependencyObject);
+            if (textEditor == null)
+                return;
+
+            var scrollViewer = TreeUtil.FindVisualChild<ScrollViewer>(textEditor);
+            if (scrollViewer != null
+                && Keyboard.Modifiers == ModifierKeys.Control
+                && DoubleUtil.GreaterThan(scrollViewer.ScrollableWidth, 0))
+            {
+                if (e.Delta > 0)
+                    _partTextEditor.ScrollToHorizontalOffset(Math.Max(0, _partTextEditor.HorizontalOffset - e.Delta));
+                else
+                    _partTextEditor.ScrollToHorizontalOffset(_partTextEditor.HorizontalOffset - e.Delta);
+
+                return;
+            }
+
+            if (_partTextEditor.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled
+                || scrollViewer != null && DoubleUtil.IsZero(scrollViewer.ScrollableHeight))
+            {
+                this.RaiseEvent(new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
+                {
+                    RoutedEvent = MouseWheelEvent,
+                    Source = this
+                });
+            }
+        }
+
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
