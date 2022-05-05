@@ -6,7 +6,7 @@
                     xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
     <ResourceDictionary.MergedDictionaries>
-        <markup:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
+        <markup:SharedResourceDictionary Source="{x:Static themes:ResourceKeys.ButtonBaseStyleSource}"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type controls:SpitButton}">

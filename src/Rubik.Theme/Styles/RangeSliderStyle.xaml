@@ -5,7 +5,7 @@
                     xmlns:markup="clr-namespace:Rubik.Theme.Markup">
 
     <ResourceDictionary.MergedDictionaries>
-        <markup:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
+        <markup:SharedResourceDictionary Source="{x:Static themes:ResourceKeys.ConvertersSource}"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="RangeSliderThumbStyle" TargetType="{x:Type Thumb}">

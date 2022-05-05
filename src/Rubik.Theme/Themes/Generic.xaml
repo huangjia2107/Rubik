@@ -1,57 +1,58 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:themes="clr-namespace:Rubik.Theme">
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ButtonStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ButtonBaseStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ButtonStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/Constants.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/Converters.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckBoxStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/CheckCodeStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ComboBoxStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ColorPickerStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ConstantsSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ConvertersSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.CheckBoxStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.CheckCodeStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ComboBoxStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ColorPickerStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/DateTimePickerStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.DateTimePickerStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/Geometries.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/GridSplitterStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.GeometriesSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.GridSplitterStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ImageChartStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ImageChartStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/LoadIndicatorStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/LiveChartStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ListBoxStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.LoadIndicatorStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.LiveChartStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ListBoxStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/MenuStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/MenuButtonStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/MediaPlayerStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/MultiSelectTreeViewStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.MenuStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.MenuButtonStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.MediaPlayerStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.MultiSelectTreeViewStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/NumericBoxStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.NumericBoxStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/PasswordBoxStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/PaginationStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.PasswordBoxStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.PaginationStyleSource}"/>
         
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/RestrictTextBoxStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/RadioButtonStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/RangeSliderStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/RepeatButtonStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.RestrictTextBoxStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.RadioButtonStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.RangeSliderStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.RepeatButtonStyleSource}"/>
         
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/SliderStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/SpitButtonStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/SeparatorStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ScrollViewerStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.SliderStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.SpitButtonStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.SeparatorStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ScrollViewerStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/TextBoxStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ToggleSwitchStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ToggleStatusStyle.xaml"/>
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/TreeViewStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.TextBoxStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ToggleSwitchStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ToggleStatusStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.TreeViewStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/UserWindowStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.UserWindowStyleSource}"/>
 
-        <ResourceDictionary Source="/Rubik.Theme;component/Styles/ZoomBoxStyle.xaml"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.ZoomBoxStyleSource}"/>
 
     </ResourceDictionary.MergedDictionaries>
 

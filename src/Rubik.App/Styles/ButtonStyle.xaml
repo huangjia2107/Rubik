@@ -3,7 +3,7 @@
                     xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <ResourceDictionary.MergedDictionaries>
-        <rubik:SharedResourceDictionary Source="/Rubik.Theme;component/Styles/BaseStyle.xaml"/>
+        <rubik:SharedResourceDictionary Source="{x:Static rubik:ResourceKeys.ButtonBaseStyleSource}"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!--NormalButton-->

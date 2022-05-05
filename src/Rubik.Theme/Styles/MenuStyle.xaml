@@ -7,7 +7,7 @@
     <Geometry x:Key="Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
 
     <!--TopLevelHeader-->
-    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.MenuItemTopLevelHeaderTemplateKey}" 
+    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.RubikMenuItemTopLevelHeaderTemplateKey}" 
                      TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <DockPanel x:Name="Bg">
@@ -59,7 +59,7 @@
     </ControlTemplate>
 
     <!--TopLevelItem-->
-    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.MenuItemTopLevelItemTemplateKey}" 
+    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.RubikMenuItemTopLevelItemTemplateKey}" 
                      TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <DockPanel x:Name="Bg">
@@ -92,7 +92,7 @@
     </ControlTemplate>
 
     <!--SubmenuHeader-->
-    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.MenuItemSubmenuHeaderTemplateKey}" 
+    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.RubikMenuItemSubmenuHeaderTemplateKey}" 
                      TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <Grid x:Name="Bg">
@@ -153,7 +153,7 @@
     </ControlTemplate>
 
     <!--SubmenuItem-->
-    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.MenuItemSubmenuItemTemplateKey}" 
+    <ControlTemplate x:Key="{x:Static themes:ResourceKeys.RubikMenuItemSubmenuItemTemplateKey}" 
                      TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <Grid x:Name="Bg">
@@ -195,24 +195,24 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.MenuItemStyleKey}" TargetType="{x:Type MenuItem}">
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikMenuItemStyleKey}" TargetType="{x:Type MenuItem}">
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="MinHeight" Value="27"/>
-        <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.MenuItemSubmenuItemTemplateKey}}"/>
+        <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.RubikMenuItemSubmenuItemTemplateKey}}"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Padding" Value="7,2,8,3"/>
-                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.MenuItemTopLevelHeaderTemplateKey}}"/>
+                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.RubikMenuItemTopLevelHeaderTemplateKey}}"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
                 <Setter Property="Padding" Value="7,2,8,3"/>
-                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.MenuItemTopLevelItemTemplateKey}}"/>
+                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.RubikMenuItemTopLevelItemTemplateKey}}"/>
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
                 <Setter Property="Padding" Value="2,3,2,3"/>
-                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.MenuItemSubmenuHeaderTemplateKey}}"/>
+                <Setter Property="Template" Value="{StaticResource {x:Static themes:ResourceKeys.RubikMenuItemSubmenuHeaderTemplateKey}}"/>
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
                 <Setter Property="Padding" Value="2,3,2,3"/>
@@ -223,7 +223,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static themes:ResourceKeys.ContextMenuStyleKey}" TargetType="{x:Type ContextMenu}">
+    <Style x:Key="{x:Static themes:ResourceKeys.RubikContextMenuStyleKey}" TargetType="{x:Type ContextMenu}">
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Foreground" Value="#404040"/>
         <Setter Property="BorderBrush" Value="LightGray"/>

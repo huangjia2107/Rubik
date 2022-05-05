@@ -5,11 +5,66 @@ namespace Rubik.Theme
 {
     public static class ResourceKeys
     {
-        public static Uri RubikThemeSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Themes/Generic.xaml");
         public static string LeftRightSplitterCur { get; } = @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_lr.cur";
         public static string UpDownSplitterCur { get; } = @"/Rubik.Toolkit;component/Assets/Cursors/Splitter_ud.cur";
 
-        #region 
+        #region Xaml
+
+        public static Uri RubikThemeSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Themes/Generic.xaml");
+
+        public static Uri ButtonBaseStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ButtonBaseStyle.xaml");
+        public static Uri ButtonStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ButtonStyle.xaml");
+
+        public static Uri ConstantsSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/Constants.xaml");
+        public static Uri ConvertersSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/Converters.xaml");
+        public static Uri CheckBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/CheckBoxStyle.xaml");
+        public static Uri CheckCodeStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/CheckCodeStyle.xaml");
+        public static Uri ComboBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ComboBoxStyle.xaml");
+        public static Uri ColorPickerStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ColorPickerStyle.xaml");
+
+        public static Uri DateTimePickerStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/DateTimePickerStyle.xaml");
+
+        public static Uri GeometriesSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/Geometries.xaml");
+        public static Uri GridSplitterStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/GridSplitterStyle.xaml");
+
+        public static Uri ImageChartStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ImageChartStyle.xaml");
+
+        public static Uri LoadIndicatorStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/LoadIndicatorStyle.xaml");
+        public static Uri LiveChartStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/LiveChartStyle.xaml");
+        public static Uri ListBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ListBoxStyle.xaml");
+
+        public static Uri MenuStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/MenuStyle.xaml");
+        public static Uri MenuButtonStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/MenuButtonStyle.xaml");
+        public static Uri MediaPlayerStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/MediaPlayerStyle.xaml");
+        public static Uri MultiSelectTreeViewStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/MultiSelectTreeViewStyle.xaml");
+
+        public static Uri NumericBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/NumericBoxStyle.xaml");
+
+        public static Uri PasswordBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/PasswordBoxStyle.xaml");
+        public static Uri PaginationStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/PaginationStyle.xaml");
+
+        public static Uri RestrictTextBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/RestrictTextBoxStyle.xaml");
+        public static Uri RadioButtonStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/RadioButtonStyle.xaml");
+        public static Uri RangeSliderStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/RangeSliderStyle.xaml");
+        public static Uri RepeatButtonStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/RepeatButtonStyle.xaml");
+
+        public static Uri SliderStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/SliderStyle.xaml");
+        public static Uri SpitButtonStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/SpitButtonStyle.xaml");
+        public static Uri SeparatorStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/SeparatorStyle.xaml");
+        public static Uri ScrollViewerStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ScrollViewerStyle.xaml");
+
+        public static Uri TextBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/TextBoxStyle.xaml");
+        public static Uri ToggleSwitchStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ToggleSwitchStyle.xaml");
+        public static Uri ToggleStatusStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ToggleStatusStyle.xaml");
+        public static Uri TreeViewStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/TreeViewStyle.xaml");
+
+        public static Uri UserWindowStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/UserWindowStyle.xaml");
+
+        public static Uri ZoomBoxStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ZoomBoxStyle.xaml");
+
+        #endregion
+
+        #region Constants
 
         public static ComponentResourceKey TrueValueKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "TrueValue");
         public static ComponentResourceKey FalseValueKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "FalseValue");
@@ -150,13 +205,13 @@ namespace Rubik.Theme
 
         #region Menu
 
-        public static ComponentResourceKey ContextMenuStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "ContextMenuStyle");
-        public static ComponentResourceKey MenuItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemStyle");
-        public static ComponentResourceKey MenuItemSubmenuContentKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuContent");
-        public static ComponentResourceKey MenuItemTopLevelHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemTopLevelHeaderTemplate");
-        public static ComponentResourceKey MenuItemTopLevelItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemTopLevelItemTemplate");
-        public static ComponentResourceKey MenuItemSubmenuHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuHeaderTemplate");
-        public static ComponentResourceKey MenuItemSubmenuItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "MenuItemSubmenuItemTemplate");
+        public static ComponentResourceKey RubikContextMenuStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikContextMenuStyle");
+        public static ComponentResourceKey RubikMenuItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemStyle");
+        public static ComponentResourceKey RubikMenuItemSubmenuContentKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemSubmenuContent");
+        public static ComponentResourceKey RubikMenuItemTopLevelHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemTopLevelHeaderTemplate");
+        public static ComponentResourceKey RubikMenuItemTopLevelItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemTopLevelItemTemplate");
+        public static ComponentResourceKey RubikMenuItemSubmenuHeaderTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemSubmenuHeaderTemplate");
+        public static ComponentResourceKey RubikMenuItemSubmenuItemTemplateKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikMenuItemSubmenuItemTemplate");
 
         #endregion
 
