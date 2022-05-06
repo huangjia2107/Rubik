@@ -139,8 +139,8 @@ namespace Rubik.Theme.Extension.Controls
                 return;
 
             var scrollViewer = TreeUtil.FindVisualChild<ScrollViewer>(textEditor);
-            if(scrollViewer != null 
-                && Keyboard.Modifiers == ModifierKeys.Control 
+            if (scrollViewer != null
+                && Keyboard.Modifiers == ModifierKeys.Control
                 && DoubleUtil.GreaterThan(scrollViewer.ScrollableWidth, 0))
             {
                 if (e.Delta > 0)
@@ -214,14 +214,14 @@ namespace Rubik.Theme.Extension.Controls
                 case "*":
                 case "/":
                 case "%":
-                //case "^":
+                    //case "^":
                     {
-                        InsertText(" ", false);
+                        InsertTextInternal(" ", false);
                         return;
                     }
                 case "(":
                     {
-                        InsertText(")");
+                        InsertTextInternal(")");
                         return;
                     }
                 case "!":
@@ -233,7 +233,7 @@ namespace Rubik.Theme.Extension.Controls
                                 break;
                         }
 
-                        InsertText("= ", false);
+                        InsertTextInternal("= ", false);
                         return;
                     }
                 case "=":
@@ -243,7 +243,7 @@ namespace Rubik.Theme.Extension.Controls
                             var preChar = _partTextEditor.Text[offset - 2];
                             if (preChar == '>' || preChar == '<' || preChar == '=' || preChar == '!')
                             {
-                                InsertText(" ", false);
+                                InsertTextInternal(" ", false);
                                 break;
                             }
                         }
@@ -255,7 +255,7 @@ namespace Rubik.Theme.Extension.Controls
                                 break;
                         }
 
-                        InsertText("= ", false);
+                        InsertTextInternal("= ", false);
                         return;
                     }
             }
@@ -284,6 +284,11 @@ namespace Rubik.Theme.Extension.Controls
         #endregion
 
         #region Func
+
+        public void InsertText(string text)
+        {
+            InsertTextInternal(text, false);
+        }
 
         public void Redo()
         {
@@ -341,8 +346,11 @@ namespace Rubik.Theme.Extension.Controls
             }
         }
 
-        private void InsertText(string text, bool caretFallBack = true, int fallbackLength = 1)
+        private void InsertTextInternal(string text, bool caretFallBack = true, int fallbackLength = 1)
         {
+            if (string.IsNullOrEmpty(text))
+                return;
+
             _partTextEditor.TextArea.Document.Insert(_partTextEditor.TextArea.Caret.Offset, text);
 
             if (caretFallBack)

@@ -1,15 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 
+using Prism.Commands;
 using Prism.Mvvm;
 
 using Rubik.Demo.ExpressionEditor.Models;
+using Rubik.Demo.ExpressionEditor.Views;
 using Rubik.Theme.Extension.Datas;
 
 namespace Rubik.Demo.ExpressionEditor.ViewModels
 {
     public class MainControlViewModel : BindableBase
     {
+        public DelegateCommand<RoutedEventArgs> LoadedCommand { get; private set; }
+        public DelegateCommand InsertCommand { get; private set; }
+
+        private Theme.Extension.Controls.ExpressionEditor _expressionEditor = null;
+
+        public MainControlViewModel()
+        {
+            LoadedCommand = new DelegateCommand<RoutedEventArgs>(Loaded);
+            InsertCommand = new DelegateCommand(Insert);
+        }
+
+        private string _text;
+        public string Text
+        {
+            get { return _text; }
+            set { SetProperty(ref _text, value); }
+        }
+
         private Func<string, IEnumerable<CompletionData>> _completionDataFunc = null;
         public Func<string, IEnumerable<CompletionData>> CompletionDataFunc
         {
@@ -30,6 +51,16 @@ namespace Rubik.Demo.ExpressionEditor.ViewModels
 
                 return _completionDataFunc;
             }
+        }
+
+        private void Loaded(RoutedEventArgs e)
+        {
+            _expressionEditor = (e.OriginalSource as MainControl).Editor;
+        }
+
+        private void Insert()
+        {
+            _expressionEditor.InsertText(Text);
         }
     }
 }
