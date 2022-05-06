@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Globalization;
+using System.Collections;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Collections;
-using System.Linq;
+using System.Windows.Controls;
 
 using Rubik.Toolkit.Datas;
-using System.Windows.Controls;
 
 namespace Rubik.Toolkit.Utils
 {
@@ -20,7 +20,7 @@ namespace Rubik.Toolkit.Utils
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return !(bool)value;
         }
     }
 

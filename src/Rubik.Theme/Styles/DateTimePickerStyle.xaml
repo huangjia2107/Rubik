@@ -79,8 +79,8 @@
                                 <controls:NumericBox.Maximum>
                                     <MultiBinding FallbackValue="31"
                                                   Converter="{StaticResource {x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}}">
-                                        <Binding Path="Year" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                        <Binding Path="Month" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="Value" ElementName="PART_YearBox"/>
+                                        <Binding Path="Value" ElementName="PART_MonthBox"/>
                                     </MultiBinding>
                                 </controls:NumericBox.Maximum>
                             </controls:NumericBox>
