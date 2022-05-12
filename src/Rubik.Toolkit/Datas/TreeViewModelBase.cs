@@ -101,15 +101,23 @@ namespace Rubik.Toolkit.Datas
             return -1;
         }
 
-        public static void Update<T>(IEnumerable<T> collection, Action<T> update) where T : TreeViewModelBase
+        public static void Foreach<T>(IEnumerable<T> collection, Action<T> action, bool parentFirst = true) where T : TreeViewModelBase
         {
-            if (collection == null || update == null)
+            if (collection == null || action == null)
                 return;
 
-            foreach (var n in collection)
+            foreach (T n in collection)
             {
-                update.Invoke(n);
-                Update((IEnumerable<T>)n.Nodes, update);
+                if (parentFirst)
+                {
+                    action(n);
+                    Foreach((IEnumerable<T>)n.Nodes, action);
+                }
+                else
+                {
+                    Foreach((IEnumerable<T>)n.Nodes, action);
+                    action(n);
+                }
             }
         }
     }

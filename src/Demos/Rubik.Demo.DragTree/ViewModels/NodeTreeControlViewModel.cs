@@ -164,7 +164,7 @@ namespace Rubik.Demo.DragTree.ViewModels
             if (overlapArea == OverlapArea.Out)
             {
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 
@@ -178,7 +178,7 @@ namespace Rubik.Demo.DragTree.ViewModels
             if (overlapModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapModel, true))
             {
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 
@@ -186,14 +186,14 @@ namespace Rubik.Demo.DragTree.ViewModels
             if (overlapModel == null)
             {
                 TreeBackground = ColorUtil.GetBrushFromString("#d6ebff");
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
             }
             else
             {
                 TreeBackground = Brushes.Transparent;
                 overlapModel.IsExpanded = true;
 
-                TreeViewModelBase.Update(TreeCollection, m =>
+                TreeViewModelBase.Foreach(TreeCollection, m =>
                 {
                     m.IsDragOverUp = (overlapArea & OverlapArea.Up) == OverlapArea.Up;
                     m.IsDragOverDown = (overlapArea & OverlapArea.Down) == OverlapArea.Down;
@@ -205,7 +205,7 @@ namespace Rubik.Demo.DragTree.ViewModels
         private void OnCompleted(OverlapArea overlapArea, TreeViewItem overlapItem, TreeViewItem draggingItem)
         {
             TreeBackground = Brushes.Transparent;
-            TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+            TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
 
             if (overlapArea == OverlapArea.Out)
                 return;
@@ -219,7 +219,7 @@ namespace Rubik.Demo.DragTree.ViewModels
              */
             if (overlapModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapModel, true))
             {
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 

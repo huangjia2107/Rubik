@@ -36,7 +36,7 @@ namespace Rubik.Toolkit.UI
         {
             if (filter == null)
             {
-                TreeViewModelBase.Update(_source, n => n.Visibility = Visibility.Visible);
+                TreeViewModelBase.Foreach(_source, n => n.Visibility = Visibility.Visible);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace Rubik.Toolkit.UI
                     if (node.Nodes != null && node.Nodes.Any())
                     {
                         if (node.Visibility == Visibility.Visible)
-                            TreeViewModelBase.Update((IEnumerable<T>)node.Nodes, n => n.Visibility = Visibility.Visible);
+                            TreeViewModelBase.Foreach((IEnumerable<T>)node.Nodes, n => n.Visibility = Visibility.Visible);
                         else
                             node.Visibility = node.Nodes.Any(n => n.Visibility == Visibility.Visible) ? Visibility.Visible : Visibility.Collapsed;
                     }

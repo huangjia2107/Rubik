@@ -169,7 +169,7 @@ namespace Rubik.Demo.DragTree.ViewModels
             if (overlapArea == OverlapArea.Out)
             {
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 
@@ -187,14 +187,14 @@ namespace Rubik.Demo.DragTree.ViewModels
                 || overlapFolderModel != null && draggingModel.Any<TreeViewModel>(m => m == overlapFolderModel))
             {
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
 
             if (overlapFolderModel == null)
             {
                 TreeBackground = ColorUtil.GetBrushFromString("#d6ebff");
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
                 return;
             }
             else
@@ -202,14 +202,14 @@ namespace Rubik.Demo.DragTree.ViewModels
                 overlapFolderModel.IsExpanded = true;
 
                 TreeBackground = Brushes.Transparent;
-                TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = m == overlapFolderModel);
+                TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = m == overlapFolderModel);
             }
         }
 
         private void OnCompleted(OverlapArea overlapArea, TreeViewItem overlapItem, TreeViewItem draggingItem)
         {
             TreeBackground = Brushes.Transparent;
-            TreeViewModelBase.Update(TreeCollection, m => m.IsDragOver = false);
+            TreeViewModelBase.Foreach(TreeCollection, m => m.IsDragOver = false);
 
             if (overlapArea == OverlapArea.Out)
                 return;
