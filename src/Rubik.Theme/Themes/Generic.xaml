@@ -49,6 +49,7 @@
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.ToggleSwitchStyleSource}"/>
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.ToggleStatusStyleSource}"/>
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.TreeViewStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.TabControlStyleSource}"/>
 
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.UserWindowStyleSource}"/>
 

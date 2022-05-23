@@ -57,6 +57,7 @@ namespace Rubik.Theme
         public static Uri ToggleSwitchStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ToggleSwitchStyle.xaml");
         public static Uri ToggleStatusStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/ToggleStatusStyle.xaml");
         public static Uri TreeViewStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/TreeViewStyle.xaml");
+        public static Uri TabControlStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/TabControlStyle.xaml");
 
         public static Uri UserWindowStyleSource { get; } = new Uri("pack://application:,,,/Rubik.Theme;component/Styles/UserWindowStyle.xaml");
 
@@ -117,8 +118,14 @@ namespace Rubik.Theme
         #region ListBox
 
         public static ComponentResourceKey RubikListBoxStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikListBoxStyle");
-
         public static ComponentResourceKey RubikListBoxItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikListBoxItemStyle");
+
+        #endregion
+
+        #region TabControl
+
+        public static ComponentResourceKey RubikTabControlStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTabControlStyle");
+        public static ComponentResourceKey RubikTabItemStyleKey { get; } = new ComponentResourceKey(typeof(ResourceKeys), "RubikTabItemStyle");
 
         #endregion
 
