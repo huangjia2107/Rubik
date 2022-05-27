@@ -22,5 +22,7 @@ namespace Rubik.Toolkit.Datas
         Inner = 1,
         Up = 2,
         Down = 4,
+        Left = 8,
+        Right = 16
     }
 }
