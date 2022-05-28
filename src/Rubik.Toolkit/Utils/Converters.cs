@@ -74,8 +74,8 @@ namespace Rubik.Toolkit.Utils
             if (values.Contains(null) || values.Contains(DependencyProperty.UnsetValue))
                 return 31;
 
-            var year = (int)values[0];
-            var month = (int)values[1];
+            var year = int.Parse(values[0].ToString());
+            var month = int.Parse(values[1].ToString());
 
             return DateTime.DaysInMonth(year, month);
         }
