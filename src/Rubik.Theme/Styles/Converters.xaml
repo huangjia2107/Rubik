@@ -4,7 +4,8 @@
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
     <rubik:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
-    <rubik:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}"/>
+    <rubik:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}" IsHidden="False"/>
+    <rubik:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityWithHiddenConverterKey}" IsHidden="True"/>
     <rubik:BoolToTextDecorationsConverter x:Key="{x:Static themes:ResourceKeys.BoolToTextDecorationsConverterKey}"/>
       
     <rubik:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
@@ -12,7 +13,9 @@
     <rubik:DaysInMonthMultiConverter x:Key="{x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}"/>
     <rubik:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
     <rubik:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
-      
+
+    <rubik:EnumToBoolConverter x:Key="{x:Static themes:ResourceKeys.EnumToBoolWithTrueConverterKey}" EqualResult="True"/>
+    <rubik:EnumToBoolConverter x:Key="{x:Static themes:ResourceKeys.EnumToBoolWithFalseConverterKey}" EqualResult="False"/>
     <rubik:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
 
     <rubik:FirstItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.FirstItemOfItemsControlMultiConverterKey}"/>
@@ -20,7 +23,8 @@
     <rubik:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
 
     <rubik:LastItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.LastItemOfItemsControlMultiConverterKey}"/>
-    
+
+    <rubik:NullToBoolConverter x:Key="{x:Static themes:ResourceKeys.NullToBoolConverterKey}"/>
     <rubik:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
     
     <rubik:OnlyOneItemOfItemsControlConverter x:Key="{x:Static themes:ResourceKeys.OnlyOneItemOfItemsControlConverterKey}"/>
@@ -30,7 +34,8 @@
     <rubik:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
     
     <rubik:TimeSpanToStringConverter x:Key="{x:Static themes:ResourceKeys.TimeSpanToStringConverterKey}"/>
-   
+
+    <rubik:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityWithHiddenConverterKey}" IsHidden="True"/>
     <rubik:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityConverterKey}"/>
 
 </ResourceDictionary>

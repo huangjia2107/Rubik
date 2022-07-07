@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
                     xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:markup="clr-namespace:Rubik.Theme.Markup">
+                    xmlns:markup="clr-namespace:Rubik.Theme.Markup"
+                    xmlns:rubik="https://github.com/huangjia2107/Rubik/">
 
     <ResourceDictionary.MergedDictionaries>
         <markup:SharedResourceDictionary Source="{x:Static themes:ResourceKeys.ButtonBaseStyleSource}"/>
@@ -31,7 +32,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MenuButton}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border CornerRadius="{Binding (rubik:ElementProperty.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <DockPanel Background="#00000000">

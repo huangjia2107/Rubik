@@ -3,15 +3,13 @@
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
                     xmlns:themes="clr-namespace:Rubik.Theme">
 
-    <Style x:Key="PaginationListBoxItemStyleKey" 
-           TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="PaginationListBoxItemStyleKey" TargetType="{x:Type ListBoxItem}">
         <Setter Property="MinWidth" Value="32"/>
-        <Setter Property="Background" Value="#323E4E"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="#3E4756"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Padding" Value="5,0"/>
         <Setter Property="Margin" Value="3,0"/>
         <Setter Property="Template">
@@ -37,10 +35,17 @@
             </DataTrigger>
             <Trigger Property="IsSelected" Value="true">
                 <Setter Property="Background" Value="#4980FF"/>
+                <Setter Property="Foreground" Value="White"/>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="false"/>
+                    <Condition Property="IsMouseOver" Value="true"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#eaeaea"/>
+            </MultiTrigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Background" Value="#55323E4E"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
         </Style.Triggers>
     </Style>

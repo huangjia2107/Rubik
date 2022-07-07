@@ -14,7 +14,7 @@
         <Setter Property="Padding" Value="3,0,0,0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="rubik:ElementProperty.CornerRadius" Value="0"/>
+        <Setter Property="rubik:ElementProperty.CornerRadius" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -28,7 +28,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Width="{Binding ActualHeight,RelativeSource={RelativeSource Self}}">
-                            <Path x:Name="CheckedPath" Visibility="Collapsed" Stretch="Fill" Fill="White" Margin="4,5" 
+                            <Path x:Name="CheckedPath" Visibility="Collapsed" Stretch="Fill" Fill="White" Margin="4,6" 
                                     Data="M376.123077 836.923077L51.2 510.030769c-11.815385-11.815385-11.815385-31.507692 0-43.323077l43.323077-43.323077c11.815385-11.815385 31.507692-11.815385 43.323077 0L382.030769 669.538462c7.876923 7.876923 21.661538 7.876923 29.538462 0L890.092308 187.076923c11.815385-11.815385 31.507692-11.815385 43.323077 0l43.323077 43.323077c11.815385 11.815385 11.815385 31.507692 0 43.323077L419.446154 836.923077c-11.815385 13.784615-31.507692 13.784615-43.323077 0z"/>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" Grid.Column="1"
@@ -41,7 +41,7 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Visibility" Value="Visible" TargetName="CheckedPath"/>
                             <Setter Property="BorderThickness" Value="0" TargetName="CheckedBorder"/>
-                            <Setter Property="Background" Value="#4980FF"/>
+                            <Setter Property="Background" Value="#007acc"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Opacity" Value="0.5"/>

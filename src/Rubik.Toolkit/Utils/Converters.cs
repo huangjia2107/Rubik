@@ -26,10 +26,12 @@ namespace Rubik.Toolkit.Utils
 
     public class BoolToVisibilityConverter : IValueConverter
     {
+        public bool IsHidden { get; set; }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var trueVisibility = (Visibility)(parameter ?? Visibility.Visible);
-            return (bool)value ? trueVisibility : (trueVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible);
+            return (bool)value ? trueVisibility : (trueVisibility == Visibility.Visible ? (IsHidden ? Visibility.Hidden : Visibility.Collapsed) : Visibility.Visible);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -108,6 +110,24 @@ namespace Rubik.Toolkit.Utils
             var ratio = parameter == null ? 1d : double.Parse(parameter.ToString());
 
             return new CornerRadius(v * ratio);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class EnumToBoolConverter : IValueConverter
+    {
+        public bool EqualResult { get; set; } = true;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var originalValue = (int)value;
+            var compareValue = (int)System.Convert.ChangeType(parameter, typeof(int));
+
+            return originalValue == compareValue ? EqualResult : !EqualResult;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -225,6 +245,20 @@ namespace Rubik.Toolkit.Utils
         }
     }
 
+    public class NullToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var trueValue = (bool)(parameter ?? true);
+            return value == null ? trueValue : !trueValue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class NullToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -276,7 +310,9 @@ namespace Rubik.Toolkit.Utils
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var str = (string)value;
-            return !string.IsNullOrWhiteSpace(str);
+            var defaultValue = (bool)(parameter ?? false);
+
+            return string.IsNullOrWhiteSpace(str) ? defaultValue : !defaultValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -301,8 +337,13 @@ namespace Rubik.Toolkit.Utils
 
     public class VisibilityConverter : IValueConverter
     {
+        public bool IsHidden { get; set; }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (IsHidden)
+                return (Visibility)value == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
+
             return (Visibility)value == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
