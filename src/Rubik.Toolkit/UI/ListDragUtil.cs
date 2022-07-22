@@ -31,6 +31,8 @@ namespace Rubik.Toolkit.UI
         private bool _handledWhileWithModifierKeys = false;
         private ModifierKeys _drggingModifierKeys = ModifierKeys.Control;
 
+        public bool MouseWheelDownEnabled { get; set; }
+
         /// <summary>
         /// isOverDragArea, overlapItem, draggingItem
         /// </summary>
@@ -44,7 +46,7 @@ namespace Rubik.Toolkit.UI
         public Func<TItem, string> DraggingTip { get; set; }
 
         public ListDragUtil(TContainer treeView,
-            bool manualHandleMouseLeftButtonDown = false,
+            bool manualHandleMouseDown = false,
             bool dragingWithModifierKeys = false,
             bool handledWhileWithModifierKeys = false,
             ModifierKeys drggingModifierKeys = ModifierKeys.Control)
@@ -55,36 +57,61 @@ namespace Rubik.Toolkit.UI
             _handledWhileWithModifierKeys = handledWhileWithModifierKeys;
             _drggingModifierKeys = drggingModifierKeys;
 
-            if (!manualHandleMouseLeftButtonDown)
+            if (!manualHandleMouseDown)
             {
-                _itemsControl.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
-                _itemsControl.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
+                _itemsControl.PreviewMouseDown -= OnPreviewMouseDown;
+                _itemsControl.PreviewMouseDown += OnPreviewMouseDown;
             }
 
-            _itemsControl.PreviewMouseLeftButtonUp -= OnPreviewMouseLeftButtonUp;
-            _itemsControl.PreviewMouseLeftButtonUp += OnPreviewMouseLeftButtonUp;
+            _itemsControl.PreviewMouseUp -= OnPreviewMouseUp;
+            _itemsControl.PreviewMouseUp += OnPreviewMouseUp;
         }
 
         #region Public
 
-        public void ManualHandleMouseLeftButtonDown(TItem treeViewItem, MouseButtonEventArgs e)
+        public void ManualHandleMouseDown(TItem item, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton != MouseButton.Left || e.ClickCount != 1)
+            if (e.ClickCount != 1)
                 return;
+
+            if (MouseWheelDownEnabled)
+            {
+                if (e.ChangedButton != MouseButton.Left && e.ChangedButton != MouseButton.Middle)
+                    return;
+            }
+            else
+            {
+                if (e.ChangedButton != MouseButton.Left)
+                    return;
+            }
 
             if (!_itemsControl.HasItems || e.OriginalSource.GetType().Name == "TextBoxView")
                 return;
 
             _mouseDownPos = e.GetPosition(_itemsControl);
-            Init(treeViewItem, e);
+            Init(item, e);
         }
 
         #endregion
 
         #region Event
 
-        private void OnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount != 1)
+                return;
+
+            if (MouseWheelDownEnabled)
+            {
+                if (e.ChangedButton != MouseButton.Left && e.ChangedButton != MouseButton.Middle)
+                    return;
+            }
+            else
+            {
+                if (e.ChangedButton != MouseButton.Left)
+                    return;
+            }
+
             if (!_itemsControl.HasItems || e.OriginalSource.GetType().Name == "TextBoxView")
                 return;
 
@@ -94,14 +121,14 @@ namespace Rubik.Toolkit.UI
             if (result == null)
                 return;
 
-            var treeViewItem = TreeUtil.FindVisualParent<TItem>(result.VisualHit);
-            if (treeViewItem == null)
+            var item = TreeUtil.FindVisualParent<TItem>(result.VisualHit);
+            if (item == null)
                 return;
 
-            Init(treeViewItem, e);
+            Init(item, e);
         }
 
-        private void OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void OnPreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             _itemsControl.PreviewMouseMove -= OnMouseMove;
         }
@@ -130,7 +157,7 @@ namespace Rubik.Toolkit.UI
 
         private void Init(TItem treeViewItem, MouseButtonEventArgs e)
         {
-            if (_dragingWithModifierKeys && (Keyboard.Modifiers & _drggingModifierKeys) != _drggingModifierKeys)
+            if (e.ChangedButton == MouseButton.Left && _dragingWithModifierKeys && _drggingModifierKeys != ModifierKeys.None && (Keyboard.Modifiers & _drggingModifierKeys) != _drggingModifierKeys)
                 return;
 
             _draggingContainer = treeViewItem;

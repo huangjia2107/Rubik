@@ -57,12 +57,15 @@ namespace Rubik.Demo.DragList.ViewModels
         {
             _verListBox = (e.OriginalSource as MainControl).VerListBoxName;
             _verListDragUtil = new ListDragUtil<ListBox, ListBoxItem>(_verListBox, false, true, true);
+            _verListDragUtil.MouseWheelDownEnabled = true;
 
             _horListBox = (e.OriginalSource as MainControl).HorListBoxName;
             _horListDragUtil = new ListDragUtil<ListBox, ListBoxItem>(_horListBox, false, false);
+            _horListDragUtil.MouseWheelDownEnabled = true;
 
             _wrapListBox = (e.OriginalSource as MainControl).WrapListBoxName;
             _wrapListDragUtil = new ListDragUtil<ListBox, ListBoxItem>(_wrapListBox, false, true, false);
+            _wrapListDragUtil.MouseWheelDownEnabled = true;
 
             _verListDragUtil.DraggingTip = DraggingTip;
             _horListDragUtil.DraggingTip = DraggingTip;
