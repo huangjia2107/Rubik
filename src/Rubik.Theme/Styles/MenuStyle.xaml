@@ -13,7 +13,7 @@
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <DockPanel x:Name="Bg">
                 <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="4,0,6,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                <Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center"/>
+                <Path x:Name="GlyphPanel" Stretch="Fill" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center" Width="10" Height="10"/>
                 <ContentPresenter ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
             </DockPanel>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
@@ -65,7 +65,7 @@
         <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
             <DockPanel x:Name="Bg">
                 <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="4,0,6,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                <Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center"/>
+                <Path x:Name="GlyphPanel" Stretch="Fill" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center" Width="10" Height="10"/>
                 <ContentPresenter ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
             </DockPanel>
         </Grid>
@@ -106,8 +106,8 @@
                     <ColumnDefinition Width="17"/>
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                <Border x:Name="GlyphPanel" BorderBrush="#CDD3E6" BorderThickness="1" Background="#E6EFF4" CornerRadius="3" Height="22" Margin="1" Visibility="Hidden" Width="22">
-                    <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="#0C12A1" FlowDirection="LeftToRight" Height="11" Width="9"/>
+                <Border x:Name="GlyphPanel" BorderBrush="#CDD3E6" BorderThickness="0" Background="{x:Null}" CornerRadius="3" Height="22" Margin="1" Visibility="Hidden" Width="22">
+                    <Path x:Name="Glyph" Stretch="Fill" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Height="10" Width="10"/>
                 </Border>
                 <ContentPresenter Grid.Column="2" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                   VerticalAlignment="Center"/>
@@ -167,8 +167,8 @@
                     <ColumnDefinition Width="17"/>
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                <Border x:Name="GlyphPanel" BorderBrush="#CDD3E6" BorderThickness="1" Background="#E6EFF4" CornerRadius="3" Height="22" Margin="1" Visibility="Hidden" Width="22">
-                    <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="#0C12A1" FlowDirection="LeftToRight" Height="11" Width="9"/>
+                <Border x:Name="GlyphPanel" BorderBrush="#CDD3E6" BorderThickness="0" Background="{x:Null}" CornerRadius="3" Height="22" Margin="1" Visibility="Hidden" Width="22">
+                    <Path x:Name="Glyph" Stretch="Fill" Data="{StaticResource Checkmark}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Height="10" Width="10"/>
                 </Border>
                 <ContentPresenter Grid.Column="2" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center"/>
