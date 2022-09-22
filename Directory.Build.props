@@ -1,50 +1,55 @@
 <Project>
-  
-  <PropertyGroup>
-    <UseWPF>true</UseWPF>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <Version>1.0.0</Version>
-    <LangVersion>latest</LangVersion>
-    <Copyright>Copyright © 2021-$([System.DateTime]::Now.Year)</Copyright>
-    <Authors>Rubik Contributors</Authors>
-    <IncludeSymbols>True</IncludeSymbols>
-    <IncludeSource>True</IncludeSource>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>rubik-logo.png</PackageIcon>
-    <RubikPackageIcon>$(MSBuildThisFileDirectory)images/rubik-logo.png</RubikPackageIcon>
-    <RubikLicenseFile>$(MSBuildThisFileDirectory)LICENSE</RubikLicenseFile>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-  </PropertyGroup>
+	<PropertyGroup>
+		<UseWPF>true</UseWPF>
+		<TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <IsThemeExProject>$(MSBuildProjectName.EndsWith('Extension'))</IsThemeExProject>
-    <IsThemeProject>$(MSBuildProjectName.EndsWith('Theme'))</IsThemeProject>
-    <IsToolkitProject>$(MSBuildProjectName.EndsWith('Toolkit'))</IsToolkitProject>
-    
-    <Version Condition=" '$(IsThemeExProject)' == 'True' ">0.1.16-preview</Version>
-    <Description Condition=" '$(IsThemeExProject)' == 'True' ">This is a wpf control library that relies on third parties</Description>
-    <PackageTags Condition=" '$(IsThemeExProject)' == 'True' ">rubik;wpf;theme;control;xaml;style;avalonedit</PackageTags>
-    
-    <Version Condition=" '$(IsThemeProject)' == 'True' ">0.1.16-preview</Version>
-    <Description Condition=" '$(IsThemeProject)' == 'True' ">This is a wpf control library</Description>
-    <PackageTags Condition=" '$(IsThemeProject)' == 'True' ">rubik;wpf;theme;control;xaml;style</PackageTags>
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<LangVersion>latest</LangVersion>
+		<Copyright>Copyright © 2021-$([System.DateTime]::Now.Year)</Copyright>
+		<Authors>Rubik Contributors</Authors>
+		<IncludeSymbols>True</IncludeSymbols>
+		<IncludeSource>True</IncludeSource>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/huangjia2107/Rubik</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/huangjia2107/Rubik</PackageProjectUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>rubik-logo.png</PackageIcon>
+		<RubikPackageIcon>$(MSBuildThisFileDirectory)images/rubik-logo.png</RubikPackageIcon>
+		<RubikLicenseFile>$(MSBuildThisFileDirectory)LICENSE</RubikLicenseFile>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
 
-    <Version Condition=" '$(IsToolkitProject)' == 'True' ">0.1.16-preview</Version>
-    <Description Condition=" '$(IsToolkitProject)' == 'True' ">This is a wpf toolkit</Description>
-    <PackageTags Condition=" '$(IsToolkitProject)' == 'True' ">rubik;wpf;toolkit;util</PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<IsThemeVlcProject>$(MSBuildProjectName.EndsWith('VLC'))</IsThemeVlcProject>
+		<IsThemeExProject>$(MSBuildProjectName.EndsWith('Extension'))</IsThemeExProject>
+		<IsThemeProject>$(MSBuildProjectName.EndsWith('Theme'))</IsThemeProject>
+		<IsToolkitProject>$(MSBuildProjectName.EndsWith('Toolkit'))</IsToolkitProject>
 
-  <ItemGroup Condition=" '$(IsThemeExProject)' == 'True' Or '$(IsThemeProject)' == 'True' Or '$(IsToolkitProject)' == 'True' ">
-    <None Include="$(RubikPackageIcon)" Visible="False" Pack="True" PackagePath=""/>
-    <None Include="$(RubikLicenseFile)" Visible="False" Pack="True" PackagePath=""/>
-  </ItemGroup>
+		<Version Condition=" '$(IsThemeVlcProject)' == 'True' ">0.0.1-preview</Version>
+		<Description Condition=" '$(IsThemeVlcProject)' == 'True' ">This is a wpf control library that relies on vlc</Description>
+		<PackageTags Condition=" '$(IsThemeVlcProject)' == 'True' ">rubik;wpf;theme;control;xaml;style;vlc;media;player</PackageTags>
+		
+		<Version Condition=" '$(IsThemeExProject)' == 'True' ">0.1.16-preview</Version>
+		<Description Condition=" '$(IsThemeExProject)' == 'True' ">This is a wpf control library that relies on third parties</Description>
+		<PackageTags Condition=" '$(IsThemeExProject)' == 'True' ">rubik;wpf;theme;control;xaml;style;avalonedit</PackageTags>
+
+		<Version Condition=" '$(IsThemeProject)' == 'True' ">0.1.16-preview</Version>
+		<Description Condition=" '$(IsThemeProject)' == 'True' ">This is a wpf control library</Description>
+		<PackageTags Condition=" '$(IsThemeProject)' == 'True' ">rubik;wpf;theme;control;xaml;style</PackageTags>
+
+		<Version Condition=" '$(IsToolkitProject)' == 'True' ">0.1.16-preview</Version>
+		<Description Condition=" '$(IsToolkitProject)' == 'True' ">This is a wpf toolkit</Description>
+		<PackageTags Condition=" '$(IsToolkitProject)' == 'True' ">rubik;wpf;toolkit;util</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(IsThemeVlcProject)' == 'True' Or '$(IsThemeExProject)' == 'True' Or '$(IsThemeProject)' == 'True' Or '$(IsToolkitProject)' == 'True' ">
+		<None Include="$(RubikPackageIcon)" Visible="False" Pack="True" PackagePath=""/>
+		<None Include="$(RubikLicenseFile)" Visible="False" Pack="True" PackagePath=""/>
+	</ItemGroup>
 
 </Project>

@@ -1,0 +1,44 @@
+<UserControl x:Class="Rubik.Demo.MediaPlayer.Views.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <StackPanel>
+        <Grid>
+            <rubik:CodeViewer Title="WPF">
+                <rubik:CodeViewer.Code>
+                    <sys:String xml:space="preserve">
+<![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:MediaPlayer Height="300" Source="{Binding WpfVideoFile}"/>
+</Grid>]]>
+                </sys:String>
+                </rubik:CodeViewer.Code>
+            </rubik:CodeViewer>
+            <Button Height="25" Width="60" Margin="0,0,10,5" Padding="10,0" Content="Open"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Command="{Binding OpenWpfCommand}"
+                    Style="{StaticResource NormalButtonStyleKey}"/>
+        </Grid>
+        <Grid Margin="0,30,0,0">
+            <rubik:CodeViewer Title="VLC">
+                <rubik:CodeViewer.Code>
+                    <sys:String xml:space="preserve">
+<![CDATA[<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:rubik="https://github.com/huangjia2107/Rubik/">
+    <rubik:VlcMediaPlayer Height="300" Source="{Binding VlcVideoFile}"/>
+</Grid>]]>
+                </sys:String>
+                </rubik:CodeViewer.Code>
+            </rubik:CodeViewer>
+            <Button Height="25" Width="60" Margin="0,0,10,5" Padding="10,0" Content="Open"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Command="{Binding OpenVlcCommand}"
+                    Style="{StaticResource NormalButtonStyleKey}"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<OutputPath>..\..\..\bin\$(Configuration)\Demos</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Rubik.Service\Rubik.Service.csproj" />
+		<ProjectReference Include="..\..\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj" />
+		<ProjectReference Include="..\..\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj" />
+	</ItemGroup>
+
+</Project>

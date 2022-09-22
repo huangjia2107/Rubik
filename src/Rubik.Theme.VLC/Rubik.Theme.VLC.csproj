@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<ItemGroup>
+		<PackageReference Include="LibVLCSharp.WPF" Version="3.6.6" />
+		<PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.17.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Rubik.Theme\Rubik.Theme.csproj" />
+	</ItemGroup>
+
+</Project>

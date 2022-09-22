@@ -42,3 +42,4 @@ Move-Item -Path $appPath\Rubik.Module.* -Destination $modulesPath -Force
 dotnet pack -c Release -o $packPath\ ..\src\Rubik.Toolkit\Rubik.Toolkit.csproj
 dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme\Rubik.Theme.csproj
 dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj
+dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj

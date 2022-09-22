@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -137,6 +138,7 @@ namespace Rubik.Theme.Controls
         #region Properties
 
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register("Source", typeof(Uri), _typeofSelf);
+        [TypeConverter(typeof(UriTypeConverter))]
         public Uri Source
         {
             get { return (Uri)GetValue(SourceProperty); }
@@ -153,9 +155,10 @@ namespace Rubik.Theme.Controls
         protected override void OnInitialized(EventArgs e)
         {
             var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
-            var hwndTarget = hwndSource.CompositionTarget;
+            var hwndTarget = hwndSource?.CompositionTarget;
 
-            hwndTarget.RenderMode = RenderMode.SoftwareOnly;
+            if (hwndTarget != null)
+                hwndTarget.RenderMode = RenderMode.SoftwareOnly;
 
             base.OnInitialized(e);
         }
