@@ -10,12 +10,15 @@
     <Style x:Key="{x:Static themes:ResourceKeys.RubikRadioButtonStyleKey}" 
            TargetType="{x:Type RadioButton}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="#FF5593FF"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#404040"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Foreground" Value="#404040"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="3,0,0,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
@@ -24,15 +27,14 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="radioButtonBorder" 
+                        <Border x:Name="radioButtonBorder"
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 CornerRadius="100"
-                                Margin="0,0,3,0"
                                 Width="{Binding ActualHeight,RelativeSource={RelativeSource Self}}">
-                            <Grid x:Name="markGrid" Margin="2">
-                                <Ellipse x:Name="optionMark" Fill="{TemplateBinding Background}" MinHeight="6" MinWidth="6" Opacity="0"/>
-                            </Grid>
+                            <Ellipse x:Name="optionMark" Margin="2" Stretch="Fill" MinWidth="4" MinHeight="4"
+                                     Fill="#007acc" Opacity="0"/>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" 
                                           Grid.Column="1" 
@@ -46,7 +48,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasContent" Value="false">
                             <Setter Property="Visibility" TargetName="contentPresenter" Value="Collapsed"/>
-                            <Setter Property="Margin" TargetName="radioButtonBorder" Value="0"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="radioButtonBorder" Value="#FFE6E6E6"/>
