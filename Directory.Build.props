@@ -34,15 +34,15 @@
 		<Description Condition=" '$(IsThemeVlcProject)' == 'True' ">This is a wpf control library that relies on vlc</Description>
 		<PackageTags Condition=" '$(IsThemeVlcProject)' == 'True' ">rubik;wpf;theme;control;xaml;style;vlc;media;player</PackageTags>
 		
-		<Version Condition=" '$(IsThemeExProject)' == 'True' ">0.1.16-preview</Version>
+		<Version Condition=" '$(IsThemeExProject)' == 'True' ">0.1.17-preview</Version>
 		<Description Condition=" '$(IsThemeExProject)' == 'True' ">This is a wpf control library that relies on third parties</Description>
 		<PackageTags Condition=" '$(IsThemeExProject)' == 'True' ">rubik;wpf;theme;control;xaml;style;avalonedit</PackageTags>
 
-		<Version Condition=" '$(IsThemeProject)' == 'True' ">0.1.16-preview</Version>
+		<Version Condition=" '$(IsThemeProject)' == 'True' ">0.1.17-preview</Version>
 		<Description Condition=" '$(IsThemeProject)' == 'True' ">This is a wpf control library</Description>
 		<PackageTags Condition=" '$(IsThemeProject)' == 'True' ">rubik;wpf;theme;control;xaml;style</PackageTags>
 
-		<Version Condition=" '$(IsToolkitProject)' == 'True' ">0.1.16-preview</Version>
+		<Version Condition=" '$(IsToolkitProject)' == 'True' ">0.1.17-preview</Version>
 		<Description Condition=" '$(IsToolkitProject)' == 'True' ">This is a wpf toolkit</Description>
 		<PackageTags Condition=" '$(IsToolkitProject)' == 'True' ">rubik;wpf;toolkit;util</PackageTags>
 	</PropertyGroup>
