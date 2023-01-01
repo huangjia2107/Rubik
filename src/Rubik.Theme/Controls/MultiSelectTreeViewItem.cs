@@ -94,6 +94,14 @@ namespace Rubik.Theme.Controls
 
         #region Properties
 
+        public static readonly DependencyProperty AutoResetSelectionAfterCollapsedProperty =
+           DependencyProperty.Register("IsResetSelectionAfterCollapsed", typeof(bool), typeof(MultiSelectTreeViewItem), new FrameworkPropertyMetadata(true));
+        public bool AutoResetSelectionAfterCollapsed
+        {
+            get { return (bool)GetValue(AutoResetSelectionAfterCollapsedProperty); }
+            set { SetValue(AutoResetSelectionAfterCollapsedProperty, value); }
+        }
+
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(MultiSelectTreeViewItem), new FrameworkPropertyMetadata(false, OnIsExpandedChanged));
         public bool IsExpanded
@@ -113,13 +121,8 @@ namespace Rubik.Theme.Controls
                 return;
             }
 
-            if (treeViewItem.ContainSelection())
-            {
-                if (treeViewItem.IsKeyboardFocused && Keyboard.FocusedElement == treeViewItem)
-                    treeViewItem.Select(true, SelectionMode.Single);
-                else
-                    treeViewItem.Focus();
-            }
+            if (treeViewItem.AutoResetSelectionAfterCollapsed)
+                treeViewItem.ResetSelectionBeforeCollapsed();
 
             treeViewItem.OnCollapsed(new RoutedEventArgs(MultiSelectTreeViewItem.CollapsedEvent, treeViewItem));
         }
@@ -192,7 +195,14 @@ namespace Rubik.Theme.Controls
             if (!e.Handled && IsEnabled)
             {
                 if (e.ClickCount % 2 == 0)
-                    IsExpanded = !IsExpanded;
+                {
+                    var isExpanded = !IsExpanded;
+
+                    if (!isExpanded && !AutoResetSelectionAfterCollapsed)
+                        ResetSelectionBeforeCollapsed();
+
+                    IsExpanded = isExpanded;
+                }
 
                 if (Keyboard.FocusedElement == this && this.IsKeyboardFocused)
                     MouseLeftButtonDownSelect();
@@ -279,7 +289,12 @@ namespace Rubik.Theme.Controls
                                 if (!IsFocused)
                                     Focus();
                                 else
+                                {
+                                    if (!AutoResetSelectionAfterCollapsed)
+                                        ResetSelectionBeforeCollapsed();
+
                                     IsExpanded = false;
+                                }
 
                                 e.Handled = true;
                                 return;
@@ -323,10 +338,10 @@ namespace Rubik.Theme.Controls
                             {
                                 case Key.Add:
                                     {
-                                        if (!this.CanExpandOnInput || this.IsExpanded)
+                                        if (!CanExpandOnInput || IsExpanded)
                                             return;
 
-                                        this.IsExpanded = true;
+                                        IsExpanded = true;
                                         e.Handled = true;
                                         return;
                                     }
@@ -336,10 +351,13 @@ namespace Rubik.Theme.Controls
                                     }
                                 case Key.Subtract:
                                     {
-                                        if (!this.CanExpandOnInput || !this.IsExpanded)
+                                        if (!CanExpandOnInput || !IsExpanded)
                                             return;
 
-                                        this.IsExpanded = false;
+                                        if (!AutoResetSelectionAfterCollapsed)
+                                            ResetSelectionBeforeCollapsed();
+
+                                        IsExpanded = false;
                                         e.Handled = true;
                                         return;
                                     }
@@ -561,6 +579,17 @@ namespace Rubik.Theme.Controls
         #endregion
 
         #region Func
+
+        private void ResetSelectionBeforeCollapsed()
+        {
+            if (ContainSelection())
+            {
+                if (IsKeyboardFocused && Keyboard.FocusedElement == this)
+                    Select(true, SelectionMode.Single);
+                else
+                    Focus();
+            }
+        }
 
         private void MouseLeftButtonDownSelect()
         {
