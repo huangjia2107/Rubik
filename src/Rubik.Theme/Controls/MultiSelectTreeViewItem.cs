@@ -13,40 +13,31 @@ namespace Rubik.Theme.Controls
         private const string HeaderPartName = "PART_Header";
         private FrameworkElement _headerElement = null;
 
-        private bool CanExpand
-        {
-            get { return HasItems; }
-        }
+        private bool CanExpand => HasItems;
+        private bool CanExpandOnInput => !CanExpand ? false : IsEnabled;
 
-        private bool CanExpandOnInput
-        {
-            get { return !this.CanExpand ? false : IsEnabled; }
-        }
+        private ItemsControl ParentItemsControl => ItemsControlFromItemContainer(this);
+        private MultiSelectTreeViewItem ParentTreeViewItem => ParentItemsControl as MultiSelectTreeViewItem;
 
-        private ItemsControl ParentItemsControl
-        {
-            get { return ItemsControl.ItemsControlFromItemContainer(this); }
-        }
-
+        private MultiSelectTreeView _parentTreeView = null;
         private MultiSelectTreeView ParentTreeView
         {
             get
             {
+                if (_parentTreeView != null)
+                    return _parentTreeView;
+
                 for (var i = ParentItemsControl; i != null; i = ItemsControl.ItemsControlFromItemContainer(i))
                 {
-                    var treeView = i as MultiSelectTreeView;
-                    if (treeView != null)
+                    if (i is MultiSelectTreeView treeView)
                     {
-                        return treeView;
+                        _parentTreeView = treeView;
+                        break;
                     }
                 }
-                return null;
-            }
-        }
 
-        private MultiSelectTreeViewItem ParentTreeViewItem
-        {
-            get { return ParentItemsControl as MultiSelectTreeViewItem; }
+                return _parentTreeView;
+            }
         }
 
         static MultiSelectTreeViewItem()
@@ -94,14 +85,6 @@ namespace Rubik.Theme.Controls
 
         #region Properties
 
-        public static readonly DependencyProperty AutoResetSelectionAfterCollapsedProperty =
-           DependencyProperty.Register("IsResetSelectionAfterCollapsed", typeof(bool), typeof(MultiSelectTreeViewItem), new FrameworkPropertyMetadata(true));
-        public bool AutoResetSelectionAfterCollapsed
-        {
-            get { return (bool)GetValue(AutoResetSelectionAfterCollapsedProperty); }
-            set { SetValue(AutoResetSelectionAfterCollapsedProperty, value); }
-        }
-
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(MultiSelectTreeViewItem), new FrameworkPropertyMetadata(false, OnIsExpandedChanged));
         public bool IsExpanded
@@ -121,7 +104,7 @@ namespace Rubik.Theme.Controls
                 return;
             }
 
-            if (treeViewItem.AutoResetSelectionAfterCollapsed)
+            if (treeViewItem.ParentTreeView.AutoResetSelectionAfterCollapsed)
                 treeViewItem.ResetSelectionBeforeCollapsed();
 
             treeViewItem.OnCollapsed(new RoutedEventArgs(MultiSelectTreeViewItem.CollapsedEvent, treeViewItem));
@@ -198,7 +181,7 @@ namespace Rubik.Theme.Controls
                 {
                     var isExpanded = !IsExpanded;
 
-                    if (!isExpanded && !AutoResetSelectionAfterCollapsed)
+                    if (!isExpanded && !ParentTreeView.AutoResetSelectionAfterCollapsed)
                         ResetSelectionBeforeCollapsed();
 
                     IsExpanded = isExpanded;
@@ -290,7 +273,7 @@ namespace Rubik.Theme.Controls
                                     Focus();
                                 else
                                 {
-                                    if (!AutoResetSelectionAfterCollapsed)
+                                    if (!ParentTreeView.AutoResetSelectionAfterCollapsed)
                                         ResetSelectionBeforeCollapsed();
 
                                     IsExpanded = false;
@@ -354,7 +337,7 @@ namespace Rubik.Theme.Controls
                                         if (!CanExpandOnInput || !IsExpanded)
                                             return;
 
-                                        if (!AutoResetSelectionAfterCollapsed)
+                                        if (!ParentTreeView.AutoResetSelectionAfterCollapsed)
                                             ResetSelectionBeforeCollapsed();
 
                                         IsExpanded = false;

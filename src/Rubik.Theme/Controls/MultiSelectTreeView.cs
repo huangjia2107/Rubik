@@ -73,6 +73,14 @@ namespace Rubik.Theme.Controls
 
         #region Properties
 
+        public static readonly DependencyProperty AutoResetSelectionAfterCollapsedProperty =
+          DependencyProperty.Register("AutoResetSelectionAfterCollapsed", typeof(bool), typeof(MultiSelectTreeView), new FrameworkPropertyMetadata(true));
+        public bool AutoResetSelectionAfterCollapsed
+        {
+            get { return (bool)GetValue(AutoResetSelectionAfterCollapsedProperty); }
+            set { SetValue(AutoResetSelectionAfterCollapsedProperty, value); }
+        }
+
         //SelectionMode
         public static readonly DependencyProperty SelectionModeProperty =
             DependencyProperty.Register("SelectionMode", typeof(SelectionMode), typeof(MultiSelectTreeView), new UIPropertyMetadata(SelectionMode.Extended));
