@@ -3,48 +3,58 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{D531F9E4-F24E-4BC9-B902-D4B0BD57487D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Config", "1.Config", "{D531F9E4-F24E-4BC9-B902-D4B0BD57487D}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme", "src\Rubik.Theme\Rubik.Theme.csproj", "{D77744A0-C158-455D-AF71-9F748FC71856}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Package", "2.Package", "{6BD505CA-3DA9-424D-BB2E-9F35AD94D5F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.App", "src\Rubik.App\Rubik.App.csproj", "{0E1D9115-6109-4B69-AFB6-CBD875BA6CAA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.App", "3.App", "{F4F3DE23-6883-4C51-98B8-C613A31569F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Service", "src\Rubik.Service\Rubik.Service.csproj", "{1AC7401A-F4B8-40B3-91E9-2679AF6FAE97}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Theme", "Theme", "{2566ADC1-1C3F-4E49-8369-C2C0821FE8A7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comm", "Comm", "{03EAEC0D-485F-43AB-BDB6-068BF0D1BD4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme.Extension", "src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj", "{525F0592-E740-43F8-8270-888A401F3B23}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.RangeSlider", "src\Demos\Rubik.Demo.RangeSlider\Rubik.Demo.RangeSlider.csproj", "{4B94EF70-F71F-4706-AEF6-B3AA18433A26}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{4D825488-C35D-43D5-8346-B6B276F48F7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{8D77D245-6EAA-4852-BDEA-C8580861958A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Information", "src\Modules\Rubik.Module.Information\Rubik.Module.Information.csproj", "{C0F20889-F172-4A0A-A94D-7C395EA382E5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Github", "src\Modules\Rubik.Module.Github\Rubik.Module.Github.csproj", "{2F5703C1-F99F-4324-8CBB-4EB31FB07028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.App", "src\App\Rubik.App\Rubik.App.csproj", "{0E1D9115-6109-4B69-AFB6-CBD875BA6CAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Experiment", "src\Modules\Rubik.Module.Experiment\Rubik.Module.Experiment.csproj", "{7609CAE4-98FB-4E0F-AD17-AE68EEC46A75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Service", "src\App\Rubik.Service\Rubik.Service.csproj", "{1AC7401A-F4B8-40B3-91E9-2679AF6FAE97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Home", "src\Modules\Rubik.Module.Home\Rubik.Module.Home.csproj", "{0B3ADB76-B6A6-4543-9966-A834694BD253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme", "src\Package\Theme\Rubik.Theme\Rubik.Theme.csproj", "{D77744A0-C158-455D-AF71-9F748FC71856}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.CheckCode", "src\Demos\Rubik.Demo.CheckCode\Rubik.Demo.CheckCode.csproj", "{31025E09-3B9C-4F32-8023-6AB9B069DD4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme.Extension", "src\Package\Theme\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj", "{525F0592-E740-43F8-8270-888A401F3B23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.AnchorPopup", "src\Demos\Rubik.Demo.AnchorPopup\Rubik.Demo.AnchorPopup.csproj", "{E33487D7-648E-4EBF-8A79-6604FA44A08E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme.VLC", "src\Package\Theme\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj", "{9A1997C8-F4D7-496A-B7CD-14F2CFB18256}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Toolkit", "src\Rubik.Toolkit\Rubik.Toolkit.csproj", "{D11A56AA-8A6E-4A5E-9665-C686BB65D135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Toolkit", "src\Package\Toolkit\Rubik.Toolkit\Rubik.Toolkit.csproj", "{D11A56AA-8A6E-4A5E-9665-C686BB65D135}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.DragTree", "src\Demos\Rubik.Demo.DragTree\Rubik.Demo.DragTree.csproj", "{DBEBD89A-A81D-4595-A087-5909ADD61836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Information", "src\App\Modules\Rubik.Module.Information\Rubik.Module.Information.csproj", "{C0F20889-F172-4A0A-A94D-7C395EA382E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.ExpressionEditor", "src\Demos\Rubik.Demo.ExpressionEditor\Rubik.Demo.ExpressionEditor.csproj", "{51610421-D318-4774-8901-4F8D271FA7CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Github", "src\App\Modules\Rubik.Module.Github\Rubik.Module.Github.csproj", "{2F5703C1-F99F-4324-8CBB-4EB31FB07028}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.DragList", "src\Demos\Rubik.Demo.DragList\Rubik.Demo.DragList.csproj", "{DEC54951-29B8-4F9F-A827-A3D1B0C62549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Experiment", "src\App\Modules\Rubik.Module.Experiment\Rubik.Module.Experiment.csproj", "{7609CAE4-98FB-4E0F-AD17-AE68EEC46A75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Theme.VLC", "src\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj", "{9A1997C8-F4D7-496A-B7CD-14F2CFB18256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Module.Home", "src\App\Modules\Rubik.Module.Home\Rubik.Module.Home.csproj", "{0B3ADB76-B6A6-4543-9966-A834694BD253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubik.Demo.MediaPlayer", "src\Demos\Rubik.Demo.MediaPlayer\Rubik.Demo.MediaPlayer.csproj", "{14EBA118-2C1E-426A-BBBD-28306E5BF9E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.CheckCode", "src\App\Demos\Rubik.Demo.CheckCode\Rubik.Demo.CheckCode.csproj", "{31025E09-3B9C-4F32-8023-6AB9B069DD4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.AnchorPopup", "src\App\Demos\Rubik.Demo.AnchorPopup\Rubik.Demo.AnchorPopup.csproj", "{E33487D7-648E-4EBF-8A79-6604FA44A08E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.DragTree", "src\App\Demos\Rubik.Demo.DragTree\Rubik.Demo.DragTree.csproj", "{DBEBD89A-A81D-4595-A087-5909ADD61836}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.ExpressionEditor", "src\App\Demos\Rubik.Demo.ExpressionEditor\Rubik.Demo.ExpressionEditor.csproj", "{51610421-D318-4774-8901-4F8D271FA7CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.DragList", "src\App\Demos\Rubik.Demo.DragList\Rubik.Demo.DragList.csproj", "{DEC54951-29B8-4F9F-A827-A3D1B0C62549}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.MediaPlayer", "src\App\Demos\Rubik.Demo.MediaPlayer\Rubik.Demo.MediaPlayer.csproj", "{14EBA118-2C1E-426A-BBBD-28306E5BF9E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rubik.Demo.RangeSlider", "src\App\Demos\Rubik.Demo.RangeSlider\Rubik.Demo.RangeSlider.csproj", "{4B94EF70-F71F-4706-AEF6-B3AA18433A26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,17 +135,28 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D77744A0-C158-455D-AF71-9F748FC71856} = {2566ADC1-1C3F-4E49-8369-C2C0821FE8A7}
+		{0E1D9115-6109-4B69-AFB6-CBD875BA6CAA} = {F4F3DE23-6883-4C51-98B8-C613A31569F3}
+		{1AC7401A-F4B8-40B3-91E9-2679AF6FAE97} = {F4F3DE23-6883-4C51-98B8-C613A31569F3}
+		{3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0} = {F4F3DE23-6883-4C51-98B8-C613A31569F3}
+		{525F0592-E740-43F8-8270-888A401F3B23} = {2566ADC1-1C3F-4E49-8369-C2C0821FE8A7}
 		{4B94EF70-F71F-4706-AEF6-B3AA18433A26} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
+		{8D77D245-6EAA-4852-BDEA-C8580861958A} = {F4F3DE23-6883-4C51-98B8-C613A31569F3}
 		{C0F20889-F172-4A0A-A94D-7C395EA382E5} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{2F5703C1-F99F-4324-8CBB-4EB31FB07028} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{7609CAE4-98FB-4E0F-AD17-AE68EEC46A75} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{0B3ADB76-B6A6-4543-9966-A834694BD253} = {8D77D245-6EAA-4852-BDEA-C8580861958A}
 		{31025E09-3B9C-4F32-8023-6AB9B069DD4E} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 		{E33487D7-648E-4EBF-8A79-6604FA44A08E} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
+		{D11A56AA-8A6E-4A5E-9665-C686BB65D135} = {4D825488-C35D-43D5-8346-B6B276F48F7B}
 		{DBEBD89A-A81D-4595-A087-5909ADD61836} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 		{51610421-D318-4774-8901-4F8D271FA7CB} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
 		{DEC54951-29B8-4F9F-A827-A3D1B0C62549} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
+		{9A1997C8-F4D7-496A-B7CD-14F2CFB18256} = {2566ADC1-1C3F-4E49-8369-C2C0821FE8A7}
 		{14EBA118-2C1E-426A-BBBD-28306E5BF9E2} = {3EA0ECDE-6D02-48E4-AC3F-56B9EDEDC3A0}
+		{2566ADC1-1C3F-4E49-8369-C2C0821FE8A7} = {6BD505CA-3DA9-424D-BB2E-9F35AD94D5F6}
+		{03EAEC0D-485F-43AB-BDB6-068BF0D1BD4F} = {6BD505CA-3DA9-424D-BB2E-9F35AD94D5F6}
+		{4D825488-C35D-43D5-8346-B6B276F48F7B} = {6BD505CA-3DA9-424D-BB2E-9F35AD94D5F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A312243A-4B26-4F48-B018-E0AD3A362A28}

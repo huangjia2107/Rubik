@@ -31,15 +31,15 @@ if(!(Test-Path $demosPath))
     New-Item -itemType Directory -Path $demosPath
 }
 
-# 3.发布 Demo
-dotnet publish -c Release -f netcoreapp3.1 --no-self-contained -o $appPath\ ..\Rubik.sln
+# 3.发布
+dotnet publish -c Release --no-self-contained -o $appPath\ ..\Rubik.sln
 
 # 4.分类
 Move-Item -Path $appPath\Rubik.Demo.* -Destination $demosPath -Force
 Move-Item -Path $appPath\Rubik.Module.* -Destination $modulesPath -Force
 
 # 5.发布 Package
-dotnet pack -c Release -o $packPath\ ..\src\Rubik.Toolkit\Rubik.Toolkit.csproj
-dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme\Rubik.Theme.csproj
-dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj
-dotnet pack -c Release -o $packPath\ ..\src\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj
+dotnet pack -c Release -o $packPath\ ..\src\Package\Toolkit\Rubik.Toolkit\Rubik.Toolkit.csproj
+dotnet pack -c Release -o $packPath\ ..\src\Package\Theme\Rubik.Theme\Rubik.Theme.csproj
+dotnet pack -c Release -o $packPath\ ..\src\Package\Theme\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj
+dotnet pack -c Release -o $packPath\ ..\src\Package\Theme\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj

@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:utils="clr-namespace:Rubik.Theme.Utils"
+                    xmlns:themes="clr-namespace:Rubik.Theme">
+
+    <utils:BoolConverter x:Key="{x:Static themes:ResourceKeys.BoolConverterKey}"/>
+    <utils:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityConverterKey}" IsHidden="False"/>
+    <utils:BoolToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.BoolToVisibilityWithHiddenConverterKey}" IsHidden="True"/>
+    <utils:BoolToTextDecorationsConverter x:Key="{x:Static themes:ResourceKeys.BoolToTextDecorationsConverterKey}"/>
+      
+    <utils:ColorToBrushConverter x:Key="{x:Static themes:ResourceKeys.ColorToBrushConverterKey}"/>
+
+    <utils:DaysInMonthMultiConverter x:Key="{x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}"/>
+    <utils:DoubleToCornerRadiusConverter x:Key="{x:Static themes:ResourceKeys.DoubleToCornerRadiusConverterKey}"/>
+    <utils:DoubleToGridLengthConverter x:Key="{x:Static themes:ResourceKeys.DoubleToGridLengthConverterKey}"/>
+
+    <utils:EnumToBoolConverter x:Key="{x:Static themes:ResourceKeys.EnumToBoolWithTrueConverterKey}" EqualResult="True"/>
+    <utils:EnumToBoolConverter x:Key="{x:Static themes:ResourceKeys.EnumToBoolWithFalseConverterKey}" EqualResult="False"/>
+    <utils:EnumToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.EnumToVisibilityConverterKey}"/>
+
+    <utils:FirstItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.FirstItemOfItemsControlMultiConverterKey}"/>
+    
+    <utils:KeyToValueConverter x:Key="{x:Static themes:ResourceKeys.KeyToValueConverterKey}"/>
+
+    <utils:LastItemOfItemsControlMultiConverter x:Key="{x:Static themes:ResourceKeys.LastItemOfItemsControlMultiConverterKey}"/>
+
+    <utils:NullToBoolConverter x:Key="{x:Static themes:ResourceKeys.NullToBoolConverterKey}"/>
+    <utils:NullToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.NullToVisibilityConverterKey}"/>
+    
+    <utils:OnlyOneItemOfItemsControlConverter x:Key="{x:Static themes:ResourceKeys.OnlyOneItemOfItemsControlConverterKey}"/>
+    
+    <utils:StringToVisibilityConverter x:Key="{x:Static themes:ResourceKeys.StringToVisibilityConverterKey}"/>
+    <utils:StringToBoolConverter x:Key="{x:Static themes:ResourceKeys.StringToBoolConverterKey}"/>
+    <utils:ScrollOffsetToVisibilityMultiConverter x:Key="{x:Static themes:ResourceKeys.ScrollOffsetToVisibilityMultiConverterKey}"/>
+    
+    <utils:TimeSpanToStringConverter x:Key="{x:Static themes:ResourceKeys.TimeSpanToStringConverterKey}"/>
+
+    <utils:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityWithHiddenConverterKey}" IsHidden="True"/>
+    <utils:VisibilityConverter x:Key="{x:Static themes:ResourceKeys.VisibilityConverterKey}"/>
+
+</ResourceDictionary>

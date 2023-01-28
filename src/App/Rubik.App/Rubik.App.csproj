@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<OutputPath>..\..\..\bin\$(Configuration)</OutputPath>
+		<ApplicationIcon>Assets\Logos\Logo1.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\Logos\Logo.ico" />
+		<Resource Include="Assets\Logos\Logo1.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+		<PackageReference Include="Prism.DryIoc" version="8.0.0.1909" />
+		<PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Rubik.Service\Rubik.Service.csproj" />
+		<ProjectReference Include="..\..\Package\Theme\Rubik.Theme.Extension\Rubik.Theme.Extension.csproj" />
+		<ProjectReference Include="..\..\Package\Theme\Rubik.Theme.VLC\Rubik.Theme.VLC.csproj" />
+	</ItemGroup>
+
+</Project>

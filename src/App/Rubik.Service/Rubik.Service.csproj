@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<ItemGroup>
+		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+		<PackageReference Include="WebApiClientCore" Version="2.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Package\Theme\Rubik.Theme\Rubik.Theme.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Config\GlobalConfig.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="log4net.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Serilog.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>
