@@ -94,7 +94,7 @@ namespace Rubik.Module.Home.Utils
                             .Where(idemoType.IsAssignableFrom)
                             .Where(t => t != idemoType)
                             .Where(t => !t.IsAbstract)
-                            .Select(type => CreateDemoModel(type)).ToArray());
+                            .Select(type => CreateDemoModel(type)));
             }
 
             private static Assembly OnReflectionOnlyResolve(ResolveEventArgs args, DirectoryInfo directory)
