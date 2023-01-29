@@ -216,6 +216,9 @@ namespace Rubik.Demo.DragTree.ViewModels
             var draggingModel = draggingItem.DataContext as TreeViewModel;
             var overlapModel = overlapItem?.DataContext as TreeViewModel;
 
+            if (draggingModel == null)
+                return;
+
             /*
              * 1. 拖动项是目标目录时，不做移动
              * 2. 拖动项是目标目录的直接或间接父节点时，不做移动

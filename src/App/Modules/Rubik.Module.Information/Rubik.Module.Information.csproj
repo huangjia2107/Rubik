@@ -11,7 +11,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Rubik.Service\Rubik.Service.csproj" />
-		<ProjectReference Include="..\..\..\Package\Theme\Rubik.Theme\Rubik.Theme.csproj" />
 	</ItemGroup>
 
 </Project>

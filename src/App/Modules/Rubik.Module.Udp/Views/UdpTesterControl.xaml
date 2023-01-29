@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="Rubik.Module.UdpTester.Views.UdpTesterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:rubik="https://github.com/huangjia2107/Rubik/"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:utils="clr-namespace:Rubik.Service.Utils;assembly=Rubik.Service">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="true"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+    <UserControl.Resources>
+        <utils:BoolOrBoolToBoolMultiConverter x:Key="BoolOrBoolToBoolMultiConverterKey"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="50"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="300" MinWidth="300" MaxWidth="500"/>
+        </Grid.ColumnDefinitions>
+        
+        <GridSplitter Grid.Column="1" Width="15" Background="Transparent"
+			          HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+        <Grid Margin="18">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition MinHeight="50"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.RowSpan="3" Margin="-15" RadiusX="4" RadiusY="4" Fill="#fbfbfb">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                </Rectangle.Effect>
+            </Rectangle>
+            
+            <GridSplitter Grid.Row="1" Height="15" Background="Transparent"
+			              HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            
+            <ScrollViewer x:Name="ReceiveScrollViewer" Background="#ffffff" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding ReceivedCollection}" IsHitTestVisible="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .,StringFormat=⌾{0}}" TextWrapping="Wrap" IsHitTestVisible="False"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <TextBox Grid.Row="2" Padding="3" Margin="1"
+                     Text="{Binding SendText,UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <StackPanel Grid.Column="2" Grid.IsSharedSizeScope="True" Margin="0,3,0,0">
+            <Grid>
+                <Rectangle RadiusX="4" RadiusY="4" Fill="#fbfbfb">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <StackPanel Margin="18,10,18,18">
+                    <StackPanel.IsEnabled>
+                        <MultiBinding Converter="{StaticResource BoolOrBoolToBoolMultiConverterKey}">
+                            <Binding Path="IsListening"/>
+                            <Binding Path="IsSending"/>
+                        </MultiBinding>
+                    </StackPanel.IsEnabled>
+                    <TextBlock Text="Address" FontWeight="Bold"/>
+                    <Path Margin="-15,10" Stretch="Fill" StrokeThickness="1" Stroke="#EEEDF2" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                    <Grid Height="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="IP" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="2" VerticalContentAlignment="Center" TextAlignment="Right" Padding="3,0"
+                                Text="{Binding Ip,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <Grid Height="25" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Port" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="2" VerticalContentAlignment="Center" TextAlignment="Right" Padding="3,0"
+                                Text="{Binding Port,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="0,15,0,0">
+                <Rectangle RadiusX="4" RadiusY="4" Fill="#fbfbfb">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <StackPanel Margin="18,10,18,18">
+                    <Grid Height="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Receive" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" MinWidth="50" 
+                                Content="{Binding ReceivedCount}"
+                                Command="{Binding ClearReceivedCountCommand}"/>
+                    </Grid>
+                    <Path Margin="-15,10" Stretch="Fill" StrokeThickness="1" Stroke="#EEEDF2" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                    <Grid Height="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="String" 
+                                     IsChecked="{Binding ReceivedStringSwitch,Mode=TwoWay}"/>
+                        <RadioButton Content="Hex" Grid.Column="2"/>
+                    </Grid>
+
+                    <Grid Height="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Latest" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="2" VerticalContentAlignment="Center" TextAlignment="Right" Padding="3,0"
+                                 Text="{Binding ReceivedLatest,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <Grid Height="30" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Listen" 
+                                Command="{Binding StartListenCommand}"
+                                IsEnabled="{Binding IsListening,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}"/>
+                        <Button Grid.Column="2" Content="Stop"
+                                Command="{Binding StopListenCommand}"
+                                IsEnabled="{Binding IsListening}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="0,15,0,0">
+                <Rectangle RadiusX="4" RadiusY="4" Fill="#fbfbfb">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Color="LightGray" BlurRadius="8" ShadowDepth="0" Opacity="0.3" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <StackPanel Margin="18,10,18,18">
+                    <Grid Height="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Send" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" MinWidth="50"
+                                Content="{Binding SendCount}"
+                                Command="{Binding ClearSendCountCommand}"/>
+                    </Grid>
+                    <Path Margin="-15,10" Stretch="Fill" StrokeThickness="1" Stroke="#EEEDF2" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
+                    <Grid Height="25" 
+                        IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="String"
+                                     Command="{Binding SendEncodeCommand}"
+                                     IsChecked="{Binding SendStringSwitch,Mode=TwoWay}"/>
+                        <RadioButton Content="Hex" Grid.Column="2"
+                                     Command="{Binding SendEncodeCommand}"/>
+                    </Grid>
+                    <Grid Height="25"
+                            IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Times" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="2" VerticalContentAlignment="Center" TextAlignment="Right" Padding="3,0"
+                                 Text="{Binding SendTimes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <Grid Height="25" Margin="0,10,0,0"
+                            IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Interval" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="2" VerticalContentAlignment="Center" TextAlignment="Right" Padding="3,0"
+                                 Text="{Binding SendInterval,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <Grid Height="30" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Send"
+                                Command="{Binding StartSendCommand}"
+                                IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}"/>
+                        <Button Grid.Column="2" Content="Stop"
+                                Command="{Binding StopSendCommand}"
+                                IsEnabled="{Binding IsSending}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

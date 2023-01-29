@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\Rubik.Toolkit\Rubik.Toolkit.csproj" />
+	</ItemGroup>
+
+</Project>

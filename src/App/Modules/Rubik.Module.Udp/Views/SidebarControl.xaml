@@ -1,18 +1,18 @@
-﻿<UserControl x:Class="Rubik.Module.Information.Views.SidebarControl"
+﻿<UserControl x:Class="Rubik.Module.UdpTester.Views.SidebarControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:rubik="https://github.com/huangjia2107/Rubik/"
              xmlns:groups="clr-namespace:Rubik.Service.Groups;assembly=Rubik.Service"
              xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True" Visibility="Collapsed">
+             prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <RadioButton Height="60" Cursor="Hand"
                      GroupName="{x:Static groups:GroupNames.SidebarGroupName}"
-                     Command="{Binding InformationCommand}"
+                     Command="{Binding UdpTesterCommand}"
                      Style="{DynamicResource SidebarRadioButtonStyleKey}">
             <Path Width="22" Height="22" Stretch="Fill"
                   Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=RadioButton}}"
-                  Data="M512 32C247.04 32 32 247.04 32 512s215.04 480 480 480 480-215.04 480-480S776.96 32 512 32z m58.56 725.76c0 25.92-21.12 47.04-47.04 47.04h-23.52c-25.92 0-47.04-21.12-47.04-47.04V476.96c0-25.92 21.12-47.04 47.04-47.04h23.52c25.92 0 47.04 21.12 47.04 47.04v280.8zM512 359.84c-32.16 0-58.56-26.4-58.56-58.56 0-32.16 26.4-58.56 58.56-58.56s58.56 26.4 58.56 58.56c0 32.16-26.4 58.56-58.56 58.56z"/>
+                  Data="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z"/>
         </RadioButton>
         <!--
         <RadioButton Height="60" Cursor="Hand" Visibility="Collapsed"
