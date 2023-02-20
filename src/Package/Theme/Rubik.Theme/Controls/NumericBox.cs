@@ -476,8 +476,7 @@ namespace Rubik.Theme.Controls
 
         private void DealInputText(string inputText)
         {
-            double convertedValue;
-            if (double.TryParse(inputText, out convertedValue))
+            if (double.TryParse(inputText, out double convertedValue))
             {
                 if (DoubleUtil.AreClose(Value, convertedValue))
                 {
@@ -488,22 +487,36 @@ namespace Rubik.Theme.Controls
 
                 _isManual = true;
 
+                var preValue = Value;
+
                 if (convertedValue > Maximum)
                 {
                     if (DoubleUtil.AreClose(Value, Maximum))
+                    {
                         OnValueChanged(Value, Value);
+                        return;
+                    }
                     else
                         Value = Maximum;
                 }
                 else if (convertedValue < Minimum)
                 {
                     if (DoubleUtil.AreClose(Value, Minimum))
+                    {
                         OnValueChanged(Value, Value);
+                        return;
+                    }
                     else
                         Value = Minimum;
                 }
                 else
+                {
                     Value = convertedValue;
+                }
+
+                //不会触发 ValueChanged， 需要手动更新 Text
+                if (DoubleUtil.AreClose(preValue, Value))
+                    InternalSetText(Value);
             }
             else
                 InternalSetText(Value);
