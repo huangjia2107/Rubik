@@ -342,7 +342,7 @@ namespace Rubik.Theme.Controls
             if (_repeatUp != null)
                 _repeatUp.PreviewMouseUp -= OnRepeatButtonPreviewMouseUp;
 
-            if(_repeatDown!=null)
+            if (_repeatDown != null)
                 _repeatDown.PreviewMouseUp -= OnRepeatButtonPreviewMouseUp;
 
             _valueTextBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
@@ -352,7 +352,7 @@ namespace Rubik.Theme.Controls
             if (_valueTextBox == null || _repeatUp == null || _repeatDown == null)
             {
                 throw new NullReferenceException(string.Format("You have missed to specify {0}, {1} or {2} in your template", NumericUpTemplateName, NumericDownTemplateName, TextBoxTemplateName));
-            }  
+            }
 
             _repeatUp.PreviewMouseUp += OnRepeatButtonPreviewMouseUp;
             _repeatDown.PreviewMouseUp += OnRepeatButtonPreviewMouseUp;
@@ -562,7 +562,10 @@ namespace Rubik.Theme.Controls
 
         private double CorrectPrecision(int? precision, double originValue)
         {
-            return Math.Round(originValue, precision ?? 0, MidpointRounding.AwayFromZero);
+            if (!precision.HasValue)
+                return originValue;
+
+            return Math.Round(originValue, precision.Value, MidpointRounding.AwayFromZero);
         }
 
         private void ContinueChangeValue(bool isIncrease, bool isContinue = true)
