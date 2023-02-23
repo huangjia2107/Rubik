@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-
 using Rubik.Theme.Datas;
 
 namespace Rubik.Theme.Controls
@@ -157,10 +156,17 @@ namespace Rubik.Theme.Controls
             if (!args.IsManual)
                 return;
 
-            var day = (int)args.NewValue;
+            var newDay = (int)args.NewValue;
 
-            if (Value.Day != day)
+            if (Value.Day != newDay)
+            {
+                var day = Math.Min(DateTime.DaysInMonth(Value.Year, Value.Month), newDay);
+
                 Value = new DateTime(Value.Year, Value.Month, day, Value.Hour, Value.Minute, Value.Second);
+
+                if (day != newDay && day != _dayBox.Value)
+                    _dayBox.Value = day;
+            }
         }
 
         private void _hourBox_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

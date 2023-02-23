@@ -2,13 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:rubik="https://github.com/huangjia2107/Rubik/"
                     xmlns:controls="clr-namespace:Rubik.Theme.Controls"
-                    xmlns:themes="clr-namespace:Rubik.Theme"
-                    xmlns:markup="clr-namespace:Rubik.Theme.Markup"
                     xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
-
-    <ResourceDictionary.MergedDictionaries>
-        <markup:SharedResourceDictionary Source="{x:Static themes:ResourceKeys.ConvertersSource}"/>
-    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="DateTimePickerToggleStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Focusable" Value="False"/>
@@ -75,15 +69,8 @@
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
                             <TextBlock Grid.Column="3" Text="-" VerticalAlignment="Center" Margin="0,0,0,3"/>
                             <controls:NumericBox x:Name="PART_DayBox" Grid.Column="4" Minimum="1" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
-                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0">
-                                <controls:NumericBox.Maximum>
-                                    <MultiBinding FallbackValue="31"
-                                                  Converter="{StaticResource {x:Static themes:ResourceKeys.DaysInMonthMultiConverterKey}}">
-                                        <Binding Path="Value" ElementName="PART_YearBox"/>
-                                        <Binding Path="Value" ElementName="PART_MonthBox"/>
-                                    </MultiBinding>
-                                </controls:NumericBox.Maximum>
-                            </controls:NumericBox>
+                                                 FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
+
                             <TextBlock Grid.Column="5" Text=" " VerticalAlignment="Center"/>
                             <controls:NumericBox x:Name="PART_HourBox" Grid.Column="6" Minimum="0" Maximum="23" UpDownButtonsWidth="0" BorderThickness="0" TextAlignment="Right"
                                                  FontSize="{TemplateBinding FontSize}" Padding="3,0" MaxLength="2" MinWidth="0"/>
