@@ -54,6 +54,7 @@ namespace Rubik.Theme
         public static Uri SpitButtonStyleSource { get; } = new Uri($"{PackUri}Styles/SpitButtonStyle.xaml");
         public static Uri SeparatorStyleSource { get; } = new Uri($"{PackUri}Styles/SeparatorStyle.xaml");
         public static Uri ScrollViewerStyleSource { get; } = new Uri($"{PackUri}Styles/ScrollViewerStyle.xaml");
+        public static Uri SidebarLayoutStyleSource { get; } = new Uri($"{PackUri}Styles/SidebarLayoutStyle.xaml");
 
         public static Uri TextBoxStyleSource { get; } = new Uri($"{PackUri}Styles/TextBoxStyle.xaml");
         public static Uri ToggleSwitchStyleSource { get; } = new Uri($"{PackUri}Styles/ToggleSwitchStyle.xaml");

@@ -44,6 +44,7 @@
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.SpitButtonStyleSource}"/>
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.SeparatorStyleSource}"/>
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.ScrollViewerStyleSource}"/>
+        <ResourceDictionary Source="{x:Static themes:ResourceKeys.SidebarLayoutStyleSource}"/>
 
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.TextBoxStyleSource}"/>
         <ResourceDictionary Source="{x:Static themes:ResourceKeys.ToggleSwitchStyleSource}"/>
