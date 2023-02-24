@@ -64,19 +64,19 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" $(IsThemeExProject) ">
-		<Version>0.2.1-preview</Version>
+		<Version>0.2.2-preview</Version>
 		<Description>This is a wpf control library that relies on third parties</Description>
 		<PackageTags>rubik;wpf;theme;control;xaml;style;avalonedit</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" $(IsThemeProject) ">
-		<Version>0.2.1-preview</Version>
+		<Version>0.2.2-preview</Version>
 		<Description>This is a wpf control library</Description>
 		<PackageTags>rubik;wpf;theme;control;xaml;style</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" $(IsToolkitProject) ">
-		<Version>0.2.1-preview</Version>
+		<Version>0.2.2-preview</Version>
 		<Description>This is a toolkit</Description>
 		<PackageTags>rubik;toolkit;util</PackageTags>
 	</PropertyGroup>
