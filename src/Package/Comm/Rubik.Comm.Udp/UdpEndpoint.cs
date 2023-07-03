@@ -84,24 +84,15 @@ namespace Rubik.Comm.Udp
 
 #if NET6_0_OR_GREATER
                 await StartReceiving().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                IsListening = false;
-            }
 #else
                 StartReceiving();
+#endif
             }
             catch (Exception ex)
             {
                 IsListening = false;
                 throw ex;
             }
-#endif
         }
 
         public void Stop()
