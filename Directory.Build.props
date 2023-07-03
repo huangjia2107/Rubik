@@ -23,6 +23,22 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<IsWin Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWin>
+		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(IsWin)'=='true'">
+		<DefineConstants>Win</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(IsOSX)'=='true'">
+		<DefineConstants>OSX</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(IsLinux)'=='true'">
+		<DefineConstants>Linux</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup>
 		<IsUdpProject>$(MSBuildProjectName.EndsWith('Udp'))</IsUdpProject>
 		<IsThemeVlcProject>$(MSBuildProjectName.EndsWith('VLC'))</IsThemeVlcProject>
 		<IsThemeExProject>$(MSBuildProjectName.EndsWith('Extension'))</IsThemeExProject>
@@ -52,7 +68,7 @@
 	</Choose>
 
 	<PropertyGroup Condition=" $(IsUdpProject) ">
-		<Version>0.0.1-preview</Version>
+		<Version>0.0.2-preview</Version>
 		<Description>This is a udp library</Description>
 		<PackageTags>rubik;udp;communication;network</PackageTags>
 	</PropertyGroup>

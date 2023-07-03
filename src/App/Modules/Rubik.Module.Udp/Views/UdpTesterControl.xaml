@@ -114,7 +114,8 @@
                                 Command="{Binding ClearReceivedCountCommand}"/>
                     </Grid>
                     <Path Margin="-15,10" Stretch="Fill" StrokeThickness="1" Stroke="#EEEDF2" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
-                    <Grid Height="25">
+                    <Grid Height="25"
+                          IsEnabled="{Binding IsListening,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="10"/>
@@ -124,7 +125,19 @@
                                      IsChecked="{Binding ReceivedStringSwitch,Mode=TwoWay}"/>
                         <RadioButton Content="Hex" Grid.Column="2"/>
                     </Grid>
-
+                    <Grid Height="25" 
+                          IsEnabled="{Binding IsListening,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="UDP"
+                                     Command="{Binding SendEncodeCommand}"
+                                     IsChecked="{Binding ReceivedUdpSwitch,Mode=TwoWay}"/>
+                        <RadioButton Content="IPv4" Grid.Column="2"
+                                     Command="{Binding SendEncodeCommand}"/>
+                    </Grid>
                     <Grid Height="25">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" SharedSizeGroup="NameColumn"/>
@@ -170,7 +183,7 @@
                     </Grid>
                     <Path Margin="-15,10" Stretch="Fill" StrokeThickness="1" Stroke="#EEEDF2" Data="M0,0 H5" RenderOptions.EdgeMode="Aliased"/>
                     <Grid Height="25" 
-                        IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                          IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="10"/>
@@ -180,6 +193,19 @@
                                      Command="{Binding SendEncodeCommand}"
                                      IsChecked="{Binding SendStringSwitch,Mode=TwoWay}"/>
                         <RadioButton Content="Hex" Grid.Column="2"
+                                     Command="{Binding SendEncodeCommand}"/>
+                    </Grid>
+                    <Grid Height="25" 
+                          IsEnabled="{Binding IsSending,Converter={StaticResource {x:Static rubik:ResourceKeys.BoolConverterKey}}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="UDP"
+                                     Command="{Binding SendEncodeCommand}"
+                                     IsChecked="{Binding SendUdpSwitch,Mode=TwoWay}"/>
+                        <RadioButton Content="IPv4" Grid.Column="2"
                                      Command="{Binding SendEncodeCommand}"/>
                     </Grid>
                     <Grid Height="25"

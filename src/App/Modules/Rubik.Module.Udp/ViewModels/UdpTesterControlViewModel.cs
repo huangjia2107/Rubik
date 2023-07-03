@@ -22,7 +22,9 @@ namespace Rubik.Module.UdpTester.ViewModels
     public class UdpTesterControlViewModel : BindableBase
     {
         private ArrayPool<byte> _arrayPool = null;
+
         private UdpEndpoint _udpEndpoint = null;
+        private IPv4Endpoint _ipv4Endpoint = null;
 
         private ScrollViewer _receiveScrollViewer = null;
 
@@ -42,6 +44,9 @@ namespace Rubik.Module.UdpTester.ViewModels
 
             _udpEndpoint = new UdpEndpoint();
             _udpEndpoint.DatagramReceived += Udp_DatagramReceived;
+
+            _ipv4Endpoint = new IPv4Endpoint();
+            _ipv4Endpoint.BytesReceived += IPv4Endpoint_BytesReceived;
 
             InitCommand();
         }
@@ -104,6 +109,13 @@ namespace Rubik.Module.UdpTester.ViewModels
             set { _receivedStringSwitch = value; RaisePropertyChanged(); }
         }
 
+        private bool _receivedUdpSwitch = true;
+        public bool ReceivedUdpSwitch
+        {
+            get { return _receivedUdpSwitch; }
+            set { _receivedUdpSwitch = value; RaisePropertyChanged(); }
+        }
+
         private int _receivedLatest = 100;
         public string ReceivedLatest
         {
@@ -128,7 +140,7 @@ namespace Rubik.Module.UdpTester.ViewModels
 
         #region Send
 
-        private string _sendText = "https://github.com/huangjia2107/Wave";
+        private string _sendText = "https://github.com/huangjia2107/Rubik";
         public string SendText
         {
             get { return _sendText; }
@@ -147,6 +159,13 @@ namespace Rubik.Module.UdpTester.ViewModels
         {
             get { return _sendStringSwitch; }
             set { _sendStringSwitch = value; RaisePropertyChanged(); }
+        }
+
+        private bool _sendUdpSwitch = true;
+        public bool SendUdpSwitch
+        {
+            get { return _sendUdpSwitch; }
+            set { _sendUdpSwitch = value; RaisePropertyChanged(); }
         }
 
         private int _sendTimes = 1;
@@ -197,14 +216,18 @@ namespace Rubik.Module.UdpTester.ViewModels
         {
             try
             {
-                await _udpEndpoint.Start(Ip, _port).ConfigureAwait(false);
+                if(ReceivedUdpSwitch)
+                    await _udpEndpoint.Start(Ip, _port).ConfigureAwait(false);
 #else
         private void StartListen()
         {
             try
             {
-                _udpEndpoint.Start(Ip, _port);
+                if (ReceivedUdpSwitch)
+                    _udpEndpoint.Start(Ip, _port);
 #endif
+                else
+                    _ipv4Endpoint.StartCapture(Ip);
             }
             catch (Exception ex)
             {
@@ -212,47 +235,39 @@ namespace Rubik.Module.UdpTester.ViewModels
             }
             finally
             {
-                IsListening = _udpEndpoint.IsListening;
+                IsListening = ReceivedUdpSwitch ? _udpEndpoint.IsListening : _ipv4Endpoint.IsCapturing;
             }
         }
 
         private void StopListen()
         {
-            _udpEndpoint.Stop();
+            if (ReceivedUdpSwitch)
+                _udpEndpoint.Stop();
+            else
+                _ipv4Endpoint.StopCapture();
+
             IsListening = _udpEndpoint.IsListening;
         }
 
         private void ClearReceivedCount()
         {
             ReceivedCount = 0;
+            ReceivedCollection.Clear();
         }
 
         private void Udp_DatagramReceived(object sender, Datagram e)
         {
-            var ros = new ReadOnlySequence<byte>(e.Data);
-            var byteCount = e.Data.Length;
-
-            ReceivedCount++;
-
-            if (ReceivedStringSwitch)
-            {
-                var receivedBytes = _arrayPool.Rent(byteCount);
-                ros.CopyAll(receivedBytes, 0);
-
-                var result = Encoding.UTF8.GetString(receivedBytes, 0, byteCount);
-                _arrayPool.Return(receivedBytes);
-
-                ShowReceivedBytes(result);
-            }
-            else
-            {
-                ShowReceivedBytes(ros.ToHexString());
-            }
+            DealReceivedBytes(e.Data);
         }
 
-#endregion
+        private void IPv4Endpoint_BytesReceived(object sender, byte[] e)
+        {
+            DealReceivedBytes(e);
+        }
 
-#region Send
+        #endregion
+
+        #region Send
 
         private void SendEncode()
         {
@@ -291,14 +306,22 @@ namespace Rubik.Module.UdpTester.ViewModels
 
                     if (SendStringSwitch)
                     {
-                        await _udpEndpoint.SendAsync(Ip, _port, SendText);
+                        if (SendUdpSwitch)
+                            await _udpEndpoint.SendAsync(Ip, _port, SendText);
+                        else
+                            _ipv4Endpoint.Send(Ip, _port, SendText);
+
                         SendCount++;
 
                         await Task.Delay(_sendInterval);
                         continue;
                     }
 
-                    await _udpEndpoint.SendAsync(Ip, _port, SendText.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(h => Convert.ToByte(h, 16)).ToArray());
+                    if (SendUdpSwitch)
+                        await _udpEndpoint.SendAsync(Ip, _port, SendText.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(h => Convert.ToByte(h, 16)).ToArray());
+                    else
+                        _ipv4Endpoint.Send(Ip, _port, SendText.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(h => Convert.ToByte(h, 16)).ToArray());
+
                     SendCount++;
 
                     await Task.Delay(_sendInterval);
@@ -322,11 +345,37 @@ namespace Rubik.Module.UdpTester.ViewModels
         {
             _udpEndpoint?.Stop();
             _udpEndpoint?.Dispose();
+
+            _ipv4Endpoint?.StopCapture();
+            _ipv4Endpoint?.Dispose();
         }
 
-#endregion
+        #endregion
 
-#region Func
+        #region Func
+
+        private void DealReceivedBytes(Memory<byte> bytes)
+        {
+            var ros = new ReadOnlySequence<byte>(bytes);
+            var byteCount = bytes.Length;
+
+            ReceivedCount++;
+
+            if (ReceivedStringSwitch)
+            {
+                var receivedBytes = _arrayPool.Rent(byteCount);
+                ros.CopyAll(receivedBytes, 0);
+
+                var result = Encoding.UTF8.GetString(receivedBytes, 0, byteCount);
+                _arrayPool.Return(receivedBytes);
+
+                ShowReceivedBytes(result);
+            }
+            else
+            {
+                ShowReceivedBytes(ros.ToHexString());
+            }
+        }
 
         private void ShowReceivedBytes(string result)
         {
@@ -340,6 +389,6 @@ namespace Rubik.Module.UdpTester.ViewModels
             });
         }
 
-#endregion
+        #endregion
     }
 }
