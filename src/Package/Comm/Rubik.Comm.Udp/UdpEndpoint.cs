@@ -199,21 +199,6 @@ namespace Rubik.Comm.Udp
 
         public void Send(string ip, int port, byte[] data, int bytes, short ttl = 64, Action<UdpClient> config = null)
         {
-            if (string.IsNullOrEmpty(ip))
-                throw new ArgumentNullException(nameof(ip));
-
-            if (port < 0 || port > 65535)
-                throw new ArgumentOutOfRangeException(nameof(port));
-
-            if (data == null)
-                throw new ArgumentNullException(nameof(data));
-
-            if (bytes <= 0 || bytes > data.Length || bytes > MaxDatagramSize)
-                throw new ArgumentOutOfRangeException(nameof(bytes));
-
-            if (ttl < 0)
-                throw new ArgumentOutOfRangeException(nameof(ttl));
-
             SendInternal(ip, port, data, bytes, ttl, config);
         }
 
@@ -233,6 +218,11 @@ namespace Rubik.Comm.Udp
 
         public async Task SendAsync(string ip, int port, byte[] data, int bytes, short ttl = 64, Action<UdpClient> config = null)
         {
+            await SendInternalAsync(ip, port, data, bytes, ttl, config).ConfigureAwait(false);
+        }
+
+        private void SendInternal(string ip, int port, byte[] data, int bytes, short ttl, Action<UdpClient> config = null)
+        {
             if (string.IsNullOrEmpty(ip))
                 throw new ArgumentNullException(nameof(ip));
 
@@ -248,11 +238,6 @@ namespace Rubik.Comm.Udp
             if (ttl < 0)
                 throw new ArgumentOutOfRangeException(nameof(ttl));
 
-            await SendInternalAsync(ip, port, data, bytes, ttl, config).ConfigureAwait(false);
-        }
-
-        private void SendInternal(string ip, int port, byte[] data, int bytes, short ttl, Action<UdpClient> config = null)
-        {
             _sendLock.Wait();
 
             var ipe = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -272,6 +257,21 @@ namespace Rubik.Comm.Udp
 
         private async Task SendInternalAsync(string ip, int port, byte[] data, int bytes, short ttl, Action<UdpClient> config = null)
         {
+            if (string.IsNullOrEmpty(ip))
+                throw new ArgumentNullException(nameof(ip));
+
+            if (port < 0 || port > 65535)
+                throw new ArgumentOutOfRangeException(nameof(port));
+
+            if (data == null)
+                throw new ArgumentNullException(nameof(data));
+
+            if (bytes <= 0 || bytes > data.Length || bytes > MaxDatagramSize)
+                throw new ArgumentOutOfRangeException(nameof(bytes));
+
+            if (ttl < 0)
+                throw new ArgumentOutOfRangeException(nameof(ttl));
+
             await _sendLock.WaitAsync();
 
             var ipe = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -296,6 +296,96 @@ namespace Rubik.Comm.Udp
                 _sendLock.Release();
             }
         }
+
+#if NET6_0_OR_GREATER
+
+        public void Send(string ip, int port, ReadOnlySpan<byte> data, short ttl = 64, Action<UdpClient> config = null)
+        {
+            SendInternal(ip, port, data, ttl, config);
+        }
+
+        public async Task SendAsync(string ip, int port, ReadOnlyMemory<byte> data, short ttl = 64, Action<UdpClient> config = null)
+        {
+            await SendInternalAsync(ip, port, data, ttl, config).ConfigureAwait(false);
+        }
+
+        private void SendInternal(string ip, int port, ReadOnlySpan<byte> data, short ttl, Action<UdpClient> config = null)
+        {
+            if (string.IsNullOrEmpty(ip))
+                throw new ArgumentNullException(nameof(ip));
+
+            if (port < 0 || port > 65535)
+                throw new ArgumentOutOfRangeException(nameof(port));
+
+            if (data.IsEmpty)
+                throw new ArgumentNullException(nameof(data));
+
+            if (data.Length > MaxDatagramSize)
+                throw new ArgumentOutOfRangeException(nameof(data));
+
+            if (ttl < 0)
+                throw new ArgumentOutOfRangeException(nameof(ttl));
+
+            _sendLock.WaitAsync();
+
+            var ipe = new IPEndPoint(IPAddress.Parse(ip), port);
+
+            try
+            {
+                config?.Invoke(_udpClient);
+
+                _udpClient.Ttl = ttl;
+                _udpClient.Send(data, ipe);
+            }
+            finally
+            {
+                _sendLock.Release();
+            }
+        }
+
+        private async Task SendInternalAsync(string ip, int port, ReadOnlyMemory<byte> data, short ttl, Action<UdpClient> config = null)
+        {
+            if (string.IsNullOrEmpty(ip))
+                throw new ArgumentNullException(nameof(ip));
+
+            if (port < 0 || port > 65535)
+                throw new ArgumentOutOfRangeException(nameof(port));
+
+            if (data.IsEmpty)
+                throw new ArgumentNullException(nameof(data));
+
+             if (data.Length > MaxDatagramSize)
+                throw new ArgumentOutOfRangeException(nameof(data));
+
+            if (ttl < 0)
+                throw new ArgumentOutOfRangeException(nameof(ttl));
+
+            await _sendLock.WaitAsync();
+
+            var ipe = new IPEndPoint(IPAddress.Parse(ip), port);
+
+            try
+            {
+                config?.Invoke(_udpClient);
+
+                _udpClient.Ttl = ttl;
+                await _udpClient.SendAsync(data, ipe).ConfigureAwait(false);
+            }
+            catch (TaskCanceledException)
+            {
+
+            }
+            catch (OperationCanceledException)
+            {
+
+            }
+            finally
+            {
+                _sendLock.Release();
+            }
+        }
+
+#endif
 
         #endregion
 

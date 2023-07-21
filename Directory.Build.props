@@ -68,7 +68,7 @@
 	</Choose>
 
 	<PropertyGroup Condition=" $(IsUdpProject) ">
-		<Version>0.0.2-preview</Version>
+		<Version>0.0.5-preview</Version>
 		<Description>This is a udp library</Description>
 		<PackageTags>rubik;udp;communication;network</PackageTags>
 	</PropertyGroup>

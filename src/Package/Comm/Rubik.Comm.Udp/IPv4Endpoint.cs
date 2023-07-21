@@ -173,6 +173,29 @@ namespace Rubik.Comm.Udp
             }
         }
 
+#if NET6_0_OR_GREATER
+
+        public void Send(string ip, int port, ReadOnlySpan<byte> data, short ttl, Action<Socket> config = null)
+        {
+            _sendLock.Wait();
+
+            var ipe = new IPEndPoint(IPAddress.Parse(ip), port);
+
+            try
+            {
+                config?.Invoke(_socketSender);
+
+                _socketSender.Ttl = ttl;
+                _socketSender.SendTo(data, ipe);
+            }
+            finally
+            {
+                _sendLock.Release();
+            }
+        }
+
+#endif
+
         #endregion
 
         #region Dispose
