@@ -154,7 +154,7 @@ namespace Rubik.Comm.Udp
             SendInternal(ip, port, data, offset, bytes, ttl, config);
         }
 
-        private void SendInternal(string ip, int port, byte[] data, int offset, int bytes, short ttl, Action<Socket> config = null)
+        private void SendInternal(string ip, int port, byte[] data, int offset, int bytes, short ttl = 64, Action<Socket> config = null)
         {
             _sendLock.Wait();
 
@@ -175,7 +175,7 @@ namespace Rubik.Comm.Udp
 
 #if NET6_0_OR_GREATER
 
-        public void Send(string ip, int port, ReadOnlySpan<byte> data, short ttl, Action<Socket> config = null)
+        public void Send(string ip, int port, ReadOnlySpan<byte> data, short ttl = 64, Action<Socket> config = null)
         {
             _sendLock.Wait();
 
