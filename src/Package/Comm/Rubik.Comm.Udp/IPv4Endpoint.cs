@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 using PacketDotNet;
 using SharpPcap;
@@ -22,14 +23,13 @@ namespace Rubik.Comm.Udp
 
         public IPv4Endpoint()
         {
-#if Win
-            _socketSender = new Socket(AddressFamily.InterNetwork, SocketType.Raw, System.Net.Sockets.ProtocolType.IP);
-#else
-            _socket = new Socket((AddressFamily)2, (SocketType)3, (ProtocolType)255);
-#endif
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                _socketSender = new Socket(AddressFamily.InterNetwork, SocketType.Raw, System.Net.Sockets.ProtocolType.IP);
+            else
+                _socketSender = new Socket((AddressFamily)2, (SocketType)3, (System.Net.Sockets.ProtocolType)255);
+
             _socketSender.Bind(new IPEndPoint(IPAddress.Any, 0));
             _socketSender.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.HeaderIncluded, true);
-
         }
 
         #region Property
