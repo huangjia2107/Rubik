@@ -35,6 +35,7 @@ namespace Rubik.Comm.Udp
         #region Property
 
         public bool IsCapturing { get; private set; }
+        public string CapturingIp { get; private set; }
 
         #endregion
 
@@ -77,10 +78,13 @@ namespace Rubik.Comm.Udp
                 }
 
                 IsCapturing = true;
+                CapturingIp = ip;
             }
             catch (Exception ex)
             {
                 IsCapturing = false;
+                CapturingIp = null;
+
                 DisposeCapture();
 
                 return ex.Message;
