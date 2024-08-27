@@ -286,9 +286,9 @@ namespace Rubik.Theme.Extension.Controls
 
         #region Func
 
-        public void InsertText(string text)
+        public void InsertText(string text, bool caretFallBack = false, int fallbackLength = 1)
         {
-            InsertTextInternal(text, false);
+            InsertTextInternal(text, caretFallBack, fallbackLength);
         }
 
         public void Redo()

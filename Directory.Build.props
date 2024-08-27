@@ -80,7 +80,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" $(IsThemeExProject) ">
-		<Version>0.2.2-preview</Version>
+		<Version>0.2.3-preview</Version>
 		<Description>This is a wpf control library that relies on third parties</Description>
 		<PackageTags>rubik;wpf;theme;control;xaml;style;avalonedit</PackageTags>
 	</PropertyGroup>
