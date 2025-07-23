@@ -17,22 +17,36 @@ namespace Rubik.Comm.Udp
         private SocketAsyncEventArgs _recvArgs = null;
 
         private byte[] _receivedBuffer = null;
-        private ArrayPool<byte> _arrayPool = null;
 
         private bool _disposed = false;
-        private ReusableCancellationTokenProvider _cancellationTokenProvider = null;
+        private readonly ReusableCancellationTokenProvider _cancellationTokenProvider = null;
 
         private UdpClient _udpClient = null;
-        private SemaphoreSlim _sendLock = new SemaphoreSlim(1, 1);
+        private SemaphoreSlim _sendLock = new(1, 1);
 
-        private readonly EndPoint _blankEndpoint = new IPEndPoint(IPAddress.Any, 0);
+        private readonly SocketOptionLevel _socketOptionLevel;
+        private readonly EndPoint _blankEndpoint;
 
-        public UdpEndpoint()
+        private AddressFamily _addressFamily = AddressFamily.InterNetwork;
+
+        public UdpEndpoint(AddressFamily addressFamily = AddressFamily.InterNetwork)
         {
-            _arrayPool = ArrayPool<byte>.Shared;
-            _cancellationTokenProvider = new ReusableCancellationTokenProvider();
+            _addressFamily = addressFamily;
 
-            _udpClient = new UdpClient();
+            _socketOptionLevel = _addressFamily switch
+            {
+                AddressFamily.InterNetwork => SocketOptionLevel.IP,
+                _ => SocketOptionLevel.IPv6
+            };
+
+            _blankEndpoint = new IPEndPoint(_addressFamily switch
+            {
+                AddressFamily.InterNetwork => IPAddress.Any,
+                _ => IPAddress.IPv6Any
+            }, 0);
+
+            _cancellationTokenProvider = new ReusableCancellationTokenProvider();
+            _udpClient = new UdpClient(_addressFamily);
         }
 
         #region Event
@@ -75,8 +89,8 @@ namespace Rubik.Comm.Udp
             {
                 IsListening = true;
 
-                _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                _serverSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
+                _serverSocket = new Socket(_addressFamily, SocketType.Dgram, ProtocolType.Udp);
+                _serverSocket.SetSocketOption(_socketOptionLevel, SocketOptionName.ReuseAddress, true);
 
                 config?.Invoke(_serverSocket);
 
@@ -113,7 +127,7 @@ namespace Rubik.Comm.Udp
 #endif
         {
             var datagramSize = MaxDatagramSize;
-            _receivedBuffer = _arrayPool.Rent(datagramSize);
+            _receivedBuffer = ArrayPool<byte>.Shared.Rent(datagramSize);
 
 #if NET6_0_OR_GREATER
             await Task.Factory.StartNew(async () =>
@@ -124,7 +138,11 @@ namespace Rubik.Comm.Udp
 
                     while (!_cancellationTokenProvider.IsCancellationRequested)
                     {
-                        var result = await _serverSocket.ReceiveFromAsync(memory, SocketFlags.None, _blankEndpoint, _cancellationTokenProvider.CancellationToken.Token);
+                        var result = await _serverSocket.ReceiveFromAsync(
+                            memory, 
+                            SocketFlags.None, 
+                            _blankEndpoint, 
+                            _cancellationTokenProvider.CancellationToken.Token);
 
                         if (result.ReceivedBytes > 0)
                         {
@@ -170,7 +188,7 @@ namespace Rubik.Comm.Udp
             if (e.SocketError == SocketError.Success && e.BytesTransferred > 0)
             {
                 var datagramSize = (int)e.UserToken;
-                DatagramReceived?.Invoke(this, new Datagram(e.RemoteEndPoint as IPEndPoint, e.MemoryBuffer.Slice(0, Math.Min(e.BytesTransferred, datagramSize))));
+                DatagramReceived?.Invoke(this, new Datagram(e.RemoteEndPoint as IPEndPoint, e.MemoryBuffer[..Math.Min(e.BytesTransferred, datagramSize)]));
 
                 if (!_serverSocket.ReceiveFromAsync(_recvArgs))
                 {
@@ -421,8 +439,8 @@ namespace Rubik.Comm.Udp
             _serverSocket?.Close();
             _serverSocket = null;
 
-            if (_receivedBuffer != null)
-                _arrayPool.Return(_receivedBuffer);
+            if (_receivedBuffer is not null)
+                ArrayPool<byte>.Shared.Return(_receivedBuffer);
         }
 
         #endregion
