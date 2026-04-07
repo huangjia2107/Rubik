@@ -86,7 +86,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" $(IsThemeProject) ">
-		<Version>0.2.2-preview</Version>
+		<Version>0.2.3-preview</Version>
 		<Description>This is a wpf control library</Description>
 		<PackageTags>rubik;wpf;theme;control;xaml;style</PackageTags>
 	</PropertyGroup>

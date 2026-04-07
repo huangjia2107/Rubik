@@ -94,6 +94,20 @@ namespace Rubik.Theme.Controls
             set { SetValue(HideOriginalTitleProperty, value); }
         }
 
+        public static readonly DependencyProperty IconMarginProperty = DependencyProperty.Register("IconMargin", typeof(Thickness), _typeofSelf, new PropertyMetadata(new Thickness(5.0)));
+        public Thickness IconMargin
+        {
+            get { return (Thickness)GetValue(IconMarginProperty); }
+            set { SetValue(IconMarginProperty, value); }
+        }
+
+        public static readonly DependencyProperty TitleMarginProperty = DependencyProperty.Register("TitleMargin", typeof(Thickness), _typeofSelf, new PropertyMetadata(new Thickness()));
+        public Thickness TitleMargin
+        {
+            get { return (Thickness)GetValue(TitleMarginProperty); }
+            set { SetValue(TitleMarginProperty, value); }
+        }
+
         public static readonly DependencyProperty CaptionFontSizeProperty = DependencyProperty.Register("CaptionFontSize", typeof(double), _typeofSelf, new PropertyMetadata(14d));
         public double CaptionFontSize
         {
@@ -106,6 +120,20 @@ namespace Rubik.Theme.Controls
         {
             get { return (double)GetValue(CaptionHeightProperty); }
             set { SetValue(CaptionHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty CaptionButtonHeightProperty = DependencyProperty.Register("CaptionButtonHeight", typeof(double), _typeofSelf, new PropertyMetadata(30.0));
+        public double CaptionButtonHeight
+        {
+            get { return (double)GetValue(CaptionButtonHeightProperty); }
+            set { SetValue(CaptionButtonHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty CaptionWithoutContentVerticalAlignmentProperty = DependencyProperty.Register("CaptionWithoutContentVerticalAlignment", typeof(VerticalAlignment), _typeofSelf, new PropertyMetadata(VerticalAlignment.Center));
+        public VerticalAlignment CaptionWithoutContentVerticalAlignment
+        {
+            get { return (VerticalAlignment)GetValue(CaptionWithoutContentVerticalAlignmentProperty); }
+            set { SetValue(CaptionWithoutContentVerticalAlignmentProperty, value); }
         }
 
         public static readonly DependencyProperty CaptionBackgroundProperty = DependencyProperty.Register("CaptionBackground", typeof(Brush), _typeofSelf);

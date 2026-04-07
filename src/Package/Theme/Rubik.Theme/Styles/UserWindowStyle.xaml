@@ -41,10 +41,16 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="{TemplateBinding Icon}" VerticalAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="False" Margin="5"/>
-                                    <TextBlock x:Name="TitleTextBlock" Grid.Column="1" Text="{TemplateBinding Title}" FontSize="{TemplateBinding CaptionFontSize}" FontWeight="Medium"  VerticalAlignment="Center" Foreground="{TemplateBinding CaptionForeground}" TextTrimming="CharacterEllipsis" WindowChrome.IsHitTestVisibleInChrome="False"/>
+                                    <Image Grid.Column="0" Source="{TemplateBinding Icon}" WindowChrome.IsHitTestVisibleInChrome="False"
+                                           VerticalAlignment="{TemplateBinding CaptionWithoutContentVerticalAlignment}"
+                                           Margin="{TemplateBinding IconMargin}"/>
+                                    <TextBlock x:Name="TitleTextBlock" Grid.Column="1" Text="{TemplateBinding Title}" FontSize="{TemplateBinding CaptionFontSize}" FontWeight="Medium" Foreground="{TemplateBinding CaptionForeground}" TextTrimming="CharacterEllipsis" WindowChrome.IsHitTestVisibleInChrome="False"
+                                               VerticalAlignment="{TemplateBinding CaptionWithoutContentVerticalAlignment}"
+                                               Margin="{TemplateBinding TitleMargin}"/>
                                     <ContentPresenter Grid.Column="2" ContentSource="CaptionContent" WindowChrome.IsHitTestVisibleInChrome="True"/>
-                                    <StackPanel Grid.Column="3" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True">
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True"
+                                                VerticalAlignment="{TemplateBinding CaptionWithoutContentVerticalAlignment}"
+                                                Height="{TemplateBinding CaptionButtonHeight}">
                                         <Button x:Name="MiniBtn" Style="{DynamicResource {x:Static themes:ResourceKeys.TitlebarButtonStyleKey}}" Width="37" Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" VerticalContentAlignment="Center" Padding="0,5,0,0" >
                                             <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" VerticalAlignment="Center" HorizontalAlignment="Center" 
                                                   RenderOptions.EdgeMode="Aliased" Margin="0,0,0,5" Data="F1M0,6L0,9 9,9 9,6 0,6z"/>
